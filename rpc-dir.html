@@ -1,0 +1,939 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>rpc目录结构 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="project-dev.html" />
+    
+    
+    <link rel="prev" href="api-dir.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="about-us.html">
+            
+                <a href="about-us.html">
+            
+                    
+                    关于我们
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="join-us.html">
+            
+                <a href="join-us.html">
+            
+                    
+                    加入我们
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="concept-introduction.html">
+            
+                <a href="concept-introduction.html">
+            
+                    
+                    概念介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="quick-start.html">
+            
+                <a href="quick-start.html">
+            
+                    
+                    快速开发
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="monolithic-service.html">
+            
+                <a href="monolithic-service.html">
+            
+                    
+                    单体服务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="micro-service.html">
+            
+                <a href="micro-service.html">
+            
+                    
+                    微服务
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="framework-design.html">
+            
+                <a href="framework-design.html">
+            
+                    
+                    框架设计
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="api-grammar.html">
+            
+                <a href="api-grammar.html">
+            
+                    
+                    api语法介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="api-dir.html">
+            
+                <a href="api-dir.html">
+            
+                    
+                    api目录结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.6.3" data-path="rpc-dir.html">
+            
+                <a href="rpc-dir.html">
+            
+                    
+                    rpc目录结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="project-dev.html">
+            
+                <a href="project-dev.html">
+            
+                    
+                    项目开发
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="prepare.html">
+            
+                <a href="prepare.html">
+            
+                    
+                    准备工作
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1.1" data-path="golang-install.html">
+            
+                <a href="golang-install.html">
+            
+                    
+                    golang安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.2" data-path="goctl-install.html">
+            
+                <a href="goctl-install.html">
+            
+                    
+                    goctl安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.3" data-path="protoc-install.html">
+            
+                <a href="protoc-install.html">
+            
+                    
+                    protoc&protoc-gen-go安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.4" data-path="gomod-config.html">
+            
+                <a href="gomod-config.html">
+            
+                    
+                    go mod配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="dev-specification.html">
+            
+                <a href="dev-specification.html">
+            
+                    
+                    开发规范
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.2.1" data-path="naming-spec.html">
+            
+                <a href="naming-spec.html">
+            
+                    
+                    命名规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.2" data-path="route-naming-spec.html">
+            
+                <a href="route-naming-spec.html">
+            
+                    
+                    路由规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.3" data-path="coding-spec.html">
+            
+                <a href="coding-spec.html">
+            
+                    
+                    编码规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="dev-flow.html">
+            
+                <a href="dev-flow.html">
+            
+                    
+                    开发流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="config-introduction.html">
+            
+                <a href="config-introduction.html">
+            
+                    
+                    配置介绍
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.4.1" data-path="api-config.html">
+            
+                <a href="api-config.html">
+            
+                    
+                    api配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4.2" data-path="rpc-config.html">
+            
+                <a href="rpc-config.html">
+            
+                    
+                    rpc配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="business-dev.html">
+            
+                <a href="business-dev.html">
+            
+                    
+                    业务开发
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.5.1" data-path="jwt.html">
+            
+                <a href="jwt.html">
+            
+                    
+                    jwt鉴权
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.2" data-path="middleware.html">
+            
+                <a href="middleware.html">
+            
+                    
+                    中间件使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.3" data-path="model-gen.html">
+            
+                <a href="model-gen.html">
+            
+                    
+                    model生成
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.4" data-path="rpc-call.html">
+            
+                <a href="rpc-call.html">
+            
+                    
+                    rpc调用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.5" data-path="business-coding.html">
+            
+                <a href="business-coding.html">
+            
+                    
+                    业务编码
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.6" data-path="error-handle.html">
+            
+                <a href="error-handle.html">
+            
+                    
+                    错误处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.7" data-path="service-start.html">
+            
+                <a href="service-start.html">
+            
+                    
+                    服务启动
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="ci-cd.html">
+            
+                <a href="ci-cd.html">
+            
+                    
+                    CI/CD
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7" data-path="service-deployment.html">
+            
+                <a href="service-deployment.html">
+            
+                    
+                    服务部署
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.8" data-path="log-collection.html">
+            
+                <a href="log-collection.html">
+            
+                    
+                    日志收集
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.9" data-path="service-monitor.html">
+            
+                <a href="service-monitor.html">
+            
+                    
+                    服务监控
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="goctl.html">
+            
+                <a href="goctl.html">
+            
+                    
+                    Goctl
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="component-center.html">
+            
+                <a href="component-center.html">
+            
+                    
+                    组件中心
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="tool-center.html">
+            
+                <a href="tool-center.html">
+            
+                    
+                    工具中心
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="intellij.html">
+            
+                <a href="intellij.html">
+            
+                    
+                    intellij插件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="vscode.html">
+            
+                <a href="vscode.html">
+            
+                    
+                    vscode插件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="plugin-center.html">
+            
+                <a href="plugin-center.html">
+            
+                    
+                    插件中心
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="learning-resource.html">
+            
+                <a href="learning-resource.html">
+            
+                    
+                    学习资源
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="wechat.html">
+            
+                <a href="wechat.html">
+            
+                    
+                    公众号
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="goreading.html">
+            
+                <a href="goreading.html">
+            
+                    
+                    Go夜读
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" data-path="gotalk.html">
+            
+                <a href="gotalk.html">
+            
+                    
+                    Go开源说
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="dev-log.html">
+            
+                <a href="dev-log.html">
+            
+                    
+                    开发日志
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.1" data-path="goctl-log.html">
+            
+                <a href="goctl-log.html">
+            
+                    
+                    goctl开发日志
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.2" data-path="intellij-log.html">
+            
+                <a href="intellij-log.html">
+            
+                    
+                    intellij开发日志
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" data-path="contributor.html">
+            
+                <a href="contributor.html">
+            
+                    
+                    社区贡献
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >rpc目录结构</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="api-dir.html" class="navigation navigation-prev " aria-label="Previous page: api目录结构">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="project-dev.html" class="navigation navigation-next " aria-label="Next page: 项目开发">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"rpc目录结构","level":"1.6.3","depth":2,"next":{"title":"项目开发","level":"1.7","depth":1,"path":"project-dev.md","ref":"project-dev.md","articles":[{"title":"准备工作","level":"1.7.1","depth":2,"path":"prepare.md","ref":"prepare.md","articles":[{"title":"golang安装","level":"1.7.1.1","depth":3,"path":"golang-install.md","ref":"golang-install.md","articles":[]},{"title":"goctl安装","level":"1.7.1.2","depth":3,"path":"goctl-install.md","ref":"goctl-install.md","articles":[]},{"title":"protoc&protoc-gen-go安装","level":"1.7.1.3","depth":3,"path":"protoc-install.md","ref":"protoc-install.md","articles":[]},{"title":"go mod配置","level":"1.7.1.4","depth":3,"path":"gomod-config.md","ref":"gomod-config.md","articles":[]}]},{"title":"开发规范","level":"1.7.2","depth":2,"path":"dev-specification.md","ref":"dev-specification.md","articles":[{"title":"命名规范","level":"1.7.2.1","depth":3,"path":"naming-spec.md","ref":"naming-spec.md","articles":[]},{"title":"路由规范","level":"1.7.2.2","depth":3,"path":"route-naming-spec.md","ref":"route-naming-spec.md","articles":[]},{"title":"编码规范","level":"1.7.2.3","depth":3,"path":"coding-spec.md","ref":"coding-spec.md","articles":[]}]},{"title":"开发流程","level":"1.7.3","depth":2,"path":"dev-flow.md","ref":"dev-flow.md","articles":[]},{"title":"配置介绍","level":"1.7.4","depth":2,"path":"config-introduction.md","ref":"config-introduction.md","articles":[{"title":"api配置","level":"1.7.4.1","depth":3,"path":"api-config.md","ref":"api-config.md","articles":[]},{"title":"rpc配置","level":"1.7.4.2","depth":3,"path":"rpc-config.md","ref":"rpc-config.md","articles":[]}]},{"title":"业务开发","level":"1.7.5","depth":2,"path":"business-dev.md","ref":"business-dev.md","articles":[{"title":"jwt鉴权","level":"1.7.5.1","depth":3,"path":"jwt.md","ref":"jwt.md","articles":[]},{"title":"中间件使用","level":"1.7.5.2","depth":3,"path":"middleware.md","ref":"middleware.md","articles":[]},{"title":"model生成","level":"1.7.5.3","depth":3,"path":"model-gen.md","ref":"model-gen.md","articles":[]},{"title":"rpc调用","level":"1.7.5.4","depth":3,"path":"rpc-call.md","ref":"rpc-call.md","articles":[]},{"title":"业务编码","level":"1.7.5.5","depth":3,"path":"business-coding.md","ref":"business-coding.md","articles":[]},{"title":"错误处理","level":"1.7.5.6","depth":3,"path":"error-handle.md","ref":"error-handle.md","articles":[]},{"title":"服务启动","level":"1.7.5.7","depth":3,"path":"service-start.md","ref":"service-start.md","articles":[]}]},{"title":"CI/CD","level":"1.7.6","depth":2,"path":"ci-cd.md","ref":"ci-cd.md","articles":[]},{"title":"服务部署","level":"1.7.7","depth":2,"path":"service-deployment.md","ref":"service-deployment.md","articles":[]},{"title":"日志收集","level":"1.7.8","depth":2,"path":"log-collection.md","ref":"log-collection.md","articles":[]},{"title":"服务监控","level":"1.7.9","depth":2,"path":"service-monitor.md","ref":"service-monitor.md","articles":[]}]},"previous":{"title":"api目录结构","level":"1.6.2","depth":2,"path":"api-dir.md","ref":"api-dir.md","articles":[]},"dir":"neutral"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"rpc-dir.md","mtime":"2021-02-05T01:46:45.731Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-05T14:59:54.480Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
