@@ -88,7 +88,7 @@
     <link rel="next" href="middleware.html" />
     
     
-    <link rel="prev" href="model-gen.html" />
+    <link rel="prev" href="business-coding.html" />
     
 
     </head>
@@ -526,7 +526,20 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.7.5.1" data-path="service-design.html">
+        <li class="chapter " data-level="1.7.5.1" data-path="http-rule.html">
+            
+                <a href="http-rule.html">
+            
+                    
+                    http规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.2" data-path="service-design.html">
             
                 <a href="service-design.html">
             
@@ -539,7 +552,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.5.2" data-path="model-gen.html">
+        <li class="chapter " data-level="1.7.5.3" data-path="model-gen.html">
             
                 <a href="model-gen.html">
             
@@ -552,12 +565,12 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.7.5.3" data-path="jwt.html">
+        <li class="chapter " data-level="1.7.5.4" data-path="api-coding.html">
             
-                <a href="jwt.html">
+                <a href="api-coding.html">
             
                     
-                    jwt鉴权
+                    api文件编写
             
                 </a>
             
@@ -565,33 +578,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.5.4" data-path="middleware.html">
-            
-                <a href="middleware.html">
-            
-                    
-                    中间件使用
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7.5.5" data-path="rpc-call.html">
-            
-                <a href="rpc-call.html">
-            
-                    
-                    rpc调用
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7.5.6" data-path="business-coding.html">
+        <li class="chapter " data-level="1.7.5.5" data-path="business-coding.html">
             
                 <a href="business-coding.html">
             
@@ -604,7 +591,46 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.5.7" data-path="error-handle.html">
+        <li class="chapter active" data-level="1.7.5.6" data-path="jwt.html">
+            
+                <a href="jwt.html">
+            
+                    
+                    jwt鉴权
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.7" data-path="middleware.html">
+            
+                <a href="middleware.html">
+            
+                    
+                    中间件使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.8" data-path="rpc-call.html">
+            
+                <a href="rpc-call.html">
+            
+                    
+                    rpc调用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.9" data-path="error-handle.html">
             
                 <a href="error-handle.html">
             
@@ -617,7 +643,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.5.8" data-path="service-start.html">
+        <li class="chapter " data-level="1.7.5.10" data-path="service-start.html">
             
                 <a href="service-start.html">
             
@@ -1069,8 +1095,179 @@
 &#x4EE5;&#x4E0A;&#x5185;&#x5BB9;&#x5168;&#x90E8;&#x6765;&#x81EA;<a href="https://jwt.io/introduction" target="_blank">jwt&#x5B98;&#x7F51;&#x4ECB;&#x7ECD;</a></p>
 </blockquote>
 <h2 id="go-zero&#x4E2D;&#x600E;&#x4E48;&#x4F7F;&#x7528;jwt">go-zero&#x4E2D;&#x600E;&#x4E48;&#x4F7F;&#x7528;jwt</h2>
+<p>jwt&#x9274;&#x6743;&#x4E00;&#x822C;&#x5728;api&#x5C42;&#x4F7F;&#x7528;&#xFF0C;&#x6211;&#x4EEC;&#x8FD9;&#x6B21;&#x6F14;&#x793A;&#x5DE5;&#x7A0B;&#x4E2D;&#x5206;&#x522B;&#x5728;user api&#x767B;&#x5F55;&#x65F6;&#x751F;&#x6210;jwt token&#xFF0C;&#x5728;search api&#x67E5;&#x8BE2;&#x56FE;&#x4E66;&#x65F6;&#x9A8C;&#x8BC1;&#x7528;&#x6237;jwt token&#x4E24;&#x6B65;&#x6765;&#x5B9E;&#x73B0;&#x3002;</p>
+<h3 id="user-api&#x751F;&#x6210;jwt-token">user api&#x751F;&#x6210;jwt token</h3>
+<p>&#x63A5;&#x7740;<a href="business-coding.html">&#x4E1A;&#x52A1;&#x7F16;&#x7801;</a>&#x7AE0;&#x8282;&#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x6211;&#x4EEC;&#x5B8C;&#x5584;&#x4E0A;&#x4E00;&#x8282;&#x9057;&#x7559;&#x7684;<code>getJwtToken</code>&#x65B9;&#x6CD5;&#xFF0C;&#x5373;&#x751F;&#x6210;jwt token&#x903B;&#x8F91;</p>
+<h4 id="&#x6DFB;&#x52A0;&#x914D;&#x7F6E;&#x5B9A;&#x4E49;&#x548C;yaml&#x914D;&#x7F6E;&#x9879;">&#x6DFB;&#x52A0;&#x914D;&#x7F6E;&#x5B9A;&#x4E49;&#x548C;yaml&#x914D;&#x7F6E;&#x9879;</h4>
+<pre><code class="lang-shell">$ vim service/user/cmd/api/internal/config/config.go
+</code></pre>
+<pre><code class="lang-golang"><span class="hljs-keyword">type</span> Config <span class="hljs-keyword">struct</span> {
+    rest.RestConf
+    Mysql <span class="hljs-keyword">struct</span>{
+        DataSource <span class="hljs-keyword">string</span>
+    }
+    CacheRedis cache.CacheConf
+    Auth      <span class="hljs-keyword">struct</span> {
+        AccessSecret <span class="hljs-keyword">string</span>
+        AccessExpire <span class="hljs-keyword">int64</span>
+    }
+}
+</code></pre>
+<pre><code class="lang-shell">$ vim service/user/cmd/api/etc/user-api.yaml
+</code></pre>
+<pre><code class="lang-yaml"><span class="hljs-attr">Name:</span> user-api
+<span class="hljs-attr">Host:</span> <span class="hljs-number">0.0</span><span class="hljs-number">.0</span><span class="hljs-number">.0</span>
+<span class="hljs-attr">Port:</span> <span class="hljs-number">8888</span>
+<span class="hljs-attr">Mysql:</span>
+<span class="hljs-attr">  DataSource:</span> $user:$password@tcp($url)/$db?charset=utf8mb4&amp;parseTime=<span class="hljs-literal">true</span>&amp;loc=Asia%<span class="hljs-number">2</span>FShanghai
+<span class="hljs-attr">CacheRedis:</span>
+<span class="hljs-attr">  - Host:</span> $host
+<span class="hljs-attr">    Pass:</span> $pass
+<span class="hljs-attr">    Type:</span> node
+<span class="hljs-attr">Auth:</span>
+<span class="hljs-attr">  AccessSecret:</span> $AccessSecret
+<span class="hljs-attr">  AccessExpire:</span> $AccessExpire
+</code></pre>
+<blockquote>
+<p>[!TIP]
+$AccessSecret&#xFF1A;&#x751F;&#x6210;jwt token&#x7684;&#x5BC6;&#x94A5;&#xFF0C;&#x6700;&#x7B80;&#x5355;&#x7684;&#x65B9;&#x5F0F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4E00;&#x4E2A;uuid&#x503C;&#x3002;
+$AccessExpire&#xFF1A;jwt token&#x6709;&#x6548;&#x671F;&#xFF0C;&#x5355;&#x4F4D;&#xFF1A;&#x79D2;
+&#x66F4;&#x591A;&#x914D;&#x7F6E;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x53C2;&#x8003;<a href="api-config.html">api&#x914D;&#x7F6E;&#x4ECB;&#x7ECD;</a></p>
+</blockquote>
+<pre><code class="lang-shell">$ vim service/user/cmd/api/internal/logic/loginlogic.go
+</code></pre>
+<pre><code class="lang-golang"><span class="hljs-keyword">func</span> (l *LoginLogic) getJwtToken(secretKey <span class="hljs-keyword">string</span>, iat, seconds, userId <span class="hljs-keyword">int64</span>) (<span class="hljs-keyword">string</span>, error) {
+  claims := <span class="hljs-built_in">make</span>(jwt.MapClaims)
+  claims[<span class="hljs-string">&quot;exp&quot;</span>] = iat + seconds
+  claims[<span class="hljs-string">&quot;iat&quot;</span>] = iat
+  claims[<span class="hljs-string">&quot;userId&quot;</span>] = userId
+  token := jwt.New(jwt.SigningMethodHS256)
+  token.Claims = claims
+  <span class="hljs-keyword">return</span> token.SignedString([]<span class="hljs-keyword">byte</span>(secretKey))
+}
+</code></pre>
+<h3 id="search-api&#x4F7F;&#x7528;jwt-token&#x9274;&#x6743;">search api&#x4F7F;&#x7528;jwt token&#x9274;&#x6743;</h3>
+<h4 id="&#x7F16;&#x5199;searchapi&#x6587;&#x4EF6;">&#x7F16;&#x5199;search.api&#x6587;&#x4EF6;</h4>
+<pre><code class="lang-shell">$ vim service/search/cmd/api/search.api
+</code></pre>
+<pre><code class="lang-text">type (
+    SearchReq {
+        // &#x56FE;&#x4E66;&#x540D;&#x79F0;
+        Name string `form:&quot;name&quot;`
+    }
+
+    SearchReply {
+        Name string `json:&quot;name&quot;`
+        Count int `json:&quot;count&quot;`
+    }
+)
+
+@server(
+    jwt: Auth
+)
+service search-api {
+    @handler search
+    get /search/do (SearchReq) returns (SearchReply)
+}
+
+service search-api {
+    @handler ping
+    get /search/ping
+}
+</code></pre>
+<blockquote>
+<p>[!TIP]
+<code>jwt: Auth</code>&#xFF1A;&#x5F00;&#x542F;jwt&#x9274;&#x6743;</p>
+<p>&#x5982;&#x679C;&#x8DEF;&#x7531;&#x9700;&#x8981;jwt&#x9274;&#x6743;&#xFF0C;&#x5219;&#x9700;&#x8981;&#x5728;service&#x4E0A;&#x65B9;&#x58F0;&#x660E;&#x6B64;&#x8BED;&#x6CD5;&#x6807;&#x5FD7;&#xFF0C;&#x5982;&#x4E0A;&#x6587;&#x4E2D;&#x7684;<code>/search/do</code></p>
+<p>&#x4E0D;&#x9700;&#x8981;jwt&#x9274;&#x6743;&#x7684;&#x8DEF;&#x7531;&#x5C31;&#x65E0;&#x9700;&#x58F0;&#x660E;&#xFF0C;&#x5982;&#x4E0A;&#x6587;&#x4E2D;<code>/search/ping</code></p>
+<p>&#x66F4;&#x591A;&#x8BED;&#x6CD5;&#x8BF7;&#x9605;&#x8BFB;<a href="api-grammar.html">api&#x8BED;&#x6CD5;&#x4ECB;&#x7ECD;</a></p>
+</blockquote>
+<h4 id="&#x751F;&#x6210;&#x4EE3;&#x7801;">&#x751F;&#x6210;&#x4EE3;&#x7801;</h4>
+<p>&#x524D;&#x9762;&#x5DF2;&#x7ECF;&#x63CF;&#x8FF0;&#x8FC7;&#x6709;&#x4E09;&#x79CD;&#x65B9;&#x5F0F;&#x53BB;&#x751F;&#x6210;&#x4EE3;&#x7801;&#xFF0C;&#x8FD9;&#x91CC;&#x5C31;&#x8D58;&#x8FF0;&#x4E86;&#x3002;</p>
+<h4 id="&#x6DFB;&#x52A0;yaml&#x914D;&#x7F6E;&#x9879;">&#x6DFB;&#x52A0;yaml&#x914D;&#x7F6E;&#x9879;</h4>
+<pre><code class="lang-shell">$ vim service/search/cmd/api/etc/search-api.yaml
+</code></pre>
+<pre><code class="lang-yaml"><span class="hljs-attr">Name:</span> search-api
+<span class="hljs-attr">Host:</span> <span class="hljs-number">0.0</span><span class="hljs-number">.0</span><span class="hljs-number">.0</span>
+<span class="hljs-attr">Port:</span> <span class="hljs-number">8889</span>
+<span class="hljs-attr">Auth:</span>
+<span class="hljs-attr">  AccessSecret:</span> $AccessSecret
+<span class="hljs-attr">  AccessExpire:</span> $AccessExpire
+</code></pre>
+<blockquote>
+<p>[!TIP]
+$AccessSecret&#xFF1A;&#x8FD9;&#x4E2A;&#x503C;&#x5FC5;&#x987B;&#x8981;&#x548C;user api&#x4E2D;&#x58F0;&#x660E;&#x7684;&#x4E00;&#x81F4;&#x3002;</p>
+<p>&#x8FD9;&#x91CC;&#x4FEE;&#x6539;&#x4E00;&#x4E0B;&#x7AEF;&#x53E3;&#xFF0C;&#x907F;&#x514D;&#x548C;user api&#x7AEF;&#x53E3;8888&#x51B2;&#x7A81;</p>
+</blockquote>
+<h3 id="&#x9A8C;&#x8BC1;-jwt-token">&#x9A8C;&#x8BC1; jwt token</h3>
+<ul>
+<li><p>&#x542F;&#x52A8;user api&#x670D;&#x52A1;&#xFF0C;&#x767B;&#x5F55;</p>
+<pre><code class="lang-shell">  $ cd service/user/cmd/api
+  $ go run user.go -f etc/user-api.yaml
+</code></pre>
+<pre><code class="lang-text">  Starting server at 0.0.0.0:8888...
+</code></pre>
+<pre><code class="lang-shell">  $ curl -i -X POST \
+    http://127.0.0.1:8888/user/login \
+    -H &apos;content-type: application/json&apos; \
+    -d &apos;{
+      &quot;username&quot;:&quot;666&quot;,
+      &quot;password&quot;:&quot;123456&quot;
+  }&apos;
+</code></pre>
+<pre><code class="lang-text">  HTTP/1.1 200 OK
+  Content-Type: application/json
+  Date: Mon, 08 Feb 2021 10:37:54 GMT
+  Content-Length: 251
+
+  {&quot;id&quot;:1,&quot;name&quot;:&quot;&#x5C0F;&#x660E;&quot;,&quot;gender&quot;:&quot;&#x7537;&quot;,&quot;accessToken&quot;:&quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTI4NjcwNzQsImlhdCI6MTYxMjc4MDY3NCwidXNlcklkIjoxfQ.JKa83g9BlEW84IiCXFGwP2aSd0xF3tMnxrOzVebbt80&quot;,&quot;accessExpire&quot;:1612867074,&quot;refreshAfter&quot;:1612823874}
+</code></pre>
+</li>
+<li><p>&#x542F;&#x52A8;search api&#x670D;&#x52A1;&#xFF0C;&#x8C03;&#x7528;<code>/search/do</code>&#x9A8C;&#x8BC1;jwt&#x9274;&#x6743;&#x662F;&#x5426;&#x901A;&#x8FC7;</p>
+<pre><code class="lang-shell">  $ go run search.go -f etc/search-api.yaml
+</code></pre>
+<pre><code class="lang-text">  Starting server at 0.0.0.0:8889...
+</code></pre>
+<p>  &#x6211;&#x4EEC;&#x5148;&#x4E0D;&#x4F20;jwt token&#xFF0C;&#x770B;&#x770B;&#x7ED3;&#x679C;</p>
+<pre><code class="lang-shell">  $ curl -i -X GET \
+    &apos;http://127.0.0.1:8889/search/do?name=%E8%A5%BF%E6%B8%B8%E8%AE%B0&apos;
+</code></pre>
+<pre><code class="lang-text">  HTTP/1.1 401 Unauthorized
+  Date: Mon, 08 Feb 2021 10:41:57 GMT
+  Content-Length: 0
+</code></pre>
+<p>  &#x5F88;&#x660E;&#x663E;&#xFF0C;jwt&#x9274;&#x6743;&#x5931;&#x8D25;&#x4E86;&#xFF0C;&#x8FD4;&#x56DE;401&#x7684;statusCode&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x5E26;&#x4E00;&#x4E0B;jwt token&#xFF08;&#x5373;&#x7528;&#x6237;&#x767B;&#x5F55;&#x8FD4;&#x56DE;&#x7684;<code>accessToken</code>&#xFF09;</p>
+<pre><code class="lang-shell">  $ curl -i -X GET \
+    &apos;http://127.0.0.1:8889/search/do?name=%E8%A5%BF%E6%B8%B8%E8%AE%B0&apos; \
+    -H &apos;authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTI4NjcwNzQsImlhdCI6MTYxMjc4MDY3NCwidXNlcklkIjoxfQ.JKa83g9BlEW84IiCXFGwP2aSd0xF3tMnxrOzVebbt80&apos;
+</code></pre>
+<pre><code class="lang-text">  HTTP/1.1 200 OK
+  Content-Type: application/json
+  Date: Mon, 08 Feb 2021 10:44:45 GMT
+  Content-Length: 21
+
+  {&quot;name&quot;:&quot;&quot;,&quot;count&quot;:0}
+</code></pre>
+<blockquote>
+<p>[!TIP]
+&#x670D;&#x52A1;&#x542F;&#x52A8;&#x9519;&#x8BEF;&#xFF0C;&#x8BF7;&#x67E5;&#x770B;<a href="error.html">&#x5E38;&#x89C1;&#x9519;&#x8BEF;&#x5904;&#x7406;</a></p>
+<p>1&#x3001;&#x8FD9;&#x4E00;&#x5757;&#x5982;&#x679C;&#x4F60;&#x6709;&#x5F88;&#x591A;&#x7591;&#x95EE;&#xFF0C;&#x6BD4;&#x5982;&#x4E3A;&#x4EC0;&#x4E48;jwt&#x8981;&#x653E;&#x5728;header&#x91CC;&#x9762;&#xFF0C;&#x5230;&#x5E95;&#x54EA;&#x4E9B;&#x503C;&#x8981;&#x653E;&#x5728;header&#x91CC;&#x9762;&#xFF1F;&#x8BF7;&#x9605;&#x8BFB;<a href="http-rule.html">http&#x89C4;&#x8303;</a>&#x7AE0;&#x8282;</p>
+<p>2&#x3001;&#x5982;&#x4F55;&#x83B7;&#x53D6;jwt token&#x4E2D;&#x643A;&#x5E26;&#x7684;&#x7528;&#x6237;id&#xFF0C;&#x89C1;&#x4E0B;&#x6587;</p>
+<p>3&#x3001;jwt&#x9A8C;&#x8BC1;&#x903B;&#x8F91;&#x6211;&#x90FD;&#x6CA1;&#x7F16;&#x5199;&#xFF0C;&#x600E;&#x4E48;&#x5C31;&#x901A;&#x8FC7;&#x4E86;&#xFF1F;&#x5173;&#x4E8E;&#x8FD9;&#x4E00;&#x5757;&#x5C31;&#x63A8;&#x8350;&#x5927;&#x5BB6;&#x53BB;&#x9605;&#x8BFB;&#x4E00;&#x4E0B;&#x6E90;&#x7801;&#x4E86;</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="&#x83B7;&#x53D6;jwt-token&#x4E2D;&#x643A;&#x5E26;&#x7684;&#x4FE1;&#x606F;">&#x83B7;&#x53D6;jwt token&#x4E2D;&#x643A;&#x5E26;&#x7684;&#x4FE1;&#x606F;</h3>
+<p>todo</p>
+<h1 id="&#x731C;&#x4F60;&#x60F3;&#x770B;">&#x731C;&#x4F60;&#x60F3;&#x770B;</h1>
+<ul>
+<li><a href="https://jwt.io/" target="_blank">jwt&#x4ECB;&#x7ECD;</a></li>
+<li><a href="api-config.html">api&#x914D;&#x7F6E;&#x4ECB;&#x7ECD;</a></li>
+<li><a href="api-grammar.html">api&#x8BED;&#x6CD5;</a></li>
+<li><a href="http-rule.html">http&#x89C4;&#x8303;</a> </li>
+</ul>
 <footer class="page-footer"><span class="copyright">Copyright &#xA9; 2019-2021 go-zero all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x6700;&#x540E;&#x66F4;&#x65B0;&#x65F6;&#x95F4;&#xFF1A;
-2021-02-08 14:55:09
+2021-02-08 18:49:31
 </span></footer>
 <script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
                                 
@@ -1099,7 +1296,7 @@
 
             
                 
-                <a href="model-gen.html" class="navigation navigation-prev " aria-label="Previous page: model生成">
+                <a href="business-coding.html" class="navigation navigation-prev " aria-label="Previous page: 业务编码">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -1115,7 +1312,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"jwt鉴权","level":"1.7.5.3","depth":3,"next":{"title":"中间件使用","level":"1.7.5.4","depth":3,"path":"middleware.md","ref":"middleware.md","articles":[]},"previous":{"title":"model生成","level":"1.7.5.2","depth":3,"path":"model-gen.md","ref":"model-gen.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","code","-lunr","-search","search-pro","github","splitter","-sharing","sharing-plus","tbfed-pagefooter","flexible-alerts","pageview-count","popup","hide-element","edit-link"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © 2019-2021 go-zero","modify_label":"最后更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"github":{"url":"https://github.com/go-zero"},"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"qq":false,"all":["douban","facebook","google","linkedin","twitter","weibo","qq","qzone","weibo"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true},"edit-link":{"label":"编辑此页","base":"https://github.com/zeromicro/go-zero-doc/blob/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"松妹子","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"go-zero使用文档","language":"zh-hans","gitbook":"*"},"file":{"path":"jwt.md","mtime":"2021-02-08T06:55:09.640Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-08T08:35:00.970Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"jwt鉴权","level":"1.7.5.6","depth":3,"next":{"title":"中间件使用","level":"1.7.5.7","depth":3,"path":"middleware.md","ref":"middleware.md","articles":[]},"previous":{"title":"业务编码","level":"1.7.5.5","depth":3,"path":"business-coding.md","ref":"business-coding.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","code","-lunr","-search","search-pro","github","splitter","-sharing","sharing-plus","tbfed-pagefooter","flexible-alerts","pageview-count","popup","hide-element","edit-link"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © 2019-2021 go-zero","modify_label":"最后更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"github":{"url":"https://github.com/go-zero"},"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"qq":false,"all":["douban","facebook","google","linkedin","twitter","weibo","qq","qzone","weibo"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true},"edit-link":{"label":"编辑此页","base":"https://github.com/zeromicro/go-zero-doc/blob/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"松妹子","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"go-zero使用文档","language":"zh-hans","gitbook":"*"},"file":{"path":"jwt.md","mtime":"2021-02-08T10:49:31.063Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-08T10:50:09.308Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
