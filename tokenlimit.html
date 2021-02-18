@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>准备工作 · go-zero使用文档</title>
+        <title>tokenlimit · go-zero使用文档</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -85,10 +85,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="golang-install.html" />
+    <link rel="next" href="tool-center.html" />
     
     
-    <link rel="prev" href="project-dev.html" />
+    <link rel="prev" href="periodlimit.html" />
     
 
     </head>
@@ -312,7 +312,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.7.1" data-path="prepare.html">
+        <li class="chapter " data-level="1.7.1" data-path="prepare.html">
             
                 <a href="prepare.html">
             
@@ -894,7 +894,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.8" data-path="tokenlimit.html">
+        <li class="chapter active" data-level="1.9.8" data-path="tokenlimit.html">
             
                 <a href="tokenlimit.html">
             
@@ -1200,7 +1200,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >准备工作</a>
+        <a href="." >tokenlimit</a>
     </h1>
 </div>
 
@@ -1215,18 +1215,154 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x51C6;&#x5907;&#x5DE5;&#x4F5C;">&#x51C6;&#x5907;&#x5DE5;&#x4F5C;</h1>
-<p>&#x5728;&#x6B63;&#x5F0F;&#x8FDB;&#x5165;&#x5B9E;&#x9645;&#x5F00;&#x53D1;&#x4E4B;&#x524D;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x505A;&#x4E00;&#x4E9B;&#x51C6;&#x5907;&#x5DE5;&#x4F5C;&#xFF0C;&#x6BD4;&#x5982;&#xFF1A;Go&#x73AF;&#x5883;&#x7684;&#x5B89;&#x88C5;&#xFF0C;grpc&#x4EE3;&#x7801;&#x751F;&#x6210;&#x4F7F;&#x7528;&#x7684;&#x5DE5;&#x5177;&#x5B89;&#x88C5;&#xFF0C;
-&#x5FC5;&#x5907;&#x5DE5;&#x5177;Goctl&#x7684;&#x5B89;&#x88C5;&#xFF0C;Golang&#x73AF;&#x5883;&#x914D;&#x7F6E;&#x7B49;&#xFF0C;&#x672C;&#x8282;&#x5C06;&#x5305;&#x542B;&#x4EE5;&#x4E0B;&#x5C0F;&#x8282;&#xFF1A;</p>
+                                <h1 id="tokenlimit">tokenlimit</h1>
+<p>&#x672C;&#x8282;&#x5C06;&#x901A;&#x8FC7;&#x4EE4;&#x724C;&#x6876;&#x9650;&#x6D41;&#xFF08;tokenlimit&#xFF09;&#x6765;&#x4ECB;&#x7ECD;&#x5176;&#x57FA;&#x672C;&#x4F7F;&#x7528;&#x3002;</p>
+<h2 id="&#x4F7F;&#x7528;">&#x4F7F;&#x7528;</h2>
+<pre><code class="lang-go"><span class="hljs-keyword">const</span> (
+    burst   = <span class="hljs-number">100</span>
+    rate    = <span class="hljs-number">100</span>
+    seconds = <span class="hljs-number">5</span>
+)
+
+store := redis.NewRedis(<span class="hljs-string">&quot;localhost:6379&quot;</span>, <span class="hljs-string">&quot;node&quot;</span>, <span class="hljs-string">&quot;&quot;</span>)
+fmt.Println(store.Ping())
+<span class="hljs-comment">// New tokenLimiter</span>
+limiter := limit.NewTokenLimiter(rate, burst, store, <span class="hljs-string">&quot;rate-test&quot;</span>)
+timer := time.NewTimer(time.Second * seconds)
+quit := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">chan</span> <span class="hljs-keyword">struct</span>{})
+<span class="hljs-keyword">defer</span> timer.Stop()
+<span class="hljs-keyword">go</span> <span class="hljs-keyword">func</span>() {
+  &lt;-timer.C
+  <span class="hljs-built_in">close</span>(quit)
+}()
+
+<span class="hljs-keyword">var</span> allowed, denied <span class="hljs-keyword">int32</span>
+<span class="hljs-keyword">var</span> wait sync.WaitGroup
+<span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; runtime.NumCPU(); i++ {
+  wait.Add(<span class="hljs-number">1</span>)
+  <span class="hljs-keyword">go</span> <span class="hljs-keyword">func</span>() {
+    <span class="hljs-keyword">for</span> {
+      <span class="hljs-keyword">select</span> {
+        <span class="hljs-keyword">case</span> &lt;-quit:
+          wait.Done()
+          <span class="hljs-keyword">return</span>
+        <span class="hljs-keyword">default</span>:
+          <span class="hljs-keyword">if</span> limiter.Allow() {
+            atomic.AddInt32(&amp;allowed, <span class="hljs-number">1</span>)
+          } <span class="hljs-keyword">else</span> {
+            atomic.AddInt32(&amp;denied, <span class="hljs-number">1</span>)
+          }
+      }
+    }
+  }()
+}
+
+wait.Wait()
+fmt.Printf(<span class="hljs-string">&quot;allowed: %d, denied: %d, qps: %d\n&quot;</span>, allowed, denied, (allowed+denied)/seconds)
+</code></pre>
+<h2 id="tokenlimit">tokenlimit</h2>
+<p>&#x4ECE;&#x6574;&#x4F53;&#x4E0A;&#x4EE4;&#x724C;&#x6876;&#x751F;&#x4EA7;token&#x903B;&#x8F91;&#x5982;&#x4E0B;&#xFF1A;</p>
 <ul>
-<li><a href="golang-install.html">golang&#x5B89;&#x88C5;</a></li>
-<li><a href="gomod-config.html">go modudle&#x914D;&#x7F6E;</a></li>
-<li><a href="goctl-install.html">goctl&#x5B89;&#x88C5;</a></li>
-<li><a href="protoc-install.html">protoc&amp;protoc-gen-go&#x5B89;&#x88C5;</a></li>
-<li><a href="prepare-other.html">&#x5176;&#x4ED6;</a> </li>
+<li>&#x7528;&#x6237;&#x914D;&#x7F6E;&#x7684;&#x5E73;&#x5747;&#x53D1;&#x9001;&#x901F;&#x7387;&#x4E3A;r&#xFF0C;&#x5219;&#x6BCF;&#x9694;1/r&#x79D2;&#x4E00;&#x4E2A;&#x4EE4;&#x724C;&#x88AB;&#x52A0;&#x5165;&#x5230;&#x6876;&#x4E2D;&#xFF1B;</li>
+<li>&#x5047;&#x8BBE;&#x6876;&#x4E2D;&#x6700;&#x591A;&#x53EF;&#x4EE5;&#x5B58;&#x653E;b&#x4E2A;&#x4EE4;&#x724C;&#x3002;&#x5982;&#x679C;&#x4EE4;&#x724C;&#x5230;&#x8FBE;&#x65F6;&#x4EE4;&#x724C;&#x6876;&#x5DF2;&#x7ECF;&#x6EE1;&#x4E86;&#xFF0C;&#x90A3;&#x4E48;&#x8FD9;&#x4E2A;&#x4EE4;&#x724C;&#x4F1A;&#x88AB;&#x4E22;&#x5F03;&#xFF1B;</li>
+<li>&#x5F53;&#x6D41;&#x91CF;&#x4EE5;&#x901F;&#x7387;v&#x8FDB;&#x5165;&#xFF0C;&#x4ECE;&#x6876;&#x4E2D;&#x4EE5;&#x901F;&#x7387;v&#x53D6;&#x4EE4;&#x724C;&#xFF0C;&#x62FF;&#x5230;&#x4EE4;&#x724C;&#x7684;&#x6D41;&#x91CF;&#x901A;&#x8FC7;&#xFF0C;&#x62FF;&#x4E0D;&#x5230;&#x4EE4;&#x724C;&#x6D41;&#x91CF;&#x4E0D;&#x901A;&#x8FC7;&#xFF0C;&#x6267;&#x884C;&#x7194;&#x65AD;&#x903B;&#x8F91;&#xFF1B;</li>
+</ul>
+<p><code>go-zero</code> &#x5728;&#x4E24;&#x7C7B;&#x9650;&#x6D41;&#x5668;&#x4E0B;&#x90FD;&#x91C7;&#x53D6; <code>lua script</code> &#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x4F9D;&#x8D56;redis&#x53EF;&#x4EE5;&#x505A;&#x5230;&#x5206;&#x5E03;&#x5F0F;&#x9650;&#x6D41;&#xFF0C;<code>lua script</code>&#x540C;&#x65F6;&#x53EF;&#x4EE5;&#x505A;&#x5230;&#x5BF9; token &#x751F;&#x4EA7;&#x8BFB;&#x53D6;&#x64CD;&#x4F5C;&#x7684;&#x539F;&#x5B50;&#x6027;&#x3002;</p>
+<p>&#x4E0B;&#x9762;&#x6765;&#x770B;&#x770B; <code>lua script</code> &#x63A7;&#x5236;&#x7684;&#x51E0;&#x4E2A;&#x5173;&#x952E;&#x5C5E;&#x6027;&#xFF1A;</p>
+<table>
+<thead>
+<tr>
+<th>argument</th>
+<th>mean</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ARGV[1]</td>
+<td>rate &#x300C;&#x6BCF;&#x79D2;&#x751F;&#x6210;&#x51E0;&#x4E2A;&#x4EE4;&#x724C;&#x300D;</td>
+</tr>
+<tr>
+<td>ARGV[2]</td>
+<td>burst &#x300C;&#x4EE4;&#x724C;&#x6876;&#x6700;&#x5927;&#x503C;&#x300D;</td>
+</tr>
+<tr>
+<td>ARGV[3]</td>
+<td>now_time&#x300C;&#x5F53;&#x524D;&#x65F6;&#x95F4;&#x6233;&#x300D;</td>
+</tr>
+<tr>
+<td>ARGV[4]</td>
+<td>get token nums &#x300C;&#x5F00;&#x53D1;&#x8005;&#x9700;&#x8981;&#x83B7;&#x53D6;&#x7684;token&#x6570;&#x300D;</td>
+</tr>
+<tr>
+<td>KEYS[1]</td>
+<td>&#x8868;&#x793A;&#x8D44;&#x6E90;&#x7684;tokenkey</td>
+</tr>
+<tr>
+<td>KEYS[2]</td>
+<td>&#x8868;&#x793A;&#x5237;&#x65B0;&#x65F6;&#x95F4;&#x7684;key</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-lua"><span class="hljs-comment">-- &#x8FD4;&#x56DE;&#x662F;&#x5426;&#x53EF;&#x4EE5;&#x6D3B;&#x83B7;&#x5F97;&#x9884;&#x671F;&#x7684;token</span>
+
+<span class="hljs-keyword">local</span> rate = <span class="hljs-built_in">tonumber</span>(ARGV[<span class="hljs-number">1</span>])
+<span class="hljs-keyword">local</span> capacity = <span class="hljs-built_in">tonumber</span>(ARGV[<span class="hljs-number">2</span>])
+<span class="hljs-keyword">local</span> now = <span class="hljs-built_in">tonumber</span>(ARGV[<span class="hljs-number">3</span>])
+<span class="hljs-keyword">local</span> requested = <span class="hljs-built_in">tonumber</span>(ARGV[<span class="hljs-number">4</span>])
+
+<span class="hljs-comment">-- fill_time&#xFF1A;&#x9700;&#x8981;&#x586B;&#x6EE1; token_bucket &#x9700;&#x8981;&#x591A;&#x4E45;</span>
+<span class="hljs-keyword">local</span> fill_time = capacity/rate
+<span class="hljs-comment">-- &#x5C06;&#x586B;&#x5145;&#x65F6;&#x95F4;&#x5411;&#x4E0B;&#x53D6;&#x6574;</span>
+<span class="hljs-keyword">local</span> ttl = <span class="hljs-built_in">math</span>.floor(fill_time*<span class="hljs-number">2</span>)
+
+<span class="hljs-comment">-- &#x83B7;&#x53D6;&#x76EE;&#x524D; token_bucket &#x4E2D;&#x5269;&#x4F59; token &#x6570;</span>
+<span class="hljs-comment">-- &#x5982;&#x679C;&#x662F;&#x7B2C;&#x4E00;&#x6B21;&#x8FDB;&#x5165;&#xFF0C;&#x5219;&#x8BBE;&#x7F6E; token_bucket &#x6570;&#x91CF;&#x4E3A; &#x4EE4;&#x724C;&#x6876;&#x6700;&#x5927;&#x503C;</span>
+<span class="hljs-keyword">local</span> last_tokens = <span class="hljs-built_in">tonumber</span>(redis.call(<span class="hljs-string">&quot;get&quot;</span>, KEYS[<span class="hljs-number">1</span>]))
+<span class="hljs-keyword">if</span> last_tokens == <span class="hljs-keyword">nil</span> <span class="hljs-keyword">then</span>
+    last_tokens = capacity
+<span class="hljs-keyword">end</span>
+
+<span class="hljs-comment">-- &#x4E0A;&#x4E00;&#x6B21;&#x66F4;&#x65B0; token_bucket &#x7684;&#x65F6;&#x95F4;</span>
+<span class="hljs-keyword">local</span> last_refreshed = <span class="hljs-built_in">tonumber</span>(redis.call(<span class="hljs-string">&quot;get&quot;</span>, KEYS[<span class="hljs-number">2</span>]))
+<span class="hljs-keyword">if</span> last_refreshed == <span class="hljs-keyword">nil</span> <span class="hljs-keyword">then</span>
+    last_refreshed = <span class="hljs-number">0</span>
+<span class="hljs-keyword">end</span>
+
+<span class="hljs-keyword">local</span> delta = <span class="hljs-built_in">math</span>.max(<span class="hljs-number">0</span>, now-last_refreshed)
+<span class="hljs-comment">-- &#x901A;&#x8FC7;&#x5F53;&#x524D;&#x65F6;&#x95F4;&#x4E0E;&#x4E0A;&#x4E00;&#x6B21;&#x66F4;&#x65B0;&#x65F6;&#x95F4;&#x7684;&#x8DE8;&#x5EA6;&#xFF0C;&#x4EE5;&#x53CA;&#x751F;&#x4EA7;token&#x7684;&#x901F;&#x7387;&#xFF0C;&#x8BA1;&#x7B97;&#x51FA;&#x65B0;&#x7684;token&#x6570;</span>
+<span class="hljs-comment">-- &#x5982;&#x679C;&#x8D85;&#x8FC7; max_burst&#xFF0C;&#x591A;&#x4F59;&#x751F;&#x4EA7;&#x7684;token&#x4F1A;&#x88AB;&#x4E22;&#x5F03;</span>
+<span class="hljs-keyword">local</span> filled_tokens = <span class="hljs-built_in">math</span>.min(capacity, last_tokens+(delta*rate))
+<span class="hljs-keyword">local</span> allowed = filled_tokens &gt;= requested
+<span class="hljs-keyword">local</span> new_tokens = filled_tokens
+<span class="hljs-keyword">if</span> allowed <span class="hljs-keyword">then</span>
+    new_tokens = filled_tokens - requested
+<span class="hljs-keyword">end</span>
+
+<span class="hljs-comment">-- &#x66F4;&#x65B0;&#x65B0;&#x7684;token&#x6570;&#xFF0C;&#x4EE5;&#x53CA;&#x66F4;&#x65B0;&#x65F6;&#x95F4;</span>
+redis.call(<span class="hljs-string">&quot;setex&quot;</span>, KEYS[<span class="hljs-number">1</span>], ttl, new_tokens)
+redis.call(<span class="hljs-string">&quot;setex&quot;</span>, KEYS[<span class="hljs-number">2</span>], ttl, now)
+
+<span class="hljs-keyword">return</span> allowed
+</code></pre>
+<p>&#x4E0A;&#x8FF0;&#x53EF;&#x4EE5;&#x770B;&#x51FA; <code>lua script</code> &#xFF1A;&#x53EA;&#x6D89;&#x53CA;&#x5BF9; token &#x64CD;&#x4F5C;&#xFF0C;&#x4FDD;&#x8BC1; token &#x751F;&#x4EA7;&#x5408;&#x7406;&#x548C;&#x8BFB;&#x53D6;&#x5408;&#x7406;&#x3002;</p>
+<h2 id="&#x51FD;&#x6570;&#x5206;&#x6790;">&#x51FD;&#x6570;&#x5206;&#x6790;</h2>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/261626/1606107337223-7756ecdf-acb6-48c2-9ff5-959de01a1a03.png#align=left&amp;display=inline&amp;height=896&amp;margin=%5Bobject%20Object%5D&amp;originHeight=896&amp;originWidth=2038&amp;status=done&amp;style=none&amp;width=2038" alt=""></p>
+<p>&#x4ECE;&#x4E0A;&#x8FF0;&#x6D41;&#x7A0B;&#x4E2D;&#x770B;&#x51FA;&#xFF1A;</p>
+<ol>
+<li>&#x6709;&#x591A;&#x91CD;&#x4FDD;&#x969C;&#x673A;&#x5236;&#xFF0C;&#x4FDD;&#x8BC1;&#x9650;&#x6D41;&#x4E00;&#x5B9A;&#x4F1A;&#x5B8C;&#x6210;&#x3002;</li>
+<li>&#x5982;&#x679C;<code>redis limiter</code>&#x5931;&#x6548;&#xFF0C;&#x81F3;&#x5C11;&#x5728;&#x8FDB;&#x7A0B;&#x5185;<code>rate limiter</code>&#x515C;&#x5E95;&#x3002;</li>
+<li>&#x91CD;&#x8BD5; <code>redis limiter</code> &#x673A;&#x5236;&#x4FDD;&#x8BC1;&#x5C3D;&#x53EF;&#x80FD;&#x5730;&#x6B63;&#x5E38;&#x8FD0;&#x884C;&#x3002;</li>
+</ol>
+<h2 id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</h2>
+<p><code>go-zero</code> &#x4E2D;&#x7684; <code>tokenlimit</code> &#x9650;&#x6D41;&#x65B9;&#x6848;&#x9002;&#x7528;&#x4E8E;&#x77AC;&#x65F6;&#x6D41;&#x91CF;&#x51B2;&#x51FB;&#xFF0C;&#x73B0;&#x5B9E;&#x8BF7;&#x6C42;&#x573A;&#x666F;&#x5E76;&#x4E0D;&#x4EE5;&#x6052;&#x5B9A;&#x7684;&#x901F;&#x7387;&#x3002;&#x4EE4;&#x724C;&#x6876;&#x76F8;&#x5F53;&#x9884;&#x8BF7;&#x6C42;&#xFF0C;&#x5F53;&#x771F;&#x5B9E;&#x7684;&#x8BF7;&#x6C42;&#x5230;&#x8FBE;&#x4E0D;&#x81F3;&#x4E8E;&#x77AC;&#x95F4;&#x88AB;&#x6253;&#x57AE;&#x3002;&#x5F53;&#x6D41;&#x91CF;&#x51B2;&#x51FB;&#x5230;&#x4E00;&#x5B9A;&#x7A0B;&#x5EA6;&#xFF0C;&#x5219;&#x624D;&#x4F1A;&#x6309;&#x7167;&#x9884;&#x5B9A;&#x901F;&#x7387;&#x8FDB;&#x884C;&#x6D88;&#x8D39;&#x3002;</p>
+<p>&#x4F46;&#x662F;&#x751F;&#x4EA7;<code>token</code>&#x4E0A;&#xFF0C;&#x4E0D;&#x80FD;&#x6309;&#x7167;&#x5F53;&#x65F6;&#x7684;&#x6D41;&#x91CF;&#x60C5;&#x51B5;&#x4F5C;&#x51FA;&#x52A8;&#x6001;&#x8C03;&#x6574;&#xFF0C;&#x4E0D;&#x591F;&#x7075;&#x6D3B;&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x8FDB;&#x884C;&#x8FDB;&#x4E00;&#x6B65;&#x4F18;&#x5316;&#x3002;&#x6B64;&#x5916;&#x53EF;&#x4EE5;&#x53C2;&#x8003;<a href="https://en.wikipedia.org/wiki/Token_bucket" target="_blank">Token bucket WIKI</a> &#x4E2D;&#x63D0;&#x5230;&#x5206;&#x5C42;&#x4EE4;&#x724C;&#x6876;&#xFF0C;&#x6839;&#x636E;&#x4E0D;&#x540C;&#x7684;&#x6D41;&#x91CF;&#x5E26;&#x5BBD;&#xFF0C;&#x5206;&#x81F3;&#x4E0D;&#x540C;&#x6392;&#x961F;&#x4E2D;&#x3002;</p>
+<h2 id="&#x53C2;&#x8003;">&#x53C2;&#x8003;</h2>
+<ul>
+<li><a href="https://github.com/tal-tech/go-zero/blob/master/core/limit/tokenlimit.go" target="_blank">go-zero tokenlimit</a></li>
+<li><a href="https://github.com/go-redis/redis_rate" target="_blank">Go-Redis &#x63D0;&#x4F9B;&#x7684;&#x5206;&#x5E03;&#x5F0F;&#x9650;&#x6D41;&#x5E93;</a></li>
 </ul>
 <footer class="page-footer"><span class="copyright">Copyright &#xA9; 2019-2021 go-zero all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x6700;&#x540E;&#x66F4;&#x65B0;&#x65F6;&#x95F4;&#xFF1A;
-2021-02-07 15:51:15
+2021-02-18 11:58:34
 </span></footer>
 <script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
                                 
@@ -1255,12 +1391,12 @@
 
             
                 
-                <a href="project-dev.html" class="navigation navigation-prev " aria-label="Previous page: 项目开发">
+                <a href="periodlimit.html" class="navigation navigation-prev " aria-label="Previous page: periodlimit">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="golang-install.html" class="navigation navigation-next " aria-label="Next page: golang安装">
+                <a href="tool-center.html" class="navigation navigation-next " aria-label="Next page: 工具中心">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1271,7 +1407,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"准备工作","level":"1.7.1","depth":2,"next":{"title":"golang安装","level":"1.7.1.1","depth":3,"path":"golang-install.md","ref":"golang-install.md","articles":[]},"previous":{"title":"项目开发","level":"1.7","depth":1,"path":"project-dev.md","ref":"project-dev.md","articles":[{"title":"准备工作","level":"1.7.1","depth":2,"path":"prepare.md","ref":"prepare.md","articles":[{"title":"golang安装","level":"1.7.1.1","depth":3,"path":"golang-install.md","ref":"golang-install.md","articles":[]},{"title":"go modudle配置","level":"1.7.1.2","depth":3,"path":"gomod-config.md","ref":"gomod-config.md","articles":[]},{"title":"goctl安装","level":"1.7.1.3","depth":3,"path":"goctl-install.md","ref":"goctl-install.md","articles":[]},{"title":"protoc&protoc-gen-go安装","level":"1.7.1.4","depth":3,"path":"protoc-install.md","ref":"protoc-install.md","articles":[]},{"title":"其他","level":"1.7.1.5","depth":3,"path":"prepare-other.md","ref":"prepare-other.md","articles":[]}]},{"title":"开发规范","level":"1.7.2","depth":2,"path":"dev-specification.md","ref":"dev-specification.md","articles":[{"title":"命名规范","level":"1.7.2.1","depth":3,"path":"naming-spec.md","ref":"naming-spec.md","articles":[]},{"title":"路由规范","level":"1.7.2.2","depth":3,"path":"route-naming-spec.md","ref":"route-naming-spec.md","articles":[]},{"title":"编码规范","level":"1.7.2.3","depth":3,"path":"coding-spec.md","ref":"coding-spec.md","articles":[]}]},{"title":"开发流程","level":"1.7.3","depth":2,"path":"dev-flow.md","ref":"dev-flow.md","articles":[]},{"title":"配置介绍","level":"1.7.4","depth":2,"path":"config-introduction.md","ref":"config-introduction.md","articles":[{"title":"api配置","level":"1.7.4.1","depth":3,"path":"api-config.md","ref":"api-config.md","articles":[]},{"title":"rpc配置","level":"1.7.4.2","depth":3,"path":"rpc-config.md","ref":"rpc-config.md","articles":[]}]},{"title":"业务开发","level":"1.7.5","depth":2,"path":"business-dev.md","ref":"business-dev.md","articles":[{"title":"目录拆分","level":"1.7.5.1","depth":3,"path":"service-design.md","ref":"service-design.md","articles":[]},{"title":"model生成","level":"1.7.5.2","depth":3,"path":"model-gen.md","ref":"model-gen.md","articles":[]},{"title":"api文件编写","level":"1.7.5.3","depth":3,"path":"api-coding.md","ref":"api-coding.md","articles":[]},{"title":"业务编码","level":"1.7.5.4","depth":3,"path":"business-coding.md","ref":"business-coding.md","articles":[]},{"title":"jwt鉴权","level":"1.7.5.5","depth":3,"path":"jwt.md","ref":"jwt.md","articles":[]},{"title":"中间件使用","level":"1.7.5.6","depth":3,"path":"middleware.md","ref":"middleware.md","articles":[]},{"title":"rpc服务编写与调用","level":"1.7.5.7","depth":3,"path":"rpc-call.md","ref":"rpc-call.md","articles":[]},{"title":"错误处理","level":"1.7.5.8","depth":3,"path":"error-handle.md","ref":"error-handle.md","articles":[]}]},{"title":"CI/CD","level":"1.7.6","depth":2,"path":"ci-cd.md","ref":"ci-cd.md","articles":[]},{"title":"服务部署","level":"1.7.7","depth":2,"path":"service-deployment.md","ref":"service-deployment.md","articles":[]},{"title":"日志收集","level":"1.7.8","depth":2,"path":"log-collection.md","ref":"log-collection.md","articles":[]},{"title":"服务监控","level":"1.7.9","depth":2,"path":"service-monitor.md","ref":"service-monitor.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","code","-lunr","-search","search-pro","github","splitter","-sharing","sharing-plus","tbfed-pagefooter","flexible-alerts","pageview-count","popup","hide-element","edit-link"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © 2019-2021 go-zero","modify_label":"最后更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"github":{"url":"https://github.com/go-zero"},"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"qq":false,"all":["douban","facebook","google","linkedin","twitter","weibo","qq","qzone","weibo"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true},"edit-link":{"label":"编辑此页","base":"https://github.com/zeromicro/go-zero-doc/blob/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"松妹子","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"go-zero使用文档","language":"zh-hans","gitbook":"*"},"file":{"path":"prepare.md","mtime":"2021-02-07T07:51:15.106Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-18T03:58:53.556Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"tokenlimit","level":"1.9.8","depth":2,"next":{"title":"工具中心","level":"1.10","depth":1,"path":"tool-center.md","ref":"tool-center.md","articles":[{"title":"intellij插件","level":"1.10.1","depth":2,"path":"intellij.md","ref":"intellij.md","articles":[]},{"title":"vscode插件","level":"1.10.2","depth":2,"path":"vscode.md","ref":"vscode.md","articles":[]}]},"previous":{"title":"periodlimit","level":"1.9.7","depth":2,"path":"periodlimit.md","ref":"periodlimit.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","code","-lunr","-search","search-pro","github","splitter","-sharing","sharing-plus","tbfed-pagefooter","flexible-alerts","pageview-count","popup","hide-element","edit-link"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © 2019-2021 go-zero","modify_label":"最后更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"github":{"url":"https://github.com/go-zero"},"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"qq":false,"all":["douban","facebook","google","linkedin","twitter","weibo","qq","qzone","weibo"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true},"edit-link":{"label":"编辑此页","base":"https://github.com/zeromicro/go-zero-doc/blob/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"松妹子","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"go-zero使用文档","language":"zh-hans","gitbook":"*"},"file":{"path":"tokenlimit.md","mtime":"2021-02-18T03:58:34.389Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-18T03:58:53.556Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
