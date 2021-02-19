@@ -1301,64 +1301,57 @@ xx&#x4E3A;filebeat.yaml&#x6240;&#x5728;&#x8DEF;&#x5F84;</p>
 <h2 id="go-stash&#x914D;&#x7F6E;">go-stash&#x914D;&#x7F6E;</h2>
 <ul>
 <li>&#x65B0;&#x5EFA;<code>config.yaml</code>&#x6587;&#x4EF6;</li>
-<li>&#x6DFB;&#x52A0;&#x914D;&#x7F6E;&#x5185;&#x5BB9;<pre><code class="lang-shell">$ vim config.yaml
+<li>&#x6DFB;&#x52A0;&#x914D;&#x7F6E;&#x5185;&#x5BB9;</li>
+</ul>
+<pre><code class="lang-shell">$ vim config.yaml
 </code></pre>
-``` yaml
-Clusters:</li>
-<li>Input:
-  Kafka:<pre><code>Name: go-stash
-Log:
-  Mode: file
-Brokers:
-- &quot;127.0.0.1:9092&quot;
-Topics: 
-- log-collection
-Group: stash
-Conns: 3
-Consumers: 10
-Processors: 60
-MinBytes: 1048576
-MaxBytes: 10485760
-Offset: first
-</code></pre>Filters:<ul>
-<li>Action: drop
-Conditions:<ul>
-<li>Key: status
-Value: &quot;503&quot;
-Type: contains</li>
-<li>Key: type
-Value: &quot;app&quot;
-Type: match
-Op: and</li>
-</ul>
-</li>
-<li>Action: remove_field
-Fields:<ul>
-<li>source</li>
-<li>_score</li>
-<li>&quot;@metadata&quot;</li>
-<li>agent</li>
-<li>ecs</li>
-<li>input</li>
-<li>log</li>
-<li>fields
-Output:
-ElasticSearch:
-Hosts:<ul>
-<li>&quot;<a href="http://127.0.0.1:9200" target="_blank">http://127.0.0.1:9200</a>&quot;
-Index: &quot;go-stash-&quot;
-MaxChunkBytes: 5242880
-GracePeriod: 10s
-Compress: false
-TimeZone: UTC
-```</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+<pre><code class="lang-yaml"><span class="hljs-attr">Clusters:</span>
+<span class="hljs-attr">- Input:</span>
+<span class="hljs-attr">    Kafka:</span>
+<span class="hljs-attr">      Name:</span> go-stash
+<span class="hljs-attr">      Log:</span>
+<span class="hljs-attr">        Mode:</span> file
+<span class="hljs-attr">      Brokers:</span>
+<span class="hljs-bullet">      -</span> <span class="hljs-string">&quot;127.0.0.1:9092&quot;</span>
+<span class="hljs-attr">      Topics:</span> 
+<span class="hljs-bullet">      -</span> log-collection
+<span class="hljs-attr">      Group:</span> stash
+<span class="hljs-attr">      Conns:</span> <span class="hljs-number">3</span>
+<span class="hljs-attr">      Consumers:</span> <span class="hljs-number">10</span>
+<span class="hljs-attr">      Processors:</span> <span class="hljs-number">60</span>
+<span class="hljs-attr">      MinBytes:</span> <span class="hljs-number">1048576</span>
+<span class="hljs-attr">      MaxBytes:</span> <span class="hljs-number">10485760</span>
+<span class="hljs-attr">      Offset:</span> first
+<span class="hljs-attr">  Filters:</span>
+<span class="hljs-attr">  - Action:</span> drop
+<span class="hljs-attr">    Conditions:</span>
+<span class="hljs-attr">      - Key:</span> status
+<span class="hljs-attr">        Value:</span> <span class="hljs-string">&quot;503&quot;</span>
+<span class="hljs-attr">        Type:</span> contains
+<span class="hljs-attr">      - Key:</span> type
+<span class="hljs-attr">        Value:</span> <span class="hljs-string">&quot;app&quot;</span>
+<span class="hljs-attr">        Type:</span> match
+<span class="hljs-attr">        Op:</span> and
+<span class="hljs-attr">  - Action:</span> remove_field
+<span class="hljs-attr">    Fields:</span>
+<span class="hljs-bullet">    -</span> source
+<span class="hljs-bullet">    -</span> _score
+<span class="hljs-bullet">    -</span> <span class="hljs-string">&quot;@metadata&quot;</span>
+<span class="hljs-bullet">    -</span> agent
+<span class="hljs-bullet">    -</span> ecs
+<span class="hljs-bullet">    -</span> input
+<span class="hljs-bullet">    -</span> log
+<span class="hljs-bullet">    -</span> fields
+<span class="hljs-attr">  Output:</span>
+<span class="hljs-attr">    ElasticSearch:</span>
+<span class="hljs-attr">      Hosts:</span>
+<span class="hljs-bullet">      -</span> <span class="hljs-string">&quot;http://127.0.0.1:9200&quot;</span>
+<span class="hljs-attr">      Index:</span> <span class="hljs-string">&quot;go-stash-<span class="hljs-template-variable">{{yyyy.MM.dd}}</span>&quot;</span>
+<span class="hljs-attr">      MaxChunkBytes:</span> <span class="hljs-number">5242880</span>
+<span class="hljs-attr">      GracePeriod:</span> <span class="hljs-number">10</span>s
+<span class="hljs-attr">      Compress:</span> <span class="hljs-literal">false</span>
+<span class="hljs-attr">      TimeZone:</span> UTC
+</code></pre>
 <h2 id="&#x542F;&#x52A8;&#x670D;&#x52A1;&#x6309;&#x987A;&#x5E8F;&#x542F;&#x52A8;">&#x542F;&#x52A8;&#x670D;&#x52A1;(&#x6309;&#x987A;&#x5E8F;&#x542F;&#x52A8;)</h2>
 <ul>
 <li>&#x542F;&#x52A8;kafka</li>
@@ -1385,7 +1378,7 @@ TimeZone: UTC
 <li><a href="https://www.elastic.co/guide/en/beats/filebeat/current/index.html" target="_blank">filebeat&#x914D;&#x7F6E;</a></li>
 </ul>
 <footer class="page-footer"><span class="copyright">Copyright &#xA9; 2019-2021 go-zero all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x6700;&#x540E;&#x66F4;&#x65B0;&#x65F6;&#x95F4;&#xFF1A;
-2021-02-19 15:11:11
+2021-02-19 15:14:03
 </span></footer>
 <script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
                                 
@@ -1430,7 +1423,7 @@ TimeZone: UTC
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"日志收集","level":"1.7.8","depth":2,"next":{"title":"链路追踪","level":"1.7.9","depth":2,"path":"trace.md","ref":"trace.md","articles":[]},"previous":{"title":"服务部署","level":"1.7.7","depth":2,"path":"service-deployment.md","ref":"service-deployment.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","code","-lunr","-search","search-pro","github","splitter","-sharing","sharing-plus","tbfed-pagefooter","flexible-alerts","pageview-count","popup","hide-element","edit-link"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © 2019-2021 go-zero","modify_label":"最后更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"github":{"url":"https://github.com/go-zero"},"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"qq":false,"all":["douban","facebook","google","linkedin","twitter","weibo","qq","qzone","weibo"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true},"edit-link":{"label":"编辑此页","base":"https://github.com/zeromicro/go-zero-doc/blob/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"松妹子","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"go-zero使用文档","language":"zh-hans","gitbook":"*"},"file":{"path":"log-collection.md","mtime":"2021-02-19T07:11:11.860Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-19T07:11:47.761Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"日志收集","level":"1.7.8","depth":2,"next":{"title":"链路追踪","level":"1.7.9","depth":2,"path":"trace.md","ref":"trace.md","articles":[]},"previous":{"title":"服务部署","level":"1.7.7","depth":2,"path":"service-deployment.md","ref":"service-deployment.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","code","-lunr","-search","search-pro","github","splitter","-sharing","sharing-plus","tbfed-pagefooter","flexible-alerts","pageview-count","popup","hide-element","edit-link"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © 2019-2021 go-zero","modify_label":"最后更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"github":{"url":"https://github.com/go-zero"},"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"qq":false,"all":["douban","facebook","google","linkedin","twitter","weibo","qq","qzone","weibo"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true},"edit-link":{"label":"编辑此页","base":"https://github.com/zeromicro/go-zero-doc/blob/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"松妹子","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"go-zero使用文档","language":"zh-hans","gitbook":"*"},"file":{"path":"log-collection.md","mtime":"2021-02-19T07:14:03.376Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-19T07:15:34.909Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
