@@ -49,7 +49,7 @@
                 
             
                 
-                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-prism/prism-tomorrow.css">
                 
             
                 
@@ -1265,51 +1265,51 @@
 </ul>
 <p><code>go-zero</code> &#x4E2D;&#x5229;&#x7528; redis <code>set key nx</code> &#x53EF;&#x4EE5;&#x4FDD;&#x8BC1;key&#x4E0D;&#x5B58;&#x5728;&#x65F6;&#x5199;&#x5165;&#x6210;&#x529F;&#xFF0C;<code>px</code> &#x53EF;&#x4EE5;&#x8BA9;key&#x8D85;&#x65F6;&#x540E;&#x81EA;&#x52A8;&#x5220;&#x9664;&#x300C;&#x6700;&#x574F;&#x60C5;&#x51B5;&#x4E5F;&#x5C31;&#x662F;&#x8D85;&#x65F6;&#x81EA;&#x52A8;&#x5220;&#x9664;key&#xFF0C;&#x4ECE;&#x800C;&#x4E5F;&#x4E0D;&#x4F1A;&#x51FA;&#x73B0;&#x6B7B;&#x9501;&#x300D;</p>
 <h2 id="example">example</h2>
-<pre><code class="lang-go">redisLockKey := fmt.Sprintf(<span class="hljs-string">&quot;%v%v&quot;</span>, redisTpl, headId)
-<span class="hljs-comment">// 1. New redislock</span>
-redisLock := redis.NewRedisLock(redisConn, redisLockKey)
-<span class="hljs-comment">// 2. &#x53EF;&#x9009;&#x64CD;&#x4F5C;&#xFF0C;&#x8BBE;&#x7F6E; redislock &#x8FC7;&#x671F;&#x65F6;&#x95F4;</span>
-redisLock.SetExpire(redisLockExpireSeconds)
-<span class="hljs-keyword">if</span> ok, err := redisLock.Acquire(); !ok || err != <span class="hljs-literal">nil</span> {
-  <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, errors.New(<span class="hljs-string">&quot;&#x5F53;&#x524D;&#x6709;&#x5176;&#x4ED6;&#x7528;&#x6237;&#x6B63;&#x5728;&#x8FDB;&#x884C;&#x64CD;&#x4F5C;&#xFF0C;&#x8BF7;&#x7A0D;&#x540E;&#x91CD;&#x8BD5;&quot;</span>)
-}
-<span class="hljs-keyword">defer</span> <span class="hljs-keyword">func</span>() {
-  <span class="hljs-built_in">recover</span>()
-  <span class="hljs-comment">// 3. &#x91CA;&#x653E;&#x9501;</span>
-  redisLock.Release()
-}()
+<pre class="language-"><code class="lang-go">redisLockKey <span class="token operator">:=</span> fmt<span class="token punctuation">.</span><span class="token function">Sprintf</span><span class="token punctuation">(</span><span class="token string">&quot;%v%v&quot;</span><span class="token punctuation">,</span> redisTpl<span class="token punctuation">,</span> headId<span class="token punctuation">)</span>
+<span class="token comment">// 1. New redislock</span>
+redisLock <span class="token operator">:=</span> redis<span class="token punctuation">.</span><span class="token function">NewRedisLock</span><span class="token punctuation">(</span>redisConn<span class="token punctuation">,</span> redisLockKey<span class="token punctuation">)</span>
+<span class="token comment">// 2. &#x53EF;&#x9009;&#x64CD;&#x4F5C;&#xFF0C;&#x8BBE;&#x7F6E; redislock &#x8FC7;&#x671F;&#x65F6;&#x95F4;</span>
+redisLock<span class="token punctuation">.</span><span class="token function">SetExpire</span><span class="token punctuation">(</span>redisLockExpireSeconds<span class="token punctuation">)</span>
+<span class="token keyword">if</span> ok<span class="token punctuation">,</span> err <span class="token operator">:=</span> redisLock<span class="token punctuation">.</span><span class="token function">Acquire</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">!</span>ok <span class="token operator">||</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token boolean">nil</span><span class="token punctuation">,</span> errors<span class="token punctuation">.</span><span class="token function">New</span><span class="token punctuation">(</span><span class="token string">&quot;&#x5F53;&#x524D;&#x6709;&#x5176;&#x4ED6;&#x7528;&#x6237;&#x6B63;&#x5728;&#x8FDB;&#x884C;&#x64CD;&#x4F5C;&#xFF0C;&#x8BF7;&#x7A0D;&#x540E;&#x91CD;&#x8BD5;&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">defer</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">recover</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token comment">// 3. &#x91CA;&#x653E;&#x9501;</span>
+  redisLock<span class="token punctuation">.</span><span class="token function">Release</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 </code></pre>
 <p>&#x548C;&#x4F60;&#x5728;&#x4F7F;&#x7528; <code>sync.Mutex</code> &#x7684;&#x65B9;&#x5F0F;&#x65F6;&#x4E00;&#x81F4;&#x7684;&#x3002;&#x52A0;&#x9501;&#x89E3;&#x9501;&#xFF0C;&#x6267;&#x884C;&#x4F60;&#x7684;&#x4E1A;&#x52A1;&#x64CD;&#x4F5C;&#x3002;</p>
 <h2 id="&#x83B7;&#x53D6;&#x9501;">&#x83B7;&#x53D6;&#x9501;</h2>
-<pre><code class="lang-go">lockCommand = <span class="hljs-string">`if redis.call(&quot;GET&quot;, KEYS[1]) == ARGV[1] then
+<pre class="language-"><code class="lang-go">lockCommand <span class="token operator">=</span> <span class="token string">`if redis.call(&quot;GET&quot;, KEYS[1]) == ARGV[1] then
     redis.call(&quot;SET&quot;, KEYS[1], ARGV[1], &quot;PX&quot;, ARGV[2])
     return &quot;OK&quot;
 else
     return redis.call(&quot;SET&quot;, KEYS[1], ARGV[1], &quot;NX&quot;, &quot;PX&quot;, ARGV[2])
 end`</span>
 
-<span class="hljs-keyword">func</span> (rl *RedisLock) Acquire() (<span class="hljs-keyword">bool</span>, error) {
-    seconds := atomic.LoadUint32(&amp;rl.seconds)
-  <span class="hljs-comment">// execute luascript</span>
-    resp, err := rl.store.Eval(lockCommand, []<span class="hljs-keyword">string</span>{rl.key}, []<span class="hljs-keyword">string</span>{
-        rl.id, strconv.Itoa(<span class="hljs-keyword">int</span>(seconds)*millisPerSecond + tolerance)})
-    <span class="hljs-keyword">if</span> err == red.Nil {
-        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>, <span class="hljs-literal">nil</span>
-    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
-        logx.Errorf(<span class="hljs-string">&quot;Error on acquiring lock for %s, %s&quot;</span>, rl.key, err.Error())
-        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>, err
-    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> resp == <span class="hljs-literal">nil</span> {
-        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>, <span class="hljs-literal">nil</span>
-    }
+<span class="token keyword">func</span> <span class="token punctuation">(</span>rl <span class="token operator">*</span>RedisLock<span class="token punctuation">)</span> <span class="token function">Acquire</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token builtin">bool</span><span class="token punctuation">,</span> <span class="token builtin">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    seconds <span class="token operator">:=</span> atomic<span class="token punctuation">.</span><span class="token function">LoadUint32</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>rl<span class="token punctuation">.</span>seconds<span class="token punctuation">)</span>
+  <span class="token comment">// execute luascript</span>
+    resp<span class="token punctuation">,</span> err <span class="token operator">:=</span> rl<span class="token punctuation">.</span>store<span class="token punctuation">.</span><span class="token function">Eval</span><span class="token punctuation">(</span>lockCommand<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">string</span><span class="token punctuation">{</span>rl<span class="token punctuation">.</span>key<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">string</span><span class="token punctuation">{</span>
+        rl<span class="token punctuation">.</span>id<span class="token punctuation">,</span> strconv<span class="token punctuation">.</span><span class="token function">Itoa</span><span class="token punctuation">(</span><span class="token function">int</span><span class="token punctuation">(</span>seconds<span class="token punctuation">)</span><span class="token operator">*</span>millisPerSecond <span class="token operator">+</span> tolerance<span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> err <span class="token operator">==</span> red<span class="token punctuation">.</span>Nil <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token boolean">nil</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+        logx<span class="token punctuation">.</span><span class="token function">Errorf</span><span class="token punctuation">(</span><span class="token string">&quot;Error on acquiring lock for %s, %s&quot;</span><span class="token punctuation">,</span> rl<span class="token punctuation">.</span>key<span class="token punctuation">,</span> err<span class="token punctuation">.</span><span class="token function">Error</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">,</span> err
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> resp <span class="token operator">==</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token boolean">nil</span>
+    <span class="token punctuation">}</span>
 
-    reply, ok := resp.(<span class="hljs-keyword">string</span>)
-    <span class="hljs-keyword">if</span> ok &amp;&amp; reply == <span class="hljs-string">&quot;OK&quot;</span> {
-        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>, <span class="hljs-literal">nil</span>
-    } <span class="hljs-keyword">else</span> {
-        logx.Errorf(<span class="hljs-string">&quot;Unknown reply when acquiring lock for %s: %v&quot;</span>, rl.key, resp)
-        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>, <span class="hljs-literal">nil</span>
-    }
-}
+    reply<span class="token punctuation">,</span> ok <span class="token operator">:=</span> resp<span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token builtin">string</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> ok <span class="token operator">&amp;&amp;</span> reply <span class="token operator">==</span> <span class="token string">&quot;OK&quot;</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token boolean">nil</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        logx<span class="token punctuation">.</span><span class="token function">Errorf</span><span class="token punctuation">(</span><span class="token string">&quot;Unknown reply when acquiring lock for %s: %v&quot;</span><span class="token punctuation">,</span> rl<span class="token punctuation">.</span>key<span class="token punctuation">,</span> resp<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token boolean">nil</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>&#x5148;&#x4ECB;&#x7ECD;&#x51E0;&#x4E2A; <code>redis</code> &#x7684;&#x547D;&#x4EE4;&#x9009;&#x9879;&#xFF0C;&#x4EE5;&#x4E0B;&#x662F;&#x4E3A; <code>set</code> &#x547D;&#x4EE4;&#x589E;&#x52A0;&#x7684;&#x9009;&#x9879;&#xFF1A;</p>
 <ul>
@@ -1353,24 +1353,24 @@ end`</span>
 <li>&#x52A0;&#x9501;&#x65F6;&#x9996;&#x5148;&#x5224;&#x65AD; <code>key</code> &#x7684; <code>value</code> &#x662F;&#x5426;&#x548C;&#x4E4B;&#x524D;&#x8BBE;&#x7F6E;&#x7684;&#x4E00;&#x81F4;&#xFF0C;&#x4E00;&#x81F4;&#x5219;&#x4FEE;&#x6539;&#x8FC7;&#x671F;&#x65F6;&#x95F4;</li>
 </ol>
 <h2 id="&#x91CA;&#x653E;&#x9501;">&#x91CA;&#x653E;&#x9501;</h2>
-<pre><code class="lang-go">delCommand = <span class="hljs-string">`if redis.call(&quot;GET&quot;, KEYS[1]) == ARGV[1] then
+<pre class="language-"><code class="lang-go">delCommand <span class="token operator">=</span> <span class="token string">`if redis.call(&quot;GET&quot;, KEYS[1]) == ARGV[1] then
     return redis.call(&quot;DEL&quot;, KEYS[1])
 else
     return 0
 end`</span>
 
-<span class="hljs-keyword">func</span> (rl *RedisLock) Release() (<span class="hljs-keyword">bool</span>, error) {
-    resp, err := rl.store.Eval(delCommand, []<span class="hljs-keyword">string</span>{rl.key}, []<span class="hljs-keyword">string</span>{rl.id})
-    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
-        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>, err
-    }
+<span class="token keyword">func</span> <span class="token punctuation">(</span>rl <span class="token operator">*</span>RedisLock<span class="token punctuation">)</span> <span class="token function">Release</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token builtin">bool</span><span class="token punctuation">,</span> <span class="token builtin">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    resp<span class="token punctuation">,</span> err <span class="token operator">:=</span> rl<span class="token punctuation">.</span>store<span class="token punctuation">.</span><span class="token function">Eval</span><span class="token punctuation">(</span>delCommand<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">string</span><span class="token punctuation">{</span>rl<span class="token punctuation">.</span>key<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">string</span><span class="token punctuation">{</span>rl<span class="token punctuation">.</span>id<span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">,</span> err
+    <span class="token punctuation">}</span>
 
-    <span class="hljs-keyword">if</span> reply, ok := resp.(<span class="hljs-keyword">int64</span>); !ok {
-        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>, <span class="hljs-literal">nil</span>
-    } <span class="hljs-keyword">else</span> {
-        <span class="hljs-keyword">return</span> reply == <span class="hljs-number">1</span>, <span class="hljs-literal">nil</span>
-    }
-}
+    <span class="token keyword">if</span> reply<span class="token punctuation">,</span> ok <span class="token operator">:=</span> resp<span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token builtin">int64</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">!</span>ok <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token boolean">nil</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> reply <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token boolean">nil</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>&#x91CA;&#x653E;&#x9501;&#x7684;&#x65F6;&#x5019;&#x53EA;&#x9700;&#x8981;&#x5173;&#x6CE8;&#x4E00;&#x70B9;&#xFF1A;</p>
 <p><strong>&#x4E0D;&#x80FD;&#x91CA;&#x653E;&#x522B;&#x4EBA;&#x7684;&#x9501;&#xFF0C;&#x4E0D;&#x80FD;&#x91CA;&#x653E;&#x522B;&#x4EBA;&#x7684;&#x9501;&#xFF0C;&#x4E0D;&#x80FD;&#x91CA;&#x653E;&#x522B;&#x4EBA;&#x7684;&#x9501;</strong></p>
@@ -1393,7 +1393,7 @@ gitalk.render("gitalk-container");
 
 
 <footer class="page-footer"><span class="copyright">Copyright &#xA9; 2019-2021 go-zero all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x6700;&#x540E;&#x66F4;&#x65B0;&#x65F6;&#x95F4;&#xFF1A;
-2021-02-22 06:10:14
+2021-02-22 07:19:33
 </span></footer>
 <script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
                                 
@@ -1438,7 +1438,7 @@ gitalk.render("gitalk-container");
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"redis-lock","level":"1.9.6","depth":2,"next":{"title":"periodlimit","level":"1.9.7","depth":2,"path":"periodlimit.md","ref":"periodlimit.md","articles":[]},"previous":{"title":"mysql","level":"1.9.5","depth":2,"path":"mysql.md","ref":"mysql.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","code","-lunr","-search","search-pro","github","splitter","-sharing","sharing-plus","tbfed-pagefooter","flexible-alerts","pageview-count","popup","hide-element","edit-link"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © 2019-2021 go-zero","modify_label":"最后更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"github":{"url":"https://github.com/go-zero"},"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"qq":false,"all":["douban","facebook","google","linkedin","twitter","weibo","qq","qzone","weibo"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true},"edit-link":{"label":"编辑此页","base":"https://github.com/zeromicro/go-zero-doc/blob/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"松妹子","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"go-zero使用文档","language":"zh-hans","gitbook":"*"},"file":{"path":"redis-lock.md","mtime":"2021-02-22T06:10:14.269Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-22T06:11:08.953Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"redis-lock","level":"1.9.6","depth":2,"next":{"title":"periodlimit","level":"1.9.7","depth":2,"path":"periodlimit.md","ref":"periodlimit.md","articles":[]},"previous":{"title":"mysql","level":"1.9.5","depth":2,"path":"mysql.md","ref":"mysql.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","code","-lunr","-search","search-pro","github","splitter","-sharing","sharing-plus","tbfed-pagefooter","flexible-alerts","pageview-count","popup","hide-element","edit-link","-highlight","prism"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © 2019-2021 go-zero","modify_label":"最后更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"lang":{"shell":"bash"},"css":["prismjs/themes/prism-tomorrow.css"]},"github":{"url":"https://github.com/go-zero"},"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"qq":false,"all":["douban","facebook","google","linkedin","twitter","weibo","qq","qzone","weibo"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true},"edit-link":{"label":"编辑此页","base":"https://github.com/zeromicro/go-zero-doc/blob/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"松妹子","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"go-zero使用文档","language":"zh-hans","gitbook":"*"},"file":{"path":"redis-lock.md","mtime":"2021-02-22T07:19:33.176Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-22T07:20:35.200Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

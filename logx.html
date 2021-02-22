@@ -49,7 +49,7 @@
                 
             
                 
-                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-prism/prism-tomorrow.css">
                 
             
                 
@@ -1256,24 +1256,24 @@
                                 
                                 <h1 id="logx">logx</h1>
 <h2 id="&#x4F7F;&#x7528;&#x793A;&#x4F8B;">&#x4F7F;&#x7528;&#x793A;&#x4F8B;</h2>
-<pre><code class="lang-go"><span class="hljs-keyword">var</span> c logx.LogConf
-<span class="hljs-comment">// &#x4ECE; yaml &#x6587;&#x4EF6;&#x4E2D; &#x521D;&#x59CB;&#x5316;&#x914D;&#x7F6E;</span>
-conf.MustLoad(<span class="hljs-string">&quot;config.yaml&quot;</span>, &amp;c)
+<pre class="language-"><code class="lang-go"><span class="token keyword">var</span> c logx<span class="token punctuation">.</span>LogConf
+<span class="token comment">// &#x4ECE; yaml &#x6587;&#x4EF6;&#x4E2D; &#x521D;&#x59CB;&#x5316;&#x914D;&#x7F6E;</span>
+conf<span class="token punctuation">.</span><span class="token function">MustLoad</span><span class="token punctuation">(</span><span class="token string">&quot;config.yaml&quot;</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>c<span class="token punctuation">)</span>
 
-<span class="hljs-comment">// logx &#x6839;&#x636E;&#x914D;&#x7F6E;&#x521D;&#x59CB;&#x5316;</span>
-logx.MustSetup(c)
+<span class="token comment">// logx &#x6839;&#x636E;&#x914D;&#x7F6E;&#x521D;&#x59CB;&#x5316;</span>
+logx<span class="token punctuation">.</span><span class="token function">MustSetup</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span>
 
-logx.Info(<span class="hljs-string">&quot;This is info!&quot;</span>)
-logx.Infof(<span class="hljs-string">&quot;This is %s!&quot;</span>, <span class="hljs-string">&quot;info&quot;</span>)
+logx<span class="token punctuation">.</span><span class="token function">Info</span><span class="token punctuation">(</span><span class="token string">&quot;This is info!&quot;</span><span class="token punctuation">)</span>
+logx<span class="token punctuation">.</span><span class="token function">Infof</span><span class="token punctuation">(</span><span class="token string">&quot;This is %s!&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;info&quot;</span><span class="token punctuation">)</span>
 
-logx.Error(<span class="hljs-string">&quot;This is error!&quot;</span>)
-logx.Errorf(<span class="hljs-string">&quot;this is %s!&quot;</span>, <span class="hljs-string">&quot;error&quot;</span>)
+logx<span class="token punctuation">.</span><span class="token function">Error</span><span class="token punctuation">(</span><span class="token string">&quot;This is error!&quot;</span><span class="token punctuation">)</span>
+logx<span class="token punctuation">.</span><span class="token function">Errorf</span><span class="token punctuation">(</span><span class="token string">&quot;this is %s!&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;error&quot;</span><span class="token punctuation">)</span>
 
-logx.Close()
+logx<span class="token punctuation">.</span><span class="token function">Close</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 </code></pre>
 <h2 id="&#x521D;&#x59CB;&#x5316;">&#x521D;&#x59CB;&#x5316;</h2>
 <p>logx &#x6709;&#x5F88;&#x591A;&#x53EF;&#x4EE5;&#x914D;&#x7F6E;&#x9879;&#xFF0C;&#x53EF;&#x4EE5;&#x53C2;&#x8003; logx.LogConf &#x4E2D;&#x7684;&#x5B9A;&#x4E49;&#x3002;&#x76EE;&#x524D;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;</p>
-<pre><code class="lang-go">logx.MustSetUp(c)
+<pre class="language-"><code class="lang-go">logx<span class="token punctuation">.</span><span class="token function">MustSetUp</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span>
 </code></pre>
 <p>&#x8FDB;&#x884C;&#x521D;&#x59CB;&#x5316;&#x914D;&#x7F6E;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x8FDB;&#x884C;&#x521D;&#x59CB;&#x5316;&#x914D;&#x7F6E;&#xFF0C;&#x6240;&#x6709;&#x7684;&#x914D;&#x7F6E;&#x5C06;&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x914D;&#x7F6E;&#x3002;</p>
 <h2 id="level">Level</h2>
@@ -1288,18 +1288,18 @@ logx.Close()
 </ul>
 <p>&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x5BF9;&#x5E94;&#x7684;&#x65B9;&#x6CD5;&#x6253;&#x5370;&#x51FA;&#x5BF9;&#x5E94;&#x7EA7;&#x522B;&#x7684;&#x65E5;&#x5FD7;&#x3002;
 &#x540C;&#x65F6;&#x4E3A;&#x4E86;&#x65B9;&#x4FBF;&#x8C03;&#x8BD5;&#xFF0C;&#x7EBF;&#x4E0A;&#x4F7F;&#x7528;&#xFF0C;&#x53EF;&#x4EE5;&#x52A8;&#x6001;&#x8C03;&#x6574;&#x65E5;&#x5FD7;&#x6253;&#x5370;&#x7EA7;&#x522B;&#xFF0C;&#x5176;&#x4E2D;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; <strong>logx.SetLevel(uint32)</strong> &#x8FDB;&#x884C;&#x7EA7;&#x522B;&#x8BBE;&#x7F6E;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x914D;&#x7F6E;&#x521D;&#x59CB;&#x5316;&#x8FDB;&#x884C;&#x8BBE;&#x7F6E;&#x3002;&#x76EE;&#x524D;&#x652F;&#x6301;&#x7684;&#x53C2;&#x6570;&#x4E3A;&#xFF1A;</p>
-<pre><code class="lang-go"><span class="hljs-keyword">const</span> (
-    <span class="hljs-comment">// &#x6253;&#x5370;&#x6240;&#x6709;&#x7EA7;&#x522B;&#x7684;&#x65E5;&#x5FD7;</span>
-    InfoLevel = iotas
-    <span class="hljs-comment">// &#x6253;&#x5370; errors, slows, stacks &#x65E5;&#x5FD7;</span>
+<pre class="language-"><code class="lang-go"><span class="token keyword">const</span> <span class="token punctuation">(</span>
+    <span class="token comment">// &#x6253;&#x5370;&#x6240;&#x6709;&#x7EA7;&#x522B;&#x7684;&#x65E5;&#x5FD7;</span>
+    InfoLevel <span class="token operator">=</span> iotas
+    <span class="token comment">// &#x6253;&#x5370; errors, slows, stacks &#x65E5;&#x5FD7;</span>
     ErrorLevel
-    <span class="hljs-comment">// &#x4EC5;&#x6253;&#x5370; server &#x7EA7;&#x522B;&#x65E5;&#x5FD7;</span>
+    <span class="token comment">// &#x4EC5;&#x6253;&#x5370; server &#x7EA7;&#x522B;&#x65E5;&#x5FD7;</span>
     SevereLevel
-)
+<span class="token punctuation">)</span>
 </code></pre>
 <h2 id="&#x65E5;&#x5FD7;&#x6A21;&#x5F0F;">&#x65E5;&#x5FD7;&#x6A21;&#x5F0F;</h2>
 <p>&#x76EE;&#x524D;&#x65E5;&#x5FD7;&#x6253;&#x5370;&#x6A21;&#x5F0F;&#x4E3B;&#x8981;&#x5206;&#x4E3A;2&#x79CD;&#xFF0C;&#x4E00;&#x79CD;&#x6587;&#x4EF6;&#x8F93;&#x51FA;&#xFF0C;&#x4E00;&#x79CD;&#x63A7;&#x5236;&#x53F0;&#x8F93;&#x51FA;&#x3002;&#x63A8;&#x8350;&#x65B9;&#x5F0F;&#xFF0C;&#x5F53;&#x91C7;&#x7528; k8s&#xFF0C;docker &#x7B49;&#x90E8;&#x7F72;&#x65B9;&#x5F0F;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x53EF;&#x4EE5;&#x5C06;&#x65E5;&#x5FD7;&#x8F93;&#x51FA;&#x5230;&#x63A7;&#x5236;&#x53F0;&#xFF0C;&#x4F7F;&#x7528;&#x65E5;&#x5FD7;&#x6536;&#x96C6;&#x5668;&#x6536;&#x96C6;&#x5BFC;&#x5165;&#x81F3; es &#x8FDB;&#x884C;&#x65E5;&#x5FD7;&#x5206;&#x6790;&#x3002;&#x5982;&#x679C;&#x662F;&#x76F4;&#x63A5;&#x90E8;&#x7F72;&#x65B9;&#x5F0F;&#xFF0C;&#x53EF;&#x4EE5;&#x91C7;&#x7528;&#x6587;&#x4EF6;&#x8F93;&#x51FA;&#x65B9;&#x5F0F;&#xFF0C;logx &#x4F1A;&#x81EA;&#x52A8;&#x5728;&#x6307;&#x5B9A;&#x6587;&#x4EF6;&#x76EE;&#x5F55;&#x521B;&#x5EFA;&#x5BF9;&#x5E94; 5 &#x4E2A;&#x5BF9;&#x5E94;&#x7EA7;&#x522B;&#x7684;&#x7684;&#x65E5;&#x5FD7;&#x6587;&#x4EF6;&#x4FDD;&#x5B58;&#x65E5;&#x5FD7;&#x3002;</p>
-<pre><code class="lang-bash">.
+<pre class="language-"><code class="lang-bash"><span class="token builtin class-name">.</span>
 &#x251C;&#x2500;&#x2500; access.log
 &#x251C;&#x2500;&#x2500; error.log
 &#x251C;&#x2500;&#x2500; severe.log
@@ -1311,55 +1311,55 @@ logx.Close()
 <p>&#x5982;&#x679C;&#x4E0D;&#x9700;&#x8981;&#x65E5;&#x5FD7;&#x6253;&#x5370;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <strong>logx.Close()</strong> &#x5173;&#x95ED;&#x65E5;&#x5FD7;&#x8F93;&#x51FA;&#x3002;&#x6CE8;&#x610F;&#xFF0C;&#x5F53;&#x7981;&#x7528;&#x65E5;&#x5FD7;&#x8F93;&#x51FA;&#xFF0C;&#x5C06;&#x65E0;&#x6CD5;&#x5728;&#x6B21;&#x6253;&#x5F00;&#xFF0C;&#x5177;&#x4F53;&#x53EF;&#x4EE5;&#x53C2;&#x8003; <strong>logx.RotateLogger</strong> &#x548C; <strong>logx.DailyRotateRule</strong> &#x7684;&#x5B9E;&#x73B0;&#x3002;</p>
 <h2 id="&#x5173;&#x95ED;&#x65E5;&#x5FD7;">&#x5173;&#x95ED;&#x65E5;&#x5FD7;</h2>
 <p>&#x56E0;&#x4E3A; logx &#x91C7;&#x7528;&#x5F02;&#x6B65;&#x8FDB;&#x884C;&#x65E5;&#x5FD7;&#x8F93;&#x51FA;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x6B63;&#x5E38;&#x5173;&#x95ED;&#x65E5;&#x5FD7;&#xFF0C;&#x53EF;&#x80FD;&#x4F1A;&#x9020;&#x6210;&#x90E8;&#x5206;&#x65E5;&#x5FD7;&#x4E22;&#x5931;&#x7684;&#x60C5;&#x51B5;&#x3002;&#x5FC5;&#x987B;&#x5728;&#x7A0B;&#x5E8F;&#x9000;&#x51FA;&#x7684;&#x5730;&#x65B9;&#x5173;&#x95ED;&#x65E5;&#x5FD7;&#x8F93;&#x51FA;&#xFF1A;</p>
-<pre><code class="lang-go">logx.Close()
+<pre class="language-"><code class="lang-go">logx<span class="token punctuation">.</span><span class="token function">Close</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 </code></pre>
 <p>&#x6846;&#x67B6;&#x4E2D; rest &#x548C; zrpc &#x7B49;&#x5927;&#x90E8;&#x5206;&#x5730;&#x65B9;&#x5DF2;&#x7ECF;&#x505A;&#x597D;&#x4E86;&#x65E5;&#x5FD7;&#x914D;&#x7F6E;&#x548C;&#x5173;&#x95ED;&#x76F8;&#x5173;&#x64CD;&#x4F5C;&#xFF0C;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x4E0D;&#x7528;&#x5173;&#x5FC3;&#x3002;
 &#x540C;&#x65F6;&#x6CE8;&#x610F;&#xFF0C;&#x5F53;&#x5173;&#x95ED;&#x65E5;&#x5FD7;&#x8F93;&#x51FA;&#x4E4B;&#x540E;&#xFF0C;&#x5C06;&#x65E0;&#x6CD5;&#x5728;&#x6B21;&#x6253;&#x5370;&#x65E5;&#x5FD7;&#x4E86;&#x3002;</p>
 <p>&#x63A8;&#x8350;&#x5199;&#x6CD5;&#xFF1A;</p>
-<pre><code class="lang-go"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;github.com/tal-tech/go-zero/core/proc&quot;</span>
+<pre class="language-"><code class="lang-go"><span class="token keyword">import</span> <span class="token string">&quot;github.com/tal-tech/go-zero/core/proc&quot;</span>
 
-<span class="hljs-comment">// grace close log</span>
-proc.AddShutdownListener(<span class="hljs-keyword">func</span>() {
-    logx.Close()
-})
+<span class="token comment">// grace close log</span>
+proc<span class="token punctuation">.</span><span class="token function">AddShutdownListener</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    logx<span class="token punctuation">.</span><span class="token function">Close</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
 </code></pre>
 <h2 id="duration">Duration</h2>
 <p>&#x6211;&#x4EEC;&#x6253;&#x5370;&#x65E5;&#x5FD7;&#x7684;&#x65F6;&#x5019;&#x53EF;&#x80FD;&#x9700;&#x8981;&#x6253;&#x5370;&#x8017;&#x65F6;&#x60C5;&#x51B5;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <strong>logx.WithDuration(time.Duration)</strong>, &#x53C2;&#x8003;&#x5982;&#x4E0B;&#x793A;&#x4F8B;&#xFF1A;</p>
-<pre><code class="lang-go">startTime := timex.Now()
-<span class="hljs-comment">// &#x6570;&#x636E;&#x5E93;&#x67E5;&#x8BE2;</span>
-rows, err := conn.Query(q, args...)
-duration := timex.Since(startTime)
-<span class="hljs-keyword">if</span> duration &gt; slowThreshold {
-    logx.WithDuration(duration).Slowf(<span class="hljs-string">&quot;[SQL] query: slowcall - %s&quot;</span>, stmt)
-} <span class="hljs-keyword">else</span> {
-    logx.WithDuration(duration).Infof(<span class="hljs-string">&quot;sql query: %s&quot;</span>, stmt)
-}
+<pre class="language-"><code class="lang-go">startTime <span class="token operator">:=</span> timex<span class="token punctuation">.</span><span class="token function">Now</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment">// &#x6570;&#x636E;&#x5E93;&#x67E5;&#x8BE2;</span>
+rows<span class="token punctuation">,</span> err <span class="token operator">:=</span> conn<span class="token punctuation">.</span><span class="token function">Query</span><span class="token punctuation">(</span>q<span class="token punctuation">,</span> args<span class="token operator">...</span><span class="token punctuation">)</span>
+duration <span class="token operator">:=</span> timex<span class="token punctuation">.</span><span class="token function">Since</span><span class="token punctuation">(</span>startTime<span class="token punctuation">)</span>
+<span class="token keyword">if</span> duration <span class="token operator">&gt;</span> slowThreshold <span class="token punctuation">{</span>
+    logx<span class="token punctuation">.</span><span class="token function">WithDuration</span><span class="token punctuation">(</span>duration<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Slowf</span><span class="token punctuation">(</span><span class="token string">&quot;[SQL] query: slowcall - %s&quot;</span><span class="token punctuation">,</span> stmt<span class="token punctuation">)</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    logx<span class="token punctuation">.</span><span class="token function">WithDuration</span><span class="token punctuation">(</span>duration<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Infof</span><span class="token punctuation">(</span><span class="token string">&quot;sql query: %s&quot;</span><span class="token punctuation">,</span> stmt<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>&#x4F1A;&#x8F93;&#x51FA;&#x5982;&#x4E0B;&#x683C;&#x5F0F;</p>
-<pre><code class="lang-json">{<span class="hljs-string">&quot;@timestamp&quot;</span>:<span class="hljs-string">&quot;2020-09-12T01:22:55.552+08&quot;</span>,<span class="hljs-string">&quot;level&quot;</span>:<span class="hljs-string">&quot;info&quot;</span>,<span class="hljs-string">&quot;duration&quot;</span>:<span class="hljs-string">&quot;3.0ms&quot;</span>,<span class="hljs-string">&quot;content&quot;</span>:<span class="hljs-string">&quot;sql query:...&quot;</span>}
-{<span class="hljs-string">&quot;@timestamp&quot;</span>:<span class="hljs-string">&quot;2020-09-12T01:22:55.552+08&quot;</span>,<span class="hljs-string">&quot;level&quot;</span>:<span class="hljs-string">&quot;slow&quot;</span>,<span class="hljs-string">&quot;duration&quot;</span>:<span class="hljs-string">&quot;500ms&quot;</span>,<span class="hljs-string">&quot;content&quot;</span>:<span class="hljs-string">&quot;[SQL] query: slowcall - ...&quot;</span>}
+<pre class="language-"><code class="lang-json"><span class="token punctuation">{</span><span class="token property">&quot;@timestamp&quot;</span><span class="token operator">:</span><span class="token string">&quot;2020-09-12T01:22:55.552+08&quot;</span><span class="token punctuation">,</span><span class="token property">&quot;level&quot;</span><span class="token operator">:</span><span class="token string">&quot;info&quot;</span><span class="token punctuation">,</span><span class="token property">&quot;duration&quot;</span><span class="token operator">:</span><span class="token string">&quot;3.0ms&quot;</span><span class="token punctuation">,</span><span class="token property">&quot;content&quot;</span><span class="token operator">:</span><span class="token string">&quot;sql query:...&quot;</span><span class="token punctuation">}</span>
+<span class="token punctuation">{</span><span class="token property">&quot;@timestamp&quot;</span><span class="token operator">:</span><span class="token string">&quot;2020-09-12T01:22:55.552+08&quot;</span><span class="token punctuation">,</span><span class="token property">&quot;level&quot;</span><span class="token operator">:</span><span class="token string">&quot;slow&quot;</span><span class="token punctuation">,</span><span class="token property">&quot;duration&quot;</span><span class="token operator">:</span><span class="token string">&quot;500ms&quot;</span><span class="token punctuation">,</span><span class="token property">&quot;content&quot;</span><span class="token operator">:</span><span class="token string">&quot;[SQL] query: slowcall - ...&quot;</span><span class="token punctuation">}</span>
 </code></pre>
 <p>&#x8FD9;&#x6837;&#x5C31;&#x53EF;&#x4EE5;&#x5F88;&#x5BB9;&#x6613;&#x7EDF;&#x8BA1;&#x51FA;&#x6162; sql &#x76F8;&#x5173;&#x4FE1;&#x606F;&#x3002;</p>
 <h2 id="tracelog">TraceLog</h2>
 <p>tracingEntry &#x662F;&#x4E3A;&#x4E86;&#x94FE;&#x8DEF;&#x8FFD;&#x8E2A;&#x65E5;&#x5FD7;&#x8F93;&#x51FA;&#x5B9A;&#x5236;&#x7684;&#x3002;&#x53EF;&#x4EE5;&#x6253;&#x5370; context &#x4E2D;&#x7684; traceId &#x548C; spanId &#x4FE1;&#x606F;&#xFF0C;&#x914D;&#x5408;&#x6211;&#x4EEC;&#x7684; <strong>rest</strong> &#x548C; <strong>zrpc</strong> &#x5F88;&#x5BB9;&#x6613;&#x5B8C;&#x6210;&#x94FE;&#x8DEF;&#x65E5;&#x5FD7;&#x7684;&#x76F8;&#x5173;&#x6253;&#x5370;&#x3002;&#x793A;&#x4F8B;&#x5982;&#x4E0B;</p>
-<pre><code class="lang-go">logx.WithContext(context.Context).Info(<span class="hljs-string">&quot;This is info!&quot;</span>)
+<pre class="language-"><code class="lang-go">logx<span class="token punctuation">.</span><span class="token function">WithContext</span><span class="token punctuation">(</span>context<span class="token punctuation">.</span>Context<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Info</span><span class="token punctuation">(</span><span class="token string">&quot;This is info!&quot;</span><span class="token punctuation">)</span>
 </code></pre>
 <h2 id="syslog">SysLog</h2>
 <p>&#x5E94;&#x7528;&#x4E2D;&#x53EF;&#x80FD;&#x6709;&#x90E8;&#x5206;&#x91C7;&#x7528;&#x7CFB;&#x7EDF; log &#x8FDB;&#x884C;&#x65E5;&#x5FD7;&#x6253;&#x5370;&#xFF0C;logx &#x540C;&#x6837;&#x5C01;&#x88C5;&#x65B9;&#x6CD5;&#xFF0C;&#x5F88;&#x5BB9;&#x6613;&#x5C06; log &#x76F8;&#x5173;&#x7684;&#x65E5;&#x5FD7;&#x6536;&#x96C6;&#x5230; logx &#x4E2D;&#x6765;&#x3002;</p>
-<pre><code class="lang-go">logx.CollectSysLog()
+<pre class="language-"><code class="lang-go">logx<span class="token punctuation">.</span><span class="token function">CollectSysLog</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 </code></pre>
 <h1 id="&#x65E5;&#x5FD7;&#x914D;&#x7F6E;&#x76F8;&#x5173;">&#x65E5;&#x5FD7;&#x914D;&#x7F6E;&#x76F8;&#x5173;</h1>
 <p><strong>LogConf</strong> &#x5B9A;&#x4E49;&#x65E5;&#x5FD7;&#x7CFB;&#x7EDF;&#x6240;&#x9700;&#x7684;&#x57FA;&#x672C;&#x914D;&#x7F6E;</p>
 <p>&#x5B8C;&#x6574;&#x5B9A;&#x4E49;&#x5982;&#x4E0B;&#xFF1A;</p>
-<pre><code class="lang-go"><span class="hljs-keyword">type</span> LogConf <span class="hljs-keyword">struct</span> {
-    ServiceName         <span class="hljs-keyword">string</span> <span class="hljs-string">`json:&quot;,optional&quot;`</span>
-    Mode                <span class="hljs-keyword">string</span> <span class="hljs-string">`json:&quot;,default=console,options=console|file|volume&quot;`</span>
-    Path                <span class="hljs-keyword">string</span> <span class="hljs-string">`json:&quot;,default=logs&quot;`</span>
-    Level               <span class="hljs-keyword">string</span> <span class="hljs-string">`json:&quot;,default=info,options=info|error|severe&quot;`</span>
-    Compress            <span class="hljs-keyword">bool</span>   <span class="hljs-string">`json:&quot;,optional&quot;`</span>
-    KeepDays            <span class="hljs-keyword">int</span>    <span class="hljs-string">`json:&quot;,optional&quot;`</span>
-    StackCooldownMillis <span class="hljs-keyword">int</span>    <span class="hljs-string">`json:&quot;,default=100&quot;`</span>
-}
+<pre class="language-"><code class="lang-go"><span class="token keyword">type</span> LogConf <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+    ServiceName         <span class="token builtin">string</span> <span class="token string">`json:&quot;,optional&quot;`</span>
+    Mode                <span class="token builtin">string</span> <span class="token string">`json:&quot;,default=console,options=console|file|volume&quot;`</span>
+    Path                <span class="token builtin">string</span> <span class="token string">`json:&quot;,default=logs&quot;`</span>
+    Level               <span class="token builtin">string</span> <span class="token string">`json:&quot;,default=info,options=info|error|severe&quot;`</span>
+    Compress            <span class="token builtin">bool</span>   <span class="token string">`json:&quot;,optional&quot;`</span>
+    KeepDays            <span class="token builtin">int</span>    <span class="token string">`json:&quot;,optional&quot;`</span>
+    StackCooldownMillis <span class="token builtin">int</span>    <span class="token string">`json:&quot;,default=100&quot;`</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <h2 id="mode">Mode</h2>
 <p><strong>Mode</strong> &#x5B9A;&#x4E49;&#x4E86;&#x65E5;&#x5FD7;&#x6253;&#x5370;&#x7684;&#x65B9;&#x5F0F;&#x3002;&#x9ED8;&#x8BA4;&#x7684;&#x6A21;&#x5F0F;&#x662F; <strong>console</strong>&#xFF0C; &#x6253;&#x5370;&#x5230;&#x63A7;&#x5236;&#x53F0;&#x4E0A;&#x9762;&#x3002;</p>
@@ -1412,7 +1412,7 @@ gitalk.render("gitalk-container");
 
 
 <footer class="page-footer"><span class="copyright">Copyright &#xA9; 2019-2021 go-zero all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x6700;&#x540E;&#x66F4;&#x65B0;&#x65F6;&#x95F4;&#xFF1A;
-2021-02-22 06:10:14
+2021-02-22 07:19:33
 </span></footer>
 <script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
                                 
@@ -1457,7 +1457,7 @@ gitalk.render("gitalk-container");
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"logx","level":"1.9.1","depth":2,"next":{"title":"bloom","level":"1.9.2","depth":2,"path":"bloom.md","ref":"bloom.md","articles":[]},"previous":{"title":"组件中心","level":"1.9","depth":1,"path":"component-center.md","ref":"component-center.md","articles":[{"title":"logx","level":"1.9.1","depth":2,"path":"logx.md","ref":"logx.md","articles":[]},{"title":"bloom","level":"1.9.2","depth":2,"path":"bloom.md","ref":"bloom.md","articles":[]},{"title":"executors","level":"1.9.3","depth":2,"path":"executors.md","ref":"executors.md","articles":[]},{"title":"fx","level":"1.9.4","depth":2,"path":"fx.md","ref":"fx.md","articles":[]},{"title":"mysql","level":"1.9.5","depth":2,"path":"mysql.md","ref":"mysql.md","articles":[]},{"title":"redis-lock","level":"1.9.6","depth":2,"path":"redis-lock.md","ref":"redis-lock.md","articles":[]},{"title":"periodlimit","level":"1.9.7","depth":2,"path":"periodlimit.md","ref":"periodlimit.md","articles":[]},{"title":"tokenlimit","level":"1.9.8","depth":2,"path":"tokenlimit.md","ref":"tokenlimit.md","articles":[]},{"title":"TimingWheel","level":"1.9.9","depth":2,"path":"timing-wheel.md","ref":"timing-wheel.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","code","-lunr","-search","search-pro","github","splitter","-sharing","sharing-plus","tbfed-pagefooter","flexible-alerts","pageview-count","popup","hide-element","edit-link"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © 2019-2021 go-zero","modify_label":"最后更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"github":{"url":"https://github.com/go-zero"},"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"qq":false,"all":["douban","facebook","google","linkedin","twitter","weibo","qq","qzone","weibo"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true},"edit-link":{"label":"编辑此页","base":"https://github.com/zeromicro/go-zero-doc/blob/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"松妹子","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"go-zero使用文档","language":"zh-hans","gitbook":"*"},"file":{"path":"logx.md","mtime":"2021-02-22T06:10:14.265Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-22T06:11:08.953Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"logx","level":"1.9.1","depth":2,"next":{"title":"bloom","level":"1.9.2","depth":2,"path":"bloom.md","ref":"bloom.md","articles":[]},"previous":{"title":"组件中心","level":"1.9","depth":1,"path":"component-center.md","ref":"component-center.md","articles":[{"title":"logx","level":"1.9.1","depth":2,"path":"logx.md","ref":"logx.md","articles":[]},{"title":"bloom","level":"1.9.2","depth":2,"path":"bloom.md","ref":"bloom.md","articles":[]},{"title":"executors","level":"1.9.3","depth":2,"path":"executors.md","ref":"executors.md","articles":[]},{"title":"fx","level":"1.9.4","depth":2,"path":"fx.md","ref":"fx.md","articles":[]},{"title":"mysql","level":"1.9.5","depth":2,"path":"mysql.md","ref":"mysql.md","articles":[]},{"title":"redis-lock","level":"1.9.6","depth":2,"path":"redis-lock.md","ref":"redis-lock.md","articles":[]},{"title":"periodlimit","level":"1.9.7","depth":2,"path":"periodlimit.md","ref":"periodlimit.md","articles":[]},{"title":"tokenlimit","level":"1.9.8","depth":2,"path":"tokenlimit.md","ref":"tokenlimit.md","articles":[]},{"title":"TimingWheel","level":"1.9.9","depth":2,"path":"timing-wheel.md","ref":"timing-wheel.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","code","-lunr","-search","search-pro","github","splitter","-sharing","sharing-plus","tbfed-pagefooter","flexible-alerts","pageview-count","popup","hide-element","edit-link","-highlight","prism"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © 2019-2021 go-zero","modify_label":"最后更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"lang":{"shell":"bash"},"css":["prismjs/themes/prism-tomorrow.css"]},"github":{"url":"https://github.com/go-zero"},"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"qq":false,"all":["douban","facebook","google","linkedin","twitter","weibo","qq","qzone","weibo"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true},"edit-link":{"label":"编辑此页","base":"https://github.com/zeromicro/go-zero-doc/blob/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"松妹子","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"go-zero使用文档","language":"zh-hans","gitbook":"*"},"file":{"path":"logx.md","mtime":"2021-02-22T07:19:33.172Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-22T07:20:35.200Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

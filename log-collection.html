@@ -49,7 +49,7 @@
                 
             
                 
-                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-prism/prism-tomorrow.css">
                 
             
                 
@@ -1273,39 +1273,39 @@
 <li>go-stash</li>
 </ul>
 <h2 id="filebeat&#x914D;&#x7F6E;">filebeat&#x914D;&#x7F6E;</h2>
-<pre><code class="lang-shell">$ vim xx/filebeat.yaml
+<pre class="language-"><code class="lang-shell">$ <span class="token function">vim</span> xx/filebeat.yaml
 </code></pre>
-<pre><code class="lang-yaml">filebeat.inputs:
-<span class="hljs-attr">- type:</span> log
-<span class="hljs-attr">  enabled:</span> <span class="hljs-literal">true</span>
-  <span class="hljs-comment"># &#x5F00;&#x542F;json&#x89E3;&#x6790;</span>
-  json.keys_under_root: <span class="hljs-literal">true</span>
-  json.add_error_key: <span class="hljs-literal">true</span>
-  <span class="hljs-comment"># &#x65E5;&#x5FD7;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;</span>
-<span class="hljs-attr">  paths:</span>
-<span class="hljs-bullet">    -</span> /var/log/order/*.log
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">filebeat.inputs</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> <span class="token key atrule">type</span><span class="token punctuation">:</span> log
+  <span class="token key atrule">enabled</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token comment"># &#x5F00;&#x542F;json&#x89E3;&#x6790;</span>
+  <span class="token key atrule">json.keys_under_root</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">json.add_error_key</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token comment"># &#x65E5;&#x5FD7;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;</span>
+  <span class="token key atrule">paths</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> /var/log/order/<span class="token important">*.log</span>
 
-setup.template.settings:
-  index.number_of_shards: <span class="hljs-number">1</span>
+<span class="token key atrule">setup.template.settings</span><span class="token punctuation">:</span>
+  <span class="token key atrule">index.number_of_shards</span><span class="token punctuation">:</span> <span class="token number">1</span>
 
-<span class="hljs-comment"># &#x5B9A;&#x4E49;kafka topic field</span>
-<span class="hljs-attr">fields:</span>
-<span class="hljs-attr">  log_topic:</span> log-collection
+<span class="token comment"># &#x5B9A;&#x4E49;kafka topic field</span>
+<span class="token key atrule">fields</span><span class="token punctuation">:</span>
+  <span class="token key atrule">log_topic</span><span class="token punctuation">:</span> log<span class="token punctuation">-</span>collection
 
-<span class="hljs-comment"># &#x8F93;&#x51FA;&#x5230;kafka</span>
-output.kafka:
-<span class="hljs-attr">  hosts:</span> [<span class="hljs-string">&quot;127.0.0.1:9092&quot;</span>]
-<span class="hljs-attr">  topic:</span> <span class="hljs-string">&apos;<span class="hljs-template-variable">%{[fields.log_topic]}</span>&apos;</span>
-  partition.round_robin:
-<span class="hljs-attr">    reachable_only:</span> <span class="hljs-literal">false</span>
-<span class="hljs-attr">  required_acks:</span> <span class="hljs-number">1</span>
-<span class="hljs-attr">  keep_alive:</span> <span class="hljs-number">10</span>s
+<span class="token comment"># &#x8F93;&#x51FA;&#x5230;kafka</span>
+<span class="token key atrule">output.kafka</span><span class="token punctuation">:</span>
+  <span class="token key atrule">hosts</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&quot;127.0.0.1:9092&quot;</span><span class="token punctuation">]</span>
+  <span class="token key atrule">topic</span><span class="token punctuation">:</span> <span class="token string">&apos;%{[fields.log_topic]}&apos;</span>
+  <span class="token key atrule">partition.round_robin</span><span class="token punctuation">:</span>
+    <span class="token key atrule">reachable_only</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+  <span class="token key atrule">required_acks</span><span class="token punctuation">:</span> <span class="token number">1</span>
+  <span class="token key atrule">keep_alive</span><span class="token punctuation">:</span> 10s
 
-<span class="hljs-comment"># ================================= Processors =================================</span>
-<span class="hljs-attr">processors:</span>
-<span class="hljs-attr">  - decode_json_fields:</span>
-<span class="hljs-attr">      fields:</span> [<span class="hljs-string">&apos;@timestamp&apos;</span>,<span class="hljs-string">&apos;level&apos;</span>,<span class="hljs-string">&apos;content&apos;</span>,<span class="hljs-string">&apos;trace&apos;</span>,<span class="hljs-string">&apos;span&apos;</span>,<span class="hljs-string">&apos;duration&apos;</span>]
-<span class="hljs-attr">      target:</span> <span class="hljs-string">&quot;&quot;</span>
+<span class="token comment"># ================================= Processors =================================</span>
+<span class="token key atrule">processors</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">decode_json_fields</span><span class="token punctuation">:</span>
+      <span class="token key atrule">fields</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&apos;@timestamp&apos;</span><span class="token punctuation">,</span><span class="token string">&apos;level&apos;</span><span class="token punctuation">,</span><span class="token string">&apos;content&apos;</span><span class="token punctuation">,</span><span class="token string">&apos;trace&apos;</span><span class="token punctuation">,</span><span class="token string">&apos;span&apos;</span><span class="token punctuation">,</span><span class="token string">&apos;duration&apos;</span><span class="token punctuation">]</span>
+      <span class="token key atrule">target</span><span class="token punctuation">:</span> <span class="token string">&quot;&quot;</span>
 </code></pre>
 <blockquote>
 <p>[!TIP]
@@ -1316,54 +1316,54 @@ xx&#x4E3A;filebeat.yaml&#x6240;&#x5728;&#x8DEF;&#x5F84;</p>
 <li>&#x65B0;&#x5EFA;<code>config.yaml</code>&#x6587;&#x4EF6;</li>
 <li>&#x6DFB;&#x52A0;&#x914D;&#x7F6E;&#x5185;&#x5BB9;</li>
 </ul>
-<pre><code class="lang-shell">$ vim config.yaml
+<pre class="language-"><code class="lang-shell">$ <span class="token function">vim</span> config.yaml
 </code></pre>
-<pre><code class="lang-yaml"><span class="hljs-attr">Clusters:</span>
-<span class="hljs-attr">- Input:</span>
-<span class="hljs-attr">    Kafka:</span>
-<span class="hljs-attr">      Name:</span> go-stash
-<span class="hljs-attr">      Log:</span>
-<span class="hljs-attr">        Mode:</span> file
-<span class="hljs-attr">      Brokers:</span>
-<span class="hljs-bullet">      -</span> <span class="hljs-string">&quot;127.0.0.1:9092&quot;</span>
-<span class="hljs-attr">      Topics:</span> 
-<span class="hljs-bullet">      -</span> log-collection
-<span class="hljs-attr">      Group:</span> stash
-<span class="hljs-attr">      Conns:</span> <span class="hljs-number">3</span>
-<span class="hljs-attr">      Consumers:</span> <span class="hljs-number">10</span>
-<span class="hljs-attr">      Processors:</span> <span class="hljs-number">60</span>
-<span class="hljs-attr">      MinBytes:</span> <span class="hljs-number">1048576</span>
-<span class="hljs-attr">      MaxBytes:</span> <span class="hljs-number">10485760</span>
-<span class="hljs-attr">      Offset:</span> first
-<span class="hljs-attr">  Filters:</span>
-<span class="hljs-attr">  - Action:</span> drop
-<span class="hljs-attr">    Conditions:</span>
-<span class="hljs-attr">      - Key:</span> status
-<span class="hljs-attr">        Value:</span> <span class="hljs-string">&quot;503&quot;</span>
-<span class="hljs-attr">        Type:</span> contains
-<span class="hljs-attr">      - Key:</span> type
-<span class="hljs-attr">        Value:</span> <span class="hljs-string">&quot;app&quot;</span>
-<span class="hljs-attr">        Type:</span> match
-<span class="hljs-attr">        Op:</span> and
-<span class="hljs-attr">  - Action:</span> remove_field
-<span class="hljs-attr">    Fields:</span>
-<span class="hljs-bullet">    -</span> source
-<span class="hljs-bullet">    -</span> _score
-<span class="hljs-bullet">    -</span> <span class="hljs-string">&quot;@metadata&quot;</span>
-<span class="hljs-bullet">    -</span> agent
-<span class="hljs-bullet">    -</span> ecs
-<span class="hljs-bullet">    -</span> input
-<span class="hljs-bullet">    -</span> log
-<span class="hljs-bullet">    -</span> fields
-<span class="hljs-attr">  Output:</span>
-<span class="hljs-attr">    ElasticSearch:</span>
-<span class="hljs-attr">      Hosts:</span>
-<span class="hljs-bullet">      -</span> <span class="hljs-string">&quot;http://127.0.0.1:9200&quot;</span>
-<span class="hljs-attr">      Index:</span> <span class="hljs-string">&quot;go-stash-<span class="hljs-template-variable">{{yyyy.MM.dd}}</span>&quot;</span>
-<span class="hljs-attr">      MaxChunkBytes:</span> <span class="hljs-number">5242880</span>
-<span class="hljs-attr">      GracePeriod:</span> <span class="hljs-number">10</span>s
-<span class="hljs-attr">      Compress:</span> <span class="hljs-literal">false</span>
-<span class="hljs-attr">      TimeZone:</span> UTC
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">Clusters</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> <span class="token key atrule">Input</span><span class="token punctuation">:</span>
+    <span class="token key atrule">Kafka</span><span class="token punctuation">:</span>
+      <span class="token key atrule">Name</span><span class="token punctuation">:</span> go<span class="token punctuation">-</span>stash
+      <span class="token key atrule">Log</span><span class="token punctuation">:</span>
+        <span class="token key atrule">Mode</span><span class="token punctuation">:</span> file
+      <span class="token key atrule">Brokers</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token string">&quot;127.0.0.1:9092&quot;</span>
+      <span class="token key atrule">Topics</span><span class="token punctuation">:</span> 
+      <span class="token punctuation">-</span> log<span class="token punctuation">-</span>collection
+      <span class="token key atrule">Group</span><span class="token punctuation">:</span> stash
+      <span class="token key atrule">Conns</span><span class="token punctuation">:</span> <span class="token number">3</span>
+      <span class="token key atrule">Consumers</span><span class="token punctuation">:</span> <span class="token number">10</span>
+      <span class="token key atrule">Processors</span><span class="token punctuation">:</span> <span class="token number">60</span>
+      <span class="token key atrule">MinBytes</span><span class="token punctuation">:</span> <span class="token number">1048576</span>
+      <span class="token key atrule">MaxBytes</span><span class="token punctuation">:</span> <span class="token number">10485760</span>
+      <span class="token key atrule">Offset</span><span class="token punctuation">:</span> first
+  <span class="token key atrule">Filters</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">Action</span><span class="token punctuation">:</span> drop
+    <span class="token key atrule">Conditions</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">Key</span><span class="token punctuation">:</span> status
+        <span class="token key atrule">Value</span><span class="token punctuation">:</span> <span class="token string">&quot;503&quot;</span>
+        <span class="token key atrule">Type</span><span class="token punctuation">:</span> contains
+      <span class="token punctuation">-</span> <span class="token key atrule">Key</span><span class="token punctuation">:</span> type
+        <span class="token key atrule">Value</span><span class="token punctuation">:</span> <span class="token string">&quot;app&quot;</span>
+        <span class="token key atrule">Type</span><span class="token punctuation">:</span> match
+        <span class="token key atrule">Op</span><span class="token punctuation">:</span> and
+  <span class="token punctuation">-</span> <span class="token key atrule">Action</span><span class="token punctuation">:</span> remove_field
+    <span class="token key atrule">Fields</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> source
+    <span class="token punctuation">-</span> _score
+    <span class="token punctuation">-</span> <span class="token string">&quot;@metadata&quot;</span>
+    <span class="token punctuation">-</span> agent
+    <span class="token punctuation">-</span> ecs
+    <span class="token punctuation">-</span> input
+    <span class="token punctuation">-</span> log
+    <span class="token punctuation">-</span> fields
+  <span class="token key atrule">Output</span><span class="token punctuation">:</span>
+    <span class="token key atrule">ElasticSearch</span><span class="token punctuation">:</span>
+      <span class="token key atrule">Hosts</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token string">&quot;http://127.0.0.1:9200&quot;</span>
+      <span class="token key atrule">Index</span><span class="token punctuation">:</span> <span class="token string">&quot;go-stash-{{yyyy.MM.dd}}&quot;</span>
+      <span class="token key atrule">MaxChunkBytes</span><span class="token punctuation">:</span> <span class="token number">5242880</span>
+      <span class="token key atrule">GracePeriod</span><span class="token punctuation">:</span> 10s
+      <span class="token key atrule">Compress</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+      <span class="token key atrule">TimeZone</span><span class="token punctuation">:</span> UTC
 </code></pre>
 <h2 id="&#x542F;&#x52A8;&#x670D;&#x52A1;&#x6309;&#x987A;&#x5E8F;&#x542F;&#x52A8;">&#x542F;&#x52A8;&#x670D;&#x52A1;(&#x6309;&#x987A;&#x5E8F;&#x542F;&#x52A8;)</h2>
 <ul>
@@ -1408,7 +1408,7 @@ gitalk.render("gitalk-container");
 
 
 <footer class="page-footer"><span class="copyright">Copyright &#xA9; 2019-2021 go-zero all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x6700;&#x540E;&#x66F4;&#x65B0;&#x65F6;&#x95F4;&#xFF1A;
-2021-02-22 06:10:14
+2021-02-22 07:19:33
 </span></footer>
 <script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
                                 
@@ -1453,7 +1453,7 @@ gitalk.render("gitalk-container");
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"日志收集","level":"1.7.8","depth":2,"next":{"title":"链路追踪","level":"1.7.9","depth":2,"path":"trace.md","ref":"trace.md","articles":[]},"previous":{"title":"服务部署","level":"1.7.7","depth":2,"path":"service-deployment.md","ref":"service-deployment.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","code","-lunr","-search","search-pro","github","splitter","-sharing","sharing-plus","tbfed-pagefooter","flexible-alerts","pageview-count","popup","hide-element","edit-link"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © 2019-2021 go-zero","modify_label":"最后更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"github":{"url":"https://github.com/go-zero"},"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"qq":false,"all":["douban","facebook","google","linkedin","twitter","weibo","qq","qzone","weibo"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true},"edit-link":{"label":"编辑此页","base":"https://github.com/zeromicro/go-zero-doc/blob/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"松妹子","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"go-zero使用文档","language":"zh-hans","gitbook":"*"},"file":{"path":"log-collection.md","mtime":"2021-02-22T06:10:14.265Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-22T06:11:08.953Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"日志收集","level":"1.7.8","depth":2,"next":{"title":"链路追踪","level":"1.7.9","depth":2,"path":"trace.md","ref":"trace.md","articles":[]},"previous":{"title":"服务部署","level":"1.7.7","depth":2,"path":"service-deployment.md","ref":"service-deployment.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","code","-lunr","-search","search-pro","github","splitter","-sharing","sharing-plus","tbfed-pagefooter","flexible-alerts","pageview-count","popup","hide-element","edit-link","-highlight","prism"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © 2019-2021 go-zero","modify_label":"最后更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"lang":{"shell":"bash"},"css":["prismjs/themes/prism-tomorrow.css"]},"github":{"url":"https://github.com/go-zero"},"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"qq":false,"all":["douban","facebook","google","linkedin","twitter","weibo","qq","qzone","weibo"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true},"edit-link":{"label":"编辑此页","base":"https://github.com/zeromicro/go-zero-doc/blob/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"松妹子","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"go-zero使用文档","language":"zh-hans","gitbook":"*"},"file":{"path":"log-collection.md","mtime":"2021-02-22T07:19:33.172Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-22T07:20:35.200Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

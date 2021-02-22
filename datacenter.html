@@ -49,7 +49,7 @@
                 
             
                 
-                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-prism/prism-tomorrow.css">
                 
             
                 
@@ -1280,19 +1280,19 @@
 <h2 id="datacenter-api&#x670D;&#x52A1;">datacenter-api&#x670D;&#x52A1;</h2>
 <p>&#x5148;&#x770B;&#x5B98;&#x65B9;&#x6587;&#x6863; <a href="https://www.yuque.com/tal-tech/go-zero/yaoehb" target="_blank">https://www.yuque.com/tal-tech/go-zero/yaoehb</a></p>
 <p>&#x6211;&#x4EEC;&#x5148;&#x628A;&#x7F51;&#x5173;&#x642D;&#x5EFA;&#x8D77;&#x6765;</p>
-<pre><code class="lang-shell">&#x279C; blogs mkdir datacenter &amp;&amp; cd datacenter
+<pre class="language-"><code class="lang-shell">&#x279C; blogs <span class="token function">mkdir</span> datacenter <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">cd</span> datacenter
 &#x279C; datacenter go mod init datacenter
 go: creating new go.mod: module datacenter
 &#x279C; datacenter
 </code></pre>
 <p>&#x67E5;&#x770B;book&#x76EE;&#x5F55;&#xFF1A;</p>
-<pre><code>&#x279C;  datacenter tree
+<pre class="language-"><code>&#x279C;  datacenter tree
 .
 &#x2514;&#x2500;&#x2500; go.mod
 
 0 directories, 1 file
 </code></pre><h3 id="&#x521B;&#x5EFA;api&#x6587;&#x4EF6;">&#x521B;&#x5EFA;api&#x6587;&#x4EF6;</h3>
-<pre><code>&#x279C;  datacenter goctl api -o datacenter.api
+<pre class="language-"><code>&#x279C;  datacenter goctl api -o datacenter.api
 Done.
 &#x279C;  datacenter tree
 .
@@ -1300,7 +1300,7 @@ Done.
 &#x2514;&#x2500;&#x2500; go.mod
 </code></pre><h3 id="&#x5B9A;&#x4E49;api&#x670D;&#x52A1;">&#x5B9A;&#x4E49;api&#x670D;&#x52A1;</h3>
 <p>&#x5206;&#x522B;&#x5305;&#x542B;&#x4E86;&#x4E0A;&#x9762;&#x7684; <strong>&#x516C;&#x5171;&#x670D;&#x52A1;</strong>&#xFF0C;<strong>&#x7528;&#x6237;&#x670D;&#x52A1;</strong>&#xFF0C;<strong>&#x6295;&#x7968;&#x6D3B;&#x52A8;&#x670D;&#x52A1;</strong></p>
-<pre><code>info(
+<pre class="language-"><code>info(
     title: &quot;&#x4E2D;&#x53F0;&#x7CFB;&#x7EDF;&quot;
     desc: &quot;&#x4E2D;&#x53F0;&#x7CFB;&#x7EDF;&quot;
     author: &quot;jackluo&quot;
@@ -1579,7 +1579,7 @@ service votes-api {
 }
 </code></pre><p>&#x4E0A;&#x9762;&#x57FA;&#x672C;&#x4E0A;&#x5199;&#x5C31;&#x5199;&#x7684;API&#x53CA;&#x6587;&#x6863;&#x7684;&#x601D;&#x8DEF;</p>
 <h3 id="&#x751F;&#x6210;datacenter-api&#x670D;&#x52A1;">&#x751F;&#x6210;datacenter api&#x670D;&#x52A1;</h3>
-<pre><code>&#x279C;  datacenter goctl api go -api datacenter.api -dir .
+<pre class="language-"><code>&#x279C;  datacenter goctl api go -api datacenter.api -dir .
 Done.
 &#x279C;  datacenter tree
 .
@@ -1643,90 +1643,90 @@ Done.
 
 14 directories, 43 files
 </code></pre><p>&#x6211;&#x4EEC;&#x6253;&#x5F00; <code>etc/datacenter-api.yaml</code> &#x628A;&#x5FC5;&#x8981;&#x7684;&#x914D;&#x7F6E;&#x4FE1;&#x606F;&#x52A0;&#x4E0A;</p>
-<pre><code class="lang-yaml"><span class="hljs-attr">Name:</span> datacenter-api
-<span class="hljs-attr">Log:</span>
-<span class="hljs-attr">  Mode:</span> console
-<span class="hljs-attr">Host:</span> <span class="hljs-number">0.0</span><span class="hljs-number">.0</span><span class="hljs-number">.0</span>
-<span class="hljs-attr">Port:</span> <span class="hljs-number">8857</span>
-<span class="hljs-attr">Auth:</span>
-<span class="hljs-attr">  AccessSecret:</span> &#x4F60;&#x7684;jwtwon Secret
-<span class="hljs-attr">  AccessExpire:</span> <span class="hljs-number">86400</span>
-<span class="hljs-attr">CacheRedis:</span>
-<span class="hljs-attr">- Host:</span> <span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">6379</span>
-<span class="hljs-attr">  Pass:</span> &#x5BC6;&#x7801;
-<span class="hljs-attr">  Type:</span> node                     
-<span class="hljs-attr">UserRpc:</span>
-<span class="hljs-attr">  Etcd:</span>
-<span class="hljs-attr">    Hosts:</span>
-<span class="hljs-bullet">      -</span> <span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">2379</span>
-<span class="hljs-attr">    Key:</span> user.rpc
-<span class="hljs-attr">CommonRpc:</span>
-<span class="hljs-attr">  Etcd:</span>
-<span class="hljs-attr">    Hosts:</span>
-<span class="hljs-bullet">      -</span> <span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">2379</span>
-<span class="hljs-attr">    Key:</span> common.rpc
-<span class="hljs-attr">VotesRpc:</span>
-<span class="hljs-attr">  Etcd:</span>
-<span class="hljs-attr">    Hosts:</span>
-<span class="hljs-bullet">      -</span> <span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">2379</span>
-<span class="hljs-attr">    Key:</span> votes.rpc
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">Name</span><span class="token punctuation">:</span> datacenter<span class="token punctuation">-</span>api
+<span class="token key atrule">Log</span><span class="token punctuation">:</span>
+  <span class="token key atrule">Mode</span><span class="token punctuation">:</span> console
+<span class="token key atrule">Host</span><span class="token punctuation">:</span> 0.0.0.0
+<span class="token key atrule">Port</span><span class="token punctuation">:</span> <span class="token number">8857</span>
+<span class="token key atrule">Auth</span><span class="token punctuation">:</span>
+  <span class="token key atrule">AccessSecret</span><span class="token punctuation">:</span> &#x4F60;&#x7684;jwtwon Secret
+  <span class="token key atrule">AccessExpire</span><span class="token punctuation">:</span> <span class="token number">86400</span>
+<span class="token key atrule">CacheRedis</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> <span class="token key atrule">Host</span><span class="token punctuation">:</span> 127.0.0.1<span class="token punctuation">:</span><span class="token number">6379</span>
+  <span class="token key atrule">Pass</span><span class="token punctuation">:</span> &#x5BC6;&#x7801;
+  <span class="token key atrule">Type</span><span class="token punctuation">:</span> node                     
+<span class="token key atrule">UserRpc</span><span class="token punctuation">:</span>
+  <span class="token key atrule">Etcd</span><span class="token punctuation">:</span>
+    <span class="token key atrule">Hosts</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> 127.0.0.1<span class="token punctuation">:</span><span class="token number">2379</span>
+    <span class="token key atrule">Key</span><span class="token punctuation">:</span> user.rpc
+<span class="token key atrule">CommonRpc</span><span class="token punctuation">:</span>
+  <span class="token key atrule">Etcd</span><span class="token punctuation">:</span>
+    <span class="token key atrule">Hosts</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> 127.0.0.1<span class="token punctuation">:</span><span class="token number">2379</span>
+    <span class="token key atrule">Key</span><span class="token punctuation">:</span> common.rpc
+<span class="token key atrule">VotesRpc</span><span class="token punctuation">:</span>
+  <span class="token key atrule">Etcd</span><span class="token punctuation">:</span>
+    <span class="token key atrule">Hosts</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> 127.0.0.1<span class="token punctuation">:</span><span class="token number">2379</span>
+    <span class="token key atrule">Key</span><span class="token punctuation">:</span> votes.rpc
 </code></pre>
 <p>&#x4E0A;&#x9762;&#x7684; <code>UserRpc</code>&#xFF0C; <code>CommonRpc</code> ,&#x8FD8;&#x6709; <code>VotesRpc</code> &#x8FD9;&#x4E9B;&#x6211;&#x5148;&#x5199;&#x4E0A;&#xFF0C;&#x540E;&#x9762;&#x518D;&#x6765;&#x6162;&#x6162;&#x52A0;&#x3002;</p>
 <p>&#x6211;&#x4EEC;&#x5148;&#x6765;&#x5199; <code>CommonRpc</code> &#x670D;&#x52A1;&#x3002;</p>
 <h2 id="commonrpc&#x670D;&#x52A1;">CommonRpc&#x670D;&#x52A1;</h2>
 <h3 id="&#x65B0;&#x5EFA;&#x9879;&#x76EE;&#x76EE;&#x5F55;">&#x65B0;&#x5EFA;&#x9879;&#x76EE;&#x76EE;&#x5F55;</h3>
-<pre><code>&#x279C;  datacenter mkdir -p common/rpc &amp;&amp; cd common/rpc
+<pre class="language-"><code>&#x279C;  datacenter mkdir -p common/rpc &amp;&amp; cd common/rpc
 </code></pre><p>&#x76F4;&#x63A5;&#x5C31;&#x65B0;&#x5EFA;&#x5728;&#x4E86;&#xFF0C;datacenter&#x76EE;&#x5F55;&#x4E2D;&#xFF0C;&#x56E0;&#x4E3A;common &#x91CC;&#x9762;&#xFF0C;&#x53EF;&#x80FD;&#x4EE5;&#x540E;&#x4F1A;&#x4E0D;&#x53EA;&#x4F1A;&#x63D0;&#x4F9B;rpc&#x670D;&#x52A1;&#xFF0C;&#x53EF;&#x80FD;&#x8FD8;&#x6709;api&#x7684;&#x670D;&#x52A1;,&#x6240;&#x4EE5;&#x53C8;&#x52A0;&#x4E86;rpc&#x76EE;&#x5F55;</p>
 <h3 id="goctl&#x521B;&#x5EFA;&#x6A21;&#x677F;">goctl&#x521B;&#x5EFA;&#x6A21;&#x677F;</h3>
-<pre><code>&#x279C;  rpc goctl rpc template -o=common.proto
+<pre class="language-"><code>&#x279C;  rpc goctl rpc template -o=common.proto
 &#x279C;  rpc ls
 common.proto
 </code></pre><p>&#x5F80;&#x91CC;&#x9762;&#x586B;&#x5165;&#x5185;&#x5BB9;&#xFF1A;</p>
-<pre><code class="lang-protobuf">&#x279C;  <span class="hljs-function"><span class="hljs-keyword">rpc</span> cat common.proto
-syntax = &quot;proto3&quot;</span>;
+<pre class="language-"><code class="lang-protobufbuf">&#x279C;  rpc cat common.proto
+syntax = &quot;proto3&quot;;
 
-<span class="hljs-keyword">package</span> common;
+package common;
 
 
-<span class="hljs-class"><span class="hljs-keyword">message</span> <span class="hljs-title">BaseAppReq</span></span>{
-  <span class="hljs-built_in">int64</span> beid=<span class="hljs-number">1</span>;
+message BaseAppReq{
+  int64 beid=1;
 }
 
-<span class="hljs-class"><span class="hljs-keyword">message</span> <span class="hljs-title">BaseAppResp</span></span>{
-  <span class="hljs-built_in">int64</span> beid=<span class="hljs-number">1</span>;
-  <span class="hljs-built_in">string</span> logo=<span class="hljs-number">2</span>;
-  <span class="hljs-built_in">string</span> sname=<span class="hljs-number">3</span>;
-  <span class="hljs-built_in">int64</span> isclose=<span class="hljs-number">4</span>;
-  <span class="hljs-built_in">string</span> fullwebsite=<span class="hljs-number">5</span>;
+message BaseAppResp{
+  int64 beid=1;
+  string logo=2;
+  string sname=3;
+  int64 isclose=4;
+  string fullwebsite=5;
 }
 
-<span class="hljs-comment">// &#x8BF7;&#x6C42;&#x7684;api</span>
-<span class="hljs-class"><span class="hljs-keyword">message</span> <span class="hljs-title">AppConfigReq</span> </span>{
-  <span class="hljs-built_in">int64</span> beid=<span class="hljs-number">1</span>;
-  <span class="hljs-built_in">int64</span> ptyid=<span class="hljs-number">2</span>;
+// &#x8BF7;&#x6C42;&#x7684;api
+message AppConfigReq {
+  int64 beid=1;
+  int64 ptyid=2;
 }
 
-<span class="hljs-comment">// &#x8FD4;&#x56DE;&#x7684;&#x503C;</span>
-<span class="hljs-class"><span class="hljs-keyword">message</span> <span class="hljs-title">AppConfigResp</span> </span>{
-  <span class="hljs-built_in">int64</span> id=<span class="hljs-number">1</span>;
-  <span class="hljs-built_in">int64</span> beid=<span class="hljs-number">2</span>;
-  <span class="hljs-built_in">int64</span> ptyid=<span class="hljs-number">3</span>;
-  <span class="hljs-built_in">string</span> appid=<span class="hljs-number">4</span>;
-  <span class="hljs-built_in">string</span> appsecret=<span class="hljs-number">5</span>;
-  <span class="hljs-built_in">string</span> title=<span class="hljs-number">6</span>;
+// &#x8FD4;&#x56DE;&#x7684;&#x503C;
+message AppConfigResp {
+  int64 id=1;
+  int64 beid=2;
+  int64 ptyid=3;
+  string appid=4;
+  string appsecret=5;
+  string title=6;
 }
 
-<span class="hljs-class"><span class="hljs-keyword">service</span> <span class="hljs-title">Common</span> </span>{
-  <span class="hljs-function"><span class="hljs-keyword">rpc</span> GetAppConfig(AppConfigReq) <span class="hljs-keyword">returns</span>(AppConfigResp)</span>;
-  <span class="hljs-function"><span class="hljs-keyword">rpc</span> GetBaseApp(BaseAppReq) <span class="hljs-keyword">returns</span>(BaseAppResp)</span>;
+service Common {
+  rpc GetAppConfig(AppConfigReq) returns(AppConfigResp);
+  rpc GetBaseApp(BaseAppReq) returns(BaseAppResp);
 }
 </code></pre>
 <h3 id="gotcl&#x751F;&#x6210;rpc&#x670D;&#x52A1;">gotcl&#x751F;&#x6210;rpc&#x670D;&#x52A1;</h3>
-<pre><code class="lang-bash">&#x279C;  rpc goctl rpc proto -src common.proto -dir .
-protoc  -I=/Users/jackluo/works/blogs/datacenter/common/rpc common.proto --go_out=plugins=grpc:/Users/jackluo/works/blogs/datacenter/common/rpc/common
+<pre class="language-"><code class="lang-bash">&#x279C;  rpc goctl rpc proto -src common.proto -dir <span class="token builtin class-name">.</span>
+protoc  -I<span class="token operator">=</span>/Users/jackluo/works/blogs/datacenter/common/rpc common.proto --go_out<span class="token operator">=</span>plugins<span class="token operator">=</span>grpc:/Users/jackluo/works/blogs/datacenter/common/rpc/common
 Done.
 </code></pre>
-<pre><code>&#x279C; rpc tree
+<pre class="language-"><code>&#x279C; rpc tree
 .
 &#x251C;&#x2500;&#x2500; common
 &#x2502;  &#x2514;&#x2500;&#x2500; common.pb.go
@@ -1750,21 +1750,21 @@ Done.
 8 directories, 10 files
 </code></pre><p>&#x57FA;&#x672C;&#x4E0A;&#xFF0C;&#x5C31;&#x628A;&#x6240;&#x6709;&#x7684;&#x76EE;&#x5F55;&#x89C4;&#x8303;&#x548C;&#x7ED3;&#x6784;&#x7684;&#x4E1C;&#x897F;&#x90FD;&#x751F;&#x6210;&#x4E86;&#xFF0C;&#x5C31;&#x4E0D;&#x7528;&#x7EA0;&#x7ED3;&#x9879;&#x76EE;&#x76EE;&#x5F55;&#x4E86;&#xFF0C;&#x600E;&#x4E48;&#x653E;&#x4E86;&#xFF0C;&#x600E;&#x4E48;&#x7EC4;&#x7EC7;&#x4E86;&#x3002;</p>
 <p>&#x770B;&#x4E00;&#x4E0B;&#xFF0C;&#x914D;&#x7F6E;&#x4FE1;&#x606F;&#xFF0C;&#x91CC;&#x9762;&#x53EF;&#x4EE5;&#x5199;&#x5165;mysql&#x548C;&#x5176;&#x5B83;redis&#x7684;&#x4FE1;&#x606F;&#xFF1A;</p>
-<pre><code class="lang-yaml"><span class="hljs-attr">Name:</span> common.rpc
-<span class="hljs-attr">ListenOn:</span> <span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">8081</span>
-<span class="hljs-attr">Mysql:</span>
-<span class="hljs-attr">  DataSource:</span> root:admin@tcp(<span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">3306</span>)/datacenter?charset=utf8&amp;parseTime=<span class="hljs-literal">true</span>&amp;loc=Asia%<span class="hljs-number">2</span>FShanghai
-<span class="hljs-attr">CacheRedis:</span>
-<span class="hljs-attr">- Host:</span> <span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">6379</span>
-<span class="hljs-attr">  Pass:</span>
-<span class="hljs-attr">  Type:</span> node  
-<span class="hljs-attr">Etcd:</span>
-<span class="hljs-attr">  Hosts:</span>
-<span class="hljs-bullet">  -</span> <span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">2379</span>
-<span class="hljs-attr">  Key:</span> common.rpc
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">Name</span><span class="token punctuation">:</span> common.rpc
+<span class="token key atrule">ListenOn</span><span class="token punctuation">:</span> 127.0.0.1<span class="token punctuation">:</span><span class="token number">8081</span>
+<span class="token key atrule">Mysql</span><span class="token punctuation">:</span>
+  <span class="token key atrule">DataSource</span><span class="token punctuation">:</span> root<span class="token punctuation">:</span>admin@tcp(127.0.0.1<span class="token punctuation">:</span>3306)/datacenter<span class="token punctuation">?</span>charset=utf8<span class="token important">&amp;parseTime=true&amp;loc=Asia%2FShanghai</span>
+<span class="token key atrule">CacheRedis</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> <span class="token key atrule">Host</span><span class="token punctuation">:</span> 127.0.0.1<span class="token punctuation">:</span><span class="token number">6379</span>
+  <span class="token key atrule">Pass</span><span class="token punctuation">:</span>
+  <span class="token key atrule">Type</span><span class="token punctuation">:</span> node  
+<span class="token key atrule">Etcd</span><span class="token punctuation">:</span>
+  <span class="token key atrule">Hosts</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> 127.0.0.1<span class="token punctuation">:</span><span class="token number">2379</span>
+  <span class="token key atrule">Key</span><span class="token punctuation">:</span> common.rpc
 </code></pre>
 <p>&#x6211;&#x4EEC;&#x518D;&#x6765;&#x52A0;&#x4E0A;&#x6570;&#x636E;&#x5E93;&#x670D;&#x52A1;&#xFF1A;</p>
-<pre><code>&#x279C;  rpc cd ..
+<pre class="language-"><code>&#x279C;  rpc cd ..
 &#x279C;  common ls
 rpc
 &#x279C;  common pwd
@@ -1798,191 +1798,191 @@ Done.
 
 10 directories, 12 files
 </code></pre><p>&#x8FD9;&#x6837;&#x57FA;&#x672C;&#x7684;&#x4E00;&#x4E2A; <code>rpc</code> &#x5C31;&#x5199;&#x5B8C;&#x4E86;&#xFF0C;&#x7136;&#x540E;&#x6211;&#x4EEC;&#x5C06;rpc &#x548C;model &#x8FD8;&#x6709;api&#x4E32;&#x8FDE;&#x8D77;&#x6765;&#xFF0C;&#x8FD9;&#x4E2A;&#x5B98;&#x65B9;&#x7684;&#x6587;&#x6863;&#x5DF2;&#x7ECF;&#x5F88;&#x8BE6;&#x7EC6;&#x4E86;&#xFF0C;&#x8FD9;&#x91CC;&#x5C31;&#x53EA;&#x662F;&#x8D34;&#x4E00;&#x4E0B;&#x4EE3;&#x7801;&#xFF1A;</p>
-<pre><code class="lang-go">&#x279C;  common cat rpc/internal/config/config.<span class="hljs-keyword">go</span>
-<span class="hljs-keyword">package</span> config
+<pre class="language-"><code class="lang-go">&#x279C;  common cat rpc<span class="token operator">/</span>internal<span class="token operator">/</span>config<span class="token operator">/</span>config<span class="token punctuation">.</span><span class="token keyword">go</span>
+<span class="token keyword">package</span> config
 
-<span class="hljs-keyword">import</span> (
-    <span class="hljs-string">&quot;github.com/tal-tech/go-zero/core/stores/cache&quot;</span>
-    <span class="hljs-string">&quot;github.com/tal-tech/go-zero/zrpc&quot;</span>
-)
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+    <span class="token string">&quot;github.com/tal-tech/go-zero/core/stores/cache&quot;</span>
+    <span class="token string">&quot;github.com/tal-tech/go-zero/zrpc&quot;</span>
+<span class="token punctuation">)</span>
 
-<span class="hljs-keyword">type</span> Config <span class="hljs-keyword">struct</span> {
-    zrpc.RpcServerConf
-    Mysql <span class="hljs-keyword">struct</span> {
-        DataSource <span class="hljs-keyword">string</span>
-    }
-    CacheRedis cache.ClusterConf
-}
+<span class="token keyword">type</span> Config <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+    zrpc<span class="token punctuation">.</span>RpcServerConf
+    Mysql <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+        DataSource <span class="token builtin">string</span>
+    <span class="token punctuation">}</span>
+    CacheRedis cache<span class="token punctuation">.</span>ClusterConf
+<span class="token punctuation">}</span>
 </code></pre>
 <p>&#x518D;&#x5728;svc&#x4E2D;&#x4FEE;&#x6539;&#xFF1A;</p>
-<pre><code class="lang-go">&#x279C;  common cat rpc/internal/svc/servicecontext.<span class="hljs-keyword">go</span>
-<span class="hljs-keyword">package</span> svc
+<pre class="language-"><code class="lang-go">&#x279C;  common cat rpc<span class="token operator">/</span>internal<span class="token operator">/</span>svc<span class="token operator">/</span>servicecontext<span class="token punctuation">.</span><span class="token keyword">go</span>
+<span class="token keyword">package</span> svc
 
-<span class="hljs-keyword">import</span> (
-    <span class="hljs-string">&quot;datacenter/common/model&quot;</span>
-    <span class="hljs-string">&quot;datacenter/common/rpc/internal/config&quot;</span>
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+    <span class="token string">&quot;datacenter/common/model&quot;</span>
+    <span class="token string">&quot;datacenter/common/rpc/internal/config&quot;</span>
 
-    <span class="hljs-string">&quot;github.com/tal-tech/go-zero/core/stores/sqlx&quot;</span>
-)
+    <span class="token string">&quot;github.com/tal-tech/go-zero/core/stores/sqlx&quot;</span>
+<span class="token punctuation">)</span>
 
-<span class="hljs-keyword">type</span> ServiceContext <span class="hljs-keyword">struct</span> {
-    c              config.Config
-    AppConfigModel model.AppConfigModel
-    BaseAppModel   model.BaseAppModel
-}
+<span class="token keyword">type</span> ServiceContext <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+    c              config<span class="token punctuation">.</span>Config
+    AppConfigModel model<span class="token punctuation">.</span>AppConfigModel
+    BaseAppModel   model<span class="token punctuation">.</span>BaseAppModel
+<span class="token punctuation">}</span>
 
-<span class="hljs-keyword">func</span> NewServiceContext(c config.Config) *ServiceContext {
-    conn := sqlx.NewMysql(c.Mysql.DataSource)
-    apm := model.NewAppConfigModel(conn, c.CacheRedis)
-    bam := model.NewBaseAppModel(conn, c.CacheRedis)
-    <span class="hljs-keyword">return</span> &amp;ServiceContext{
-        c:              c,
-        AppConfigModel: apm,
-        BaseAppModel:   bam,
-    }
-}
+<span class="token keyword">func</span> <span class="token function">NewServiceContext</span><span class="token punctuation">(</span>c config<span class="token punctuation">.</span>Config<span class="token punctuation">)</span> <span class="token operator">*</span>ServiceContext <span class="token punctuation">{</span>
+    conn <span class="token operator">:=</span> sqlx<span class="token punctuation">.</span><span class="token function">NewMysql</span><span class="token punctuation">(</span>c<span class="token punctuation">.</span>Mysql<span class="token punctuation">.</span>DataSource<span class="token punctuation">)</span>
+    apm <span class="token operator">:=</span> model<span class="token punctuation">.</span><span class="token function">NewAppConfigModel</span><span class="token punctuation">(</span>conn<span class="token punctuation">,</span> c<span class="token punctuation">.</span>CacheRedis<span class="token punctuation">)</span>
+    bam <span class="token operator">:=</span> model<span class="token punctuation">.</span><span class="token function">NewBaseAppModel</span><span class="token punctuation">(</span>conn<span class="token punctuation">,</span> c<span class="token punctuation">.</span>CacheRedis<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token operator">&amp;</span>ServiceContext<span class="token punctuation">{</span>
+        c<span class="token punctuation">:</span>              c<span class="token punctuation">,</span>
+        AppConfigModel<span class="token punctuation">:</span> apm<span class="token punctuation">,</span>
+        BaseAppModel<span class="token punctuation">:</span>   bam<span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>&#x4E0A;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x5DF2;&#x7ECF;&#x5C06; <code>rpc</code> &#x548C; <code>model</code> &#x6570;&#x636E;&#x5E93;&#x5173;&#x8054;&#x8D77;&#x6765;&#x4E86;&#xFF0C;&#x6211;&#x4EEC;&#x73B0;&#x5728;&#x518D;&#x5C06; <code>rpc</code> &#x548C; <code>api</code> &#x5173;&#x8054;&#x8D77;&#x6765;&#xFF1A;</p>
-<pre><code class="lang-go">&#x279C;  datacenter cat internal/config/config.<span class="hljs-keyword">go</span>
+<pre class="language-"><code class="lang-go">&#x279C;  datacenter cat internal<span class="token operator">/</span>config<span class="token operator">/</span>config<span class="token punctuation">.</span><span class="token keyword">go</span>
 
-<span class="hljs-keyword">package</span> config
+<span class="token keyword">package</span> config
 
-<span class="hljs-keyword">import</span> (
-    <span class="hljs-string">&quot;github.com/tal-tech/go-zero/core/stores/cache&quot;</span>
-    <span class="hljs-string">&quot;github.com/tal-tech/go-zero/rest&quot;</span>
-    <span class="hljs-string">&quot;github.com/tal-tech/go-zero/zrpc&quot;</span>
-)
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+    <span class="token string">&quot;github.com/tal-tech/go-zero/core/stores/cache&quot;</span>
+    <span class="token string">&quot;github.com/tal-tech/go-zero/rest&quot;</span>
+    <span class="token string">&quot;github.com/tal-tech/go-zero/zrpc&quot;</span>
+<span class="token punctuation">)</span>
 
-<span class="hljs-keyword">type</span> Config <span class="hljs-keyword">struct</span> {
-    rest.RestConf
+<span class="token keyword">type</span> Config <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+    rest<span class="token punctuation">.</span>RestConf
 
-    Auth <span class="hljs-keyword">struct</span> {
-        AccessSecret <span class="hljs-keyword">string</span>
-        AccessExpire <span class="hljs-keyword">int64</span>
-    }
-    UserRpc   zrpc.RpcClientConf
-    CommonRpc zrpc.RpcClientConf
-    VotesRpc  zrpc.RpcClientConf
+    Auth <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+        AccessSecret <span class="token builtin">string</span>
+        AccessExpire <span class="token builtin">int64</span>
+    <span class="token punctuation">}</span>
+    UserRpc   zrpc<span class="token punctuation">.</span>RpcClientConf
+    CommonRpc zrpc<span class="token punctuation">.</span>RpcClientConf
+    VotesRpc  zrpc<span class="token punctuation">.</span>RpcClientConf
 
-    CacheRedis cache.ClusterConf
-}
+    CacheRedis cache<span class="token punctuation">.</span>ClusterConf
+<span class="token punctuation">}</span>
 </code></pre>
 <p>&#x52A0;&#x5165; <code>svc</code> &#x670D;&#x52A1;&#x4E2D;&#xFF1A;</p>
-<pre><code class="lang-go">&#x279C;  datacenter cat internal/svc/servicecontext.<span class="hljs-keyword">go</span>
-<span class="hljs-keyword">package</span> svc
+<pre class="language-"><code class="lang-go">&#x279C;  datacenter cat internal<span class="token operator">/</span>svc<span class="token operator">/</span>servicecontext<span class="token punctuation">.</span><span class="token keyword">go</span>
+<span class="token keyword">package</span> svc
 
-<span class="hljs-keyword">import</span> (
-    <span class="hljs-string">&quot;context&quot;</span>
-    <span class="hljs-string">&quot;datacenter/common/rpc/commonclient&quot;</span>
-    <span class="hljs-string">&quot;datacenter/internal/config&quot;</span>
-    <span class="hljs-string">&quot;datacenter/internal/middleware&quot;</span>
-    <span class="hljs-string">&quot;datacenter/shared&quot;</span>
-    <span class="hljs-string">&quot;datacenter/user/rpc/userclient&quot;</span>
-    <span class="hljs-string">&quot;datacenter/votes/rpc/votesclient&quot;</span>
-    <span class="hljs-string">&quot;fmt&quot;</span>
-    <span class="hljs-string">&quot;net/http&quot;</span>
-    <span class="hljs-string">&quot;time&quot;</span>
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+    <span class="token string">&quot;context&quot;</span>
+    <span class="token string">&quot;datacenter/common/rpc/commonclient&quot;</span>
+    <span class="token string">&quot;datacenter/internal/config&quot;</span>
+    <span class="token string">&quot;datacenter/internal/middleware&quot;</span>
+    <span class="token string">&quot;datacenter/shared&quot;</span>
+    <span class="token string">&quot;datacenter/user/rpc/userclient&quot;</span>
+    <span class="token string">&quot;datacenter/votes/rpc/votesclient&quot;</span>
+    <span class="token string">&quot;fmt&quot;</span>
+    <span class="token string">&quot;net/http&quot;</span>
+    <span class="token string">&quot;time&quot;</span>
 
-    <span class="hljs-string">&quot;github.com/tal-tech/go-zero/core/logx&quot;</span>
-    <span class="hljs-string">&quot;github.com/tal-tech/go-zero/core/stores/cache&quot;</span>
-    <span class="hljs-string">&quot;github.com/tal-tech/go-zero/core/stores/redis&quot;</span>
-    <span class="hljs-string">&quot;github.com/tal-tech/go-zero/core/syncx&quot;</span>
-    <span class="hljs-string">&quot;github.com/tal-tech/go-zero/rest&quot;</span>
-    <span class="hljs-string">&quot;github.com/tal-tech/go-zero/zrpc&quot;</span>
-    <span class="hljs-string">&quot;google.golang.org/grpc&quot;</span>
-)
+    <span class="token string">&quot;github.com/tal-tech/go-zero/core/logx&quot;</span>
+    <span class="token string">&quot;github.com/tal-tech/go-zero/core/stores/cache&quot;</span>
+    <span class="token string">&quot;github.com/tal-tech/go-zero/core/stores/redis&quot;</span>
+    <span class="token string">&quot;github.com/tal-tech/go-zero/core/syncx&quot;</span>
+    <span class="token string">&quot;github.com/tal-tech/go-zero/rest&quot;</span>
+    <span class="token string">&quot;github.com/tal-tech/go-zero/zrpc&quot;</span>
+    <span class="token string">&quot;google.golang.org/grpc&quot;</span>
+<span class="token punctuation">)</span>
 
-<span class="hljs-keyword">type</span> ServiceContext <span class="hljs-keyword">struct</span> {
-    Config           config.Config
-    GreetMiddleware1 rest.Middleware
-    GreetMiddleware2 rest.Middleware
-    Usercheck        rest.Middleware
-    UserRpc          userclient.User <span class="hljs-comment">//&#x7528;&#x6237;</span>
-    CommonRpc        commonclient.Common
-    VotesRpc         votesclient.Votes
-    Cache            cache.Cache
-    RedisConn        *redis.Redis
-}
+<span class="token keyword">type</span> ServiceContext <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+    Config           config<span class="token punctuation">.</span>Config
+    GreetMiddleware1 rest<span class="token punctuation">.</span>Middleware
+    GreetMiddleware2 rest<span class="token punctuation">.</span>Middleware
+    Usercheck        rest<span class="token punctuation">.</span>Middleware
+    UserRpc          userclient<span class="token punctuation">.</span>User <span class="token comment">//&#x7528;&#x6237;</span>
+    CommonRpc        commonclient<span class="token punctuation">.</span>Common
+    VotesRpc         votesclient<span class="token punctuation">.</span>Votes
+    Cache            cache<span class="token punctuation">.</span>Cache
+    RedisConn        <span class="token operator">*</span>redis<span class="token punctuation">.</span>Redis
+<span class="token punctuation">}</span>
 
-<span class="hljs-keyword">func</span> timeInterceptor(ctx context.Context, method <span class="hljs-keyword">string</span>, req, reply <span class="hljs-keyword">interface</span>{}, cc *grpc.ClientConn, invoker grpc.UnaryInvoker, opts ...grpc.CallOption) error {
-    stime := time.Now()
-    err := invoker(ctx, method, req, reply, cc, opts...)
-    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
-        <span class="hljs-keyword">return</span> err
-    }
+<span class="token keyword">func</span> <span class="token function">timeInterceptor</span><span class="token punctuation">(</span>ctx context<span class="token punctuation">.</span>Context<span class="token punctuation">,</span> method <span class="token builtin">string</span><span class="token punctuation">,</span> req<span class="token punctuation">,</span> reply <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> cc <span class="token operator">*</span>grpc<span class="token punctuation">.</span>ClientConn<span class="token punctuation">,</span> invoker grpc<span class="token punctuation">.</span>UnaryInvoker<span class="token punctuation">,</span> opts <span class="token operator">...</span>grpc<span class="token punctuation">.</span>CallOption<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+    stime <span class="token operator">:=</span> time<span class="token punctuation">.</span><span class="token function">Now</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    err <span class="token operator">:=</span> <span class="token function">invoker</span><span class="token punctuation">(</span>ctx<span class="token punctuation">,</span> method<span class="token punctuation">,</span> req<span class="token punctuation">,</span> reply<span class="token punctuation">,</span> cc<span class="token punctuation">,</span> opts<span class="token operator">...</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> err
+    <span class="token punctuation">}</span>
 
-    fmt.Printf(<span class="hljs-string">&quot;&#x8C03;&#x7528; %s &#x65B9;&#x6CD5; &#x8017;&#x65F6;: %v\n&quot;</span>, method, time.Now().Sub(stime))
-    <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
-}
-<span class="hljs-keyword">func</span> NewServiceContext(c config.Config) *ServiceContext {
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;&#x8C03;&#x7528; %s &#x65B9;&#x6CD5; &#x8017;&#x65F6;: %v\n&quot;</span><span class="token punctuation">,</span> method<span class="token punctuation">,</span> time<span class="token punctuation">.</span><span class="token function">Now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Sub</span><span class="token punctuation">(</span>stime<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token boolean">nil</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token function">NewServiceContext</span><span class="token punctuation">(</span>c config<span class="token punctuation">.</span>Config<span class="token punctuation">)</span> <span class="token operator">*</span>ServiceContext <span class="token punctuation">{</span>
 
-    ur := userclient.NewUser(zrpc.MustNewClient(c.UserRpc, zrpc.WithUnaryClientInterceptor(timeInterceptor)))
-    cr := commonclient.NewCommon(zrpc.MustNewClient(c.CommonRpc, zrpc.WithUnaryClientInterceptor(timeInterceptor)))
-    vr := votesclient.NewVotes(zrpc.MustNewClient(c.VotesRpc, zrpc.WithUnaryClientInterceptor(timeInterceptor)))
-    <span class="hljs-comment">//&#x7F13;&#x5B58;</span>
-    ca := cache.NewCache(c.CacheRedis, syncx.NewSharedCalls(), cache.NewCacheStat(<span class="hljs-string">&quot;dc&quot;</span>), shared.ErrNotFound)
-    rcon := redis.NewRedis(c.CacheRedis[<span class="hljs-number">0</span>].Host, c.CacheRedis[<span class="hljs-number">0</span>].Type, c.CacheRedis[<span class="hljs-number">0</span>].Pass)
-    <span class="hljs-keyword">return</span> &amp;ServiceContext{
-        Config:           c,
-        GreetMiddleware1: greetMiddleware1,
-        GreetMiddleware2: greetMiddleware2,
-        Usercheck:        middleware.NewUserCheckMiddleware().Handle,
-        UserRpc:          ur,
-        CommonRpc:        cr,
-        VotesRpc:         vr,
-        Cache:            ca,
-        RedisConn:        rcon,
-    }
-}
+    ur <span class="token operator">:=</span> userclient<span class="token punctuation">.</span><span class="token function">NewUser</span><span class="token punctuation">(</span>zrpc<span class="token punctuation">.</span><span class="token function">MustNewClient</span><span class="token punctuation">(</span>c<span class="token punctuation">.</span>UserRpc<span class="token punctuation">,</span> zrpc<span class="token punctuation">.</span><span class="token function">WithUnaryClientInterceptor</span><span class="token punctuation">(</span>timeInterceptor<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    cr <span class="token operator">:=</span> commonclient<span class="token punctuation">.</span><span class="token function">NewCommon</span><span class="token punctuation">(</span>zrpc<span class="token punctuation">.</span><span class="token function">MustNewClient</span><span class="token punctuation">(</span>c<span class="token punctuation">.</span>CommonRpc<span class="token punctuation">,</span> zrpc<span class="token punctuation">.</span><span class="token function">WithUnaryClientInterceptor</span><span class="token punctuation">(</span>timeInterceptor<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    vr <span class="token operator">:=</span> votesclient<span class="token punctuation">.</span><span class="token function">NewVotes</span><span class="token punctuation">(</span>zrpc<span class="token punctuation">.</span><span class="token function">MustNewClient</span><span class="token punctuation">(</span>c<span class="token punctuation">.</span>VotesRpc<span class="token punctuation">,</span> zrpc<span class="token punctuation">.</span><span class="token function">WithUnaryClientInterceptor</span><span class="token punctuation">(</span>timeInterceptor<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token comment">//&#x7F13;&#x5B58;</span>
+    ca <span class="token operator">:=</span> cache<span class="token punctuation">.</span><span class="token function">NewCache</span><span class="token punctuation">(</span>c<span class="token punctuation">.</span>CacheRedis<span class="token punctuation">,</span> syncx<span class="token punctuation">.</span><span class="token function">NewSharedCalls</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> cache<span class="token punctuation">.</span><span class="token function">NewCacheStat</span><span class="token punctuation">(</span><span class="token string">&quot;dc&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span> shared<span class="token punctuation">.</span>ErrNotFound<span class="token punctuation">)</span>
+    rcon <span class="token operator">:=</span> redis<span class="token punctuation">.</span><span class="token function">NewRedis</span><span class="token punctuation">(</span>c<span class="token punctuation">.</span>CacheRedis<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>Host<span class="token punctuation">,</span> c<span class="token punctuation">.</span>CacheRedis<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>Type<span class="token punctuation">,</span> c<span class="token punctuation">.</span>CacheRedis<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>Pass<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token operator">&amp;</span>ServiceContext<span class="token punctuation">{</span>
+        Config<span class="token punctuation">:</span>           c<span class="token punctuation">,</span>
+        GreetMiddleware1<span class="token punctuation">:</span> greetMiddleware1<span class="token punctuation">,</span>
+        GreetMiddleware2<span class="token punctuation">:</span> greetMiddleware2<span class="token punctuation">,</span>
+        Usercheck<span class="token punctuation">:</span>        middleware<span class="token punctuation">.</span><span class="token function">NewUserCheckMiddleware</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>Handle<span class="token punctuation">,</span>
+        UserRpc<span class="token punctuation">:</span>          ur<span class="token punctuation">,</span>
+        CommonRpc<span class="token punctuation">:</span>        cr<span class="token punctuation">,</span>
+        VotesRpc<span class="token punctuation">:</span>         vr<span class="token punctuation">,</span>
+        Cache<span class="token punctuation">:</span>            ca<span class="token punctuation">,</span>
+        RedisConn<span class="token punctuation">:</span>        rcon<span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>&#x8FD9;&#x6837;&#x57FA;&#x672C;&#x4E0A;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x5728; <code>logic</code> &#x7684;&#x6587;&#x4EF6;&#x76EE;&#x5F55;&#x4E2D;&#x8C03;&#x7528;&#x4E86;&#xFF1A;</p>
-<pre><code class="lang-go">cat internal/logic/common/appinfologic.<span class="hljs-keyword">go</span>
+<pre class="language-"><code class="lang-go">cat internal<span class="token operator">/</span>logic<span class="token operator">/</span>common<span class="token operator">/</span>appinfologic<span class="token punctuation">.</span><span class="token keyword">go</span>
 
-<span class="hljs-keyword">package</span> logic
+<span class="token keyword">package</span> logic
 
-<span class="hljs-keyword">import</span> (
-    <span class="hljs-string">&quot;context&quot;</span>
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+    <span class="token string">&quot;context&quot;</span>
 
-    <span class="hljs-string">&quot;datacenter/internal/svc&quot;</span>
-    <span class="hljs-string">&quot;datacenter/internal/types&quot;</span>
-    <span class="hljs-string">&quot;datacenter/shared&quot;</span>
+    <span class="token string">&quot;datacenter/internal/svc&quot;</span>
+    <span class="token string">&quot;datacenter/internal/types&quot;</span>
+    <span class="token string">&quot;datacenter/shared&quot;</span>
 
-    <span class="hljs-string">&quot;datacenter/common/model&quot;</span>
-    <span class="hljs-string">&quot;datacenter/common/rpc/common&quot;</span>
+    <span class="token string">&quot;datacenter/common/model&quot;</span>
+    <span class="token string">&quot;datacenter/common/rpc/common&quot;</span>
 
-    <span class="hljs-string">&quot;github.com/tal-tech/go-zero/core/logx&quot;</span>
-)
+    <span class="token string">&quot;github.com/tal-tech/go-zero/core/logx&quot;</span>
+<span class="token punctuation">)</span>
 
-<span class="hljs-keyword">type</span> AppInfoLogic <span class="hljs-keyword">struct</span> {
-    logx.Logger
-    ctx    context.Context
-    svcCtx *svc.ServiceContext
-}
+<span class="token keyword">type</span> AppInfoLogic <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+    logx<span class="token punctuation">.</span>Logger
+    ctx    context<span class="token punctuation">.</span>Context
+    svcCtx <span class="token operator">*</span>svc<span class="token punctuation">.</span>ServiceContext
+<span class="token punctuation">}</span>
 
-<span class="hljs-keyword">func</span> NewAppInfoLogic(ctx context.Context, svcCtx *svc.ServiceContext) AppInfoLogic {
-    <span class="hljs-keyword">return</span> AppInfoLogic{
-        Logger: logx.WithContext(ctx),
-        ctx:    ctx,
-        svcCtx: svcCtx,
-    }
-}
+<span class="token keyword">func</span> <span class="token function">NewAppInfoLogic</span><span class="token punctuation">(</span>ctx context<span class="token punctuation">.</span>Context<span class="token punctuation">,</span> svcCtx <span class="token operator">*</span>svc<span class="token punctuation">.</span>ServiceContext<span class="token punctuation">)</span> AppInfoLogic <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> AppInfoLogic<span class="token punctuation">{</span>
+        Logger<span class="token punctuation">:</span> logx<span class="token punctuation">.</span><span class="token function">WithContext</span><span class="token punctuation">(</span>ctx<span class="token punctuation">)</span><span class="token punctuation">,</span>
+        ctx<span class="token punctuation">:</span>    ctx<span class="token punctuation">,</span>
+        svcCtx<span class="token punctuation">:</span> svcCtx<span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-<span class="hljs-keyword">func</span> (l *AppInfoLogic) AppInfo(req types.Beid) (appconfig *common.BaseAppResp, err error) {
+<span class="token keyword">func</span> <span class="token punctuation">(</span>l <span class="token operator">*</span>AppInfoLogic<span class="token punctuation">)</span> <span class="token function">AppInfo</span><span class="token punctuation">(</span>req types<span class="token punctuation">.</span>Beid<span class="token punctuation">)</span> <span class="token punctuation">(</span>appconfig <span class="token operator">*</span>common<span class="token punctuation">.</span>BaseAppResp<span class="token punctuation">,</span> err <span class="token builtin">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-    <span class="hljs-comment">//&#x68C0;&#x67E5; &#x7F13;&#x5B58;&#x4E2D;&#x662F;&#x5426;&#x6709;&#x503C;</span>
-    err = l.svcCtx.Cache.GetCache(model.GetcacheBaseAppIdPrefix(req.Beid), appconfig)
-    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> &amp;&amp; err == shared.ErrNotFound {
-        appconfig, err = l.svcCtx.CommonRpc.GetBaseApp(l.ctx, &amp;common.BaseAppReq{
-            Beid: req.Beid,
-        })
-        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
-            <span class="hljs-keyword">return</span>
-        }
-        err = l.svcCtx.Cache.SetCache(model.GetcacheBaseAppIdPrefix(req.Beid), appconfig)
-    }
+    <span class="token comment">//&#x68C0;&#x67E5; &#x7F13;&#x5B58;&#x4E2D;&#x662F;&#x5426;&#x6709;&#x503C;</span>
+    err <span class="token operator">=</span> l<span class="token punctuation">.</span>svcCtx<span class="token punctuation">.</span>Cache<span class="token punctuation">.</span><span class="token function">GetCache</span><span class="token punctuation">(</span>model<span class="token punctuation">.</span><span class="token function">GetcacheBaseAppIdPrefix</span><span class="token punctuation">(</span>req<span class="token punctuation">.</span>Beid<span class="token punctuation">)</span><span class="token punctuation">,</span> appconfig<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token operator">&amp;&amp;</span> err <span class="token operator">==</span> shared<span class="token punctuation">.</span>ErrNotFound <span class="token punctuation">{</span>
+        appconfig<span class="token punctuation">,</span> err <span class="token operator">=</span> l<span class="token punctuation">.</span>svcCtx<span class="token punctuation">.</span>CommonRpc<span class="token punctuation">.</span><span class="token function">GetBaseApp</span><span class="token punctuation">(</span>l<span class="token punctuation">.</span>ctx<span class="token punctuation">,</span> <span class="token operator">&amp;</span>common<span class="token punctuation">.</span>BaseAppReq<span class="token punctuation">{</span>
+            Beid<span class="token punctuation">:</span> req<span class="token punctuation">.</span>Beid<span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span>
+        <span class="token punctuation">}</span>
+        err <span class="token operator">=</span> l<span class="token punctuation">.</span>svcCtx<span class="token punctuation">.</span>Cache<span class="token punctuation">.</span><span class="token function">SetCache</span><span class="token punctuation">(</span>model<span class="token punctuation">.</span><span class="token function">GetcacheBaseAppIdPrefix</span><span class="token punctuation">(</span>req<span class="token punctuation">.</span>Beid<span class="token punctuation">)</span><span class="token punctuation">,</span> appconfig<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
 
-    <span class="hljs-keyword">return</span>
-}
+    <span class="token keyword">return</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>&#x8FD9;&#x6837;&#xFF0C;&#x57FA;&#x672C;&#x5C31;&#x8FDE;&#x63A5;&#x8D77;&#x6765;&#x4E86;&#xFF0C;&#x5176;&#x5B83;&#x57FA;&#x672C;&#x4E0A;&#x5C31;&#x4E0D;&#x7528;&#x6539;&#x4E86;&#xFF0C;<code>UserRPC</code>&#xFF0C; <code>VotesRPC</code> &#x7C7B;&#x4F3C;&#xFF0C;&#x8FD9;&#x91CC;&#x5C31;&#x4E0D;&#x5728;&#x5199;&#x4E86;&#x3002;</p>
 <h2 id="&#x4F7F;&#x7528;&#x5FC3;&#x5F97;">&#x4F7F;&#x7528;&#x5FC3;&#x5F97;</h2>
@@ -2034,7 +2034,7 @@ gitalk.render("gitalk-container");
 
 
 <footer class="page-footer"><span class="copyright">Copyright &#xA9; 2019-2021 go-zero all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x6700;&#x540E;&#x66F4;&#x65B0;&#x65F6;&#x95F4;&#xFF1A;
-2021-02-22 06:10:14
+2021-02-22 07:19:33
 </span></footer>
 <script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
                                 
@@ -2079,7 +2079,7 @@ gitalk.render("gitalk-container");
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"我是如何用go-zero 实现一个中台系统","level":"1.13.1","depth":2,"next":{"title":"流数据处理利器","level":"1.13.2","depth":2,"path":"stream.md","ref":"stream.md","articles":[]},"previous":{"title":"开发实践","level":"1.13","depth":1,"path":"practise.md","ref":"practise.md","articles":[{"title":"我是如何用go-zero 实现一个中台系统","level":"1.13.1","depth":2,"path":"datacenter.md","ref":"datacenter.md","articles":[]},{"title":"流数据处理利器","level":"1.13.2","depth":2,"path":"stream.md","ref":"stream.md","articles":[]},{"title":"10月3日线上交流问题汇总","level":"1.13.3","depth":2,"path":"online-exchange.md","ref":"online-exchange.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","code","-lunr","-search","search-pro","github","splitter","-sharing","sharing-plus","tbfed-pagefooter","flexible-alerts","pageview-count","popup","hide-element","edit-link"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © 2019-2021 go-zero","modify_label":"最后更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"github":{"url":"https://github.com/go-zero"},"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"qq":false,"all":["douban","facebook","google","linkedin","twitter","weibo","qq","qzone","weibo"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true},"edit-link":{"label":"编辑此页","base":"https://github.com/zeromicro/go-zero-doc/blob/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"松妹子","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"go-zero使用文档","language":"zh-hans","gitbook":"*"},"file":{"path":"datacenter.md","mtime":"2021-02-22T06:10:14.265Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-22T06:11:08.953Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"我是如何用go-zero 实现一个中台系统","level":"1.13.1","depth":2,"next":{"title":"流数据处理利器","level":"1.13.2","depth":2,"path":"stream.md","ref":"stream.md","articles":[]},"previous":{"title":"开发实践","level":"1.13","depth":1,"path":"practise.md","ref":"practise.md","articles":[{"title":"我是如何用go-zero 实现一个中台系统","level":"1.13.1","depth":2,"path":"datacenter.md","ref":"datacenter.md","articles":[]},{"title":"流数据处理利器","level":"1.13.2","depth":2,"path":"stream.md","ref":"stream.md","articles":[]},{"title":"10月3日线上交流问题汇总","level":"1.13.3","depth":2,"path":"online-exchange.md","ref":"online-exchange.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","code","-lunr","-search","search-pro","github","splitter","-sharing","sharing-plus","tbfed-pagefooter","flexible-alerts","pageview-count","popup","hide-element","edit-link","-highlight","prism"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © 2019-2021 go-zero","modify_label":"最后更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"lang":{"shell":"bash"},"css":["prismjs/themes/prism-tomorrow.css"]},"github":{"url":"https://github.com/go-zero"},"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"qq":false,"all":["douban","facebook","google","linkedin","twitter","weibo","qq","qzone","weibo"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true},"edit-link":{"label":"编辑此页","base":"https://github.com/zeromicro/go-zero-doc/blob/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"松妹子","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"go-zero使用文档","language":"zh-hans","gitbook":"*"},"file":{"path":"datacenter.md","mtime":"2021-02-22T07:19:33.172Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-22T07:20:35.200Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

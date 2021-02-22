@@ -49,7 +49,7 @@
                 
             
                 
-                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-prism/prism-tomorrow.css">
                 
             
                 
@@ -1278,33 +1278,33 @@ prometheus&#x662F;&#x4E00;&#x4E2A;&#x5F00;&#x6E90;&#x7684;&#x7CFB;&#x7EDF;&#x76D
 <ul>
 <li>&#x7B2C;&#x4E00;&#x6B65;&#x9700;&#x8981;&#x5148;&#x5B89;&#x88C5;Prometheus&#xFF0C;&#x5B89;&#x88C5;&#x6B65;&#x9AA4;&#x8BF7;&#x53C2;&#x8003;&#x5B98;&#x65B9;&#x6587;&#x6863;</li>
 <li><p>go-zero&#x9ED8;&#x8BA4;&#x4E0D;&#x5F00;&#x542F;prometheus&#x76D1;&#x63A7;&#xFF0C;&#x5F00;&#x542F;&#x65B9;&#x5F0F;&#x5F88;&#x7B80;&#x5355;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x5728;shorturl-api.yaml&#x6587;&#x4EF6;&#x4E2D;&#x589E;&#x52A0;&#x914D;&#x7F6E;&#x5982;&#x4E0B;&#xFF0C;&#x5176;&#x4E2D;Host&#x4E3A;Prometheus Server&#x5730;&#x5740;&#x4E3A;&#x5FC5;&#x586B;&#x914D;&#x7F6E;&#xFF0C;Port&#x7AEF;&#x53E3;&#x4E0D;&#x586B;&#x9ED8;&#x8BA4;9091&#xFF0C;Path&#x4E3A;&#x7528;&#x6765;&#x62C9;&#x53D6;&#x6307;&#x6807;&#x7684;&#x8DEF;&#x5F84;&#x9ED8;&#x8BA4;&#x4E3A;/metrics</p>
-<pre><code class="lang-yaml"><span class="hljs-attr">  Prometheus:</span>
-<span class="hljs-attr">  Host:</span> <span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>
-<span class="hljs-attr">  Port:</span> <span class="hljs-number">9091</span>
-<span class="hljs-attr">  Path:</span> /metrics
+<pre class="language-"><code class="lang-yaml">  <span class="token key atrule">Prometheus</span><span class="token punctuation">:</span>
+  <span class="token key atrule">Host</span><span class="token punctuation">:</span> 127.0.0.1
+  <span class="token key atrule">Port</span><span class="token punctuation">:</span> <span class="token number">9091</span>
+  <span class="token key atrule">Path</span><span class="token punctuation">:</span> /metrics
 </code></pre>
 </li>
 <li><p>&#x7F16;&#x8F91;prometheus&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;prometheus.yml&#xFF0C;&#x6DFB;&#x52A0;&#x5982;&#x4E0B;&#x914D;&#x7F6E;&#xFF0C;&#x5E76;&#x521B;&#x5EFA;targets.json</p>
-<pre><code class="lang-yaml"><span class="hljs-attr">  - job_name:</span> <span class="hljs-string">&apos;file_ds&apos;</span>
-<span class="hljs-attr">  file_sd_configs:</span>
-<span class="hljs-attr">  - files:</span>
-<span class="hljs-bullet">    -</span> targets.json
+<pre class="language-"><code class="lang-yaml">  <span class="token punctuation">-</span> <span class="token key atrule">job_name</span><span class="token punctuation">:</span> <span class="token string">&apos;file_ds&apos;</span>
+  <span class="token key atrule">file_sd_configs</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">files</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> targets.json
 </code></pre>
 </li>
-<li>&#x7F16;&#x8F91;targets.json&#x6587;&#x4EF6;&#xFF0C;&#x5176;&#x4E2D;targets&#x4E3A;shorturl&#x914D;&#x7F6E;&#x7684;&#x76EE;&#x6807;&#x5730;&#x5740;&#xFF0C;&#x5E76;&#x6DFB;&#x52A0;&#x4E86;&#x51E0;&#x4E2A;&#x9ED8;&#x8BA4;&#x7684;&#x6807;&#x7B7E;<pre><code class="lang-yaml">  [
-      {
-<span class="hljs-attr">          &quot;targets&quot;:</span> [<span class="hljs-string">&quot;127.0.0.1:9091&quot;</span>],
-<span class="hljs-attr">          &quot;labels&quot;:</span> {
-<span class="hljs-attr">              &quot;job&quot;:</span> <span class="hljs-string">&quot;shorturl-api&quot;</span>,
-<span class="hljs-attr">              &quot;app&quot;:</span> <span class="hljs-string">&quot;shorturl-api&quot;</span>,
-<span class="hljs-attr">              &quot;env&quot;:</span> <span class="hljs-string">&quot;test&quot;</span>,
-<span class="hljs-attr">              &quot;instance&quot;:</span> <span class="hljs-string">&quot;127.0.0.1:8888&quot;</span>
-          }
-      }
-  ]
+<li>&#x7F16;&#x8F91;targets.json&#x6587;&#x4EF6;&#xFF0C;&#x5176;&#x4E2D;targets&#x4E3A;shorturl&#x914D;&#x7F6E;&#x7684;&#x76EE;&#x6807;&#x5730;&#x5740;&#xFF0C;&#x5E76;&#x6DFB;&#x52A0;&#x4E86;&#x51E0;&#x4E2A;&#x9ED8;&#x8BA4;&#x7684;&#x6807;&#x7B7E;<pre class="language-"><code class="lang-yaml">  <span class="token punctuation">[</span>
+      <span class="token punctuation">{</span>
+          <span class="token key atrule">&quot;targets&quot;</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&quot;127.0.0.1:9091&quot;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+          <span class="token key atrule">&quot;labels&quot;</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+              <span class="token key atrule">&quot;job&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;shorturl-api&quot;</span><span class="token punctuation">,</span>
+              <span class="token key atrule">&quot;app&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;shorturl-api&quot;</span><span class="token punctuation">,</span>
+              <span class="token key atrule">&quot;env&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;test&quot;</span><span class="token punctuation">,</span>
+              <span class="token key atrule">&quot;instance&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;127.0.0.1:8888&quot;</span>
+          <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span>
 </code></pre>
 </li>
-<li>&#x542F;&#x52A8;prometheus&#x670D;&#x52A1;&#xFF0C;&#x9ED8;&#x8BA4;&#x4FA6;&#x542C;&#x5728;9090&#x7AEF;&#x53E3;<pre><code class="lang-shell">  $ prometheus --config.file=prometheus.yml
+<li>&#x542F;&#x52A8;prometheus&#x670D;&#x52A1;&#xFF0C;&#x9ED8;&#x8BA4;&#x4FA6;&#x542C;&#x5728;9090&#x7AEF;&#x53E3;<pre class="language-"><code class="lang-shell">  $ prometheus --config.file<span class="token operator">=</span>prometheus.yml
 </code></pre>
 </li>
 <li>&#x5728;&#x6D4F;&#x89C8;&#x5668;&#x8F93;&#x5165;<code>http://127.0.0.1:9090/</code>&#xFF0C;&#x7136;&#x540E;&#x70B9;&#x51FB;<code>Status</code> -&gt; <code>Targets</code>&#x5373;&#x53EF;&#x770B;&#x5230;&#x72B6;&#x6001;&#x4E3A;Up&#x7684;Job&#xFF0C;&#x5E76;&#x4E14;Lables&#x680F;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x6211;&#x4EEC;&#x914D;&#x7F6E;&#x7684;&#x9ED8;&#x8BA4;&#x7684;&#x6807;&#x7B7E;
@@ -1316,7 +1316,7 @@ prometheus&#x662F;&#x4E00;&#x4E2A;&#x5F00;&#x6E90;&#x7684;&#x7CFB;&#x7EDF;&#x76D
 <p>&#x4E3B;&#x8981;&#x4ECE;&#x8BF7;&#x6C42;&#x8017;&#x65F6;&#x548C;&#x8BF7;&#x6C42;&#x9519;&#x8BEF;&#x4E24;&#x4E2A;&#x7EF4;&#x5EA6;&#xFF0C;&#x8BF7;&#x6C42;&#x8017;&#x65F6;&#x91C7;&#x7528;&#x4E86;Histogram&#x6307;&#x6807;&#x7C7B;&#x578B;&#x5B9A;&#x4E49;&#x4E86;&#x591A;&#x4E2A;Buckets&#x65B9;&#x4FBF;&#x8FDB;&#x884C;&#x5206;&#x4F4D;&#x7EDF;&#x8BA1;&#xFF0C;&#x8BF7;&#x6C42;&#x9519;&#x8BEF;&#x91C7;&#x7528;&#x4E86;Counter&#x7C7B;&#x578B;&#xFF0C;&#x5E76;&#x5728;http metric&#x4E2D;&#x6DFB;&#x52A0;&#x4E86;path&#x6807;&#x7B7E;rpc metric&#x4E2D;&#x6DFB;&#x52A0;&#x4E86;method&#x6807;&#x7B7E;&#x4EE5;&#x4FBF;&#x8FDB;&#x884C;&#x7EC6;&#x5206;&#x76D1;&#x63A7;&#x3002;
 &#x63A5;&#x4E0B;&#x6765;&#x6F14;&#x793A;&#x5982;&#x4F55;&#x67E5;&#x770B;&#x76D1;&#x63A7;&#x6307;&#x6807;&#xFF1A;
 &#x9996;&#x5148;&#x5728;&#x547D;&#x4EE4;&#x884C;&#x591A;&#x6B21;&#x6267;&#x884C;&#x5982;&#x4E0B;&#x547D;&#x4EE4;</p>
-<pre><code class="lang-shell">$ curl -i &quot;http://localhost:8888/shorten?url=http://www.xiaoheiban.cn&quot;
+<pre class="language-"><code class="lang-shell">$ <span class="token function">curl</span> -i <span class="token string">&quot;http://localhost:8888/shorten?url=http://www.xiaoheiban.cn&quot;</span>
 </code></pre>
 <p>&#x6253;&#x5F00;Prometheus&#x5207;&#x6362;&#x5230;Graph&#x754C;&#x9762;&#xFF0C;&#x5728;&#x8F93;&#x5165;&#x6846;&#x4E2D;&#x8F93;&#x5165;{path=&quot;/shorten&quot;}&#x6307;&#x4EE4;&#xFF0C;&#x5373;&#x53EF;&#x67E5;&#x770B;&#x76D1;&#x63A7;&#x6307;&#x6807;&#xFF0C;&#x5982;&#x4E0B;&#x56FE;
 <img src="resource/prometheus-graph.webp" alt="prometheus-graph"></p>
@@ -1353,7 +1353,7 @@ gitalk.render("gitalk-container");
 
 
 <footer class="page-footer"><span class="copyright">Copyright &#xA9; 2019-2021 go-zero all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x6700;&#x540E;&#x66F4;&#x65B0;&#x65F6;&#x95F4;&#xFF1A;
-2021-02-22 06:10:14
+2021-02-22 07:19:33
 </span></footer>
 <script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
                                 
@@ -1398,7 +1398,7 @@ gitalk.render("gitalk-container");
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"服务监控","level":"1.7.10","depth":2,"next":{"title":"Goctl","level":"1.8","depth":1,"path":"goctl.md","ref":"goctl.md","articles":[{"title":"命令大全","level":"1.8.1","depth":2,"path":"goctl-commands.md","ref":"goctl-commands.md","articles":[]},{"title":"api命令","level":"1.8.2","depth":2,"path":"goctl-api.md","ref":"goctl-api.md","articles":[]},{"title":"rpc命令","level":"1.8.3","depth":2,"path":"goctl-rpc.md","ref":"goctl-rpc.md","articles":[]},{"title":"model命令","level":"1.8.4","depth":2,"path":"goctl-model.md","ref":"goctl-model.md","articles":[]},{"title":"plugin命令","level":"1.8.5","depth":2,"path":"goctl-plugin.md","ref":"goctl-plugin.md","articles":[]},{"title":"其他命令","level":"1.8.6","depth":2,"path":"goctl-other.md","ref":"goctl-other.md","articles":[]}]},"previous":{"title":"链路追踪","level":"1.7.9","depth":2,"path":"trace.md","ref":"trace.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","code","-lunr","-search","search-pro","github","splitter","-sharing","sharing-plus","tbfed-pagefooter","flexible-alerts","pageview-count","popup","hide-element","edit-link"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © 2019-2021 go-zero","modify_label":"最后更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"github":{"url":"https://github.com/go-zero"},"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"qq":false,"all":["douban","facebook","google","linkedin","twitter","weibo","qq","qzone","weibo"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true},"edit-link":{"label":"编辑此页","base":"https://github.com/zeromicro/go-zero-doc/blob/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"松妹子","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"go-zero使用文档","language":"zh-hans","gitbook":"*"},"file":{"path":"service-monitor.md","mtime":"2021-02-22T06:10:14.269Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-22T06:11:08.953Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"服务监控","level":"1.7.10","depth":2,"next":{"title":"Goctl","level":"1.8","depth":1,"path":"goctl.md","ref":"goctl.md","articles":[{"title":"命令大全","level":"1.8.1","depth":2,"path":"goctl-commands.md","ref":"goctl-commands.md","articles":[]},{"title":"api命令","level":"1.8.2","depth":2,"path":"goctl-api.md","ref":"goctl-api.md","articles":[]},{"title":"rpc命令","level":"1.8.3","depth":2,"path":"goctl-rpc.md","ref":"goctl-rpc.md","articles":[]},{"title":"model命令","level":"1.8.4","depth":2,"path":"goctl-model.md","ref":"goctl-model.md","articles":[]},{"title":"plugin命令","level":"1.8.5","depth":2,"path":"goctl-plugin.md","ref":"goctl-plugin.md","articles":[]},{"title":"其他命令","level":"1.8.6","depth":2,"path":"goctl-other.md","ref":"goctl-other.md","articles":[]}]},"previous":{"title":"链路追踪","level":"1.7.9","depth":2,"path":"trace.md","ref":"trace.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","code","-lunr","-search","search-pro","github","splitter","-sharing","sharing-plus","tbfed-pagefooter","flexible-alerts","pageview-count","popup","hide-element","edit-link","-highlight","prism"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © 2019-2021 go-zero","modify_label":"最后更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"lang":{"shell":"bash"},"css":["prismjs/themes/prism-tomorrow.css"]},"github":{"url":"https://github.com/go-zero"},"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"qq":false,"all":["douban","facebook","google","linkedin","twitter","weibo","qq","qzone","weibo"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true},"edit-link":{"label":"编辑此页","base":"https://github.com/zeromicro/go-zero-doc/blob/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"松妹子","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"go-zero使用文档","language":"zh-hans","gitbook":"*"},"file":{"path":"service-monitor.md","mtime":"2021-02-22T07:19:33.176Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-22T07:20:35.200Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

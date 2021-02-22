@@ -49,7 +49,7 @@
                 
             
                 
-                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-prism/prism-tomorrow.css">
                 
             
                 
@@ -1280,34 +1280,34 @@
 <h3 id="user-api&#x751F;&#x6210;jwt-token">user api&#x751F;&#x6210;jwt token</h3>
 <p>&#x63A5;&#x7740;<a href="business-coding.html">&#x4E1A;&#x52A1;&#x7F16;&#x7801;</a>&#x7AE0;&#x8282;&#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x6211;&#x4EEC;&#x5B8C;&#x5584;&#x4E0A;&#x4E00;&#x8282;&#x9057;&#x7559;&#x7684;<code>getJwtToken</code>&#x65B9;&#x6CD5;&#xFF0C;&#x5373;&#x751F;&#x6210;jwt token&#x903B;&#x8F91;</p>
 <h4 id="&#x6DFB;&#x52A0;&#x914D;&#x7F6E;&#x5B9A;&#x4E49;&#x548C;yaml&#x914D;&#x7F6E;&#x9879;">&#x6DFB;&#x52A0;&#x914D;&#x7F6E;&#x5B9A;&#x4E49;&#x548C;yaml&#x914D;&#x7F6E;&#x9879;</h4>
-<pre><code class="lang-shell">$ vim service/user/cmd/api/internal/config/config.go
+<pre class="language-"><code class="lang-shell">$ <span class="token function">vim</span> service/user/cmd/api/internal/config/config.go
 </code></pre>
-<pre><code class="lang-golang"><span class="hljs-keyword">type</span> Config <span class="hljs-keyword">struct</span> {
-    rest.RestConf
-    Mysql <span class="hljs-keyword">struct</span>{
-        DataSource <span class="hljs-keyword">string</span>
-    }
-    CacheRedis cache.CacheConf
-    Auth      <span class="hljs-keyword">struct</span> {
-        AccessSecret <span class="hljs-keyword">string</span>
-        AccessExpire <span class="hljs-keyword">int64</span>
-    }
-}
+<pre class="language-"><code class="lang-go"><span class="token keyword">type</span> Config <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+    rest<span class="token punctuation">.</span>RestConf
+    Mysql <span class="token keyword">struct</span><span class="token punctuation">{</span>
+        DataSource <span class="token builtin">string</span>
+    <span class="token punctuation">}</span>
+    CacheRedis cache<span class="token punctuation">.</span>CacheConf
+    Auth      <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+        AccessSecret <span class="token builtin">string</span>
+        AccessExpire <span class="token builtin">int64</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
-<pre><code class="lang-shell">$ vim service/user/cmd/api/etc/user-api.yaml
+<pre class="language-"><code class="lang-shell">$ <span class="token function">vim</span> service/user/cmd/api/etc/user-api.yaml
 </code></pre>
-<pre><code class="lang-yaml"><span class="hljs-attr">Name:</span> user-api
-<span class="hljs-attr">Host:</span> <span class="hljs-number">0.0</span><span class="hljs-number">.0</span><span class="hljs-number">.0</span>
-<span class="hljs-attr">Port:</span> <span class="hljs-number">8888</span>
-<span class="hljs-attr">Mysql:</span>
-<span class="hljs-attr">  DataSource:</span> $user:$password@tcp($url)/$db?charset=utf8mb4&amp;parseTime=<span class="hljs-literal">true</span>&amp;loc=Asia%<span class="hljs-number">2</span>FShanghai
-<span class="hljs-attr">CacheRedis:</span>
-<span class="hljs-attr">  - Host:</span> $host
-<span class="hljs-attr">    Pass:</span> $pass
-<span class="hljs-attr">    Type:</span> node
-<span class="hljs-attr">Auth:</span>
-<span class="hljs-attr">  AccessSecret:</span> $AccessSecret
-<span class="hljs-attr">  AccessExpire:</span> $AccessExpire
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">Name</span><span class="token punctuation">:</span> user<span class="token punctuation">-</span>api
+<span class="token key atrule">Host</span><span class="token punctuation">:</span> 0.0.0.0
+<span class="token key atrule">Port</span><span class="token punctuation">:</span> <span class="token number">8888</span>
+<span class="token key atrule">Mysql</span><span class="token punctuation">:</span>
+  <span class="token key atrule">DataSource</span><span class="token punctuation">:</span> $user<span class="token punctuation">:</span>$password@tcp($url)/$db<span class="token punctuation">?</span>charset=utf8mb4<span class="token important">&amp;parseTime=true&amp;loc=Asia%2FShanghai</span>
+<span class="token key atrule">CacheRedis</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">Host</span><span class="token punctuation">:</span> $host
+    <span class="token key atrule">Pass</span><span class="token punctuation">:</span> $pass
+    <span class="token key atrule">Type</span><span class="token punctuation">:</span> node
+<span class="token key atrule">Auth</span><span class="token punctuation">:</span>
+  <span class="token key atrule">AccessSecret</span><span class="token punctuation">:</span> $AccessSecret
+  <span class="token key atrule">AccessExpire</span><span class="token punctuation">:</span> $AccessExpire
 </code></pre>
 <blockquote>
 <p>[!TIP]
@@ -1315,23 +1315,23 @@ $AccessSecret&#xFF1A;&#x751F;&#x6210;jwt token&#x7684;&#x5BC6;&#x94A5;&#xFF0C;&#
 <p>$AccessExpire&#xFF1A;jwt token&#x6709;&#x6548;&#x671F;&#xFF0C;&#x5355;&#x4F4D;&#xFF1A;&#x79D2;</p>
 <p>&#x66F4;&#x591A;&#x914D;&#x7F6E;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x53C2;&#x8003;<a href="api-config.html">api&#x914D;&#x7F6E;&#x4ECB;&#x7ECD;</a></p>
 </blockquote>
-<pre><code class="lang-shell">$ vim service/user/cmd/api/internal/logic/loginlogic.go
+<pre class="language-"><code class="lang-shell">$ <span class="token function">vim</span> service/user/cmd/api/internal/logic/loginlogic.go
 </code></pre>
-<pre><code class="lang-golang"><span class="hljs-keyword">func</span> (l *LoginLogic) getJwtToken(secretKey <span class="hljs-keyword">string</span>, iat, seconds, userId <span class="hljs-keyword">int64</span>) (<span class="hljs-keyword">string</span>, error) {
-  claims := <span class="hljs-built_in">make</span>(jwt.MapClaims)
-  claims[<span class="hljs-string">&quot;exp&quot;</span>] = iat + seconds
-  claims[<span class="hljs-string">&quot;iat&quot;</span>] = iat
-  claims[<span class="hljs-string">&quot;userId&quot;</span>] = userId
-  token := jwt.New(jwt.SigningMethodHS256)
-  token.Claims = claims
-  <span class="hljs-keyword">return</span> token.SignedString([]<span class="hljs-keyword">byte</span>(secretKey))
-}
+<pre class="language-"><code class="lang-go"><span class="token keyword">func</span> <span class="token punctuation">(</span>l <span class="token operator">*</span>LoginLogic<span class="token punctuation">)</span> <span class="token function">getJwtToken</span><span class="token punctuation">(</span>secretKey <span class="token builtin">string</span><span class="token punctuation">,</span> iat<span class="token punctuation">,</span> seconds<span class="token punctuation">,</span> userId <span class="token builtin">int64</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token builtin">string</span><span class="token punctuation">,</span> <span class="token builtin">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  claims <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span>jwt<span class="token punctuation">.</span>MapClaims<span class="token punctuation">)</span>
+  claims<span class="token punctuation">[</span><span class="token string">&quot;exp&quot;</span><span class="token punctuation">]</span> <span class="token operator">=</span> iat <span class="token operator">+</span> seconds
+  claims<span class="token punctuation">[</span><span class="token string">&quot;iat&quot;</span><span class="token punctuation">]</span> <span class="token operator">=</span> iat
+  claims<span class="token punctuation">[</span><span class="token string">&quot;userId&quot;</span><span class="token punctuation">]</span> <span class="token operator">=</span> userId
+  token <span class="token operator">:=</span> jwt<span class="token punctuation">.</span><span class="token function">New</span><span class="token punctuation">(</span>jwt<span class="token punctuation">.</span>SigningMethodHS256<span class="token punctuation">)</span>
+  token<span class="token punctuation">.</span>Claims <span class="token operator">=</span> claims
+  <span class="token keyword">return</span> token<span class="token punctuation">.</span><span class="token function">SignedString</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token function">byte</span><span class="token punctuation">(</span>secretKey<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <h3 id="search-api&#x4F7F;&#x7528;jwt-token&#x9274;&#x6743;">search api&#x4F7F;&#x7528;jwt token&#x9274;&#x6743;</h3>
 <h4 id="&#x7F16;&#x5199;searchapi&#x6587;&#x4EF6;">&#x7F16;&#x5199;search.api&#x6587;&#x4EF6;</h4>
-<pre><code class="lang-shell">$ vim service/search/cmd/api/search.api
+<pre class="language-"><code class="lang-shell">$ <span class="token function">vim</span> service/search/cmd/api/search.api
 </code></pre>
-<pre><code class="lang-text">type (
+<pre class="language-"><code class="lang-text">type (
     SearchReq {
         // &#x56FE;&#x4E66;&#x540D;&#x79F0;
         Name string `form:&quot;name&quot;`
@@ -1366,14 +1366,14 @@ service search-api {
 <h4 id="&#x751F;&#x6210;&#x4EE3;&#x7801;">&#x751F;&#x6210;&#x4EE3;&#x7801;</h4>
 <p>&#x524D;&#x9762;&#x5DF2;&#x7ECF;&#x63CF;&#x8FF0;&#x8FC7;&#x6709;&#x4E09;&#x79CD;&#x65B9;&#x5F0F;&#x53BB;&#x751F;&#x6210;&#x4EE3;&#x7801;&#xFF0C;&#x8FD9;&#x91CC;&#x5C31;&#x8D58;&#x8FF0;&#x4E86;&#x3002;</p>
 <h4 id="&#x6DFB;&#x52A0;yaml&#x914D;&#x7F6E;&#x9879;">&#x6DFB;&#x52A0;yaml&#x914D;&#x7F6E;&#x9879;</h4>
-<pre><code class="lang-shell">$ vim service/search/cmd/api/etc/search-api.yaml
+<pre class="language-"><code class="lang-shell">$ <span class="token function">vim</span> service/search/cmd/api/etc/search-api.yaml
 </code></pre>
-<pre><code class="lang-yaml"><span class="hljs-attr">Name:</span> search-api
-<span class="hljs-attr">Host:</span> <span class="hljs-number">0.0</span><span class="hljs-number">.0</span><span class="hljs-number">.0</span>
-<span class="hljs-attr">Port:</span> <span class="hljs-number">8889</span>
-<span class="hljs-attr">Auth:</span>
-<span class="hljs-attr">  AccessSecret:</span> $AccessSecret
-<span class="hljs-attr">  AccessExpire:</span> $AccessExpire
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">Name</span><span class="token punctuation">:</span> search<span class="token punctuation">-</span>api
+<span class="token key atrule">Host</span><span class="token punctuation">:</span> 0.0.0.0
+<span class="token key atrule">Port</span><span class="token punctuation">:</span> <span class="token number">8889</span>
+<span class="token key atrule">Auth</span><span class="token punctuation">:</span>
+  <span class="token key atrule">AccessSecret</span><span class="token punctuation">:</span> $AccessSecret
+  <span class="token key atrule">AccessExpire</span><span class="token punctuation">:</span> $AccessExpire
 </code></pre>
 <blockquote>
 <p>[!TIP]
@@ -1384,20 +1384,20 @@ $AccessSecret&#xFF1A;&#x8FD9;&#x4E2A;&#x503C;&#x5FC5;&#x987B;&#x8981;&#x548C;use
 <h3 id="&#x9A8C;&#x8BC1;-jwt-token">&#x9A8C;&#x8BC1; jwt token</h3>
 <ul>
 <li><p>&#x542F;&#x52A8;user api&#x670D;&#x52A1;&#xFF0C;&#x767B;&#x5F55;</p>
-<pre><code class="lang-shell">  $ cd service/user/cmd/api
+<pre class="language-"><code class="lang-shell">  $ <span class="token builtin class-name">cd</span> service/user/cmd/api
   $ go run user.go -f etc/user-api.yaml
 </code></pre>
-<pre><code class="lang-text">  Starting server at 0.0.0.0:8888...
+<pre class="language-"><code class="lang-text">  Starting server at 0.0.0.0:8888...
 </code></pre>
-<pre><code class="lang-shell">  $ curl -i -X POST \
-    http://127.0.0.1:8888/user/login \
-    -H &apos;content-type: application/json&apos; \
-    -d &apos;{
+<pre class="language-"><code class="lang-shell">  $ <span class="token function">curl</span> -i -X POST <span class="token punctuation">\</span>
+    http://127.0.0.1:8888/user/login <span class="token punctuation">\</span>
+    -H <span class="token string">&apos;content-type: application/json&apos;</span> <span class="token punctuation">\</span>
+    -d <span class="token string">&apos;{
       &quot;username&quot;:&quot;666&quot;,
       &quot;password&quot;:&quot;123456&quot;
-  }&apos;
+  }&apos;</span>
 </code></pre>
-<pre><code class="lang-text">  HTTP/1.1 200 OK
+<pre class="language-"><code class="lang-text">  HTTP/1.1 200 OK
   Content-Type: application/json
   Date: Mon, 08 Feb 2021 10:37:54 GMT
   Content-Length: 251
@@ -1406,24 +1406,24 @@ $AccessSecret&#xFF1A;&#x8FD9;&#x4E2A;&#x503C;&#x5FC5;&#x987B;&#x8981;&#x548C;use
 </code></pre>
 </li>
 <li><p>&#x542F;&#x52A8;search api&#x670D;&#x52A1;&#xFF0C;&#x8C03;&#x7528;<code>/search/do</code>&#x9A8C;&#x8BC1;jwt&#x9274;&#x6743;&#x662F;&#x5426;&#x901A;&#x8FC7;</p>
-<pre><code class="lang-shell">  $ go run search.go -f etc/search-api.yaml
+<pre class="language-"><code class="lang-shell">  $ go run search.go -f etc/search-api.yaml
 </code></pre>
-<pre><code class="lang-text">  Starting server at 0.0.0.0:8889...
+<pre class="language-"><code class="lang-text">  Starting server at 0.0.0.0:8889...
 </code></pre>
 <p>  &#x6211;&#x4EEC;&#x5148;&#x4E0D;&#x4F20;jwt token&#xFF0C;&#x770B;&#x770B;&#x7ED3;&#x679C;</p>
-<pre><code class="lang-shell">  $ curl -i -X GET \
-    &apos;http://127.0.0.1:8889/search/do?name=%E8%A5%BF%E6%B8%B8%E8%AE%B0&apos;
+<pre class="language-"><code class="lang-shell">  $ <span class="token function">curl</span> -i -X GET <span class="token punctuation">\</span>
+    <span class="token string">&apos;http://127.0.0.1:8889/search/do?name=%E8%A5%BF%E6%B8%B8%E8%AE%B0&apos;</span>
 </code></pre>
-<pre><code class="lang-text">  HTTP/1.1 401 Unauthorized
+<pre class="language-"><code class="lang-text">  HTTP/1.1 401 Unauthorized
   Date: Mon, 08 Feb 2021 10:41:57 GMT
   Content-Length: 0
 </code></pre>
 <p>  &#x5F88;&#x660E;&#x663E;&#xFF0C;jwt&#x9274;&#x6743;&#x5931;&#x8D25;&#x4E86;&#xFF0C;&#x8FD4;&#x56DE;401&#x7684;statusCode&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x5E26;&#x4E00;&#x4E0B;jwt token&#xFF08;&#x5373;&#x7528;&#x6237;&#x767B;&#x5F55;&#x8FD4;&#x56DE;&#x7684;<code>accessToken</code>&#xFF09;</p>
-<pre><code class="lang-shell">  $ curl -i -X GET \
-    &apos;http://127.0.0.1:8889/search/do?name=%E8%A5%BF%E6%B8%B8%E8%AE%B0&apos; \
-    -H &apos;authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTI4NjcwNzQsImlhdCI6MTYxMjc4MDY3NCwidXNlcklkIjoxfQ.JKa83g9BlEW84IiCXFGwP2aSd0xF3tMnxrOzVebbt80&apos;
+<pre class="language-"><code class="lang-shell">  $ <span class="token function">curl</span> -i -X GET <span class="token punctuation">\</span>
+    <span class="token string">&apos;http://127.0.0.1:8889/search/do?name=%E8%A5%BF%E6%B8%B8%E8%AE%B0&apos;</span> <span class="token punctuation">\</span>
+    -H <span class="token string">&apos;authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTI4NjcwNzQsImlhdCI6MTYxMjc4MDY3NCwidXNlcklkIjoxfQ.JKa83g9BlEW84IiCXFGwP2aSd0xF3tMnxrOzVebbt80&apos;</span>
 </code></pre>
-<pre><code class="lang-text">  HTTP/1.1 200 OK
+<pre class="language-"><code class="lang-text">  HTTP/1.1 200 OK
   Content-Type: application/json
   Date: Mon, 08 Feb 2021 10:44:45 GMT
   Content-Length: 21
@@ -1439,16 +1439,16 @@ $AccessSecret&#xFF1A;&#x8FD9;&#x4E2A;&#x503C;&#x5FC5;&#x987B;&#x8981;&#x548C;use
 <p>&#x81F3;&#x6B64;&#xFF0C;jwt&#x4ECE;&#x751F;&#x6210;&#x5230;&#x4F7F;&#x7528;&#x5C31;&#x6F14;&#x793A;&#x5B8C;&#x6210;&#x4E86;&#xFF0C;jwt token&#x7684;&#x9274;&#x6743;&#x662F;go-zero&#x5185;&#x90E8;&#x5DF2;&#x7ECF;&#x5C01;&#x88C5;&#x4E86;&#xFF0C;&#x4F60;&#x53EA;&#x9700;&#x5728;api&#x6587;&#x4EF6;&#x4E2D;&#x5B9A;&#x4E49;&#x670D;&#x52A1;&#x65F6;&#x7B80;&#x5355;&#x7684;&#x58F0;&#x660E;&#x4E00;&#x4E0B;&#x5373;&#x53EF;&#x3002;</p>
 <h3 id="&#x83B7;&#x53D6;jwt-token&#x4E2D;&#x643A;&#x5E26;&#x7684;&#x4FE1;&#x606F;">&#x83B7;&#x53D6;jwt token&#x4E2D;&#x643A;&#x5E26;&#x7684;&#x4FE1;&#x606F;</h3>
 <p>go-zero&#x4ECE;jwt token&#x89E3;&#x6790;&#x540E;&#x4F1A;&#x5C06;&#x7528;&#x6237;&#x751F;&#x6210;token&#x65F6;&#x4F20;&#x5165;&#x7684;kv&#x539F;&#x5C01;&#x4E0D;&#x52A8;&#x7684;&#x653E;&#x5728;http.Request&#x7684;Context&#x4E2D;&#xFF0C;&#x56E0;&#x6B64;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;Context&#x5C31;&#x53EF;&#x4EE5;&#x62FF;&#x5230;&#x4F60;&#x60F3;&#x8981;&#x7684;&#x503C;</p>
-<pre><code class="lang-shell">$ vim /service/search/cmd/api/internal/logic/searchlogic.go
+<pre class="language-"><code class="lang-shell">$ <span class="token function">vim</span> /service/search/cmd/api/internal/logic/searchlogic.go
 </code></pre>
 <p>&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;log&#x6765;&#x8F93;&#x51FA;&#x4ECE;jwt&#x89E3;&#x6790;&#x51FA;&#x6765;&#x7684;userId&#x3002;</p>
-<pre><code class="lang-golang"><span class="hljs-keyword">func</span> (l *SearchLogic) Search(req types.SearchReq) (*types.SearchReply, error) {
-    logx.Infof(<span class="hljs-string">&quot;userId: %v&quot;</span>,l.ctx.Value(<span class="hljs-string">&quot;userId&quot;</span>))<span class="hljs-comment">// &#x8FD9;&#x91CC;&#x7684;key&#x548C;&#x751F;&#x6210;jwt token&#x65F6;&#x4F20;&#x5165;&#x7684;key&#x4E00;&#x81F4;</span>
-    <span class="hljs-keyword">return</span> &amp;types.SearchReply{}, <span class="hljs-literal">nil</span>
-}
+<pre class="language-"><code class="lang-go"><span class="token keyword">func</span> <span class="token punctuation">(</span>l <span class="token operator">*</span>SearchLogic<span class="token punctuation">)</span> <span class="token function">Search</span><span class="token punctuation">(</span>req types<span class="token punctuation">.</span>SearchReq<span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token operator">*</span>types<span class="token punctuation">.</span>SearchReply<span class="token punctuation">,</span> <span class="token builtin">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    logx<span class="token punctuation">.</span><span class="token function">Infof</span><span class="token punctuation">(</span><span class="token string">&quot;userId: %v&quot;</span><span class="token punctuation">,</span>l<span class="token punctuation">.</span>ctx<span class="token punctuation">.</span><span class="token function">Value</span><span class="token punctuation">(</span><span class="token string">&quot;userId&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token comment">// &#x8FD9;&#x91CC;&#x7684;key&#x548C;&#x751F;&#x6210;jwt token&#x65F6;&#x4F20;&#x5165;&#x7684;key&#x4E00;&#x81F4;</span>
+    <span class="token keyword">return</span> <span class="token operator">&amp;</span>types<span class="token punctuation">.</span>SearchReply<span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token boolean">nil</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>&#x8FD0;&#x884C;&#x7ED3;&#x679C;</p>
-<pre><code class="lang-text">{&quot;@timestamp&quot;:&quot;2021-02-09T10:29:09.399+08&quot;,&quot;level&quot;:&quot;info&quot;,&quot;content&quot;:&quot;userId: 1&quot;}
+<pre class="language-"><code class="lang-text">{&quot;@timestamp&quot;:&quot;2021-02-09T10:29:09.399+08&quot;,&quot;level&quot;:&quot;info&quot;,&quot;content&quot;:&quot;userId: 1&quot;}
 </code></pre>
 <h1 id="&#x731C;&#x4F60;&#x60F3;&#x770B;">&#x731C;&#x4F60;&#x60F3;&#x770B;</h1>
 <ul>
@@ -1474,7 +1474,7 @@ gitalk.render("gitalk-container");
 </li>
 </ul>
 <footer class="page-footer"><span class="copyright">Copyright &#xA9; 2019-2021 go-zero all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x6700;&#x540E;&#x66F4;&#x65B0;&#x65F6;&#x95F4;&#xFF1A;
-2021-02-22 06:10:14
+2021-02-22 07:19:33
 </span></footer>
 <script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
                                 
@@ -1519,7 +1519,7 @@ gitalk.render("gitalk-container");
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"jwt鉴权","level":"1.7.5.5","depth":3,"next":{"title":"中间件使用","level":"1.7.5.6","depth":3,"path":"middleware.md","ref":"middleware.md","articles":[]},"previous":{"title":"业务编码","level":"1.7.5.4","depth":3,"path":"business-coding.md","ref":"business-coding.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","code","-lunr","-search","search-pro","github","splitter","-sharing","sharing-plus","tbfed-pagefooter","flexible-alerts","pageview-count","popup","hide-element","edit-link"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © 2019-2021 go-zero","modify_label":"最后更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"github":{"url":"https://github.com/go-zero"},"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"qq":false,"all":["douban","facebook","google","linkedin","twitter","weibo","qq","qzone","weibo"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true},"edit-link":{"label":"编辑此页","base":"https://github.com/zeromicro/go-zero-doc/blob/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"松妹子","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"go-zero使用文档","language":"zh-hans","gitbook":"*"},"file":{"path":"jwt.md","mtime":"2021-02-22T06:10:14.265Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-22T06:11:08.953Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"jwt鉴权","level":"1.7.5.5","depth":3,"next":{"title":"中间件使用","level":"1.7.5.6","depth":3,"path":"middleware.md","ref":"middleware.md","articles":[]},"previous":{"title":"业务编码","level":"1.7.5.4","depth":3,"path":"business-coding.md","ref":"business-coding.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","code","-lunr","-search","search-pro","github","splitter","-sharing","sharing-plus","tbfed-pagefooter","flexible-alerts","pageview-count","popup","hide-element","edit-link","-highlight","prism"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © 2019-2021 go-zero","modify_label":"最后更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"lang":{"shell":"bash"},"css":["prismjs/themes/prism-tomorrow.css"]},"github":{"url":"https://github.com/go-zero"},"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"qq":false,"all":["douban","facebook","google","linkedin","twitter","weibo","qq","qzone","weibo"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true},"edit-link":{"label":"编辑此页","base":"https://github.com/zeromicro/go-zero-doc/blob/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"松妹子","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"go-zero使用文档","language":"zh-hans","gitbook":"*"},"file":{"path":"jwt.md","mtime":"2021-02-22T07:19:33.172Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-22T07:20:35.200Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

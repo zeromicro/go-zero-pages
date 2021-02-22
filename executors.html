@@ -49,7 +49,7 @@
                 
             
                 
-                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-prism/prism-tomorrow.css">
                 
             
                 
@@ -1296,36 +1296,36 @@
 </tbody>
 </table>
 <p>&#x4F60;&#x4F1A;&#x770B;&#x5230;&#x9664;&#x4E86;&#x6709;&#x7279;&#x6B8A;&#x529F;&#x80FD;&#x7684;&#x7684; <code>delay</code>&#xFF0C;<code>less</code> &#xFF0C;&#x5176;&#x4F59;3&#x4E2A;&#x90FD;&#x662F; <code>executor</code> + <code>container</code> &#x7684;&#x7EC4;&#x5408;&#x8BBE;&#x8BA1;&#xFF1A;</p>
-<pre><code class="lang-go"><span class="hljs-keyword">func</span> NewBulkExecutor(execute Execute, opts ...BulkOption) *BulkExecutor {
-    <span class="hljs-comment">// &#x9009;&#x9879;&#x6A21;&#x5F0F;&#xFF1A;&#x5728; go-zero &#x4E2D;&#x591A;&#x5904;&#x51FA;&#x73B0;&#x3002;&#x5728;&#x591A;&#x914D;&#x7F6E;&#x4E0B;&#xFF0C;&#x6BD4;&#x8F83;&#x597D;&#x7684;&#x8BBE;&#x8BA1;&#x601D;&#x8DEF;</span>
-    <span class="hljs-comment">// https://halls-of-valhalla.org/beta/articles/functional-options-pattern-in-go,54/</span>
-    options := newBulkOptions()
-    <span class="hljs-keyword">for</span> _, opt := <span class="hljs-keyword">range</span> opts {
-        opt(&amp;options)
-    }
-    <span class="hljs-comment">// 1. task container: [execute &#x771F;&#x6B63;&#x505A;&#x6267;&#x884C;&#x7684;&#x51FD;&#x6570;] [maxTasks &#x6267;&#x884C;&#x4E34;&#x754C;&#x70B9;]</span>
-    container := &amp;bulkContainer{
-        execute:  execute,
-        maxTasks: options.cachedTasks,
-    }
-    <span class="hljs-comment">// 2. &#x53EF;&#x4EE5;&#x770B;&#x51FA; bulkexecutor &#x5E95;&#x5C42;&#x4F9D;&#x8D56; periodicalexecutor</span>
-    executor := &amp;BulkExecutor{
-        executor:  NewPeriodicalExecutor(options.flushInterval, container),
-        container: container,
-    }
+<pre class="language-"><code class="lang-go"><span class="token keyword">func</span> <span class="token function">NewBulkExecutor</span><span class="token punctuation">(</span>execute Execute<span class="token punctuation">,</span> opts <span class="token operator">...</span>BulkOption<span class="token punctuation">)</span> <span class="token operator">*</span>BulkExecutor <span class="token punctuation">{</span>
+    <span class="token comment">// &#x9009;&#x9879;&#x6A21;&#x5F0F;&#xFF1A;&#x5728; go-zero &#x4E2D;&#x591A;&#x5904;&#x51FA;&#x73B0;&#x3002;&#x5728;&#x591A;&#x914D;&#x7F6E;&#x4E0B;&#xFF0C;&#x6BD4;&#x8F83;&#x597D;&#x7684;&#x8BBE;&#x8BA1;&#x601D;&#x8DEF;</span>
+    <span class="token comment">// https://halls-of-valhalla.org/beta/articles/functional-options-pattern-in-go,54/</span>
+    options <span class="token operator">:=</span> <span class="token function">newBulkOptions</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> <span class="token boolean">_</span><span class="token punctuation">,</span> opt <span class="token operator">:=</span> <span class="token keyword">range</span> opts <span class="token punctuation">{</span>
+        <span class="token function">opt</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>options<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">// 1. task container: [execute &#x771F;&#x6B63;&#x505A;&#x6267;&#x884C;&#x7684;&#x51FD;&#x6570;] [maxTasks &#x6267;&#x884C;&#x4E34;&#x754C;&#x70B9;]</span>
+    container <span class="token operator">:=</span> <span class="token operator">&amp;</span>bulkContainer<span class="token punctuation">{</span>
+        execute<span class="token punctuation">:</span>  execute<span class="token punctuation">,</span>
+        maxTasks<span class="token punctuation">:</span> options<span class="token punctuation">.</span>cachedTasks<span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">// 2. &#x53EF;&#x4EE5;&#x770B;&#x51FA; bulkexecutor &#x5E95;&#x5C42;&#x4F9D;&#x8D56; periodicalexecutor</span>
+    executor <span class="token operator">:=</span> <span class="token operator">&amp;</span>BulkExecutor<span class="token punctuation">{</span>
+        executor<span class="token punctuation">:</span>  <span class="token function">NewPeriodicalExecutor</span><span class="token punctuation">(</span>options<span class="token punctuation">.</span>flushInterval<span class="token punctuation">,</span> container<span class="token punctuation">)</span><span class="token punctuation">,</span>
+        container<span class="token punctuation">:</span> container<span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
 
-    <span class="hljs-keyword">return</span> executor
-}
+    <span class="token keyword">return</span> executor
+<span class="token punctuation">}</span>
 </code></pre>
 <p>&#x800C;&#x8FD9;&#x4E2A; <code>container</code>&#x662F;&#x4E2A; <code>interface</code>&#xFF1A;</p>
-<pre><code class="lang-go">TaskContainer <span class="hljs-keyword">interface</span> {
-    <span class="hljs-comment">// &#x628A; task &#x52A0;&#x5165; container</span>
-    AddTask(task <span class="hljs-keyword">interface</span>{}) <span class="hljs-keyword">bool</span>
-    <span class="hljs-comment">// &#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x53BB;&#x6267;&#x884C;&#x4F20;&#x5165;&#x7684; execute func()</span>
-    Execute(tasks <span class="hljs-keyword">interface</span>{})
-    <span class="hljs-comment">// &#x8FBE;&#x5230;&#x4E34;&#x754C;&#x503C;&#xFF0C;&#x79FB;&#x9664; container &#x4E2D;&#x5168;&#x90E8;&#x7684; task&#xFF0C;&#x901A;&#x8FC7; channel &#x4F20;&#x9012;&#x5230; execute func() &#x6267;&#x884C;</span>
-    RemoveAll() <span class="hljs-keyword">interface</span>{}
-}
+<pre class="language-"><code class="lang-go">TaskContainer <span class="token keyword">interface</span> <span class="token punctuation">{</span>
+    <span class="token comment">// &#x628A; task &#x52A0;&#x5165; container</span>
+    <span class="token function">AddTask</span><span class="token punctuation">(</span>task <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token builtin">bool</span>
+    <span class="token comment">// &#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x53BB;&#x6267;&#x884C;&#x4F20;&#x5165;&#x7684; execute func()</span>
+    <span class="token function">Execute</span><span class="token punctuation">(</span>tasks <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token comment">// &#x8FBE;&#x5230;&#x4E34;&#x754C;&#x503C;&#xFF0C;&#x79FB;&#x9664; container &#x4E2D;&#x5168;&#x90E8;&#x7684; task&#xFF0C;&#x901A;&#x8FC7; channel &#x4F20;&#x9012;&#x5230; execute func() &#x6267;&#x884C;</span>
+    <span class="token function">RemoveAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>&#x7531;&#x6B64;&#x53EF;&#x89C1;&#x4E4B;&#x95F4;&#x7684;&#x4F9D;&#x8D56;&#x5173;&#x7CFB;&#xFF1A;</p>
 <ul>
@@ -1340,51 +1340,51 @@
 <h2 id="&#x5982;&#x4F55;&#x4F7F;&#x7528;">&#x5982;&#x4F55;&#x4F7F;&#x7528;</h2>
 <p>&#x9996;&#x5148;&#x770B;&#x770B;&#x5982;&#x4F55;&#x5728;&#x4E1A;&#x52A1;&#x4E2D;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x7EC4;&#x4EF6;&#xFF1A;</p>
 <p>&#x73B0;&#x6709;&#x4E00;&#x4E2A;&#x5B9A;&#x65F6;&#x670D;&#x52A1;&#xFF0C;&#x6BCF;&#x5929;&#x56FA;&#x5B9A;&#x65F6;&#x95F4;&#x53BB;&#x6267;&#x884C;&#x4ECE; <code>mysql</code> &#x5230; <code>clickhouse</code> &#x7684;&#x6570;&#x636E;&#x540C;&#x6B65;&#xFF1A;</p>
-<pre><code class="lang-go"><span class="hljs-keyword">type</span> DailyTask <span class="hljs-keyword">struct</span> {
-    ckGroup        *clickhousex.Cluster
-    insertExecutor *executors.BulkExecutor
-    mysqlConn      sqlx.SqlConn
-}
+<pre class="language-"><code class="lang-go"><span class="token keyword">type</span> DailyTask <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+    ckGroup        <span class="token operator">*</span>clickhousex<span class="token punctuation">.</span>Cluster
+    insertExecutor <span class="token operator">*</span>executors<span class="token punctuation">.</span>BulkExecutor
+    mysqlConn      sqlx<span class="token punctuation">.</span>SqlConn
+<span class="token punctuation">}</span>
 </code></pre>
 <p>&#x521D;&#x59CB;&#x5316; <code>bulkExecutor</code>&#xFF1A;</p>
-<pre><code class="lang-go"><span class="hljs-keyword">func</span> (dts *DailyTask) Init() {
-    <span class="hljs-comment">// insertIntoCk() &#x662F;&#x771F;&#x6B63;insert&#x6267;&#x884C;&#x51FD;&#x6570;&#x3010;&#x9700;&#x8981;&#x5F00;&#x53D1;&#x8005;&#x81EA;&#x5DF1;&#x7F16;&#x5199;&#x5177;&#x4F53;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x3011;</span>
-    dts.insertExecutor = executors.NewBulkExecutor(
-        dts.insertIntoCk,
-        executors.WithBulkInterval(time.Second*<span class="hljs-number">3</span>),    <span class="hljs-comment">// 3s&#x4F1A;&#x81EA;&#x52A8;&#x5237;&#x4E00;&#x6B21;container&#x4E2D;task&#x53BB;&#x6267;&#x884C;</span>
-        executors.WithBulkTasks(<span class="hljs-number">10240</span>),                <span class="hljs-comment">// container&#x6700;&#x5927;task&#x6570;&#x3002;&#x4E00;&#x822C;&#x8BBE;&#x4E3A;2&#x7684;&#x5E42;&#x6B21;</span>
-    )
-}
+<pre class="language-"><code class="lang-go"><span class="token keyword">func</span> <span class="token punctuation">(</span>dts <span class="token operator">*</span>DailyTask<span class="token punctuation">)</span> <span class="token function">Init</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// insertIntoCk() &#x662F;&#x771F;&#x6B63;insert&#x6267;&#x884C;&#x51FD;&#x6570;&#x3010;&#x9700;&#x8981;&#x5F00;&#x53D1;&#x8005;&#x81EA;&#x5DF1;&#x7F16;&#x5199;&#x5177;&#x4F53;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x3011;</span>
+    dts<span class="token punctuation">.</span>insertExecutor <span class="token operator">=</span> executors<span class="token punctuation">.</span><span class="token function">NewBulkExecutor</span><span class="token punctuation">(</span>
+        dts<span class="token punctuation">.</span>insertIntoCk<span class="token punctuation">,</span>
+        executors<span class="token punctuation">.</span><span class="token function">WithBulkInterval</span><span class="token punctuation">(</span>time<span class="token punctuation">.</span>Second<span class="token operator">*</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span>    <span class="token comment">// 3s&#x4F1A;&#x81EA;&#x52A8;&#x5237;&#x4E00;&#x6B21;container&#x4E2D;task&#x53BB;&#x6267;&#x884C;</span>
+        executors<span class="token punctuation">.</span><span class="token function">WithBulkTasks</span><span class="token punctuation">(</span><span class="token number">10240</span><span class="token punctuation">)</span><span class="token punctuation">,</span>                <span class="token comment">// container&#x6700;&#x5927;task&#x6570;&#x3002;&#x4E00;&#x822C;&#x8BBE;&#x4E3A;2&#x7684;&#x5E42;&#x6B21;</span>
+    <span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <blockquote>
 <p>[!TIP]
 &#x989D;&#x5916;&#x4ECB;&#x7ECD;&#x4E00;&#x4E0B;&#xFF1A;<code>clickhouse</code>  &#x9002;&#x5408;&#x5927;&#x6279;&#x91CF;&#x7684;&#x63D2;&#x5165;&#xFF0C;&#x56E0;&#x4E3A;insert&#x901F;&#x5EA6;&#x5F88;&#x5FEB;&#xFF0C;&#x5927;&#x6279;&#x91CF;insert&#x66F4;&#x80FD;&#x5145;&#x5206;&#x5229;&#x7528;clickhouse</p>
 </blockquote>
 <p>&#x4E3B;&#x4F53;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x7F16;&#x5199;&#xFF1A;</p>
-<pre><code class="lang-go"><span class="hljs-keyword">func</span> (dts *DailyTask) insertNewData(ch <span class="hljs-keyword">chan</span> <span class="hljs-keyword">interface</span>{}, sqlFromDb *model.Task) error {
-    <span class="hljs-keyword">for</span> item := <span class="hljs-keyword">range</span> ch {
-        <span class="hljs-keyword">if</span> r, vok := item.(*model.Task); !vok {
-            <span class="hljs-keyword">continue</span>
-        }
-        err := dts.insertExecutor.Add(r)
-        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
-            r.Tag = sqlFromDb.Tag
-            r.TagId = sqlFromDb.Id
-            r.InsertId = genInsertId()
-            r.ToRedis = toRedis == constant.INCACHED
-            r.UpdateWay = sqlFromDb.UpdateWay
-            <span class="hljs-comment">// 1. Add Task</span>
-            err := dts.insertExecutor.Add(r)
-            <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
-                logx.Error(err)
-            }
-        }
-    }
-    <span class="hljs-comment">// 2. Flush Task container</span>
-    dts.insertExecutor.Flush()
-    <span class="hljs-comment">// 3. Wait All Task Finish</span>
-    dts.insertExecutor.Wait()
-}
+<pre class="language-"><code class="lang-go"><span class="token keyword">func</span> <span class="token punctuation">(</span>dts <span class="token operator">*</span>DailyTask<span class="token punctuation">)</span> <span class="token function">insertNewData</span><span class="token punctuation">(</span>ch <span class="token keyword">chan</span> <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> sqlFromDb <span class="token operator">*</span>model<span class="token punctuation">.</span>Task<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+    <span class="token keyword">for</span> item <span class="token operator">:=</span> <span class="token keyword">range</span> ch <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> r<span class="token punctuation">,</span> vok <span class="token operator">:=</span> item<span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token operator">*</span>model<span class="token punctuation">.</span>Task<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">!</span>vok <span class="token punctuation">{</span>
+            <span class="token keyword">continue</span>
+        <span class="token punctuation">}</span>
+        err <span class="token operator">:=</span> dts<span class="token punctuation">.</span>insertExecutor<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span>r<span class="token punctuation">)</span>
+        <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+            r<span class="token punctuation">.</span>Tag <span class="token operator">=</span> sqlFromDb<span class="token punctuation">.</span>Tag
+            r<span class="token punctuation">.</span>TagId <span class="token operator">=</span> sqlFromDb<span class="token punctuation">.</span>Id
+            r<span class="token punctuation">.</span>InsertId <span class="token operator">=</span> <span class="token function">genInsertId</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            r<span class="token punctuation">.</span>ToRedis <span class="token operator">=</span> toRedis <span class="token operator">==</span> constant<span class="token punctuation">.</span>INCACHED
+            r<span class="token punctuation">.</span>UpdateWay <span class="token operator">=</span> sqlFromDb<span class="token punctuation">.</span>UpdateWay
+            <span class="token comment">// 1. Add Task</span>
+            err <span class="token operator">:=</span> dts<span class="token punctuation">.</span>insertExecutor<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span>r<span class="token punctuation">)</span>
+            <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+                logx<span class="token punctuation">.</span><span class="token function">Error</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">// 2. Flush Task container</span>
+    dts<span class="token punctuation">.</span>insertExecutor<span class="token punctuation">.</span><span class="token function">Flush</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token comment">// 3. Wait All Task Finish</span>
+    dts<span class="token punctuation">.</span>insertExecutor<span class="token punctuation">.</span><span class="token function">Wait</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <blockquote>
 <p>[!TIP]
@@ -1402,19 +1402,19 @@
 &#x6B64;&#x5904;&#x4E3B;&#x8981;&#x5206;&#x6790; <code>periodicalexecutor</code>&#xFF0C;&#x56E0;&#x4E3A;&#x5176;&#x4ED6;&#x4E24;&#x4E2A;&#x5E38;&#x7528;&#x7684; <code>executor</code> &#x90FD;&#x4F9D;&#x8D56;&#x5B83;</p>
 </blockquote>
 <h3 id="&#x521D;&#x59CB;&#x5316;">&#x521D;&#x59CB;&#x5316;</h3>
-<pre><code class="lang-go"><span class="hljs-keyword">func</span> New...(interval time.Duration, container TaskContainer) *PeriodicalExecutor {
-    executor := &amp;PeriodicalExecutor{
-        commander:   <span class="hljs-built_in">make</span>(<span class="hljs-keyword">chan</span> <span class="hljs-keyword">interface</span>{}, <span class="hljs-number">1</span>),
-        interval:    interval,
-        container:   container,
-        confirmChan: <span class="hljs-built_in">make</span>(<span class="hljs-keyword">chan</span> lang.PlaceholderType),
-        newTicker: <span class="hljs-keyword">func</span>(d time.Duration) timex.Ticker {
-            <span class="hljs-keyword">return</span> timex.NewTicker(interval)
-        },
-    }
-    ...
-    <span class="hljs-keyword">return</span> executor
-}
+<pre class="language-"><code class="lang-go"><span class="token keyword">func</span> New<span class="token operator">...</span><span class="token punctuation">(</span>interval time<span class="token punctuation">.</span>Duration<span class="token punctuation">,</span> container TaskContainer<span class="token punctuation">)</span> <span class="token operator">*</span>PeriodicalExecutor <span class="token punctuation">{</span>
+    executor <span class="token operator">:=</span> <span class="token operator">&amp;</span>PeriodicalExecutor<span class="token punctuation">{</span>
+        commander<span class="token punctuation">:</span>   <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">chan</span> <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        interval<span class="token punctuation">:</span>    interval<span class="token punctuation">,</span>
+        container<span class="token punctuation">:</span>   container<span class="token punctuation">,</span>
+        confirmChan<span class="token punctuation">:</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">chan</span> lang<span class="token punctuation">.</span>PlaceholderType<span class="token punctuation">)</span><span class="token punctuation">,</span>
+        newTicker<span class="token punctuation">:</span> <span class="token keyword">func</span><span class="token punctuation">(</span>d time<span class="token punctuation">.</span>Duration<span class="token punctuation">)</span> timex<span class="token punctuation">.</span>Ticker <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> timex<span class="token punctuation">.</span><span class="token function">NewTicker</span><span class="token punctuation">(</span>interval<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+    <span class="token operator">...</span>
+    <span class="token keyword">return</span> executor
+<span class="token punctuation">}</span>
 </code></pre>
 <ul>
 <li><code>commander</code>&#xFF1A;&#x4F20;&#x9012; <code>tasks</code> &#x7684; channel</li>
@@ -1424,80 +1424,80 @@
 </ul>
 <h3 id="add">Add()</h3>
 <p>&#x521D;&#x59CB;&#x5316;&#x5B8C;&#xFF0C;&#x5728;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x7684;&#x7B2C;&#x4E00;&#x6B65;&#x5C31;&#x662F;&#x628A; task &#x52A0;&#x5165; <code>executor</code>&#xFF1A;</p>
-<pre><code class="lang-go"><span class="hljs-keyword">func</span> (pe *PeriodicalExecutor) Add(task <span class="hljs-keyword">interface</span>{}) {
-    <span class="hljs-keyword">if</span> vals, ok := pe.addAndCheck(task); ok {
-        pe.commander &lt;- vals
-        &lt;-pe.confirmChan
-    }
-}
+<pre class="language-"><code class="lang-go"><span class="token keyword">func</span> <span class="token punctuation">(</span>pe <span class="token operator">*</span>PeriodicalExecutor<span class="token punctuation">)</span> <span class="token function">Add</span><span class="token punctuation">(</span>task <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> vals<span class="token punctuation">,</span> ok <span class="token operator">:=</span> pe<span class="token punctuation">.</span><span class="token function">addAndCheck</span><span class="token punctuation">(</span>task<span class="token punctuation">)</span><span class="token punctuation">;</span> ok <span class="token punctuation">{</span>
+        pe<span class="token punctuation">.</span>commander <span class="token operator">&lt;-</span> vals
+        <span class="token operator">&lt;-</span>pe<span class="token punctuation">.</span>confirmChan
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-<span class="hljs-keyword">func</span> (pe *PeriodicalExecutor) addAndCheck(task <span class="hljs-keyword">interface</span>{}) (<span class="hljs-keyword">interface</span>{}, <span class="hljs-keyword">bool</span>) {
-    pe.lock.Lock()
-    <span class="hljs-keyword">defer</span> <span class="hljs-keyword">func</span>() {
-        <span class="hljs-comment">// &#x4E00;&#x5F00;&#x59CB;&#x4E3A; false</span>
-        <span class="hljs-keyword">var</span> start <span class="hljs-keyword">bool</span>
-        <span class="hljs-keyword">if</span> !pe.guarded {
-            <span class="hljs-comment">// backgroundFlush() &#x4F1A;&#x5C06; guarded &#x91CD;&#x65B0;&#x7F6E;&#x53CD;</span>
-            pe.guarded = <span class="hljs-literal">true</span>
-            start = <span class="hljs-literal">true</span>
-        }
-        pe.lock.Unlock()
-        <span class="hljs-comment">// &#x5728;&#x7B2C;&#x4E00;&#x6761; task &#x52A0;&#x5165;&#x7684;&#x65F6;&#x5019;&#x5C31;&#x4F1A;&#x6267;&#x884C; if &#x4E2D;&#x7684; backgroundFlush()&#x3002;&#x540E;&#x53F0;&#x534F;&#x7A0B;&#x5237;task</span>
-        <span class="hljs-keyword">if</span> start {
-            pe.backgroundFlush()
-        }
-    }()
-    <span class="hljs-comment">// &#x63A7;&#x5236;maxTask&#xFF0C;&gt;=maxTask &#x5C06;container&#x4E2D;tasks pop, return</span>
-    <span class="hljs-keyword">if</span> pe.container.AddTask(task) {
-        <span class="hljs-keyword">return</span> pe.container.RemoveAll(), <span class="hljs-literal">true</span>
-    }
+<span class="token keyword">func</span> <span class="token punctuation">(</span>pe <span class="token operator">*</span>PeriodicalExecutor<span class="token punctuation">)</span> <span class="token function">addAndCheck</span><span class="token punctuation">(</span>task <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token builtin">bool</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    pe<span class="token punctuation">.</span>lock<span class="token punctuation">.</span><span class="token function">Lock</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">defer</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// &#x4E00;&#x5F00;&#x59CB;&#x4E3A; false</span>
+        <span class="token keyword">var</span> start <span class="token builtin">bool</span>
+        <span class="token keyword">if</span> <span class="token operator">!</span>pe<span class="token punctuation">.</span>guarded <span class="token punctuation">{</span>
+            <span class="token comment">// backgroundFlush() &#x4F1A;&#x5C06; guarded &#x91CD;&#x65B0;&#x7F6E;&#x53CD;</span>
+            pe<span class="token punctuation">.</span>guarded <span class="token operator">=</span> <span class="token boolean">true</span>
+            start <span class="token operator">=</span> <span class="token boolean">true</span>
+        <span class="token punctuation">}</span>
+        pe<span class="token punctuation">.</span>lock<span class="token punctuation">.</span><span class="token function">Unlock</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment">// &#x5728;&#x7B2C;&#x4E00;&#x6761; task &#x52A0;&#x5165;&#x7684;&#x65F6;&#x5019;&#x5C31;&#x4F1A;&#x6267;&#x884C; if &#x4E2D;&#x7684; backgroundFlush()&#x3002;&#x540E;&#x53F0;&#x534F;&#x7A0B;&#x5237;task</span>
+        <span class="token keyword">if</span> start <span class="token punctuation">{</span>
+            pe<span class="token punctuation">.</span><span class="token function">backgroundFlush</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token comment">// &#x63A7;&#x5236;maxTask&#xFF0C;&gt;=maxTask &#x5C06;container&#x4E2D;tasks pop, return</span>
+    <span class="token keyword">if</span> pe<span class="token punctuation">.</span>container<span class="token punctuation">.</span><span class="token function">AddTask</span><span class="token punctuation">(</span>task<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> pe<span class="token punctuation">.</span>container<span class="token punctuation">.</span><span class="token function">RemoveAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span>
 
-    <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, <span class="hljs-literal">false</span>
-}
+    <span class="token keyword">return</span> <span class="token boolean">nil</span><span class="token punctuation">,</span> <span class="token boolean">false</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p><code>addAndCheck()</code> &#x4E2D; <code>AddTask()</code> &#x5C31;&#x662F;&#x5728;&#x63A7;&#x5236;&#x6700;&#x5927; tasks &#x6570;&#xFF0C;&#x5982;&#x679C;&#x8D85;&#x8FC7;&#x5C31;&#x6267;&#x884C; <code>RemoveAll()</code> &#xFF0C;&#x5C06;&#x6682;&#x5B58; <code>container</code> &#x7684;tasks pop&#xFF0C;&#x4F20;&#x9012;&#x7ED9; <code>commander</code> &#xFF0C;&#x540E;&#x9762;&#x6709;goroutine&#x5FAA;&#x73AF;&#x8BFB;&#x53D6;&#xFF0C;&#x7136;&#x540E;&#x53BB;&#x6267;&#x884C; tasks&#x3002;</p>
 <h3 id="backgroundflush">backgroundFlush()</h3>
 <p>&#x5F00;&#x542F;&#x4E00;&#x4E2A;&#x540E;&#x53F0;&#x534F;&#x7A0B;&#xFF0C;&#x5BF9; <code>container</code> &#x4E2D;&#x7684;task&#xFF0C;&#x4E0D;&#x65AD;&#x5237;&#x65B0;&#xFF1A;</p>
-<pre><code class="lang-go"><span class="hljs-keyword">func</span> (pe *PeriodicalExecutor) backgroundFlush() {
-    <span class="hljs-comment">// &#x5C01;&#x88C5; go func(){}</span>
-    threading.GoSafe(<span class="hljs-keyword">func</span>() {
-        ticker := pe.newTicker(pe.interval)
-        <span class="hljs-keyword">defer</span> ticker.Stop()
+<pre class="language-"><code class="lang-go"><span class="token keyword">func</span> <span class="token punctuation">(</span>pe <span class="token operator">*</span>PeriodicalExecutor<span class="token punctuation">)</span> <span class="token function">backgroundFlush</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// &#x5C01;&#x88C5; go func(){}</span>
+    threading<span class="token punctuation">.</span><span class="token function">GoSafe</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        ticker <span class="token operator">:=</span> pe<span class="token punctuation">.</span><span class="token function">newTicker</span><span class="token punctuation">(</span>pe<span class="token punctuation">.</span>interval<span class="token punctuation">)</span>
+        <span class="token keyword">defer</span> ticker<span class="token punctuation">.</span><span class="token function">Stop</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-        <span class="hljs-keyword">var</span> commanded <span class="hljs-keyword">bool</span>
-        last := timex.Now()
-        <span class="hljs-keyword">for</span> {
-            <span class="hljs-keyword">select</span> {
-            <span class="hljs-comment">// &#x4ECE;channel&#x62FF;&#x5230; []tasks</span>
-            <span class="hljs-keyword">case</span> vals := &lt;-pe.commander:
-                commanded = <span class="hljs-literal">true</span>
-                <span class="hljs-comment">// &#x5B9E;&#x8D28;&#xFF1A;wg.Add(1)</span>
-                pe.enterExecution()
-                <span class="hljs-comment">// &#x653E;&#x5F00; Add() &#x7684;&#x963B;&#x585E;&#xFF0C;&#x800C;&#x4E14;&#x6B64;&#x65F6;&#x6682;&#x5B58;&#x533A;&#x4E5F;&#x4E3A;&#x7A7A;&#x3002;&#x624D;&#x5F00;&#x59CB;&#x65B0;&#x7684; task &#x52A0;&#x5165;</span>
-                pe.confirmChan &lt;- lang.Placeholder
-                <span class="hljs-comment">// &#x771F;&#x6B63;&#x7684;&#x6267;&#x884C; task &#x903B;&#x8F91;</span>
-                pe.executeTasks(vals)
-                last = timex.Now()
-            <span class="hljs-keyword">case</span> &lt;-ticker.Chan():
-                <span class="hljs-keyword">if</span> commanded {
-                    <span class="hljs-comment">// &#x7531;&#x4E8E;select&#x9009;&#x62E9;&#x7684;&#x968F;&#x673A;&#x6027;&#xFF0C;&#x5982;&#x679C;&#x540C;&#x65F6;&#x6EE1;&#x8DB3;&#x4E24;&#x4E2A;&#x6761;&#x4EF6;&#x540C;&#x65F6;&#x6267;&#x884C;&#x5B8C;&#x4E0A;&#x9762;&#x7684;&#xFF0C;&#x6B64;&#x5904;&#x7F6E;&#x53CD;&#xFF0C;&#x5E76;&#x8DF3;&#x8FC7;&#x672C;&#x6BB5;&#x6267;&#x884C;</span>
-                    <span class="hljs-comment">// https://draveness.me/golang/docs/part2-foundation/ch05-keyword/golang-select/</span>
-                    commanded = <span class="hljs-literal">false</span>
-                } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> pe.Flush() {
-                    <span class="hljs-comment">// &#x5237;&#x65B0;&#x5B8C;&#x6210;&#xFF0C;&#x5B9A;&#x65F6;&#x5668;&#x6E05;&#x96F6;&#x3002;&#x6682;&#x5B58;&#x533A;&#x7A7A;&#x4E86;&#xFF0C;&#x5F00;&#x59CB;&#x4E0B;&#x4E00;&#x6B21;&#x5B9A;&#x65F6;&#x5237;&#x65B0;</span>
-                    last = timex.Now()
-                } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> timex.Since(last) &gt; pe.interval*idleRound {
-                    <span class="hljs-comment">// &#x65E2;&#x6CA1;&#x5230;maxTask&#xFF0C;Flush() err&#xFF0C;&#x5E76;&#x4E14; last-&gt;now &#x65F6;&#x95F4;&#x8FC7;&#x957F;&#xFF0C;&#x4F1A;&#x518D;&#x6B21;&#x89E6;&#x53D1; Flush()</span>
-                    <span class="hljs-comment">// &#x53EA;&#x6709;&#x8FD9;&#x7F6E;&#x53CD;&#xFF0C;&#x624D;&#x4F1A;&#x5F00;&#x542F;&#x4E00;&#x4E2A;&#x65B0;&#x7684; backgroundFlush() &#x540E;&#x53F0;&#x534F;&#x7A0B;</span>
-                    pe.guarded = <span class="hljs-literal">false</span>
-                    <span class="hljs-comment">// &#x518D;&#x6B21;&#x5237;&#x65B0;&#xFF0C;&#x9632;&#x6B62;&#x6F0F;&#x6389;</span>
-                    pe.Flush()
-                    <span class="hljs-keyword">return</span>
-                }
-            }
-        }
-    })
-}
+        <span class="token keyword">var</span> commanded <span class="token builtin">bool</span>
+        last <span class="token operator">:=</span> timex<span class="token punctuation">.</span><span class="token function">Now</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">for</span> <span class="token punctuation">{</span>
+            <span class="token keyword">select</span> <span class="token punctuation">{</span>
+            <span class="token comment">// &#x4ECE;channel&#x62FF;&#x5230; []tasks</span>
+            <span class="token keyword">case</span> vals <span class="token operator">:=</span> <span class="token operator">&lt;-</span>pe<span class="token punctuation">.</span>commander<span class="token punctuation">:</span>
+                commanded <span class="token operator">=</span> <span class="token boolean">true</span>
+                <span class="token comment">// &#x5B9E;&#x8D28;&#xFF1A;wg.Add(1)</span>
+                pe<span class="token punctuation">.</span><span class="token function">enterExecution</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token comment">// &#x653E;&#x5F00; Add() &#x7684;&#x963B;&#x585E;&#xFF0C;&#x800C;&#x4E14;&#x6B64;&#x65F6;&#x6682;&#x5B58;&#x533A;&#x4E5F;&#x4E3A;&#x7A7A;&#x3002;&#x624D;&#x5F00;&#x59CB;&#x65B0;&#x7684; task &#x52A0;&#x5165;</span>
+                pe<span class="token punctuation">.</span>confirmChan <span class="token operator">&lt;-</span> lang<span class="token punctuation">.</span>Placeholder
+                <span class="token comment">// &#x771F;&#x6B63;&#x7684;&#x6267;&#x884C; task &#x903B;&#x8F91;</span>
+                pe<span class="token punctuation">.</span><span class="token function">executeTasks</span><span class="token punctuation">(</span>vals<span class="token punctuation">)</span>
+                last <span class="token operator">=</span> timex<span class="token punctuation">.</span><span class="token function">Now</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token keyword">case</span> <span class="token operator">&lt;-</span>ticker<span class="token punctuation">.</span><span class="token function">Chan</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+                <span class="token keyword">if</span> commanded <span class="token punctuation">{</span>
+                    <span class="token comment">// &#x7531;&#x4E8E;select&#x9009;&#x62E9;&#x7684;&#x968F;&#x673A;&#x6027;&#xFF0C;&#x5982;&#x679C;&#x540C;&#x65F6;&#x6EE1;&#x8DB3;&#x4E24;&#x4E2A;&#x6761;&#x4EF6;&#x540C;&#x65F6;&#x6267;&#x884C;&#x5B8C;&#x4E0A;&#x9762;&#x7684;&#xFF0C;&#x6B64;&#x5904;&#x7F6E;&#x53CD;&#xFF0C;&#x5E76;&#x8DF3;&#x8FC7;&#x672C;&#x6BB5;&#x6267;&#x884C;</span>
+                    <span class="token comment">// https://draveness.me/golang/docs/part2-foundation/ch05-keyword/golang-select/</span>
+                    commanded <span class="token operator">=</span> <span class="token boolean">false</span>
+                <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> pe<span class="token punctuation">.</span><span class="token function">Flush</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token comment">// &#x5237;&#x65B0;&#x5B8C;&#x6210;&#xFF0C;&#x5B9A;&#x65F6;&#x5668;&#x6E05;&#x96F6;&#x3002;&#x6682;&#x5B58;&#x533A;&#x7A7A;&#x4E86;&#xFF0C;&#x5F00;&#x59CB;&#x4E0B;&#x4E00;&#x6B21;&#x5B9A;&#x65F6;&#x5237;&#x65B0;</span>
+                    last <span class="token operator">=</span> timex<span class="token punctuation">.</span><span class="token function">Now</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> timex<span class="token punctuation">.</span><span class="token function">Since</span><span class="token punctuation">(</span>last<span class="token punctuation">)</span> <span class="token operator">&gt;</span> pe<span class="token punctuation">.</span>interval<span class="token operator">*</span>idleRound <span class="token punctuation">{</span>
+                    <span class="token comment">// &#x65E2;&#x6CA1;&#x5230;maxTask&#xFF0C;Flush() err&#xFF0C;&#x5E76;&#x4E14; last-&gt;now &#x65F6;&#x95F4;&#x8FC7;&#x957F;&#xFF0C;&#x4F1A;&#x518D;&#x6B21;&#x89E6;&#x53D1; Flush()</span>
+                    <span class="token comment">// &#x53EA;&#x6709;&#x8FD9;&#x7F6E;&#x53CD;&#xFF0C;&#x624D;&#x4F1A;&#x5F00;&#x542F;&#x4E00;&#x4E2A;&#x65B0;&#x7684; backgroundFlush() &#x540E;&#x53F0;&#x534F;&#x7A0B;</span>
+                    pe<span class="token punctuation">.</span>guarded <span class="token operator">=</span> <span class="token boolean">false</span>
+                    <span class="token comment">// &#x518D;&#x6B21;&#x5237;&#x65B0;&#xFF0C;&#x9632;&#x6B62;&#x6F0F;&#x6389;</span>
+                    pe<span class="token punctuation">.</span><span class="token function">Flush</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                    <span class="token keyword">return</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>&#x603B;&#x4F53;&#x4E24;&#x4E2A;&#x8FC7;&#x7A0B;&#xFF1A;</p>
 <ul>
@@ -1506,17 +1506,17 @@
 </ul>
 <h3 id="wait">Wait()</h3>
 <p>&#x5728; <code>backgroundFlush()</code> &#xFF0C;&#x63D0;&#x5230;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF1A;<code>enterExecution()</code>&#xFF1A;</p>
-<pre><code class="lang-go"><span class="hljs-keyword">func</span> (pe *PeriodicalExecutor) enterExecution() {
-    pe.wgBarrier.Guard(<span class="hljs-keyword">func</span>() {
-        pe.waitGroup.Add(<span class="hljs-number">1</span>)
-    })
-}
+<pre class="language-"><code class="lang-go"><span class="token keyword">func</span> <span class="token punctuation">(</span>pe <span class="token operator">*</span>PeriodicalExecutor<span class="token punctuation">)</span> <span class="token function">enterExecution</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    pe<span class="token punctuation">.</span>wgBarrier<span class="token punctuation">.</span><span class="token function">Guard</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        pe<span class="token punctuation">.</span>waitGroup<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
 
-<span class="hljs-keyword">func</span> (pe *PeriodicalExecutor) Wait() {
-    pe.wgBarrier.Guard(<span class="hljs-keyword">func</span>() {
-        pe.waitGroup.Wait()
-    })
-}
+<span class="token keyword">func</span> <span class="token punctuation">(</span>pe <span class="token operator">*</span>PeriodicalExecutor<span class="token punctuation">)</span> <span class="token function">Wait</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    pe<span class="token punctuation">.</span>wgBarrier<span class="token punctuation">.</span><span class="token function">Guard</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        pe<span class="token punctuation">.</span>waitGroup<span class="token punctuation">.</span><span class="token function">Wait</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>&#x8FD9;&#x6837;&#x5217;&#x4E3E;&#x5C31;&#x77E5;&#x9053;&#x4E3A;&#x4EC0;&#x4E48;&#x4E4B;&#x524D;&#x4E3A;&#x4EC0;&#x4E48;&#x5728;&#x6700;&#x540E;&#x8981;&#x5E26;&#x4E0A; <code>dts.insertExecutor.Wait()</code>&#xFF0C;&#x5F53;&#x7136;&#x8981;&#x7B49;&#x5F85;&#x5168;&#x90E8;&#x7684; <code>goroutine task</code> &#x5B8C;&#x6210;&#x3002;</p>
 <h2 id="&#x601D;&#x8003;">&#x601D;&#x8003;</h2>
@@ -1563,7 +1563,7 @@ gitalk.render("gitalk-container");
 
 
 <footer class="page-footer"><span class="copyright">Copyright &#xA9; 2019-2021 go-zero all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x6700;&#x540E;&#x66F4;&#x65B0;&#x65F6;&#x95F4;&#xFF1A;
-2021-02-22 06:10:14
+2021-02-22 07:19:33
 </span></footer>
 <script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
                                 
@@ -1608,7 +1608,7 @@ gitalk.render("gitalk-container");
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"executors","level":"1.9.3","depth":2,"next":{"title":"fx","level":"1.9.4","depth":2,"path":"fx.md","ref":"fx.md","articles":[]},"previous":{"title":"bloom","level":"1.9.2","depth":2,"path":"bloom.md","ref":"bloom.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","code","-lunr","-search","search-pro","github","splitter","-sharing","sharing-plus","tbfed-pagefooter","flexible-alerts","pageview-count","popup","hide-element","edit-link"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © 2019-2021 go-zero","modify_label":"最后更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"github":{"url":"https://github.com/go-zero"},"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"qq":false,"all":["douban","facebook","google","linkedin","twitter","weibo","qq","qzone","weibo"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true},"edit-link":{"label":"编辑此页","base":"https://github.com/zeromicro/go-zero-doc/blob/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"松妹子","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"go-zero使用文档","language":"zh-hans","gitbook":"*"},"file":{"path":"executors.md","mtime":"2021-02-22T06:10:14.265Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-22T06:11:08.953Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"executors","level":"1.9.3","depth":2,"next":{"title":"fx","level":"1.9.4","depth":2,"path":"fx.md","ref":"fx.md","articles":[]},"previous":{"title":"bloom","level":"1.9.2","depth":2,"path":"bloom.md","ref":"bloom.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","code","-lunr","-search","search-pro","github","splitter","-sharing","sharing-plus","tbfed-pagefooter","flexible-alerts","pageview-count","popup","hide-element","edit-link","-highlight","prism"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © 2019-2021 go-zero","modify_label":"最后更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"lang":{"shell":"bash"},"css":["prismjs/themes/prism-tomorrow.css"]},"github":{"url":"https://github.com/go-zero"},"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"qq":false,"all":["douban","facebook","google","linkedin","twitter","weibo","qq","qzone","weibo"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true},"edit-link":{"label":"编辑此页","base":"https://github.com/zeromicro/go-zero-doc/blob/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"松妹子","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"go-zero使用文档","language":"zh-hans","gitbook":"*"},"file":{"path":"executors.md","mtime":"2021-02-22T07:19:33.172Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-22T07:20:35.200Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

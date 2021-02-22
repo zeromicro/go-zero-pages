@@ -49,7 +49,7 @@
                 
             
                 
-                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-prism/prism-tomorrow.css">
                 
             
                 
@@ -1256,51 +1256,51 @@
                                 
                                 <h1 id="api&#x8BED;&#x6CD5;&#x4ECB;&#x7ECD;">api&#x8BED;&#x6CD5;&#x4ECB;&#x7ECD;</h1>
 <h2 id="api&#x793A;&#x4F8B;">api&#x793A;&#x4F8B;</h2>
-<pre><code class="lang-golang"><span class="hljs-comment">/**
+<pre class="language-"><code class="lang-go"><span class="token comment">/**
  * api&#x8BED;&#x6CD5;&#x793A;&#x4F8B;&#x53CA;&#x8BED;&#x6CD5;&#x8BF4;&#x660E;
  */</span>
 
-<span class="hljs-comment">// api&#x8BED;&#x6CD5;&#x7248;&#x672C;</span>
-syntax = <span class="hljs-string">&quot;v1&quot;</span>
+<span class="token comment">// api&#x8BED;&#x6CD5;&#x7248;&#x672C;</span>
+syntax <span class="token operator">=</span> <span class="token string">&quot;v1&quot;</span>
 
-<span class="hljs-comment">// import literal</span>
-<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;foo.api&quot;</span>
+<span class="token comment">// import literal</span>
+<span class="token keyword">import</span> <span class="token string">&quot;foo.api&quot;</span>
 
-<span class="hljs-comment">// import group</span>
-<span class="hljs-keyword">import</span> (
-    <span class="hljs-string">&quot;bar.api&quot;</span>
-    <span class="hljs-string">&quot;foo/bar.api&quot;</span>
-)
-info(
-    author: <span class="hljs-string">&quot;songmeizi&quot;</span>
-    date:   <span class="hljs-string">&quot;2020-01-08&quot;</span>
-    desc:   <span class="hljs-string">&quot;api&#x8BED;&#x6CD5;&#x793A;&#x4F8B;&#x53CA;&#x8BED;&#x6CD5;&#x8BF4;&#x660E;&quot;</span>
-)
+<span class="token comment">// import group</span>
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+    <span class="token string">&quot;bar.api&quot;</span>
+    <span class="token string">&quot;foo/bar.api&quot;</span>
+<span class="token punctuation">)</span>
+<span class="token function">info</span><span class="token punctuation">(</span>
+    author<span class="token punctuation">:</span> <span class="token string">&quot;songmeizi&quot;</span>
+    date<span class="token punctuation">:</span>   <span class="token string">&quot;2020-01-08&quot;</span>
+    desc<span class="token punctuation">:</span>   <span class="token string">&quot;api&#x8BED;&#x6CD5;&#x793A;&#x4F8B;&#x53CA;&#x8BED;&#x6CD5;&#x8BF4;&#x660E;&quot;</span>
+<span class="token punctuation">)</span>
 
-<span class="hljs-comment">// type literal</span>
+<span class="token comment">// type literal</span>
 
-<span class="hljs-keyword">type</span> Foo{
-    Foo <span class="hljs-keyword">int</span> <span class="hljs-string">`json:&quot;foo&quot;`</span>
-}
+<span class="token keyword">type</span> Foo<span class="token punctuation">{</span>
+    Foo <span class="token builtin">int</span> <span class="token string">`json:&quot;foo&quot;`</span>
+<span class="token punctuation">}</span>
 
-<span class="hljs-comment">// type group</span>
+<span class="token comment">// type group</span>
 
-<span class="hljs-keyword">type</span>(
-    Bar{
-        Bar <span class="hljs-keyword">int</span> <span class="hljs-string">`json:&quot;bar&quot;`</span>
-    }
-)
+<span class="token keyword">type</span><span class="token punctuation">(</span>
+    Bar<span class="token punctuation">{</span>
+        Bar <span class="token builtin">int</span> <span class="token string">`json:&quot;bar&quot;`</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">)</span>
 
-<span class="hljs-comment">// service block</span>
-@server(
-    jwt:   Auth
-    group: foo
-)
-service foo-api{
-    @doc <span class="hljs-string">&quot;foo&quot;</span>
+<span class="token comment">// service block</span>
+@<span class="token function">server</span><span class="token punctuation">(</span>
+    jwt<span class="token punctuation">:</span>   Auth
+    group<span class="token punctuation">:</span> foo
+<span class="token punctuation">)</span>
+service foo<span class="token operator">-</span>api<span class="token punctuation">{</span>
+    @doc <span class="token string">&quot;foo&quot;</span>
     @handler foo
-    post /foo (Foo) returns (Bar)
-}
+    post <span class="token operator">/</span>foo <span class="token punctuation">(</span>Foo<span class="token punctuation">)</span> returns <span class="token punctuation">(</span>Bar<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <h2 id="api&#x8BED;&#x6CD5;&#x7ED3;&#x6784;">api&#x8BED;&#x6CD5;&#x7ED3;&#x6784;</h2>
 <ul>
@@ -1328,7 +1328,7 @@ service foo-api{
 &#x88AB;import&#x7684;api&#x5FC5;&#x987B;&#x8981;&#x548C;main api&#x7684;syntax&#x7248;&#x672C;&#x4E00;&#x81F4;&#x3002;</p>
 </blockquote>
 <p><strong>&#x8BED;&#x6CD5;&#x5B9A;&#x4E49;</strong></p>
-<pre><code class="lang-antlrv4">&apos;syntax&apos;={checkVersion(p)}STRING
+<pre class="language-"><code class="lang-antlrv4">&apos;syntax&apos;={checkVersion(p)}STRING
 </code></pre>
 <p><strong>&#x8BED;&#x6CD5;&#x8BF4;&#x660E;</strong></p>
 <p>syntax&#xFF1A;&#x56FA;&#x5B9A;token&#xFF0C;&#x6807;&#x5FD7;&#x4E00;&#x4E2A;syntax&#x8BED;&#x6CD5;&#x7ED3;&#x6784;&#x7684;&#x5F00;&#x59CB;</p>
@@ -1337,20 +1337,20 @@ service foo-api{
 <p>&#x4E00;&#x4E2A;api&#x8BED;&#x6CD5;&#x6587;&#x4EF6;&#x53EA;&#x80FD;&#x6709;0&#x6216;&#x8005;1&#x4E2A;syntax&#x8BED;&#x6CD5;&#x58F0;&#x660E;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;syntax&#xFF0C;&#x5219;&#x9ED8;&#x8BA4;&#x4E3A;v1&#x7248;&#x672C;</p>
 <p><strong>&#x6B63;&#x786E;&#x8BED;&#x6CD5;&#x793A;&#x4F8B;</strong> &#x2705;</p>
 <p>eg1&#xFF1A;&#x4E0D;&#x89C4;&#x8303;&#x5199;&#x6CD5;</p>
-<pre><code class="lang-api">syntax=&quot;v1&quot;
+<pre class="language-"><code class="lang-api">syntax=&quot;v1&quot;
 </code></pre>
 <p>eg2&#xFF1A;&#x89C4;&#x8303;&#x5199;&#x6CD5;(&#x63A8;&#x8350;)</p>
-<pre><code class="lang-api">syntax = &quot;v2&quot;
+<pre class="language-"><code class="lang-api">syntax = &quot;v2&quot;
 </code></pre>
 <p><strong>&#x9519;&#x8BEF;&#x8BED;&#x6CD5;&#x793A;&#x4F8B;</strong> &#x274C;</p>
 <p>eg1&#xFF1A;</p>
-<pre><code class="lang-api">syntax = &quot;v0&quot;
+<pre class="language-"><code class="lang-api">syntax = &quot;v0&quot;
 </code></pre>
 <p>eg2&#xFF1A;</p>
-<pre><code class="lang-api">syntax = v1
+<pre class="language-"><code class="lang-api">syntax = v1
 </code></pre>
 <p>eg3&#xFF1A;</p>
-<pre><code class="lang-api">syntax = &quot;V1&quot;
+<pre class="language-"><code class="lang-api">syntax = &quot;V1&quot;
 </code></pre>
 <h2 id="import&#x8BED;&#x6CD5;&#x5757;">import&#x8BED;&#x6CD5;&#x5757;</h2>
 <p>&#x968F;&#x7740;&#x4E1A;&#x52A1;&#x89C4;&#x6A21;&#x589E;&#x5927;&#xFF0C;api&#x4E2D;&#x5B9A;&#x4E49;&#x7684;&#x7ED3;&#x6784;&#x4F53;&#x548C;&#x670D;&#x52A1;&#x8D8A;&#x6765;&#x8D8A;&#x591A;&#xFF0C;&#x6240;&#x6709;&#x7684;&#x8BED;&#x6CD5;&#x63CF;&#x8FF0;&#x5747;&#x4E3A;&#x4E00;&#x4E2A;api&#x6587;&#x4EF6;&#xFF0C;&#x8FD9;&#x662F;&#x591A;&#x4E48;&#x7CDF;&#x7CD5;&#x7684;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#xFF0C; &#x5176;&#x4F1A;&#x5927;&#x5927;&#x589E;&#x52A0;&#x4E86;&#x9605;&#x8BFB;&#x96BE;&#x5EA6;&#x548C;&#x7EF4;&#x62A4;&#x96BE;&#x5EA6;&#xFF0C;import&#x8BED;&#x6CD5;&#x5757;&#x53EF;&#x4EE5;&#x5E2E;&#x52A9;&#x6211;&#x4EEC;&#x89E3;&#x51B3;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x901A;&#x8FC7;&#x62C6;&#x5206;api&#x6587;&#x4EF6;&#xFF0C;
@@ -1361,7 +1361,7 @@ service foo-api{
 &#x4E0D;&#x80FD;import&#x591A;&#x4E2A;&#x76F8;&#x540C;&#x8DEF;&#x5F84;&#xFF0C;&#x5426;&#x5219;&#x4F1A;&#x89E3;&#x6790;&#x9519;&#x8BEF;&#x3002;</p>
 </blockquote>
 <p><strong>&#x8BED;&#x6CD5;&#x5B9A;&#x4E49;</strong></p>
-<pre><code class="lang-antlrv4">&apos;import&apos; {checkImportValue(p)}STRING  
+<pre class="language-"><code class="lang-antlrv4">&apos;import&apos; {checkImportValue(p)}STRING  
 |&apos;import&apos; &apos;(&apos; ({checkImportValue(p)}STRING)+ &apos;)&apos;
 </code></pre>
 <p><strong>&#x8BED;&#x6CD5;&#x8BF4;&#x660E;</strong></p>
@@ -1370,7 +1370,7 @@ service foo-api{
 <p>STRING&#xFF1A;&#x4E00;&#x4E32;&#x82F1;&#x6587;&#x53CC;&#x5F15;&#x53F7;&#x5305;&#x88F9;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x5982;&quot;foo.api&quot;</p>
 <p><strong>&#x6B63;&#x786E;&#x8BED;&#x6CD5;&#x793A;&#x4F8B;</strong> &#x2705;</p>
 <p>eg&#xFF1A;</p>
-<pre><code class="lang-api">import &quot;foo.api&quot;
+<pre class="language-"><code class="lang-api">import &quot;foo.api&quot;
 import &quot;foo/bar.api&quot;
 
 import(
@@ -1380,7 +1380,7 @@ import(
 </code></pre>
 <p><strong>&#x9519;&#x8BEF;&#x8BED;&#x6CD5;&#x793A;&#x4F8B;</strong> &#x274C;</p>
 <p>eg&#xFF1A;</p>
-<pre><code class="lang-api">import foo.api
+<pre class="language-"><code class="lang-api">import foo.api
 import &quot;foo.txt&quot;
 import (
     bar.api
@@ -1395,7 +1395,7 @@ import (
 &#x4E0D;&#x80FD;&#x4F7F;&#x7528;&#x91CD;&#x590D;&#x7684;key&#xFF0C;&#x6BCF;&#x4E2A;api&#x6587;&#x4EF6;&#x53EA;&#x80FD;&#x6709;0&#x6216;&#x8005;1&#x4E2A;info&#x8BED;&#x6CD5;&#x5757;</p>
 </blockquote>
 <p><strong>&#x8BED;&#x6CD5;&#x5B9A;&#x4E49;</strong></p>
-<pre><code class="lang-antlrv4">&apos;info&apos; &apos;(&apos; (ID {checkKeyValue(p)}VALUE)+ &apos;)&apos;
+<pre class="language-"><code class="lang-antlrv4">&apos;info&apos; &apos;(&apos; (ID {checkKeyValue(p)}VALUE)+ &apos;)&apos;
 </code></pre>
 <p><strong>&#x8BED;&#x6CD5;&#x8BF4;&#x660E;</strong></p>
 <p>info&#xFF1A;&#x56FA;&#x5B9A;token&#xFF0C;&#x6807;&#x5FD7;&#x4E00;&#x4E2A;info&#x8BED;&#x6CD5;&#x5757;&#x7684;&#x5F00;&#x59CB;</p>
@@ -1403,7 +1403,7 @@ import (
 <p>VALUE&#xFF1A;key&#x5BF9;&#x5E94;&#x7684;&#x503C;&#xFF0C;&#x53EF;&#x4EE5;&#x4E3A;&#x5355;&#x884C;&#x7684;&#x9664;&apos;\r&apos;,&apos;\n&apos;,&apos;/&apos;&#x540E;&#x7684;&#x4EFB;&#x610F;&#x5B57;&#x7B26;&#xFF0C;&#x591A;&#x884C;&#x8BF7;&#x4EE5;&quot;&quot;&#x5305;&#x88F9;&#xFF0C;&#x4E0D;&#x8FC7;&#x5F3A;&#x70C8;&#x5EFA;&#x8BAE;&#x6240;&#x6709;&#x90FD;&#x4EE5;&quot;&quot;&#x5305;&#x88F9;</p>
 <p><strong>&#x6B63;&#x786E;&#x8BED;&#x6CD5;&#x793A;&#x4F8B;</strong> &#x2705;</p>
 <p>eg1&#xFF1A;&#x4E0D;&#x89C4;&#x8303;&#x5199;&#x6CD5;</p>
-<pre><code class="lang-api">info(
+<pre class="language-"><code class="lang-api">info(
 foo: foo value
 bar:&quot;bar value&quot;
     desc:&quot;long long long long
@@ -1411,7 +1411,7 @@ long long text&quot;
 )
 </code></pre>
 <p>eg2&#xFF1A;&#x89C4;&#x8303;&#x5199;&#x6CD5;(&#x63A8;&#x8350;)</p>
-<pre><code class="lang-api">info(
+<pre class="language-"><code class="lang-api">info(
     foo: &quot;foo value&quot;
     bar: &quot;bar value&quot;
     desc: &quot;long long long long long long text&quot;
@@ -1419,28 +1419,28 @@ long long text&quot;
 </code></pre>
 <p><strong>&#x9519;&#x8BEF;&#x8BED;&#x6CD5;&#x793A;&#x4F8B;</strong> &#x274C;</p>
 <p>eg1&#xFF1A;&#x6CA1;&#x6709;key-value&#x5185;&#x5BB9;</p>
-<pre><code class="lang-api">info()
+<pre class="language-"><code class="lang-api">info()
 </code></pre>
 <p>eg2&#xFF1A;&#x4E0D;&#x5305;&#x542B;&#x5192;&#x53F7;</p>
-<pre><code class="lang-api">info(
+<pre class="language-"><code class="lang-api">info(
     foo value
 )
 </code></pre>
 <p>eg3&#xFF1A;key-value&#x6CA1;&#x6709;&#x6362;&#x884C;</p>
-<pre><code class="lang-api">info(foo:&quot;value&quot;)
+<pre class="language-"><code class="lang-api">info(foo:&quot;value&quot;)
 </code></pre>
 <p>eg4&#xFF1A;&#x6CA1;&#x6709;key</p>
-<pre><code class="lang-api">info(
+<pre class="language-"><code class="lang-api">info(
     : &quot;value&quot;
 )
 </code></pre>
 <p>eg5&#xFF1A;&#x975E;&#x6CD5;&#x7684;key</p>
-<pre><code class="lang-api">info(
+<pre class="language-"><code class="lang-api">info(
     12: &quot;value&quot;
 )
 </code></pre>
 <p>eg6&#xFF1A;&#x79FB;&#x9664;&#x65E7;&#x7248;&#x672C;&#x591A;&#x884C;&#x8BED;&#x6CD5;</p>
-<pre><code class="lang-api">info(
+<pre class="language-"><code class="lang-api">info(
     foo: &gt;
     some text
     &lt;
@@ -1468,7 +1468,7 @@ long long text&quot;
 <p>&#x53C2;&#x8003;golang&#x5199;&#x6CD5;</p>
 <p><strong>&#x6B63;&#x786E;&#x8BED;&#x6CD5;&#x793A;&#x4F8B;</strong> &#x2705;</p>
 <p>eg1&#xFF1A;&#x4E0D;&#x89C4;&#x8303;&#x5199;&#x6CD5;</p>
-<pre><code class="lang-api">type Foo struct{
+<pre class="language-"><code class="lang-api">type Foo struct{
     Id int `path:&quot;id&quot;` // &#x2460;
     Foo int `json:&quot;foo&quot;`
 }
@@ -1486,7 +1486,7 @@ type(
 )
 </code></pre>
 <p>eg2&#xFF1A;&#x89C4;&#x8303;&#x5199;&#x6CD5;&#xFF08;&#x63A8;&#x8350;&#xFF09;</p>
-<pre><code class="lang-api">type Foo{
+<pre class="language-"><code class="lang-api">type Foo{
     Id int `path:&quot;id&quot;`
     Foo int `json:&quot;foo&quot;`
 }
@@ -1503,7 +1503,7 @@ type(
 </code></pre>
 <p><strong>&#x9519;&#x8BEF;&#x8BED;&#x6CD5;&#x793A;&#x4F8B;</strong> &#x274C;</p>
 <p>eg</p>
-<pre><code class="lang-api">type Gender int // &#x4E0D;&#x652F;&#x6301;
+<pre class="language-"><code class="lang-api">type Gender int // &#x4E0D;&#x652F;&#x6301;
 
 // &#x975E;struct token
 type Foo structure{ 
@@ -1583,7 +1583,7 @@ tag&#x4FEE;&#x9970;&#x7B26;&#x9700;&#x8981;&#x5728;tag value&#x540E;&#x4EE5;&#x5
 </ul>
 </blockquote>
 <p><strong>&#x8BED;&#x6CD5;&#x5B9A;&#x4E49;</strong></p>
-<pre><code class="lang-antlrv4">serviceSpec:    atServer? serviceApi;
+<pre class="language-"><code class="lang-antlrv4">serviceSpec:    atServer? serviceApi;
 atServer:       &apos;@server&apos; lp=&apos;(&apos; kvLit+ rp=&apos;)&apos;;
 serviceApi:     {match(p,&quot;service&quot;)}serviceToken=ID serviceName lbrace=&apos;{&apos; serviceRoute* rbrace=&apos;}&apos;;
 serviceRoute:   atDoc? (atServer|atHandler) route;
@@ -1642,7 +1642,7 @@ path:           ((&apos;/&apos; (ID (&apos;-&apos; ID)*))|(&apos;/:&apos; (ID (&
 
 <p><strong>&#x6B63;&#x786E;&#x8BED;&#x6CD5;&#x793A;&#x4F8B;</strong> &#x2705;</p>
 <p>eg1&#xFF1A;&#x4E0D;&#x89C4;&#x8303;&#x5199;&#x6CD5;</p>
-<pre><code class="lang-api">@server(
+<pre class="language-"><code class="lang-api">@server(
   jwt: Auth
   group: foo
   middleware: AuthMiddleware
@@ -1666,7 +1666,7 @@ service foo-api{
 }
 </code></pre>
 <p>eg2&#xFF1A;&#x89C4;&#x8303;&#x5199;&#x6CD5;&#xFF08;&#x63A8;&#x8350;&#xFF09;</p>
-<pre><code class="lang-api">@server(
+<pre class="language-"><code class="lang-api">@server(
   jwt: Auth
   group: foo
   middleware: AuthMiddleware
@@ -1687,7 +1687,7 @@ service foo-api{
 }
 </code></pre>
 <p><strong>&#x9519;&#x8BEF;&#x8BED;&#x6CD5;&#x793A;&#x4F8B;</strong> &#x274C;</p>
-<pre><code class="lang-api">// &#x4E0D;&#x652F;&#x6301;&#x7A7A;&#x7684;server&#x8BED;&#x6CD5;&#x5757;
+<pre class="language-"><code class="lang-api">// &#x4E0D;&#x652F;&#x6301;&#x7A7A;&#x7684;server&#x8BED;&#x6CD5;&#x5757;
 @server(
 )
 // &#x4E0D;&#x652F;&#x6301;&#x7A7A;&#x7684;service&#x8BED;&#x6CD5;&#x5757;
@@ -1724,31 +1724,31 @@ service foo-api{
 <p>&#x9690;&#x85CF;&#x901A;&#x9053;&#x76EE;&#x524D;&#x4E3B;&#x8981;&#x4E3A;&#x7A7A;&#x767D;&#x7B26;&#x53F7;&#x3001;&#x6362;&#x884C;&#x7B26;&#x53F7;&#x4EE5;&#x53CA;&#x6CE8;&#x91CA;&#xFF0C;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x53EA;&#x8BF4;&#x6CE8;&#x91CA;&#xFF0C;&#x56E0;&#x4E3A;&#x7A7A;&#x767D;&#x7B26;&#x53F7;&#x548C;&#x6362;&#x884C;&#x7B26;&#x53F7;&#x6211;&#x4EEC;&#x76EE;&#x524D;&#x62FF;&#x6765;&#x4E5F;&#x65E0;&#x7528;&#x3002;</p>
 <h3 id="&#x5355;&#x884C;&#x6CE8;&#x91CA;">&#x5355;&#x884C;&#x6CE8;&#x91CA;</h3>
 <p><strong>&#x8BED;&#x6CD5;&#x5B9A;&#x4E49;</strong></p>
-<pre><code class="lang-antlrv4">&apos;//&apos; ~[\r\n]*
+<pre class="language-"><code class="lang-antlrv4">&apos;//&apos; ~[\r\n]*
 </code></pre>
 <p><strong>&#x8BED;&#x6CD5;&#x8BF4;&#x660E;</strong>
 &#x7531;&#x8BED;&#x6CD5;&#x5B9A;&#x4E49;&#x53EF;&#x77E5;&#x9053;&#xFF0C;&#x5355;&#x884C;&#x6CE8;&#x91CA;&#x5FC5;&#x987B;&#x8981;&#x4EE5;<code>//</code>&#x5F00;&#x5934;&#xFF0C;&#x5185;&#x5BB9;&#x4E3A;&#x4E0D;&#x80FD;&#x5305;&#x542B;&#x6362;&#x884C;&#x7B26;</p>
 <p><strong>&#x6B63;&#x786E;&#x8BED;&#x6CD5;&#x793A;&#x4F8B;</strong> &#x2705;</p>
-<pre><code class="lang-api">// doc
+<pre class="language-"><code class="lang-api">// doc
 // comment
 </code></pre>
 <p><strong>&#x9519;&#x8BEF;&#x8BED;&#x6CD5;&#x793A;&#x4F8B;</strong> &#x274C;</p>
-<pre><code class="lang-api">// break
+<pre class="language-"><code class="lang-api">// break
 line comments
 </code></pre>
 <h3 id="java&#x98CE;&#x683C;&#x6587;&#x6863;&#x6CE8;&#x91CA;">java&#x98CE;&#x683C;&#x6587;&#x6863;&#x6CE8;&#x91CA;</h3>
 <p><strong>&#x8BED;&#x6CD5;&#x5B9A;&#x4E49;</strong></p>
-<pre><code class="lang-antlrv4">&apos;/*&apos; .*? &apos;*/&apos;
+<pre class="language-"><code class="lang-antlrv4">&apos;/*&apos; .*? &apos;*/&apos;
 </code></pre>
 <p><strong>&#x8BED;&#x6CD5;&#x8BF4;&#x660E;</strong></p>
 <p>&#x7531;&#x8BED;&#x6CD5;&#x5B9A;&#x4E49;&#x53EF;&#x77E5;&#x9053;&#xFF0C;&#x5355;&#x884C;&#x6CE8;&#x91CA;&#x5FC5;&#x987B;&#x8981;&#x4EE5;<code>/*</code>&#x5F00;&#x5934;&#xFF0C;<code>*/</code>&#x7ED3;&#x5C3E;&#x7684;&#x4EFB;&#x610F;&#x5B57;&#x7B26;&#x3002;</p>
 <p><strong>&#x6B63;&#x786E;&#x8BED;&#x6CD5;&#x793A;&#x4F8B;</strong> &#x2705;</p>
-<pre><code class="lang-api">/**
+<pre class="language-"><code class="lang-api">/**
  * java-style doc
  */
 </code></pre>
 <p><strong>&#x9519;&#x8BEF;&#x8BED;&#x6CD5;&#x793A;&#x4F8B;</strong> &#x274C;</p>
-<pre><code class="lang-api">/*
+<pre class="language-"><code class="lang-api">/*
  * java-style doc */
  */
 </code></pre>
@@ -1793,7 +1793,7 @@ line comments
 </table>
 
 <p>&#x4EE5;&#x4E0B;&#x4E3A;&#x5BF9;&#x5E94;&#x8BED;&#x6CD5;&#x5757;&#x89E3;&#x6790;&#x540E;&#x7EC6;&#x5E26;doc&#x548C;comment&#x7684;&#x5199;&#x6CD5;</p>
-<pre><code class="lang-api">// syntaxLit doc
+<pre class="language-"><code class="lang-api">// syntaxLit doc
 syntax = &quot;v1&quot; // syntaxLit commnet
 
 info(
@@ -1853,7 +1853,7 @@ gitalk.render("gitalk-container");
 
 
 <footer class="page-footer"><span class="copyright">Copyright &#xA9; 2019-2021 go-zero all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x6700;&#x540E;&#x66F4;&#x65B0;&#x65F6;&#x95F4;&#xFF1A;
-2021-02-22 06:10:14
+2021-02-22 07:19:33
 </span></footer>
 <script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
                                 
@@ -1898,7 +1898,7 @@ gitalk.render("gitalk-container");
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"api语法介绍","level":"1.6.3","depth":2,"next":{"title":"api目录结构","level":"1.6.4","depth":2,"path":"api-dir.md","ref":"api-dir.md","articles":[]},"previous":{"title":"go-zero特点","level":"1.6.2","depth":2,"path":"go-zero-features.md","ref":"go-zero-features.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","code","-lunr","-search","search-pro","github","splitter","-sharing","sharing-plus","tbfed-pagefooter","flexible-alerts","pageview-count","popup","hide-element","edit-link"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © 2019-2021 go-zero","modify_label":"最后更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"github":{"url":"https://github.com/go-zero"},"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"qq":false,"all":["douban","facebook","google","linkedin","twitter","weibo","qq","qzone","weibo"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true},"edit-link":{"label":"编辑此页","base":"https://github.com/zeromicro/go-zero-doc/blob/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"松妹子","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"go-zero使用文档","language":"zh-hans","gitbook":"*"},"file":{"path":"api-grammar.md","mtime":"2021-02-22T06:10:14.265Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-22T06:11:08.953Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"api语法介绍","level":"1.6.3","depth":2,"next":{"title":"api目录结构","level":"1.6.4","depth":2,"path":"api-dir.md","ref":"api-dir.md","articles":[]},"previous":{"title":"go-zero特点","level":"1.6.2","depth":2,"path":"go-zero-features.md","ref":"go-zero-features.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","code","-lunr","-search","search-pro","github","splitter","-sharing","sharing-plus","tbfed-pagefooter","flexible-alerts","pageview-count","popup","hide-element","edit-link","-highlight","prism"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © 2019-2021 go-zero","modify_label":"最后更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"lang":{"shell":"bash"},"css":["prismjs/themes/prism-tomorrow.css"]},"github":{"url":"https://github.com/go-zero"},"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"qq":false,"all":["douban","facebook","google","linkedin","twitter","weibo","qq","qzone","weibo"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true},"edit-link":{"label":"编辑此页","base":"https://github.com/zeromicro/go-zero-doc/blob/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"松妹子","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"go-zero使用文档","language":"zh-hans","gitbook":"*"},"file":{"path":"api-grammar.md","mtime":"2021-02-22T07:19:33.168Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-22T07:20:35.200Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

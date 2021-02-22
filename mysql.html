@@ -49,7 +49,7 @@
                 
             
                 
-                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-prism/prism-tomorrow.css">
                 
             
                 
@@ -1271,58 +1271,58 @@
 </ul>
 <h2 id="connection">Connection</h2>
 <p>&#x4E0B;&#x9762;&#x7528;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#x7B80;&#x5355;&#x8BF4;&#x660E;&#x4E00;&#x4E0B;&#x5982;&#x4F55;&#x521B;&#x5EFA;&#x4E00;&#x4E2A; <code>mysql</code> &#x8FDE;&#x63A5;&#x7684;model&#xFF1A;</p>
-<pre><code class="lang-go"><span class="hljs-comment">// 1. &#x5FEB;&#x901F;&#x8FDE;&#x63A5;&#x4E00;&#x4E2A; mysql</span>
-<span class="hljs-comment">// datasource: mysql dsn</span>
-heraMysql := sqlx.NewMysql(datasource)
+<pre class="language-"><code class="lang-go"><span class="token comment">// 1. &#x5FEB;&#x901F;&#x8FDE;&#x63A5;&#x4E00;&#x4E2A; mysql</span>
+<span class="token comment">// datasource: mysql dsn</span>
+heraMysql <span class="token operator">:=</span> sqlx<span class="token punctuation">.</span><span class="token function">NewMysql</span><span class="token punctuation">(</span>datasource<span class="token punctuation">)</span>
 
-<span class="hljs-comment">// 2. &#x5728; servicecontext &#x4E2D;&#x8C03;&#x7528;&#xFF0C;&#x61C2;model&#x4E0A;&#x5C42;&#x7684;logic&#x5C42;&#x8C03;&#x7528;</span>
-model.NewMysqlModel(heraMysql, tablename),
+<span class="token comment">// 2. &#x5728; servicecontext &#x4E2D;&#x8C03;&#x7528;&#xFF0C;&#x61C2;model&#x4E0A;&#x5C42;&#x7684;logic&#x5C42;&#x8C03;&#x7528;</span>
+model<span class="token punctuation">.</span><span class="token function">NewMysqlModel</span><span class="token punctuation">(</span>heraMysql<span class="token punctuation">,</span> tablename<span class="token punctuation">)</span><span class="token punctuation">,</span>
 
-<span class="hljs-comment">// 3. model&#x5C42; mysql operation</span>
-<span class="hljs-keyword">func</span> NewMysqlModel(conn sqlx.SqlConn, table <span class="hljs-keyword">string</span>) *MysqlModel {
-    <span class="hljs-keyword">defer</span> <span class="hljs-keyword">func</span>() {
-        <span class="hljs-built_in">recover</span>()
-    }()
-    <span class="hljs-comment">// 4. &#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x6279;&#x91CF;insert&#x7684; [mysql executor]</span>
-    <span class="hljs-comment">// conn: mysql connection; insertsql: mysql insert sql</span>
-    bulkInserter , err := sqlx.NewBulkInserter(conn, insertsql)
-    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
-        logx.Error(<span class="hljs-string">&quot;Init bulkInsert Faild&quot;</span>)
-        <span class="hljs-built_in">panic</span>(<span class="hljs-string">&quot;Init bulkInsert Faild&quot;</span>)
-        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
-    }
-    <span class="hljs-keyword">return</span> &amp;MysqlModel{conn: conn, table: table, Bulk: bulkInserter}
-}
+<span class="token comment">// 3. model&#x5C42; mysql operation</span>
+<span class="token keyword">func</span> <span class="token function">NewMysqlModel</span><span class="token punctuation">(</span>conn sqlx<span class="token punctuation">.</span>SqlConn<span class="token punctuation">,</span> table <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token operator">*</span>MysqlModel <span class="token punctuation">{</span>
+    <span class="token keyword">defer</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">recover</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token comment">// 4. &#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x6279;&#x91CF;insert&#x7684; [mysql executor]</span>
+    <span class="token comment">// conn: mysql connection; insertsql: mysql insert sql</span>
+    bulkInserter <span class="token punctuation">,</span> err <span class="token operator">:=</span> sqlx<span class="token punctuation">.</span><span class="token function">NewBulkInserter</span><span class="token punctuation">(</span>conn<span class="token punctuation">,</span> insertsql<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+        logx<span class="token punctuation">.</span><span class="token function">Error</span><span class="token punctuation">(</span><span class="token string">&quot;Init bulkInsert Faild&quot;</span><span class="token punctuation">)</span>
+        <span class="token function">panic</span><span class="token punctuation">(</span><span class="token string">&quot;Init bulkInsert Faild&quot;</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token boolean">nil</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token operator">&amp;</span>MysqlModel<span class="token punctuation">{</span>conn<span class="token punctuation">:</span> conn<span class="token punctuation">,</span> table<span class="token punctuation">:</span> table<span class="token punctuation">,</span> Bulk<span class="token punctuation">:</span> bulkInserter<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <h2 id="crud">CRUD</h2>
 <p>&#x51C6;&#x5907;&#x4E00;&#x4E2A; <code>User model</code></p>
-<pre><code class="lang-go"><span class="hljs-keyword">var</span> userBuilderQueryRows = strings.Join(builderx.FieldNames(&amp;User{}), <span class="hljs-string">&quot;,&quot;</span>)
+<pre class="language-"><code class="lang-go"><span class="token keyword">var</span> userBuilderQueryRows <span class="token operator">=</span> strings<span class="token punctuation">.</span><span class="token function">Join</span><span class="token punctuation">(</span>builderx<span class="token punctuation">.</span><span class="token function">FieldNames</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>User<span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">&quot;,&quot;</span><span class="token punctuation">)</span>
 
-<span class="hljs-keyword">type</span> User <span class="hljs-keyword">struct</span> {
-    Avatar <span class="hljs-keyword">string</span> <span class="hljs-string">`db:&quot;avatar&quot;`</span>             <span class="hljs-comment">// &#x5934;&#x50CF;</span>
-    UserName <span class="hljs-keyword">string</span> <span class="hljs-string">`db:&quot;user_name&quot;`</span>         <span class="hljs-comment">// &#x59D3;&#x540D;</span>
-    Sex <span class="hljs-keyword">int</span> <span class="hljs-string">`db:&quot;sex&quot;`</span>                         <span class="hljs-comment">// 1&#x7537;,2&#x5973;</span>
-    MobilePhone <span class="hljs-keyword">string</span> <span class="hljs-string">`db:&quot;mobile_phone&quot;`</span>     <span class="hljs-comment">// &#x624B;&#x673A;&#x53F7;</span>
-}
+<span class="token keyword">type</span> User <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+    Avatar <span class="token builtin">string</span> <span class="token string">`db:&quot;avatar&quot;`</span>             <span class="token comment">// &#x5934;&#x50CF;</span>
+    UserName <span class="token builtin">string</span> <span class="token string">`db:&quot;user_name&quot;`</span>         <span class="token comment">// &#x59D3;&#x540D;</span>
+    Sex <span class="token builtin">int</span> <span class="token string">`db:&quot;sex&quot;`</span>                         <span class="token comment">// 1&#x7537;,2&#x5973;</span>
+    MobilePhone <span class="token builtin">string</span> <span class="token string">`db:&quot;mobile_phone&quot;`</span>     <span class="token comment">// &#x624B;&#x673A;&#x53F7;</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>&#x5176;&#x4E2D; <code>userBuilderQueryRows</code> &#xFF1A; <code>go-zero</code> &#x4E2D;&#x63D0;&#x4F9B; <code>struct -&gt; [field...]</code> &#x7684;&#x8F6C;&#x5316;&#xFF0C;&#x5F00;&#x53D1;&#x8005;&#x53EF;&#x4EE5;&#x5C06;&#x6B64;&#x5F53;&#x6210;&#x6A21;&#x7248;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x3002;</p>
 <h3 id="insert">insert</h3>
-<pre><code class="lang-go"><span class="hljs-comment">// &#x4E00;&#x4E2A;&#x5B9E;&#x9645;&#x7684;insert model&#x5C42;&#x64CD;&#x4F5C;</span>
-<span class="hljs-keyword">func</span> (um *UserModel) Insert(user *User) (<span class="hljs-keyword">int64</span>, error) {
-    <span class="hljs-keyword">const</span> insertsql = <span class="hljs-string">`insert into `</span>+um.table+<span class="hljs-string">` (`</span>+userBuilderQueryRows+<span class="hljs-string">`) values(?, ?, ?)`</span>
-    <span class="hljs-comment">// insert op</span>
-    res, err := um.conn.Exec(insertsql, user.Avatar, user.UserName, user.Sex, user.MobilePhone)
-    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
-        logx.Errorf(<span class="hljs-string">&quot;insert User Position Model Model err, err=%v&quot;</span>, err)
-        <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>, err
-    }
-    id, err := res.LastInsertId()
-    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
-        logx.Errorf(<span class="hljs-string">&quot;insert User Model to Id  parse id err,err=%v&quot;</span>, err)
-        <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>, err
-    }
-    <span class="hljs-keyword">return</span> id, <span class="hljs-literal">nil</span>
-}
+<pre class="language-"><code class="lang-go"><span class="token comment">// &#x4E00;&#x4E2A;&#x5B9E;&#x9645;&#x7684;insert model&#x5C42;&#x64CD;&#x4F5C;</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>um <span class="token operator">*</span>UserModel<span class="token punctuation">)</span> <span class="token function">Insert</span><span class="token punctuation">(</span>user <span class="token operator">*</span>User<span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token builtin">int64</span><span class="token punctuation">,</span> <span class="token builtin">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> insertsql <span class="token operator">=</span> <span class="token string">`insert into `</span><span class="token operator">+</span>um<span class="token punctuation">.</span>table<span class="token operator">+</span><span class="token string">` (`</span><span class="token operator">+</span>userBuilderQueryRows<span class="token operator">+</span><span class="token string">`) values(?, ?, ?)`</span>
+    <span class="token comment">// insert op</span>
+    res<span class="token punctuation">,</span> err <span class="token operator">:=</span> um<span class="token punctuation">.</span>conn<span class="token punctuation">.</span><span class="token function">Exec</span><span class="token punctuation">(</span>insertsql<span class="token punctuation">,</span> user<span class="token punctuation">.</span>Avatar<span class="token punctuation">,</span> user<span class="token punctuation">.</span>UserName<span class="token punctuation">,</span> user<span class="token punctuation">.</span>Sex<span class="token punctuation">,</span> user<span class="token punctuation">.</span>MobilePhone<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+        logx<span class="token punctuation">.</span><span class="token function">Errorf</span><span class="token punctuation">(</span><span class="token string">&quot;insert User Position Model Model err, err=%v&quot;</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> err
+    <span class="token punctuation">}</span>
+    id<span class="token punctuation">,</span> err <span class="token operator">:=</span> res<span class="token punctuation">.</span><span class="token function">LastInsertId</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+        logx<span class="token punctuation">.</span><span class="token function">Errorf</span><span class="token punctuation">(</span><span class="token string">&quot;insert User Model to Id  parse id err,err=%v&quot;</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> err
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> id<span class="token punctuation">,</span> <span class="token boolean">nil</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <ul>
 <li>&#x62FC;&#x63A5; <code>insertsql</code></li>
@@ -1335,19 +1335,19 @@ model.NewMysqlModel(heraMysql, tablename),
 <p><code>go-zero</code> &#x5C06;&#x6D89;&#x53CA; <code>mysql</code> &#x4FEE;&#x6539;&#x7684;&#x64CD;&#x4F5C;&#x7EDF;&#x4E00;&#x62BD;&#x8C61;&#x4E3A; <code>Exec()</code> &#x3002;&#x6240;&#x4EE5; <code>insert/update/delete</code> &#x64CD;&#x4F5C;&#x672C;&#x8D28;&#x4E0A;&#x4E00;&#x81F4;&#x7684;&#x3002;&#x5176;&#x4F59;&#x4E24;&#x4E2A;&#x64CD;&#x4F5C;&#xFF0C;&#x5F00;&#x53D1;&#x8005;&#x6309;&#x7167;&#x4E0A;&#x8FF0; <code>insert</code> &#x6D41;&#x7A0B;&#x5C1D;&#x8BD5;&#x5373;&#x53EF;&#x3002;</p>
 <h3 id="query">query</h3>
 <p>&#x53EA;&#x9700;&#x8981;&#x4F20;&#x5165; <code>querysql</code> &#x548C; <code>model</code> &#x7ED3;&#x6784;&#x4F53;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x83B7;&#x53D6;&#x5230;&#x88AB;&#x8D4B;&#x503C;&#x597D;&#x7684; <code>model</code> &#x3002;&#x65E0;&#x9700;&#x5F00;&#x53D1;&#x8005;&#x624B;&#x52A8;&#x8D4B;&#x503C;&#x3002;</p>
-<pre><code class="lang-go"><span class="hljs-keyword">func</span> (um *UserModel) FindOne(uid <span class="hljs-keyword">int64</span>) (*User, error) {
-    <span class="hljs-keyword">var</span> user User
-    <span class="hljs-keyword">const</span> querysql = <span class="hljs-string">`select `</span>+userBuilderQueryRows+<span class="hljs-string">` from `</span>+um.table+<span class="hljs-string">` where id=? limit 1`</span>
-    err := um.conn.QueryRow(&amp;user, querysql, uid)
-    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
-        logx.Errorf(<span class="hljs-string">&quot;userId.findOne error, id=%d, err=%s&quot;</span>, uid, err.Error())
-        <span class="hljs-keyword">if</span> err == sqlx.ErrNotFound {
-            <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, ErrNotFound
-        }
-        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, err
-    }
-    <span class="hljs-keyword">return</span> &amp;user, <span class="hljs-literal">nil</span>
-}
+<pre class="language-"><code class="lang-go"><span class="token keyword">func</span> <span class="token punctuation">(</span>um <span class="token operator">*</span>UserModel<span class="token punctuation">)</span> <span class="token function">FindOne</span><span class="token punctuation">(</span>uid <span class="token builtin">int64</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token operator">*</span>User<span class="token punctuation">,</span> <span class="token builtin">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> user User
+    <span class="token keyword">const</span> querysql <span class="token operator">=</span> <span class="token string">`select `</span><span class="token operator">+</span>userBuilderQueryRows<span class="token operator">+</span><span class="token string">` from `</span><span class="token operator">+</span>um<span class="token punctuation">.</span>table<span class="token operator">+</span><span class="token string">` where id=? limit 1`</span>
+    err <span class="token operator">:=</span> um<span class="token punctuation">.</span>conn<span class="token punctuation">.</span><span class="token function">QueryRow</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>user<span class="token punctuation">,</span> querysql<span class="token punctuation">,</span> uid<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+        logx<span class="token punctuation">.</span><span class="token function">Errorf</span><span class="token punctuation">(</span><span class="token string">&quot;userId.findOne error, id=%d, err=%s&quot;</span><span class="token punctuation">,</span> uid<span class="token punctuation">,</span> err<span class="token punctuation">.</span><span class="token function">Error</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> err <span class="token operator">==</span> sqlx<span class="token punctuation">.</span>ErrNotFound <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token boolean">nil</span><span class="token punctuation">,</span> ErrNotFound
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> <span class="token boolean">nil</span><span class="token punctuation">,</span> err
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token operator">&amp;</span>user<span class="token punctuation">,</span> <span class="token boolean">nil</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <ul>
 <li>&#x58F0;&#x660E; <code>model struct</code> &#xFF0C;&#x62FC;&#x63A5; <code>querysql</code></li>
@@ -1358,19 +1358,19 @@ model.NewMysqlModel(heraMysql, tablename),
 <code>QueryRow()</code> &#x4E2D;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x9700;&#x8981;&#x4F20;&#x5165; <code>Ptr</code> &#x300C;&#x5E95;&#x5C42;&#x9700;&#x8981;&#x53CD;&#x5C04;&#x5BF9; <code>struct</code> &#x8FDB;&#x884C;&#x8D4B;&#x503C;&#x300D;</p>
 </blockquote>
 <p>&#x4E0A;&#x8FF0;&#x662F;&#x67E5;&#x8BE2;&#x4E00;&#x6761;&#x8BB0;&#x5F55;&#xFF0C;&#x5982;&#x679C;&#x9700;&#x8981;&#x67E5;&#x8BE2;&#x591A;&#x6761;&#x8BB0;&#x5F55;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <code>conn.QueryRows()</code></p>
-<pre><code class="lang-go"><span class="hljs-keyword">func</span> (um *UserModel) FindOne(sex <span class="hljs-keyword">int</span>) ([]*User, error) {
-    users := <span class="hljs-built_in">make</span>([]*User, <span class="hljs-number">0</span>)
-    <span class="hljs-keyword">const</span> querysql = <span class="hljs-string">`select `</span>+userBuilderQueryRows+<span class="hljs-string">` from `</span>+um.table+<span class="hljs-string">` where sex=?`</span>
-    err := um.conn.QueryRows(&amp;users, querysql, sex)
-    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
-        logx.Errorf(<span class="hljs-string">&quot;usersSex.findOne error, sex=%d, err=%s&quot;</span>, uid, err.Error())
-        <span class="hljs-keyword">if</span> err == sqlx.ErrNotFound {
-            <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, ErrNotFound
-        }
-        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, err
-    }
-    <span class="hljs-keyword">return</span> users, <span class="hljs-literal">nil</span>
-}
+<pre class="language-"><code class="lang-go"><span class="token keyword">func</span> <span class="token punctuation">(</span>um <span class="token operator">*</span>UserModel<span class="token punctuation">)</span> <span class="token function">FindOne</span><span class="token punctuation">(</span>sex <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">*</span>User<span class="token punctuation">,</span> <span class="token builtin">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    users <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">*</span>User<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+    <span class="token keyword">const</span> querysql <span class="token operator">=</span> <span class="token string">`select `</span><span class="token operator">+</span>userBuilderQueryRows<span class="token operator">+</span><span class="token string">` from `</span><span class="token operator">+</span>um<span class="token punctuation">.</span>table<span class="token operator">+</span><span class="token string">` where sex=?`</span>
+    err <span class="token operator">:=</span> um<span class="token punctuation">.</span>conn<span class="token punctuation">.</span><span class="token function">QueryRows</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>users<span class="token punctuation">,</span> querysql<span class="token punctuation">,</span> sex<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+        logx<span class="token punctuation">.</span><span class="token function">Errorf</span><span class="token punctuation">(</span><span class="token string">&quot;usersSex.findOne error, sex=%d, err=%s&quot;</span><span class="token punctuation">,</span> uid<span class="token punctuation">,</span> err<span class="token punctuation">.</span><span class="token function">Error</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> err <span class="token operator">==</span> sqlx<span class="token punctuation">.</span>ErrNotFound <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token boolean">nil</span><span class="token punctuation">,</span> ErrNotFound
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> <span class="token boolean">nil</span><span class="token punctuation">,</span> err
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> users<span class="token punctuation">,</span> <span class="token boolean">nil</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>&#x4E0E; <code>QueryRow()</code> &#x4E0D;&#x540C;&#x7684;&#x5730;&#x65B9;&#x5728;&#x4E8E;&#xFF1A; <code>model</code> &#x9700;&#x8981;&#x8BBE;&#x7F6E;&#x6210; <code>Slice</code> &#xFF0C;&#x56E0;&#x4E3A;&#x662F;&#x67E5;&#x8BE2;&#x591A;&#x884C;&#xFF0C;&#x9700;&#x8981;&#x5BF9;&#x591A;&#x4E2A; <code>model</code> &#x8D4B;&#x503C;&#x3002;&#x4F46;&#x540C;&#x65F6;&#x9700;&#x8981;&#x6CE8;&#x610F;&#xFE0F;&#xFF1A;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x9700;&#x8981;&#x4F20;&#x5165; <code>Ptr</code></p>
 <h3 id="querypartial">querypartial</h3>
@@ -1384,23 +1384,23 @@ model.NewMysqlModel(heraMysql, tablename),
 &#x5982;&#x679C; <code>numA &lt; numB</code> &#xFF0C;&#x4F46;&#x662F;&#x4F60;&#x6070;&#x6070;&#x53C8;&#x9700;&#x8981;&#x7EDF;&#x4E00;&#x591A;&#x5904;&#x7684;&#x67E5;&#x8BE2;&#x65F6;&#x300C;&#x5B9A;&#x4E49;&#x4E86;&#x591A;&#x4E2A; <code>struct</code> &#x8FD4;&#x56DE;&#x4E0D;&#x540C;&#x7684;&#x7528;&#x9014;&#xFF0C;&#x6070;&#x6070;&#x90FD;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x76F8;&#x540C;&#x7684; <code>querysql</code> &#x300D;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <code>QueryRowPartial()</code></p>
 <h2 id="&#x4E8B;&#x52A1;">&#x4E8B;&#x52A1;</h2>
 <p>&#x8981;&#x5728;&#x4E8B;&#x52A1;&#x4E2D;&#x6267;&#x884C;&#x4E00;&#x7CFB;&#x5217;&#x64CD;&#x4F5C;&#xFF0C;&#x4E00;&#x822C;&#x6D41;&#x7A0B;&#x5982;&#x4E0B;&#xFF1A;</p>
-<pre><code class="lang-go"><span class="hljs-keyword">var</span> insertsql = <span class="hljs-string">`insert into User(uid, username, mobilephone) values (?, ?, ?)`</span>
-err := usermodel.conn.Transact(<span class="hljs-keyword">func</span>(session sqlx.Session) error {
-    stmt, err := session.Prepare(insertsql)
-    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
-        <span class="hljs-keyword">return</span> err
-    }
-    <span class="hljs-keyword">defer</span> stmt.Close()
+<pre class="language-"><code class="lang-go"><span class="token keyword">var</span> insertsql <span class="token operator">=</span> <span class="token string">`insert into User(uid, username, mobilephone) values (?, ?, ?)`</span>
+err <span class="token operator">:=</span> usermodel<span class="token punctuation">.</span>conn<span class="token punctuation">.</span><span class="token function">Transact</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span>session sqlx<span class="token punctuation">.</span>Session<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+    stmt<span class="token punctuation">,</span> err <span class="token operator">:=</span> session<span class="token punctuation">.</span><span class="token function">Prepare</span><span class="token punctuation">(</span>insertsql<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> err
+    <span class="token punctuation">}</span>
+    <span class="token keyword">defer</span> stmt<span class="token punctuation">.</span><span class="token function">Close</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-    <span class="hljs-comment">// &#x8FD4;&#x56DE;&#x4EFB;&#x4F55;&#x9519;&#x8BEF;&#x90FD;&#x4F1A;&#x56DE;&#x6EDA;&#x4E8B;&#x52A1;</span>
-    <span class="hljs-keyword">if</span> _, err := stmt.Exec(uid, username, mobilephone); err != <span class="hljs-literal">nil</span> {
-        logx.Errorf(<span class="hljs-string">&quot;insert userinfo stmt exec: %s&quot;</span>, err)
-        <span class="hljs-keyword">return</span> err
-    }
+    <span class="token comment">// &#x8FD4;&#x56DE;&#x4EFB;&#x4F55;&#x9519;&#x8BEF;&#x90FD;&#x4F1A;&#x56DE;&#x6EDA;&#x4E8B;&#x52A1;</span>
+    <span class="token keyword">if</span> <span class="token boolean">_</span><span class="token punctuation">,</span> err <span class="token operator">:=</span> stmt<span class="token punctuation">.</span><span class="token function">Exec</span><span class="token punctuation">(</span>uid<span class="token punctuation">,</span> username<span class="token punctuation">,</span> mobilephone<span class="token punctuation">)</span><span class="token punctuation">;</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+        logx<span class="token punctuation">.</span><span class="token function">Errorf</span><span class="token punctuation">(</span><span class="token string">&quot;insert userinfo stmt exec: %s&quot;</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> err
+    <span class="token punctuation">}</span>
 
-    <span class="hljs-comment">// &#x8FD8;&#x53EF;&#x4EE5;&#x7EE7;&#x7EED;&#x6267;&#x884C; insert/update/delete &#x76F8;&#x5173;&#x64CD;&#x4F5C;</span>
-    <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
-})
+    <span class="token comment">// &#x8FD8;&#x53EF;&#x4EE5;&#x7EE7;&#x7EED;&#x6267;&#x884C; insert/update/delete &#x76F8;&#x5173;&#x64CD;&#x4F5C;</span>
+    <span class="token keyword">return</span> <span class="token boolean">nil</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
 </code></pre>
 <p>&#x5982;&#x540C;&#x4E0A;&#x8FF0;&#x4F8B;&#x5B50;&#xFF0C;&#x5F00;&#x53D1;&#x8005;&#x53EA;&#x9700;&#x5C06; <strong>&#x4E8B;&#x52A1;</strong> &#x4E2D;&#x7684;&#x64CD;&#x4F5C;&#x90FD;&#x5305;&#x88C5;&#x5728;&#x4E00;&#x4E2A;&#x51FD;&#x6570; <code>func(session sqlx.Session) error {}</code> &#x4E2D;&#x5373;&#x53EF;&#xFF0C;&#x5982;&#x679C;&#x4E8B;&#x52A1;&#x4E2D;&#x7684;&#x64CD;&#x4F5C;&#x8FD4;&#x56DE;&#x4EFB;&#x4F55;&#x9519;&#x8BEF;&#xFF0C; <code>Transact()</code> &#x90FD;&#x4F1A;&#x81EA;&#x52A8;&#x56DE;&#x6EDA;&#x4E8B;&#x52A1;&#x3002;</p>
 <p><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css"></p>
@@ -1421,7 +1421,7 @@ gitalk.render("gitalk-container");
 
 
 <footer class="page-footer"><span class="copyright">Copyright &#xA9; 2019-2021 go-zero all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x6700;&#x540E;&#x66F4;&#x65B0;&#x65F6;&#x95F4;&#xFF1A;
-2021-02-22 06:10:14
+2021-02-22 07:19:33
 </span></footer>
 <script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
                                 
@@ -1466,7 +1466,7 @@ gitalk.render("gitalk-container");
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"mysql","level":"1.9.5","depth":2,"next":{"title":"redis-lock","level":"1.9.6","depth":2,"path":"redis-lock.md","ref":"redis-lock.md","articles":[]},"previous":{"title":"fx","level":"1.9.4","depth":2,"path":"fx.md","ref":"fx.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","code","-lunr","-search","search-pro","github","splitter","-sharing","sharing-plus","tbfed-pagefooter","flexible-alerts","pageview-count","popup","hide-element","edit-link"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © 2019-2021 go-zero","modify_label":"最后更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"github":{"url":"https://github.com/go-zero"},"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"qq":false,"all":["douban","facebook","google","linkedin","twitter","weibo","qq","qzone","weibo"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true},"edit-link":{"label":"编辑此页","base":"https://github.com/zeromicro/go-zero-doc/blob/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"松妹子","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"go-zero使用文档","language":"zh-hans","gitbook":"*"},"file":{"path":"mysql.md","mtime":"2021-02-22T06:10:14.265Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-22T06:11:08.953Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"mysql","level":"1.9.5","depth":2,"next":{"title":"redis-lock","level":"1.9.6","depth":2,"path":"redis-lock.md","ref":"redis-lock.md","articles":[]},"previous":{"title":"fx","level":"1.9.4","depth":2,"path":"fx.md","ref":"fx.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","code","-lunr","-search","search-pro","github","splitter","-sharing","sharing-plus","tbfed-pagefooter","flexible-alerts","pageview-count","popup","hide-element","edit-link","-highlight","prism"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © 2019-2021 go-zero","modify_label":"最后更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"lang":{"shell":"bash"},"css":["prismjs/themes/prism-tomorrow.css"]},"github":{"url":"https://github.com/go-zero"},"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"qq":false,"all":["douban","facebook","google","linkedin","twitter","weibo","qq","qzone","weibo"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true},"edit-link":{"label":"编辑此页","base":"https://github.com/zeromicro/go-zero-doc/blob/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"松妹子","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"go-zero使用文档","language":"zh-hans","gitbook":"*"},"file":{"path":"mysql.md","mtime":"2021-02-22T07:19:33.172Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-22T07:20:35.200Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

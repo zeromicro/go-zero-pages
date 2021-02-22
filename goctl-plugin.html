@@ -49,7 +49,7 @@
                 
             
                 
-                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-prism/prism-tomorrow.css">
                 
             
                 
@@ -1256,7 +1256,7 @@
                                 
                                 <h1 id="plugin&#x547D;&#x4EE4;">plugin&#x547D;&#x4EE4;</h1>
 <p>goctl&#x652F;&#x6301;&#x9488;&#x5BF9;api&#x81EA;&#x5B9A;&#x4E49;&#x63D2;&#x4EF6;&#xFF0C;&#x90A3;&#x6211;&#x600E;&#x4E48;&#x6765;&#x81EA;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x63D2;&#x4EF6;&#x4E86;&#xFF1F;&#x6765;&#x770B;&#x770B;&#x4E0B;&#x9762;&#x6700;&#x7EC8;&#x600E;&#x4E48;&#x4F7F;&#x7528;&#x7684;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#x3002;</p>
-<pre><code class="lang-golang">$ goctl api plugin -p goctl-android=<span class="hljs-string">&quot;android -package com.tal&quot;</span> -api user.api -dir .
+<pre class="language-"><code class="lang-go">$ goctl api plugin <span class="token operator">-</span>p goctl<span class="token operator">-</span>android<span class="token operator">=</span><span class="token string">&quot;android -package com.tal&quot;</span> <span class="token operator">-</span>api user<span class="token punctuation">.</span>api <span class="token operator">-</span>dir <span class="token punctuation">.</span>
 </code></pre>
 <p>&#x4E0A;&#x9762;&#x8FD9;&#x4E2A;&#x547D;&#x4EE4;&#x53EF;&#x4EE5;&#x5206;&#x89E3;&#x6210;&#x5982;&#x4E0B;&#x51E0;&#x6B65;&#xFF1A;</p>
 <ul>
@@ -1267,32 +1267,32 @@
 <p>&#x6B64;&#x547D;&#x4EE4;&#x524D;&#x9762;&#x90E8;&#x5206; goctl api plugin -p &#x662F;&#x56FA;&#x5B9A;&#x53C2;&#x6570;&#xFF0C;goctl-android=&quot;android -package com.tal&quot; &#x662F;plugin&#x53C2;&#x6570;&#xFF0C;&#x5176;&#x4E2D;goctl-android&#x662F;&#x63D2;&#x4EF6;&#x4E8C;&#x8FDB;&#x5236;&#x6587;&#x4EF6;&#xFF0C;android -package com.tal&#x662F;&#x63D2;&#x4EF6;&#x7684;&#x81EA;&#x5B9A;&#x4E49;&#x53C2;&#x6570;&#xFF0C;-api user.api -dir .&#x662F;goctl&#x901A;&#x7528;&#x81EA;&#x5B9A;&#x4E49;&#x53C2;&#x6570;&#x3002;</p>
 <h2 id="&#x600E;&#x4E48;&#x7F16;&#x5199;&#x81EA;&#x5B9A;&#x4E49;&#x63D2;&#x4EF6;&#xFF1F;">&#x600E;&#x4E48;&#x7F16;&#x5199;&#x81EA;&#x5B9A;&#x4E49;&#x63D2;&#x4EF6;&#xFF1F;</h2>
 <p>go-zero&#x6846;&#x67B6;&#x4E2D;&#x5305;&#x542B;&#x4E86;&#x4E00;&#x4E2A;&#x5F88;&#x7B80;&#x5355;&#x7684;&#x81EA;&#x5B9A;&#x4E49;&#x63D2;&#x4EF6; demo&#xFF0C;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
-<pre><code class="lang-golang"><span class="hljs-keyword">package</span> main
+<pre class="language-"><code class="lang-go"><span class="token keyword">package</span> main
 
-<span class="hljs-keyword">import</span> (
-    <span class="hljs-string">&quot;fmt&quot;</span>
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+    <span class="token string">&quot;fmt&quot;</span>
 
-    <span class="hljs-string">&quot;github.com/tal-tech/go-zero/tools/goctl/plugin&quot;</span>
-)
+    <span class="token string">&quot;github.com/tal-tech/go-zero/tools/goctl/plugin&quot;</span>
+<span class="token punctuation">)</span>
 
-<span class="hljs-keyword">func</span> main() {
-    plugin, err := plugin.NewPlugin()
-    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
-        <span class="hljs-built_in">panic</span>(err)
-    }
-    <span class="hljs-keyword">if</span> plugin.Api != <span class="hljs-literal">nil</span> {
-        fmt.Printf(<span class="hljs-string">&quot;api: %+v \n&quot;</span>, plugin.Api)
-    }
-    fmt.Printf(<span class="hljs-string">&quot;dir: %s \n&quot;</span>, plugin.Dir)
-    fmt.Println(<span class="hljs-string">&quot;Enjoy anything you want.&quot;</span>)
-}
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    plugin<span class="token punctuation">,</span> err <span class="token operator">:=</span> plugin<span class="token punctuation">.</span><span class="token function">NewPlugin</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+        <span class="token function">panic</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> plugin<span class="token punctuation">.</span>Api <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+        fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;api: %+v \n&quot;</span><span class="token punctuation">,</span> plugin<span class="token punctuation">.</span>Api<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;dir: %s \n&quot;</span><span class="token punctuation">,</span> plugin<span class="token punctuation">.</span>Dir<span class="token punctuation">)</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&quot;Enjoy anything you want.&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p><code>plugin, err := plugin.NewPlugin()</code> &#x8FD9;&#x884C;&#x4EE3;&#x7801;&#x4F5C;&#x7528;&#x662F;&#x89E3;&#x6790;&#x4ECE;goctl&#x4F20;&#x9012;&#x8FC7;&#x6765;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x91CC;&#x9762;&#x5305;&#x542B;&#x5982;&#x4E0B;&#x90E8;&#x5206;&#x5185;&#x5BB9;&#xFF1A;</p>
-<pre><code class="lang-golang"><span class="hljs-keyword">type</span> Plugin <span class="hljs-keyword">struct</span> {
-    Api   *spec.ApiSpec
-    Style <span class="hljs-keyword">string</span>
-    Dir   <span class="hljs-keyword">string</span>
-}
+<pre class="language-"><code class="lang-go"><span class="token keyword">type</span> Plugin <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+    Api   <span class="token operator">*</span>spec<span class="token punctuation">.</span>ApiSpec
+    Style <span class="token builtin">string</span>
+    Dir   <span class="token builtin">string</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <blockquote>
 <p>[!TIP]
@@ -1327,7 +1327,7 @@ gitalk.render("gitalk-container");
 </li>
 </ul>
 <footer class="page-footer"><span class="copyright">Copyright &#xA9; 2019-2021 go-zero all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x6700;&#x540E;&#x66F4;&#x65B0;&#x65F6;&#x95F4;&#xFF1A;
-2021-02-22 06:10:14
+2021-02-22 07:19:33
 </span></footer>
 <script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
                                 
@@ -1372,7 +1372,7 @@ gitalk.render("gitalk-container");
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"plugin命令","level":"1.8.5","depth":2,"next":{"title":"其他命令","level":"1.8.6","depth":2,"path":"goctl-other.md","ref":"goctl-other.md","articles":[]},"previous":{"title":"model命令","level":"1.8.4","depth":2,"path":"goctl-model.md","ref":"goctl-model.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","code","-lunr","-search","search-pro","github","splitter","-sharing","sharing-plus","tbfed-pagefooter","flexible-alerts","pageview-count","popup","hide-element","edit-link"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © 2019-2021 go-zero","modify_label":"最后更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"github":{"url":"https://github.com/go-zero"},"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"qq":false,"all":["douban","facebook","google","linkedin","twitter","weibo","qq","qzone","weibo"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true},"edit-link":{"label":"编辑此页","base":"https://github.com/zeromicro/go-zero-doc/blob/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"松妹子","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"go-zero使用文档","language":"zh-hans","gitbook":"*"},"file":{"path":"goctl-plugin.md","mtime":"2021-02-22T06:10:14.265Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-22T06:11:08.953Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"plugin命令","level":"1.8.5","depth":2,"next":{"title":"其他命令","level":"1.8.6","depth":2,"path":"goctl-other.md","ref":"goctl-other.md","articles":[]},"previous":{"title":"model命令","level":"1.8.4","depth":2,"path":"goctl-model.md","ref":"goctl-model.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","code","-lunr","-search","search-pro","github","splitter","-sharing","sharing-plus","tbfed-pagefooter","flexible-alerts","pageview-count","popup","hide-element","edit-link","-highlight","prism"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © 2019-2021 go-zero","modify_label":"最后更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"lang":{"shell":"bash"},"css":["prismjs/themes/prism-tomorrow.css"]},"github":{"url":"https://github.com/go-zero"},"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"qq":false,"all":["douban","facebook","google","linkedin","twitter","weibo","qq","qzone","weibo"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true},"edit-link":{"label":"编辑此页","base":"https://github.com/zeromicro/go-zero-doc/blob/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"松妹子","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"go-zero使用文档","language":"zh-hans","gitbook":"*"},"file":{"path":"goctl-plugin.md","mtime":"2021-02-22T07:19:33.172Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-22T07:20:35.200Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
