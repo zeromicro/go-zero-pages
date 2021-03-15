@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>快速开发 · go-zero使用文档</title>
+        <title>go-zero缓存设计之业务层缓存 · go-zero使用文档</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -93,10 +93,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="monolithic-service.html" />
+    <link rel="next" href="go-queue.html" />
     
     
-    <link rel="prev" href="concept-introduction.html" />
+    <link rel="prev" href="redis-cache.html" />
     
 
     </head>
@@ -177,7 +177,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.5" data-path="quick-start.html">
+        <li class="chapter " data-level="1.5" data-path="quick-start.html">
             
                 <a href="quick-start.html">
             
@@ -1089,7 +1089,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.13.2" data-path="buiness-cache.html">
+        <li class="chapter active" data-level="1.13.2" data-path="buiness-cache.html">
             
                 <a href="buiness-cache.html">
             
@@ -1286,7 +1286,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >快速开发</a>
+        <a href="." >go-zero缓存设计之业务层缓存</a>
     </h1>
 </div>
 
@@ -1301,12 +1301,142 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x5FEB;&#x901F;&#x5F00;&#x53D1;">&#x5FEB;&#x901F;&#x5F00;&#x53D1;</h1>
-<p>&#x672C;&#x8282;&#x4E3B;&#x8981;&#x901A;&#x8FC7;&#x5BF9; api/rpc &#x7B49;&#x670D;&#x52A1;&#x5FEB;&#x901F;&#x5F00;&#x59CB;&#x6765;&#x8BA9;&#x5927;&#x5BB6;&#x5BF9;&#x4F7F;&#x7528; go-zero &#x5F00;&#x53D1;&#x7684;&#x5DE5;&#x7A0B;&#x6709;&#x4E00;&#x4E2A;&#x5B8F;&#x89C2;&#x6982;&#x5FF5;&#xFF0C;&#x66F4;&#x52A0;&#x8BE6;&#x7EC6;&#x7684;&#x4ECB;&#x7ECD;&#x6211;&#x4EEC;&#x5C06;&#x5728;&#x540E;&#x7EED;&#x4E00;&#x4E00;&#x5C55;&#x5F00;&#x3002;&#x5982;&#x679C;&#x60A8;&#x5DF2;&#x7ECF;&#x53C2;&#x8003; <a href="prepare.html">&#x51C6;&#x5907;&#x5DE5;&#x4F5C;</a> &#x505A;&#x597D;&#x73AF;&#x5883;&#x53CA;&#x5DE5;&#x5177;&#x7684;&#x51C6;&#x5907;&#xFF0C;&#x8BF7;&#x8DDF;&#x968F;&#x4EE5;&#x4E0B;&#x5C0F;&#x8282;&#x5F00;&#x59CB;&#x4F53;&#x9A8C;&#xFF1A;</p>
+                                <h1 id="go-zero&#x7F13;&#x5B58;&#x8BBE;&#x8BA1;&#x4E4B;&#x4E1A;&#x52A1;&#x5C42;&#x7F13;&#x5B58;">go-zero&#x7F13;&#x5B58;&#x8BBE;&#x8BA1;&#x4E4B;&#x4E1A;&#x52A1;&#x5C42;&#x7F13;&#x5B58;</h1>
+<p>&#x5728;&#x4E0A;&#x4E00;&#x7BC7;<a href="redis-cache.html">go-zero&#x7F13;&#x5B58;&#x8BBE;&#x8BA1;&#x4E4B;&#x6301;&#x4E45;&#x5C42;&#x7F13;&#x5B58;</a>&#x4ECB;&#x7ECD;&#x4E86;db&#x5C42;&#x7F13;&#x5B58;&#xFF0C;&#x56DE;&#x987E;&#x4E00;&#x4E0B;&#xFF0C;db&#x5C42;&#x7F13;&#x5B58;&#x4E3B;&#x8981;&#x8BBE;&#x8BA1;&#x53EF;&#x4EE5;&#x603B;&#x7ED3;&#x4E3A;&#xFF1A;</p>
 <ul>
-<li><a href="monolithic-service.html">&#x5355;&#x4F53;&#x670D;&#x52A1;</a></li>
-<li><a href="micro-service.html">&#x5FAE;&#x670D;&#x52A1;</a></li>
+<li>&#x7F13;&#x5B58;&#x53EA;&#x5220;&#x9664;&#x4E0D;&#x66F4;&#x65B0;</li>
+<li>&#x884C;&#x8BB0;&#x5F55;&#x59CB;&#x7EC8;&#x53EA;&#x5B58;&#x50A8;&#x4E00;&#x4EFD;&#xFF0C;&#x5373;&#x4E3B;&#x952E;&#x5BF9;&#x5E94;&#x884C;&#x8BB0;&#x5F55;</li>
+<li>&#x552F;&#x4E00;&#x7D22;&#x5F15;&#x4EC5;&#x7F13;&#x5B58;&#x4E3B;&#x952E;&#x503C;&#xFF0C;&#x4E0D;&#x76F4;&#x63A5;&#x7F13;&#x5B58;&#x884C;&#x8BB0;&#x5F55;&#xFF08;&#x53C2;&#x8003;mysql&#x7D22;&#x5F15;&#x601D;&#x60F3;&#xFF09;</li>
+<li>&#x9632;&#x7F13;&#x5B58;&#x7A7F;&#x900F;&#x8BBE;&#x8BA1;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E00;&#x5206;&#x949F;</li>
+<li>&#x4E0D;&#x7F13;&#x5B58;&#x591A;&#x884C;&#x8BB0;&#x5F55;</li>
 </ul>
+<h2 id="&#x524D;&#x8A00;">&#x524D;&#x8A00;</h2>
+<p>&#x5728;&#x5927;&#x578B;&#x4E1A;&#x52A1;&#x7CFB;&#x7EDF;&#x4E2D;&#xFF0C;&#x901A;&#x8FC7;&#x5BF9;&#x6301;&#x4E45;&#x5C42;&#x6DFB;&#x52A0;&#x7F13;&#x5B58;&#xFF0C;&#x5BF9;&#x4E8E;&#x5927;&#x591A;&#x6570;&#x5355;&#x884C;&#x8BB0;&#x5F55;&#x67E5;&#x8BE2;&#xFF0C;&#x76F8;&#x4FE1;&#x7F13;&#x5B58;&#x80FD;&#x591F;&#x5E2E;&#x6301;&#x4E45;&#x5C42;&#x51CF;&#x8F7B;&#x5F88;&#x5927;&#x7684;&#x8BBF;&#x95EE;&#x538B;&#x529B;&#xFF0C;&#x4F46;&#x5728;&#x5B9E;&#x9645;&#x4E1A;&#x52A1;&#x4E2D;&#xFF0C;&#x6570;&#x636E;&#x8BFB;&#x53D6;&#x4E0D;&#x4EC5;&#x4EC5;&#x53EA;&#x662F;&#x5355;&#x884C;&#x8BB0;&#x5F55;&#xFF0C;
+&#x9762;&#x5BF9;&#x5927;&#x91CF;&#x591A;&#x884C;&#x8BB0;&#x5F55;&#x7684;&#x67E5;&#x8BE2;&#xFF0C;&#x8FD9;&#x5BF9;&#x6301;&#x4E45;&#x5C42;&#x4E5F;&#x4F1A;&#x9020;&#x6210;&#x4E0D;&#x5C0F;&#x7684;&#x8BBF;&#x95EE;&#x538B;&#x529B;&#xFF0C;&#x9664;&#x6B64;&#x4E4B;&#x5916;&#xFF0C;&#x50CF;&#x79D2;&#x6740;&#x7CFB;&#x7EDF;&#x3001;&#x9009;&#x8BFE;&#x7CFB;&#x7EDF;&#x8FD9;&#x79CD;&#x9AD8;&#x5E76;&#x53D1;&#x7684;&#x573A;&#x666F;&#xFF0C;&#x5355;&#x7EAF;&#x9760;&#x6301;&#x4E45;&#x5C42;&#x7684;&#x7F13;&#x5B58;&#x662F;&#x4E0D;&#x73B0;&#x5B9E;&#x7684;&#xFF0C;&#x672C;&#x8282;&#x6211;&#x4EEC;&#x6765; &#x4ECB;&#x7ECD;go-zero&#x5B9E;&#x8DF5;&#x4E2D;&#x7684;&#x7F13;&#x5B58;&#x8BBE;&#x8BA1;&#x2014;&#x2014;biz&#x7F13;&#x5B58;&#x3002;</p>
+<h2 id="&#x9002;&#x7528;&#x573A;&#x666F;&#x4E3E;&#x4F8B;">&#x9002;&#x7528;&#x573A;&#x666F;&#x4E3E;&#x4F8B;</h2>
+<ul>
+<li>&#x9009;&#x8BFE;&#x7CFB;&#x7EDF;</li>
+<li>&#x5185;&#x5BB9;&#x793E;&#x4EA4;&#x7CFB;&#x7EDF;</li>
+<li>&#x79D2;&#x6740; ...</li>
+</ul>
+<p>&#x50CF;&#x8FD9;&#x4E9B;&#x7CFB;&#x7EDF;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728;&#x4E1A;&#x52A1;&#x5C42;&#x518D;&#x589E;&#x52A0;&#x4E00;&#x5C42;&#x7F13;&#x5B58;&#x6765;&#x5B58;&#x50A8;&#x7CFB;&#x7EDF;&#x4E2D;&#x7684;&#x5173;&#x952E;&#x4FE1;&#x606F;&#xFF0C;&#x5982;&#x9009;&#x8BFE;&#x7CFB;&#x7EDF;&#x4E2D;&#x5B66;&#x751F;&#x9009;&#x8BFE;&#x4FE1;&#x606F;&#xFF0C;&#x8BFE;&#x7A0B;&#x5269;&#x4F59;&#x540D;&#x989D;&#xFF1B;&#x5185;&#x5BB9;&#x793E;&#x4EA4;&#x7CFB;&#x7EDF;&#x4E2D;&#x67D0;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#x4E4B;&#x95F4;&#x7684;&#x5185;&#x5BB9;&#x4FE1;&#x606F;&#x7B49;&#x3002;</p>
+<p>&#x63A5;&#x4E0B;&#x6765;&#xFF0C;&#x6211;&#x4EEC;&#x4E00;&#x5185;&#x5BB9;&#x793E;&#x4EA4;&#x7CFB;&#x7EDF;&#x6765;&#x8FDB;&#x884C;&#x4E3E;&#x4F8B;&#x8BF4;&#x660E;&#x3002;</p>
+<p>&#x5728;&#x5185;&#x5BB9;&#x793E;&#x4EA4;&#x7CFB;&#x7EDF;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x4E00;&#x822C;&#x662F;&#x5148;&#x67E5;&#x8BE2;&#x4E00;&#x6279;&#x5185;&#x5BB9;&#x5217;&#x8868;&#xFF0C;&#x7136;&#x540E;&#x70B9;&#x51FB;&#x67D0;&#x6761;&#x5185;&#x5BB9;&#x67E5;&#x770B;&#x8BE6;&#x60C5;&#xFF0C;</p>
+<p>&#x5728;&#x6CA1;&#x6709;&#x6DFB;&#x52A0;biz&#x7F13;&#x5B58;&#x524D;&#xFF0C;&#x5185;&#x5BB9;&#x4FE1;&#x606F;&#x7684;&#x67E5;&#x8BE2;&#x6D41;&#x7A0B;&#x56FE;&#x5E94;&#x8BE5;&#x4E3A;&#xFF1A;</p>
+<p><img src="resource/redis-cache-05.png" alt="redis-cache-05"></p>
+<p>&#x4ECE;&#x56FE;&#x4EE5;&#x53CA;&#x4E0A;&#x4E00;&#x7BC7;&#x6587;&#x7AE0;<a href="redis-cache.html">go-zero&#x7F13;&#x5B58;&#x8BBE;&#x8BA1;&#x4E4B;&#x6301;&#x4E45;&#x5C42;&#x7F13;&#x5B58;</a>&#x4E2D;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x77E5;&#x9053;&#xFF0C;&#x5185;&#x5BB9;&#x5217;&#x8868;&#x7684;&#x83B7;&#x53D6;&#x662F;&#x6CA1;&#x529E;&#x6CD5;&#x4F9D;&#x8D56;&#x7F13;&#x5B58;&#x7684;&#xFF0C;
+&#x5982;&#x679C;&#x6211;&#x4EEC;&#x5728;&#x4E1A;&#x52A1;&#x5C42;&#x6DFB;&#x52A0;&#x4E00;&#x5C42;&#x7F13;&#x5B58;&#x7528;&#x6765;&#x5B58;&#x50A8;&#x5217;&#x8868;&#x4E2D;&#x7684;&#x5173;&#x952E;&#x4FE1;&#x606F;&#xFF08;&#x751A;&#x81F3;&#x5B8C;&#x6574;&#x4FE1;&#x606F;&#xFF09;&#xFF0C;&#x90A3;&#x4E48;&#x591A;&#x884C;&#x8BB0;&#x5F55;&#x7684;&#x8BBF;&#x95EE;&#x4E0D;&#x5728;&#x662F;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x8FD9;&#x5C31;&#x662F;biz redis&#x8981;&#x505A;&#x7684;&#x4E8B;&#x60C5;&#x3002; &#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x6765;&#x770B;&#x4E00;&#x4E0B;&#x8BBE;&#x8BA1;&#x65B9;&#x6848;&#xFF0C;&#x5047;&#x8BBE;&#x5185;&#x5BB9;&#x7CFB;&#x7EDF;&#x4E2D;&#x5355;&#x884C;&#x8BB0;&#x5F55;&#x5305;&#x542B;&#x4E00;&#x4E0B;&#x5B57;&#x6BB5;</p>
+<table>
+<thead>
+<tr>
+<th>&#x5B57;&#x6BB5;&#x540D;&#x79F0;</th>
+<th>&#x5B57;&#x6BB5;&#x7C7B;&#x578B;</th>
+<th>&#x5907;&#x6CE8;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>&#x5185;&#x5BB9;id</td>
+</tr>
+<tr>
+<td>title</td>
+<td>string</td>
+<td>&#x6807;&#x9898;</td>
+</tr>
+<tr>
+<td>content</td>
+<td>string</td>
+<td>&#x8BE6;&#x7EC6;&#x5185;&#x5BB9;</td>
+</tr>
+<tr>
+<td>createTime</td>
+<td>time.Time</td>
+<td>&#x521B;&#x5EFA;&#x65F6;&#x95F4;</td>
+</tr>
+</tbody>
+</table>
+<p>&#x6211;&#x4EEC;&#x7684;&#x76EE;&#x6807;&#x662F;&#x83B7;&#x53D6;&#x4E00;&#x6279;&#x5185;&#x5BB9;&#x5217;&#x8868;&#xFF0C;&#x800C;&#x5C3D;&#x91CF;&#x907F;&#x514D;&#x5185;&#x5BB9;&#x5217;&#x8868;&#x8D70;db&#x9020;&#x6210;&#x8BBF;&#x95EE;&#x538B;&#x529B;&#xFF0C;&#x9996;&#x5148;&#x6211;&#x4EEC;&#x91C7;&#x7528;redis&#x7684;sort set&#x6570;&#x636E;&#x7ED3;&#x6784;&#x6765;&#x5B58;&#x50A8;&#xFF0C;&#x6839;&#x9700;&#x8981;&#x5B58;&#x50A8;&#x7684;&#x5B57;&#x6BB5;&#x4FE1;&#x606F;&#x91CF;&#xFF0C;&#x6709;&#x4E24;&#x79CD;redis&#x5B58;&#x50A8;&#x65B9;&#x6848;&#xFF1A;</p>
+<ul>
+<li><p>&#x7F13;&#x5B58;&#x5C40;&#x90E8;&#x4FE1;&#x606F;</p>
+<p><img src="resource/biz-redis-02.svg" alt="biz-redis-02">
+&#x5BF9;&#x5176;&#x5173;&#x952E;&#x5B57;&#x6BB5;&#x4FE1;&#x606F;&#xFF08;&#x5982;&#xFF1A;id&#x7B49;&#xFF09;&#x6309;&#x7167;&#x4E00;&#x5B9A;&#x89C4;&#x5219;&#x538B;&#x7F29;&#xFF0C;&#x5E76;&#x5B58;&#x50A8;&#xFF0C;score&#x6211;&#x4EEC;&#x7528;<code>createTime</code>&#x6BEB;&#x79D2;&#x503C;&#xFF08;&#x65F6;&#x95F4;&#x503C;&#x76F8;&#x7B49;&#x8FD9;&#x91CC;&#x4E0D;&#x8BA8;&#x8BBA;&#xFF09;&#xFF0C;&#x8FD9;&#x79CD;&#x5B58;&#x50A8;&#x65B9;&#x6848;&#x7684;&#x597D;&#x5904;&#x662F;&#x8282;&#x7EA6;redis&#x5B58;&#x50A8;&#x7A7A;&#x95F4;&#xFF0C;
+&#x90A3;&#x53E6;&#x4E00;&#x65B9;&#x9762;&#xFF0C;&#x7F3A;&#x70B9;&#x5C31;&#x662F;&#x9700;&#x8981;&#x5BF9;&#x5217;&#x8868;&#x8BE6;&#x7EC6;&#x5185;&#x5BB9;&#x8FDB;&#x884C;&#x4E8C;&#x6B21;&#x56DE;&#x67E5;&#xFF08;&#x4F46;&#x8FD9;&#x6B21;&#x56DE;&#x67E5;&#x662F;&#x4F1A;&#x5229;&#x7528;&#x5230;&#x6301;&#x4E45;&#x5C42;&#x7684;&#x884C;&#x8BB0;&#x5F55;&#x7F13;&#x5B58;&#x7684;&#xFF09;</p>
+</li>
+<li><p>&#x7F13;&#x5B58;&#x5B8C;&#x6574;&#x4FE1;&#x606F;</p>
+<p><img src="resource/biz-redis-01.svg" alt="biz-redis-01">
+&#x5BF9;&#x53D1;&#x5E03;&#x7684;&#x6240;&#x6709;&#x5185;&#x5BB9;&#x6309;&#x7167;&#x4E00;&#x5B9A;&#x89C4;&#x5219;&#x538B;&#x7F29;&#x540E;&#x5747;&#x8FDB;&#x884C;&#x5B58;&#x50A8;&#xFF0C;&#x540C;&#x6837;score&#x6211;&#x4EEC;&#x8FD8;&#x662F;&#x7528;<code>createTime</code>&#x6BEB;&#x79D2;&#x503C;&#xFF0C;&#x8FD9;&#x79CD;&#x5B58;&#x50A8;&#x65B9;&#x6848;&#x7684;&#x597D;&#x5904;&#x662F;&#x4E1A;&#x52A1;&#x7684;&#x589E;&#x3001;&#x5220;&#x3001;&#x67E5;&#x3001;&#x6539;&#x5747;&#x8D70;reids&#xFF0C;&#x800C;db&#x5C42;&#x8FD9;&#x65F6;&#x5019;
+&#x5C31;&#x53EF;&#x4EE5;&#x4E0D;&#x7528;&#x8003;&#x8651;&#x884C;&#x8BB0;&#x5F55;&#x7F13;&#x5B58;&#x4E86;&#xFF0C;&#x6301;&#x4E45;&#x5C42;&#x4EC5;&#x63D0;&#x4F9B;&#x6570;&#x636E;&#x5907;&#x4EFD;&#x548C;&#x6062;&#x590D;&#x4F7F;&#x7528;&#xFF0C;&#x4ECE;&#x53E6;&#x4E00;&#x65B9;&#x9762;&#x6765;&#x770B;&#xFF0C;&#x5176;&#x7F3A;&#x70B9;&#x4E5F;&#x5F88;&#x660E;&#x663E;&#xFF0C;&#x9700;&#x8981;&#x7684;&#x5B58;&#x50A8;&#x7A7A;&#x95F4;&#x3001;&#x914D;&#x7F6E;&#x8981;&#x6C42;&#x66F4;&#x9AD8;&#xFF0C;&#x8D39;&#x7528;&#x4E5F;&#x4F1A;&#x968F;&#x4E4B;&#x589E;&#x5927;&#x3002;</p>
+</li>
+</ul>
+<p>&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre class="language-"><code class="lang-golang">type Content struct {
+    Id         string    `json:&quot;id&quot;`
+    Title      string    `json:&quot;title&quot;`
+    Content    string    `json:&quot;content&quot;`
+    CreateTime time.Time `json:&quot;create_time&quot;`
+}
+
+const bizContentCacheKey = `biz#content#cache`
+
+// AddContent &#x63D0;&#x4F9B;&#x5185;&#x5BB9;&#x5B58;&#x50A8;
+func AddContent(r redis.Redis, c *Content) error {
+    v := compress(c)
+    _, err := r.Zadd(bizContentCacheKey, c.CreateTime.UnixNano()/1e6, v)
+    return err
+}
+
+// DelContent &#x63D0;&#x4F9B;&#x5185;&#x5BB9;&#x5220;&#x9664;
+func DelContent(r redis.Redis, c *Content) error {
+    v := compress(c)
+    _, err := r.Zrem(bizContentCacheKey, v)
+
+    return err
+}
+
+// &#x5185;&#x5BB9;&#x538B;&#x7F29;
+func compress(c *Content) string {
+    // todo: do it yourself
+    var ret string
+    return ret
+}
+
+// &#x5185;&#x5BB9;&#x89E3;&#x538B;
+func unCompress(v string) *Content {
+    // todo: do it yourself
+    var ret Content
+    return &amp;ret
+}
+
+// ListByRangeTime&#x63D0;&#x4F9B;&#x6839;&#x636E;&#x65F6;&#x95F4;&#x6BB5;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x67E5;&#x8BE2;
+func ListByRangeTime(r redis.Redis, start, end time.Time) ([]*Content, error) {
+    kvs, err := r.ZrangebyscoreWithScores(bizContentCacheKey, start.UnixNano()/1e6, end.UnixNano()/1e6)
+    if err != nil {
+        return nil, err
+    }
+
+    var list []*Content
+    for _, kv := range kvs {
+        data:=unCompress(kv.Key)
+        list = append(list, data)
+    }
+
+    return list, nil
+}
+</code></pre>
+<p>&#x5728;&#x4EE5;&#x4E0A;&#x4F8B;&#x5B50;&#x4E2D;&#xFF0C;redis&#x662F;&#x6CA1;&#x6709;&#x8BBE;&#x7F6E;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x589E;&#x3001;&#x5220;&#x3001;&#x6539;&#x3001;&#x67E5;&#x64CD;&#x4F5C;&#x5747;&#x540C;&#x6B65;&#x5230;redis&#xFF0C;&#x6211;&#x4EEC;&#x8BA4;&#x4E3A;&#x5185;&#x5BB9;&#x793E;&#x4EA4;&#x7CFB;&#x7EDF;&#x7684;&#x5217;&#x8868;&#x8BBF;&#x95EE;&#x8BF7;&#x6C42;&#x662F;&#x6BD4;&#x8F83;&#x9AD8;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x624D;&#x505A;&#x8FD9;&#x6837;&#x7684;&#x65B9;&#x6848;&#x8BBE;&#x8BA1;&#xFF0C;
+&#x9664;&#x6B64;&#x4E4B;&#x5916;&#xFF0C;&#x8FD8;&#x6709;&#x4E00;&#x4E9B;&#x6570;&#x636E;&#x8BBF;&#x95EE;&#xFF0C;&#x6CA1;&#x6709;&#x60F3;&#x5185;&#x5BB9;&#x8BBE;&#x8BA1;&#x7CFB;&#x7EDF;&#x8FD9;&#x4E48;&#x9891;&#x7E41;&#x7684;&#x8BBF;&#x95EE;&#xFF0C; &#x53EF;&#x80FD;&#x662F;&#x67D0;&#x4E00;&#x65F6;&#x95F4;&#x6BB5;&#x5185;&#x8BBF;&#x95EE;&#x91CF;&#x7A81;&#x5982;&#x5176;&#x6765;&#x7684;&#x589E;&#x52A0;&#xFF0C;&#x4E4B;&#x540E;&#x53EF;&#x80FD;&#x5F88;&#x957F;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#x624D;&#x4F1A;&#x518D;&#x8BBF;&#x95EE;&#x4E00;&#x6B21;&#xFF0C;&#x4EE5;&#x6B64;&#x95F4;&#x9694;&#xFF0C;
+&#x6216;&#x8005;&#x8BF4;&#x4E0D;&#x4F1A;&#x518D;&#x8BBF;&#x95EE;&#x4E86;&#xFF0C;&#x9762;&#x5BF9;&#x8FD9;&#x79CD;&#x573A;&#x666F;&#xFF0C;&#x5982;&#x679C;&#x6211;&#x53C8;&#x8BE5;&#x5982;&#x4F55;&#x8003;&#x8651;&#x7F13;&#x5B58;&#x7684;&#x8BBE;&#x8BA1;&#x5462;&#xFF1F;&#x5728;go-zero&#x5185;&#x5BB9;&#x5B9E;&#x8DF5;&#x4E2D;&#xFF0C;&#x6709;&#x4E24;&#x79CD;&#x65B9;&#x6848;&#x53EF;&#x4EE5;&#x89E3;&#x51B3;&#x8FD9;&#x79CD;&#x95EE;&#x9898;&#xFF1A;</p>
+<ul>
+<li>&#x589E;&#x52A0;&#x5185;&#x5B58;&#x7F13;&#x5B58;&#xFF1A;&#x901A;&#x8FC7;&#x5185;&#x5B58;&#x7F13;&#x5B58;&#x6765;&#x5B58;&#x50A8;&#x5F53;&#x524D;&#x53EF;&#x80FD;&#x7A81;&#x53D1;&#x8BBF;&#x95EE;&#x91CF;&#x6BD4;&#x8F83;&#x5927;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x5E38;&#x7528;&#x7684;&#x5B58;&#x50A8;&#x65B9;&#x6848;&#x91C7;&#x7528;map&#x6570;&#x636E;&#x7ED3;&#x6784;&#x6765;&#x5B58;&#x50A8;&#xFF0C;map&#x6570;&#x636E;&#x5B58;&#x50A8;&#x5B9E;&#x73B0;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#xFF0C;&#x4F46;&#x7F13;&#x5B58;&#x8FC7;&#x671F;&#x5904;&#x7406;&#x5219;&#x9700;&#x8981;&#x589E;&#x52A0;
+&#x5B9A;&#x65F6;&#x5668;&#x6765;&#x51FA;&#x6765;&#xFF0C;&#x53E6;&#x4E00;&#x5B97;&#x65B9;&#x6848;&#x662F;&#x901A;&#x8FC7;go-zero&#x5E93;&#x4E2D;&#x7684; <a href="https://github.com/tal-tech/go-zero/blob/master/core/collection/cache.go" target="_blank">Cache</a> &#xFF0C;&#x5176;&#x662F;&#x4E13;&#x95E8;
+&#x7528;&#x4E8E;&#x5185;&#x5B58;&#x7BA1;&#x7406;.</li>
+<li>&#x91C7;&#x7528;biz redis,&#x5E76;&#x8BBE;&#x7F6E;&#x5408;&#x7406;&#x7684;&#x8FC7;&#x671F;&#x65F6;&#x95F4;</li>
+</ul>
+<h1 id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</h1>
+<p>&#x4EE5;&#x4E0A;&#x4E24;&#x4E2A;&#x573A;&#x666F;&#x53EF;&#x4EE5;&#x5305;&#x542B;&#x5927;&#x90E8;&#x5206;&#x7684;&#x591A;&#x884C;&#x8BB0;&#x5F55;&#x7F13;&#x5B58;&#xFF0C;&#x5BF9;&#x4E8E;&#x591A;&#x884C;&#x8BB0;&#x5F55;&#x67E5;&#x8BE2;&#x91CF;&#x4E0D;&#x5927;&#x7684;&#x573A;&#x666F;&#xFF0C;&#x6682;&#x65F6;&#x6CA1;&#x5FC5;&#x8981;&#x76F4;&#x63A5;&#x628A;biz redis&#x653E;&#x8FDB;&#x53BB;&#xFF0C;&#x53EF;&#x4EE5;&#x5148;&#x5C1D;&#x8BD5;&#x8BA9;db&#x6765;&#x627F;&#x62C5;&#xFF0C;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x6301;&#x4E45;&#x5C42;&#x76D1;&#x63A7;&#x53CA;&#x670D;&#x52A1;
+&#x76D1;&#x63A7;&#x6765;&#x8861;&#x91CF;&#x65F6;&#x5019;&#x9700;&#x8981;&#x5F15;&#x5165;biz&#x3002;</p>
 <p><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css"></p>
 <script src="./javascript/gitalk.js"></script>
 <div id="gitalk-container"></div>
@@ -1354,12 +1484,12 @@ gitalk.render("gitalk-container");
 
             
                 
-                <a href="concept-introduction.html" class="navigation navigation-prev " aria-label="Previous page: 概念介绍">
+                <a href="redis-cache.html" class="navigation navigation-prev " aria-label="Previous page: go-zero缓存设计之持久层缓存">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="monolithic-service.html" class="navigation navigation-next " aria-label="Next page: 单体服务">
+                <a href="go-queue.html" class="navigation navigation-next " aria-label="Next page: go-zero分布式定时任务">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1370,7 +1500,7 @@ gitalk.render("gitalk-container");
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"快速开发","level":"1.5","depth":1,"next":{"title":"单体服务","level":"1.5.1","depth":2,"path":"monolithic-service.md","ref":"monolithic-service.md","articles":[]},"previous":{"title":"概念介绍","level":"1.4","depth":1,"path":"concept-introduction.md","ref":"concept-introduction.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","code","-lunr","-search","search-pro","github","splitter","-sharing","sharing-plus","tbfed-pagefooter","flexible-alerts","page-toc-button","pageview-count","popup","hide-element","edit-link","-highlight","prism","theme-comscore"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © 2019-2021 go-zero","modify_label":"最后更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"lang":{"shell":"bash"},"css":["prismjs/themes/prism-tomorrow.css"]},"github":{"url":"https://github.com/tal-tech/go-zero"},"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"qq":false,"all":["douban","facebook","google","linkedin","twitter","weibo","qq","qzone","weibo"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true},"edit-link":{"label":"编辑此页","base":"https://github.com/zeromicro/go-zero-doc/blob/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"松妹子","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"go-zero使用文档","language":"zh-hans","gitbook":"3.2.3"},"file":{"path":"quick-start.md","mtime":"2021-03-15T06:28:17.215Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-15T06:29:20.273Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"go-zero缓存设计之业务层缓存","level":"1.13.2","depth":2,"next":{"title":"go-zero分布式定时任务","level":"1.13.3","depth":2,"path":"go-queue.md","ref":"go-queue.md","articles":[]},"previous":{"title":"go-zero缓存设计之持久层缓存","level":"1.13.1","depth":2,"path":"redis-cache.md","ref":"redis-cache.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","code","-lunr","-search","search-pro","github","splitter","-sharing","sharing-plus","tbfed-pagefooter","flexible-alerts","page-toc-button","pageview-count","popup","hide-element","edit-link","-highlight","prism","theme-comscore"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © 2019-2021 go-zero","modify_label":"最后更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"lang":{"shell":"bash"},"css":["prismjs/themes/prism-tomorrow.css"]},"github":{"url":"https://github.com/tal-tech/go-zero"},"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"qq":false,"all":["douban","facebook","google","linkedin","twitter","weibo","qq","qzone","weibo"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true},"edit-link":{"label":"编辑此页","base":"https://github.com/zeromicro/go-zero-doc/blob/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"松妹子","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"go-zero使用文档","language":"zh-hans","gitbook":"3.2.3"},"file":{"path":"buiness-cache.md","mtime":"2021-03-15T06:28:17.207Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-15T06:29:20.273Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
