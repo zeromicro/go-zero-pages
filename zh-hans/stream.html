@@ -1,0 +1,1755 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>流数据处理利器 · go-zero document</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="anqiansong">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-flexible-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-toc-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-pageview-count/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism-tomorrow.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-theme-comscore/test.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="online-exchange.html" />
+    
+    
+    <link rel="prev" href="datacenter.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="about-us.html">
+            
+                <a href="about-us.html">
+            
+                    
+                    关于我们
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="join-us.html">
+            
+                <a href="join-us.html">
+            
+                    
+                    加入我们
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="concept-introduction.html">
+            
+                <a href="concept-introduction.html">
+            
+                    
+                    概念介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="quick-start.html">
+            
+                <a href="quick-start.html">
+            
+                    
+                    快速开发
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="monolithic-service.html">
+            
+                <a href="monolithic-service.html">
+            
+                    
+                    单体服务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="micro-service.html">
+            
+                <a href="micro-service.html">
+            
+                    
+                    微服务
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="framework-design.html">
+            
+                <a href="framework-design.html">
+            
+                    
+                    框架设计
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="go-zero-design.html">
+            
+                <a href="go-zero-design.html">
+            
+                    
+                    go-zero设计理念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="go-zero-features.html">
+            
+                <a href="go-zero-features.html">
+            
+                    
+                    go-zero特点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="api-grammar.html">
+            
+                <a href="api-grammar.html">
+            
+                    
+                    api语法介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="api-dir.html">
+            
+                <a href="api-dir.html">
+            
+                    
+                    api目录结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="rpc-dir.html">
+            
+                <a href="rpc-dir.html">
+            
+                    
+                    rpc目录结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="project-dev.html">
+            
+                <a href="project-dev.html">
+            
+                    
+                    项目开发
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="prepare.html">
+            
+                <a href="prepare.html">
+            
+                    
+                    准备工作
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1.1" data-path="golang-install.html">
+            
+                <a href="golang-install.html">
+            
+                    
+                    golang安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.2" data-path="gomod-config.html">
+            
+                <a href="gomod-config.html">
+            
+                    
+                    go module配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.3" data-path="goctl-install.html">
+            
+                <a href="goctl-install.html">
+            
+                    
+                    goctl安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.4" data-path="protoc-install.html">
+            
+                <a href="protoc-install.html">
+            
+                    
+                    protoc&protoc-gen-go安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.5" data-path="prepare-other.html">
+            
+                <a href="prepare-other.html">
+            
+                    
+                    其他
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="dev-specification.html">
+            
+                <a href="dev-specification.html">
+            
+                    
+                    开发规范
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.2.1" data-path="naming-spec.html">
+            
+                <a href="naming-spec.html">
+            
+                    
+                    命名规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.2" data-path="route-naming-spec.html">
+            
+                <a href="route-naming-spec.html">
+            
+                    
+                    路由规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.3" data-path="coding-spec.html">
+            
+                <a href="coding-spec.html">
+            
+                    
+                    编码规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="dev-flow.html">
+            
+                <a href="dev-flow.html">
+            
+                    
+                    开发流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="config-introduction.html">
+            
+                <a href="config-introduction.html">
+            
+                    
+                    配置介绍
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.4.1" data-path="api-config.html">
+            
+                <a href="api-config.html">
+            
+                    
+                    api配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4.2" data-path="rpc-config.html">
+            
+                <a href="rpc-config.html">
+            
+                    
+                    rpc配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="business-dev.html">
+            
+                <a href="business-dev.html">
+            
+                    
+                    业务开发
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.5.1" data-path="service-design.html">
+            
+                <a href="service-design.html">
+            
+                    
+                    目录拆分
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.2" data-path="model-gen.html">
+            
+                <a href="model-gen.html">
+            
+                    
+                    model生成
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.3" data-path="api-coding.html">
+            
+                <a href="api-coding.html">
+            
+                    
+                    api文件编写
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.4" data-path="business-coding.html">
+            
+                <a href="business-coding.html">
+            
+                    
+                    业务编码
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.5" data-path="jwt.html">
+            
+                <a href="jwt.html">
+            
+                    
+                    jwt鉴权
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.6" data-path="middleware.html">
+            
+                <a href="middleware.html">
+            
+                    
+                    中间件使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.7" data-path="rpc-call.html">
+            
+                <a href="rpc-call.html">
+            
+                    
+                    rpc服务编写与调用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.8" data-path="error-handle.html">
+            
+                <a href="error-handle.html">
+            
+                    
+                    错误处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="ci-cd.html">
+            
+                <a href="ci-cd.html">
+            
+                    
+                    CI/CD
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7" data-path="service-deployment.html">
+            
+                <a href="service-deployment.html">
+            
+                    
+                    服务部署
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.8" data-path="log-collection.html">
+            
+                <a href="log-collection.html">
+            
+                    
+                    日志收集
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.9" data-path="trace.html">
+            
+                <a href="trace.html">
+            
+                    
+                    链路追踪
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.10" data-path="service-monitor.html">
+            
+                <a href="service-monitor.html">
+            
+                    
+                    服务监控
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="goctl.html">
+            
+                <a href="goctl.html">
+            
+                    
+                    Goctl
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="goctl-commands.html">
+            
+                <a href="goctl-commands.html">
+            
+                    
+                    命令大全
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="goctl-api.html">
+            
+                <a href="goctl-api.html">
+            
+                    
+                    api命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="goctl-rpc.html">
+            
+                <a href="goctl-rpc.html">
+            
+                    
+                    rpc命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="goctl-model.html">
+            
+                <a href="goctl-model.html">
+            
+                    
+                    model命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" data-path="goctl-plugin.html">
+            
+                <a href="goctl-plugin.html">
+            
+                    
+                    plugin命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6" data-path="goctl-other.html">
+            
+                <a href="goctl-other.html">
+            
+                    
+                    其他命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="component-center.html">
+            
+                <a href="component-center.html">
+            
+                    
+                    组件中心
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="logx.html">
+            
+                <a href="logx.html">
+            
+                    
+                    logx
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="bloom.html">
+            
+                <a href="bloom.html">
+            
+                    
+                    bloom
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="executors.html">
+            
+                <a href="executors.html">
+            
+                    
+                    executors
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4" data-path="fx.html">
+            
+                <a href="fx.html">
+            
+                    
+                    fx
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.5" data-path="mysql.html">
+            
+                <a href="mysql.html">
+            
+                    
+                    mysql
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.6" data-path="redis-lock.html">
+            
+                <a href="redis-lock.html">
+            
+                    
+                    redis-lock
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.7" data-path="periodlimit.html">
+            
+                <a href="periodlimit.html">
+            
+                    
+                    periodlimit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.8" data-path="tokenlimit.html">
+            
+                <a href="tokenlimit.html">
+            
+                    
+                    tokenlimit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.9" data-path="timing-wheel.html">
+            
+                <a href="timing-wheel.html">
+            
+                    
+                    TimingWheel
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="tool-center.html">
+            
+                <a href="tool-center.html">
+            
+                    
+                    工具中心
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="intellij.html">
+            
+                <a href="intellij.html">
+            
+                    
+                    intellij插件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="vscode.html">
+            
+                <a href="vscode.html">
+            
+                    
+                    vscode插件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="plugin-center.html">
+            
+                <a href="plugin-center.html">
+            
+                    
+                    插件中心
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="learning-resource.html">
+            
+                <a href="learning-resource.html">
+            
+                    
+                    学习资源
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="wechat.html">
+            
+                <a href="wechat.html">
+            
+                    
+                    公众号
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="goreading.html">
+            
+                <a href="goreading.html">
+            
+                    
+                    Go夜读
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" data-path="gotalk.html">
+            
+                <a href="gotalk.html">
+            
+                    
+                    Go开源说
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="practise.html">
+            
+                <a href="practise.html">
+            
+                    
+                    开发实践
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.1" data-path="redis-cache.html">
+            
+                <a href="redis-cache.html">
+            
+                    
+                    go-zero缓存设计之持久层缓存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.2" data-path="buiness-cache.html">
+            
+                <a href="buiness-cache.html">
+            
+                    
+                    go-zero缓存设计之业务层缓存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.3" data-path="go-queue.html">
+            
+                <a href="go-queue.html">
+            
+                    
+                    go-zero分布式定时任务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.4" data-path="datacenter.html">
+            
+                <a href="datacenter.html">
+            
+                    
+                    我是如何用go-zero 实现一个中台系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.13.5" data-path="stream.html">
+            
+                <a href="stream.html">
+            
+                    
+                    流数据处理利器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.6" data-path="online-exchange.html">
+            
+                <a href="online-exchange.html">
+            
+                    
+                    10月3日线上交流问题汇总
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" data-path="dev-log.html">
+            
+                <a href="dev-log.html">
+            
+                    
+                    开发日志
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1" data-path="goctl-log.html">
+            
+                <a href="goctl-log.html">
+            
+                    
+                    goctl开发日志
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.2" data-path="intellij-log.html">
+            
+                <a href="intellij-log.html">
+            
+                    
+                    intellij开发日志
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" data-path="contributor.html">
+            
+                <a href="contributor.html">
+            
+                    
+                    贡献人员
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16" data-path="doc-contibute.html">
+            
+                <a href="doc-contibute.html">
+            
+                    
+                    文档贡献
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17" data-path="error.html">
+            
+                <a href="error.html">
+            
+                    
+                    常见错误处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18" data-path="source.html">
+            
+                <a href="source.html">
+            
+                    
+                    相关源码
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >流数据处理利器</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x6D41;&#x6570;&#x636E;&#x5904;&#x7406;&#x5229;&#x5668;">&#x6D41;&#x6570;&#x636E;&#x5904;&#x7406;&#x5229;&#x5668;</h1>
+<p>&#x6D41;&#x5904;&#x7406; (Stream processing) &#x662F;&#x4E00;&#x79CD;&#x8BA1;&#x7B97;&#x673A;&#x7F16;&#x7A0B;&#x8303;&#x5F0F;&#xFF0C;&#x5176;&#x5141;&#x8BB8;&#x7ED9;&#x5B9A;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x5E8F;&#x5217; (&#x6D41;&#x5904;&#x7406;&#x6570;&#x636E;&#x6E90;)&#xFF0C;&#x4E00;&#x7CFB;&#x5217;&#x6570;&#x636E;&#x64CD;&#x4F5C; (&#x51FD;&#x6570;) &#x88AB;&#x5E94;&#x7528;&#x5230;&#x6D41;&#x4E2D;&#x7684;&#x6BCF;&#x4E2A;&#x5143;&#x7D20;&#x3002;&#x540C;&#x65F6;&#x6D41;&#x5904;&#x7406;&#x5DE5;&#x5177;&#x53EF;&#x4EE5;&#x663E;&#x8457;&#x63D0;&#x9AD8;&#x7A0B;&#x5E8F;&#x5458;&#x7684;&#x5F00;&#x53D1;&#x6548;&#x7387;&#xFF0C;&#x5141;&#x8BB8;&#x4ED6;&#x4EEC;&#x7F16;&#x5199;&#x6709;&#x6548;&#x3001;&#x5E72;&#x51C0;&#x548C;&#x7B80;&#x6D01;&#x7684;&#x4EE3;&#x7801;&#x3002;</p>
+<p>&#x6D41;&#x6570;&#x636E;&#x5904;&#x7406;&#x5728;&#x6211;&#x4EEC;&#x7684;&#x65E5;&#x5E38;&#x5DE5;&#x4F5C;&#x4E2D;&#x975E;&#x5E38;&#x5E38;&#x89C1;&#xFF0C;&#x4E3E;&#x4E2A;&#x4F8B;&#x5B50;&#xFF0C;&#x6211;&#x4EEC;&#x5728;&#x4E1A;&#x52A1;&#x5F00;&#x53D1;&#x4E2D;&#x5F80;&#x5F80;&#x4F1A;&#x8BB0;&#x5F55;&#x8BB8;&#x591A;&#x4E1A;&#x52A1;&#x65E5;&#x5FD7;&#xFF0C;&#x8FD9;&#x4E9B;&#x65E5;&#x5FD7;&#x4E00;&#x822C;&#x662F;&#x5148;&#x53D1;&#x9001;&#x5230; Kafka&#xFF0C;&#x7136;&#x540E;&#x518D;&#x7531; Job &#x6D88;&#x8D39; Kafaka &#x5199;&#x5230; elasticsearch&#xFF0C;&#x5728;&#x8FDB;&#x884C;&#x65E5;&#x5FD7;&#x6D41;&#x5904;&#x7406;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x5F80;&#x5F80;&#x8FD8;&#x4F1A;&#x5BF9;&#x65E5;&#x5FD7;&#x505A;&#x4E00;&#x4E9B;&#x5904;&#x7406;&#xFF0C;&#x6BD4;&#x5982;&#x8FC7;&#x6EE4;&#x65E0;&#x6548;&#x7684;&#x65E5;&#x5FD7;&#xFF0C;&#x505A;&#x4E00;&#x4E9B;&#x8BA1;&#x7B97;&#x4EE5;&#x53CA;&#x91CD;&#x65B0;&#x7EC4;&#x5408;&#x65E5;&#x5FD7;&#x7B49;&#x7B49;&#xFF0C;&#x793A;&#x610F;&#x56FE;&#x5982;&#x4E0B;:
+<img src="resource/fx_log.png" alt="fx_log.png"></p>
+<h3 id="&#x6D41;&#x5904;&#x7406;&#x5DE5;&#x5177;fx">&#x6D41;&#x5904;&#x7406;&#x5DE5;&#x5177;fx</h3>
+<p><a href="https://github.com/tal-tech/go-zero" target="_blank">go-zero</a> &#x662F;&#x4E00;&#x4E2A;&#x529F;&#x80FD;&#x5B8C;&#x5907;&#x7684;&#x5FAE;&#x670D;&#x52A1;&#x6846;&#x67B6;&#xFF0C;&#x6846;&#x67B6;&#x4E2D;&#x5185;&#x7F6E;&#x4E86;&#x5F88;&#x591A;&#x975E;&#x5E38;&#x5B9E;&#x7528;&#x7684;&#x5DE5;&#x5177;&#xFF0C;&#x5176;&#x4E2D;&#x5C31;&#x5305;&#x542B;&#x6D41;&#x6570;&#x636E;&#x5904;&#x7406;&#x5DE5;&#x5177;<a href="https://github.com/tal-tech/go-zero/tree/master/core/fx" target="_blank">fx</a> &#xFF0C;&#x4E0B;&#x9762;&#x6211;&#x4EEC;&#x901A;&#x8FC7;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x4F8B;&#x5B50;&#x6765;&#x8BA4;&#x8BC6;&#x4E0B;&#x8BE5;&#x5DE5;&#x5177;&#xFF1A;</p>
+<pre class="language-"><code class="lang-go"><span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+    <span class="token string">&quot;fmt&quot;</span>
+    <span class="token string">&quot;os&quot;</span>
+    <span class="token string">&quot;os/signal&quot;</span>
+    <span class="token string">&quot;syscall&quot;</span>
+    <span class="token string">&quot;time&quot;</span>
+
+    <span class="token string">&quot;github.com/tal-tech/go-zero/core/fx&quot;</span>
+<span class="token punctuation">)</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    ch <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">chan</span> <span class="token builtin">int</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">go</span> <span class="token function">inputStream</span><span class="token punctuation">(</span>ch<span class="token punctuation">)</span>
+    <span class="token keyword">go</span> <span class="token function">outputStream</span><span class="token punctuation">(</span>ch<span class="token punctuation">)</span>
+
+    c <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">chan</span> os<span class="token punctuation">.</span>Signal<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+    signal<span class="token punctuation">.</span><span class="token function">Notify</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> syscall<span class="token punctuation">.</span>SIGTERM<span class="token punctuation">,</span> syscall<span class="token punctuation">.</span>SIGINT<span class="token punctuation">)</span>
+    <span class="token operator">&lt;-</span>c
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token function">inputStream</span><span class="token punctuation">(</span>ch <span class="token keyword">chan</span> <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    count <span class="token operator">:=</span> <span class="token number">0</span>
+    <span class="token keyword">for</span> <span class="token punctuation">{</span>
+        ch <span class="token operator">&lt;-</span> count
+        time<span class="token punctuation">.</span><span class="token function">Sleep</span><span class="token punctuation">(</span>time<span class="token punctuation">.</span>Millisecond <span class="token operator">*</span> <span class="token number">500</span><span class="token punctuation">)</span>
+        count<span class="token operator">++</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token function">outputStream</span><span class="token punctuation">(</span>ch <span class="token keyword">chan</span> <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    fx<span class="token punctuation">.</span><span class="token function">From</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span>source <span class="token keyword">chan</span><span class="token operator">&lt;-</span> <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">for</span> c <span class="token operator">:=</span> <span class="token keyword">range</span> ch <span class="token punctuation">{</span>
+            source <span class="token operator">&lt;-</span> c
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Walk</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span>item <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> pipe <span class="token keyword">chan</span><span class="token operator">&lt;-</span> <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        count <span class="token operator">:=</span> item<span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token builtin">int</span><span class="token punctuation">)</span>
+        pipe <span class="token operator">&lt;-</span> count
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Filter</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span>item <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token builtin">bool</span> <span class="token punctuation">{</span>
+        itemInt <span class="token operator">:=</span> item<span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token builtin">int</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> itemInt<span class="token operator">%</span><span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token boolean">true</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">ForEach</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span>item <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>inputStream&#x51FD;&#x6570;&#x6A21;&#x62DF;&#x4E86;&#x6D41;&#x6570;&#x636E;&#x7684;&#x4EA7;&#x751F;&#xFF0C;outputStream&#x51FD;&#x6570;&#x6A21;&#x62DF;&#x4E86;&#x6D41;&#x6570;&#x636E;&#x7684;&#x5904;&#x7406;&#x8FC7;&#x7A0B;&#xFF0C;&#x5176;&#x4E2D;From&#x51FD;&#x6570;&#x4E3A;&#x6D41;&#x7684;&#x8F93;&#x5165;&#xFF0C;Walk&#x51FD;&#x6570;&#x5E76;&#x53D1;&#x7684;&#x4F5C;&#x7528;&#x5728;&#x6BCF;&#x4E00;&#x4E2A;item&#x4E0A;&#xFF0C;Filter&#x51FD;&#x6570;&#x5BF9;item&#x8FDB;&#x884C;&#x8FC7;&#x6EE4;&#x4E3A;true&#x4FDD;&#x7559;&#x4E3A;false&#x4E0D;&#x4FDD;&#x7559;&#xFF0C;ForEach&#x51FD;&#x6570;&#x904D;&#x5386;&#x8F93;&#x51FA;&#x6BCF;&#x4E00;&#x4E2A;item&#x5143;&#x7D20;&#x3002;</p>
+<h3 id="&#x6D41;&#x6570;&#x636E;&#x5904;&#x7406;&#x4E2D;&#x95F4;&#x64CD;&#x4F5C;">&#x6D41;&#x6570;&#x636E;&#x5904;&#x7406;&#x4E2D;&#x95F4;&#x64CD;&#x4F5C;</h3>
+<p>&#x4E00;&#x4E2A;&#x6D41;&#x7684;&#x6570;&#x636E;&#x5904;&#x7406;&#x53EF;&#x80FD;&#x5B58;&#x5728;&#x8BB8;&#x591A;&#x7684;&#x4E2D;&#x95F4;&#x64CD;&#x4F5C;&#xFF0C;&#x6BCF;&#x4E2A;&#x4E2D;&#x95F4;&#x64CD;&#x4F5C;&#x90FD;&#x53EF;&#x4EE5;&#x4F5C;&#x7528;&#x5728;&#x6D41;&#x4E0A;&#x3002;&#x5C31;&#x50CF;&#x6D41;&#x6C34;&#x7EBF;&#x4E0A;&#x7684;&#x5DE5;&#x4EBA;&#x4E00;&#x6837;&#xFF0C;&#x6BCF;&#x4E2A;&#x5DE5;&#x4EBA;&#x64CD;&#x4F5C;&#x5B8C;&#x96F6;&#x4EF6;&#x540E;&#x90FD;&#x4F1A;&#x8FD4;&#x56DE;&#x5904;&#x7406;&#x5B8C;&#x6210;&#x7684;&#x65B0;&#x96F6;&#x4EF6;&#xFF0C;&#x540C;&#x7406;&#x6D41;&#x5904;&#x7406;&#x4E2D;&#x95F4;&#x64CD;&#x4F5C;&#x5B8C;&#x6210;&#x540E;&#x4E5F;&#x4F1A;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x6D41;&#x3002;
+<img src="resource/7715f4b6-8739-41ac-8c8c-04d187172e9d.png" alt="7715f4b6-8739-41ac-8c8c-04d187172e9d.png">
+fx&#x7684;&#x6D41;&#x5904;&#x7406;&#x4E2D;&#x95F4;&#x64CD;&#x4F5C;:</p>
+<table>
+<thead>
+<tr>
+<th>&#x64CD;&#x4F5C;&#x51FD;&#x6570;</th>
+<th>&#x529F;&#x80FD;</th>
+<th>&#x8F93;&#x5165;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Distinct</td>
+<td>&#x53BB;&#x9664;&#x91CD;&#x590D;&#x7684;item</td>
+<td>KeyFunc&#xFF0C;&#x8FD4;&#x56DE;&#x9700;&#x8981;&#x53BB;&#x91CD;&#x7684;key</td>
+</tr>
+<tr>
+<td>Filter</td>
+<td>&#x8FC7;&#x6EE4;&#x4E0D;&#x6EE1;&#x8DB3;&#x6761;&#x4EF6;&#x7684;item</td>
+<td>FilterFunc&#xFF0C;Option&#x63A7;&#x5236;&#x5E76;&#x53D1;&#x91CF;</td>
+</tr>
+<tr>
+<td>Group</td>
+<td>&#x5BF9;item&#x8FDB;&#x884C;&#x5206;&#x7EC4;</td>
+<td>KeyFunc&#xFF0C;&#x4EE5;key&#x8FDB;&#x884C;&#x5206;&#x7EC4;</td>
+</tr>
+<tr>
+<td>Head</td>
+<td>&#x53D6;&#x51FA;&#x524D;n&#x4E2A;item&#xFF0C;&#x8FD4;&#x56DE;&#x65B0;stream</td>
+<td>int64&#x4FDD;&#x7559;&#x6570;&#x91CF;</td>
+</tr>
+<tr>
+<td>Map</td>
+<td>&#x5BF9;&#x8C61;&#x8F6C;&#x6362;</td>
+<td>MapFunc&#xFF0C;Option&#x63A7;&#x5236;&#x5E76;&#x53D1;&#x91CF;</td>
+</tr>
+<tr>
+<td>Merge</td>
+<td>&#x5408;&#x5E76;item&#x5230;slice&#x5E76;&#x751F;&#x6210;&#x65B0;stream</td>
+<td></td>
+</tr>
+<tr>
+<td>Reverse</td>
+<td>&#x53CD;&#x8F6C;item</td>
+<td></td>
+</tr>
+<tr>
+<td>Sort</td>
+<td>&#x5BF9;item&#x8FDB;&#x884C;&#x6392;&#x5E8F;</td>
+<td>LessFunc&#x5B9E;&#x73B0;&#x6392;&#x5E8F;&#x7B97;&#x6CD5;</td>
+</tr>
+<tr>
+<td>Tail</td>
+<td>&#x4E0E;Head&#x529F;&#x80FD;&#x7C7B;&#x4F3C;&#xFF0C;&#x53D6;&#x51FA;&#x540E;n&#x4E2A;item&#x7EC4;&#x6210;&#x65B0;stream</td>
+<td>int64&#x4FDD;&#x7559;&#x6570;&#x91CF;</td>
+</tr>
+<tr>
+<td>Walk</td>
+<td>&#x4F5C;&#x7528;&#x5728;&#x6BCF;&#x4E2A;item&#x4E0A;</td>
+<td>WalkFunc&#xFF0C;Option&#x63A7;&#x5236;&#x5E76;&#x53D1;&#x91CF;</td>
+</tr>
+</tbody>
+</table>
+<p>&#x4E0B;&#x56FE;&#x5C55;&#x793A;&#x4E86;&#x6BCF;&#x4E2A;&#x6B65;&#x9AA4;&#x548C;&#x6BCF;&#x4E2A;&#x6B65;&#x9AA4;&#x7684;&#x7ED3;&#x679C;:</p>
+<p><img src="resource/3aefec98-56eb-45a6-a4b2-9adbdf4d63c0.png" alt="3aefec98-56eb-45a6-a4b2-9adbdf4d63c0.png"></p>
+<h3 id="&#x7528;&#x6CD5;&#x4E0E;&#x539F;&#x7406;&#x5206;&#x6790;">&#x7528;&#x6CD5;&#x4E0E;&#x539F;&#x7406;&#x5206;&#x6790;</h3>
+<h4 id="from">From</h4>
+<p>&#x901A;&#x8FC7;From&#x51FD;&#x6570;&#x6784;&#x5EFA;&#x6D41;&#x5E76;&#x8FD4;&#x56DE;Stream&#xFF0C;&#x6D41;&#x6570;&#x636E;&#x901A;&#x8FC7;channel&#x8FDB;&#x884C;&#x5B58;&#x50A8;&#xFF1A;</p>
+<pre class="language-"><code class="lang-go"><span class="token comment">// &#x4F8B;&#x5B50;</span>
+s <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">}</span>
+fx<span class="token punctuation">.</span><span class="token function">From</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span>source <span class="token keyword">chan</span><span class="token operator">&lt;-</span> <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">for</span> <span class="token boolean">_</span><span class="token punctuation">,</span> v <span class="token operator">:=</span> <span class="token keyword">range</span> s <span class="token punctuation">{</span>
+    source <span class="token operator">&lt;-</span> v
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment">// &#x6E90;&#x7801;</span>
+<span class="token keyword">func</span> <span class="token function">From</span><span class="token punctuation">(</span>generate GenerateFunc<span class="token punctuation">)</span> Stream <span class="token punctuation">{</span>
+    source <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">chan</span> <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">go</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">defer</span> <span class="token function">close</span><span class="token punctuation">(</span>source<span class="token punctuation">)</span>
+    <span class="token comment">// &#x6784;&#x9020;&#x6D41;&#x6570;&#x636E;&#x5199;&#x5165;channel</span>
+        <span class="token function">generate</span><span class="token punctuation">(</span>source<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> <span class="token function">Range</span><span class="token punctuation">(</span>source<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="filter">Filter</h4>
+<p>Filter&#x51FD;&#x6570;&#x63D0;&#x4F9B;&#x8FC7;&#x6EE4;item&#x7684;&#x529F;&#x80FD;&#xFF0C;FilterFunc&#x5B9A;&#x4E49;&#x8FC7;&#x6EE4;&#x903B;&#x8F91;true&#x4FDD;&#x7559;item&#xFF0C;false&#x5219;&#x4E0D;&#x4FDD;&#x7559;:</p>
+<pre class="language-"><code class="lang-go"><span class="token comment">// &#x4F8B;&#x5B50; &#x4FDD;&#x7559;&#x5076;&#x6570;</span>
+s <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">}</span>
+fx<span class="token punctuation">.</span><span class="token function">From</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span>source <span class="token keyword">chan</span><span class="token operator">&lt;-</span> <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">for</span> <span class="token boolean">_</span><span class="token punctuation">,</span> v <span class="token operator">:=</span> <span class="token keyword">range</span> s <span class="token punctuation">{</span>
+    source <span class="token operator">&lt;-</span> v
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Filter</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span>item <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token builtin">bool</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> item<span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token builtin">int</span><span class="token punctuation">)</span><span class="token operator">%</span><span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> <span class="token boolean">false</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment">// &#x6E90;&#x7801;</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>p Stream<span class="token punctuation">)</span> <span class="token function">Filter</span><span class="token punctuation">(</span>fn FilterFunc<span class="token punctuation">,</span> opts <span class="token operator">...</span>Option<span class="token punctuation">)</span> Stream <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> p<span class="token punctuation">.</span><span class="token function">Walk</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span>item <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> pipe <span class="token keyword">chan</span><span class="token operator">&lt;-</span> <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// &#x6267;&#x884C;&#x8FC7;&#x6EE4;&#x51FD;&#x6570;true&#x4FDD;&#x7559;&#xFF0C;false&#x4E22;&#x5F03;</span>
+        <span class="token keyword">if</span> <span class="token function">fn</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            pipe <span class="token operator">&lt;-</span> item
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span> opts<span class="token operator">...</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="group">Group</h4>
+<p>Group&#x5BF9;&#x6D41;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x5206;&#x7EC4;&#xFF0C;&#x9700;&#x5B9A;&#x4E49;&#x5206;&#x7EC4;&#x7684;key&#xFF0C;&#x6570;&#x636E;&#x5206;&#x7EC4;&#x540E;&#x4EE5;slice&#x5B58;&#x5165;channel:</p>
+<pre class="language-"><code class="lang-go"><span class="token comment">// &#x4F8B;&#x5B50; &#x6309;&#x7167;&#x9996;&#x5B57;&#x7B26;&quot;g&quot;&#x6216;&#x8005;&quot;p&quot;&#x5206;&#x7EC4;&#xFF0C;&#x6CA1;&#x6709;&#x5219;&#x5206;&#x5230;&#x53E6;&#x4E00;&#x7EC4;</span>
+    ss <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">string</span><span class="token punctuation">{</span><span class="token string">&quot;golang&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;google&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;php&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;python&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;java&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;c++&quot;</span><span class="token punctuation">}</span>
+    fx<span class="token punctuation">.</span><span class="token function">From</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span>source <span class="token keyword">chan</span><span class="token operator">&lt;-</span> <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">for</span> <span class="token boolean">_</span><span class="token punctuation">,</span> s <span class="token operator">:=</span> <span class="token keyword">range</span> ss <span class="token punctuation">{</span>
+            source <span class="token operator">&lt;-</span> s
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Group</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span>item <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> strings<span class="token punctuation">.</span><span class="token function">HasPrefix</span><span class="token punctuation">(</span>item<span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token builtin">string</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">&quot;g&quot;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token string">&quot;g&quot;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> strings<span class="token punctuation">.</span><span class="token function">HasPrefix</span><span class="token punctuation">(</span>item<span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token builtin">string</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">&quot;p&quot;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token string">&quot;p&quot;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> <span class="token string">&quot;&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">ForEach</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span>item <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// &#x6E90;&#x7801;</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>p Stream<span class="token punctuation">)</span> <span class="token function">Group</span><span class="token punctuation">(</span>fn KeyFunc<span class="token punctuation">)</span> Stream <span class="token punctuation">{</span>
+  <span class="token comment">// &#x5B9A;&#x4E49;&#x5206;&#x7EC4;&#x5B58;&#x50A8;map</span>
+    groups <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">map</span><span class="token punctuation">[</span><span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> item <span class="token operator">:=</span> <span class="token keyword">range</span> p<span class="token punctuation">.</span>source <span class="token punctuation">{</span>
+    <span class="token comment">// &#x7528;&#x6237;&#x81EA;&#x5B9A;&#x4E49;&#x5206;&#x7EC4;key</span>
+        key <span class="token operator">:=</span> <span class="token function">fn</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span>
+    <span class="token comment">// key&#x76F8;&#x540C;&#x5206;&#x5230;&#x4E00;&#x7EC4;</span>
+        groups<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">append</span><span class="token punctuation">(</span>groups<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">,</span> item<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+
+    source <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">chan</span> <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token keyword">go</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">for</span> <span class="token boolean">_</span><span class="token punctuation">,</span> group <span class="token operator">:=</span> <span class="token keyword">range</span> groups <span class="token punctuation">{</span>
+      <span class="token comment">// &#x76F8;&#x540C;key&#x7684;&#x4E00;&#x7EC4;&#x6570;&#x636E;&#x5199;&#x5165;&#x5230;channel</span>
+            source <span class="token operator">&lt;-</span> group
+        <span class="token punctuation">}</span>
+        <span class="token function">close</span><span class="token punctuation">(</span>source<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> <span class="token function">Range</span><span class="token punctuation">(</span>source<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="reverse">Reverse</h4>
+<p>reverse&#x53EF;&#x4EE5;&#x5BF9;&#x6D41;&#x4E2D;&#x5143;&#x7D20;&#x8FDB;&#x884C;&#x53CD;&#x8F6C;&#x5904;&#x7406;:</p>
+<p><img src="resource/7e0fd2b8-d4c1-4130-a216-a7d3d4301116.png" alt="7e0fd2b8-d4c1-4130-a216-a7d3d4301116.png"></p>
+<pre class="language-"><code class="lang-go"><span class="token comment">// &#x4F8B;&#x5B50;</span>
+fx<span class="token punctuation">.</span><span class="token function">Just</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Reverse</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">ForEach</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span>item <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment">// &#x6E90;&#x7801;</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>p Stream<span class="token punctuation">)</span> <span class="token function">Reverse</span><span class="token punctuation">(</span><span class="token punctuation">)</span> Stream <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> items <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+  <span class="token comment">// &#x83B7;&#x53D6;&#x6D41;&#x4E2D;&#x6570;&#x636E;</span>
+    <span class="token keyword">for</span> item <span class="token operator">:=</span> <span class="token keyword">range</span> p<span class="token punctuation">.</span>source <span class="token punctuation">{</span>
+        items <span class="token operator">=</span> <span class="token function">append</span><span class="token punctuation">(</span>items<span class="token punctuation">,</span> item<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">// &#x53CD;&#x8F6C;&#x7B97;&#x6CD5;</span>
+    <span class="token keyword">for</span> i <span class="token operator">:=</span> <span class="token function">len</span><span class="token punctuation">(</span>items<span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">2</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&gt;=</span> <span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">--</span> <span class="token punctuation">{</span>
+        opp <span class="token operator">:=</span> <span class="token function">len</span><span class="token punctuation">(</span>items<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">-</span> i
+        items<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> items<span class="token punctuation">[</span>opp<span class="token punctuation">]</span> <span class="token operator">=</span> items<span class="token punctuation">[</span>opp<span class="token punctuation">]</span><span class="token punctuation">,</span> items<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+
+  <span class="token comment">// &#x5199;&#x5165;&#x6D41;</span>
+    <span class="token keyword">return</span> <span class="token function">Just</span><span class="token punctuation">(</span>items<span class="token operator">...</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="distinct">Distinct</h4>
+<p>distinct&#x5BF9;&#x6D41;&#x4E2D;&#x5143;&#x7D20;&#x8FDB;&#x884C;&#x53BB;&#x91CD;&#xFF0C;&#x53BB;&#x91CD;&#x5728;&#x4E1A;&#x52A1;&#x5F00;&#x53D1;&#x4E2D;&#x6BD4;&#x8F83;&#x5E38;&#x7528;&#xFF0C;&#x7ECF;&#x5E38;&#x9700;&#x8981;&#x5BF9;&#x7528;&#x6237;id&#x7B49;&#x505A;&#x53BB;&#x91CD;&#x64CD;&#x4F5C;:</p>
+<pre class="language-"><code class="lang-go"><span class="token comment">// &#x4F8B;&#x5B50;</span>
+fx<span class="token punctuation">.</span><span class="token function">Just</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Distinct</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span>item <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> item
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">ForEach</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span>item <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token comment">// &#x7ED3;&#x679C;&#x4E3A; 1&#xFF0C;2&#xFF0C;3&#xFF0C;4&#xFF0C;5&#xFF0C;6</span>
+
+<span class="token comment">// &#x6E90;&#x7801;</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>p Stream<span class="token punctuation">)</span> <span class="token function">Distinct</span><span class="token punctuation">(</span>fn KeyFunc<span class="token punctuation">)</span> Stream <span class="token punctuation">{</span>
+    source <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">chan</span> <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+    threading<span class="token punctuation">.</span><span class="token function">GoSafe</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">defer</span> <span class="token function">close</span><span class="token punctuation">(</span>source<span class="token punctuation">)</span>
+        <span class="token comment">// &#x901A;&#x8FC7;key&#x8FDB;&#x884C;&#x53BB;&#x91CD;&#xFF0C;&#x76F8;&#x540C;key&#x53EA;&#x4FDD;&#x7559;&#x4E00;&#x4E2A;</span>
+        keys <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">map</span><span class="token punctuation">[</span><span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">]</span>lang<span class="token punctuation">.</span>PlaceholderType<span class="token punctuation">)</span>
+        <span class="token keyword">for</span> item <span class="token operator">:=</span> <span class="token keyword">range</span> p<span class="token punctuation">.</span>source <span class="token punctuation">{</span>
+            key <span class="token operator">:=</span> <span class="token function">fn</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span>
+      <span class="token comment">// key&#x5B58;&#x5728;&#x5219;&#x4E0D;&#x4FDD;&#x7559;</span>
+            <span class="token keyword">if</span> <span class="token boolean">_</span><span class="token punctuation">,</span> ok <span class="token operator">:=</span> keys<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token operator">!</span>ok <span class="token punctuation">{</span>
+                source <span class="token operator">&lt;-</span> item
+                keys<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> lang<span class="token punctuation">.</span>Placeholder
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> <span class="token function">Range</span><span class="token punctuation">(</span>source<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="walk">Walk</h4>
+<p>Walk&#x51FD;&#x6570;&#x5E76;&#x53D1;&#x7684;&#x4F5C;&#x7528;&#x5728;&#x6D41;&#x4E2D;&#x6BCF;&#x4E00;&#x4E2A;item&#x4E0A;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;WithWorkers&#x8BBE;&#x7F6E;&#x5E76;&#x53D1;&#x6570;&#xFF0C;&#x9ED8;&#x8BA4;&#x5E76;&#x53D1;&#x6570;&#x4E3A;16&#xFF0C;&#x6700;&#x5C0F;&#x5E76;&#x53D1;&#x6570;&#x4E3A;1&#xFF0C;&#x5982;&#x8BBE;&#x7F6E;unlimitedWorkers&#x4E3A;true&#x5219;&#x5E76;&#x53D1;&#x6570;&#x65E0;&#x9650;&#x5236;&#xFF0C;&#x4F46;&#x5E76;&#x53D1;&#x5199;&#x5165;&#x6D41;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x7531;defaultWorkers&#x9650;&#x5236;&#xFF0C;WalkFunc&#x4E2D;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x81EA;&#x5B9A;&#x4E49;&#x540E;&#x7EED;&#x5199;&#x5165;&#x6D41;&#x4E2D;&#x7684;&#x5143;&#x7D20;&#xFF0C;&#x53EF;&#x4EE5;&#x4E0D;&#x5199;&#x5165;&#x4E5F;&#x53EF;&#x4EE5;&#x5199;&#x5165;&#x591A;&#x4E2A;&#x5143;&#x7D20;:</p>
+<pre class="language-"><code class="lang-go"><span class="token comment">// &#x4F8B;&#x5B50;</span>
+fx<span class="token punctuation">.</span><span class="token function">Just</span><span class="token punctuation">(</span><span class="token string">&quot;aaa&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;bbb&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;ccc&quot;</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Walk</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span>item <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> pipe <span class="token keyword">chan</span><span class="token operator">&lt;-</span> <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  newItem <span class="token operator">:=</span> strings<span class="token punctuation">.</span><span class="token function">ToUpper</span><span class="token punctuation">(</span>item<span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token builtin">string</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+  pipe <span class="token operator">&lt;-</span> newItem
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">ForEach</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span>item <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment">// &#x6E90;&#x7801;</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>p Stream<span class="token punctuation">)</span> <span class="token function">walkLimited</span><span class="token punctuation">(</span>fn WalkFunc<span class="token punctuation">,</span> option <span class="token operator">*</span>rxOptions<span class="token punctuation">)</span> Stream <span class="token punctuation">{</span>
+    pipe <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">chan</span> <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> option<span class="token punctuation">.</span>workers<span class="token punctuation">)</span>
+
+    <span class="token keyword">go</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">var</span> wg sync<span class="token punctuation">.</span>WaitGroup
+        pool <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">chan</span> lang<span class="token punctuation">.</span>PlaceholderType<span class="token punctuation">,</span> option<span class="token punctuation">.</span>workers<span class="token punctuation">)</span>
+
+        <span class="token keyword">for</span> <span class="token punctuation">{</span>
+      <span class="token comment">// &#x63A7;&#x5236;&#x5E76;&#x53D1;&#x6570;&#x91CF;</span>
+            pool <span class="token operator">&lt;-</span> lang<span class="token punctuation">.</span>Placeholder
+            item<span class="token punctuation">,</span> ok <span class="token operator">:=</span> <span class="token operator">&lt;-</span>p<span class="token punctuation">.</span>source
+            <span class="token keyword">if</span> <span class="token operator">!</span>ok <span class="token punctuation">{</span>
+                <span class="token operator">&lt;-</span>pool
+                <span class="token keyword">break</span>
+            <span class="token punctuation">}</span>
+
+            wg<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+            <span class="token keyword">go</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">defer</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    wg<span class="token punctuation">.</span><span class="token function">Done</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                    <span class="token operator">&lt;-</span>pool
+                <span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token comment">// &#x4F5C;&#x7528;&#x5728;&#x6BCF;&#x4E2A;&#x5143;&#x7D20;&#x4E0A;</span>
+                <span class="token function">fn</span><span class="token punctuation">(</span>item<span class="token punctuation">,</span> pipe<span class="token punctuation">)</span>
+            <span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+
+    <span class="token comment">// &#x7B49;&#x5F85;&#x5904;&#x7406;&#x5B8C;&#x6210;</span>
+        wg<span class="token punctuation">.</span><span class="token function">Wait</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token function">close</span><span class="token punctuation">(</span>pipe<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> <span class="token function">Range</span><span class="token punctuation">(</span>pipe<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="&#x5E76;&#x53D1;&#x5904;&#x7406;">&#x5E76;&#x53D1;&#x5904;&#x7406;</h3>
+<p>fx&#x5DE5;&#x5177;&#x9664;&#x4E86;&#x8FDB;&#x884C;&#x6D41;&#x6570;&#x636E;&#x5904;&#x7406;&#x4EE5;&#x5916;&#x8FD8;&#x63D0;&#x4F9B;&#x4E86;&#x51FD;&#x6570;&#x5E76;&#x53D1;&#x529F;&#x80FD;&#xFF0C;&#x5728;&#x5FAE;&#x670D;&#x52A1;&#x4E2D;&#x5B9E;&#x73B0;&#x67D0;&#x4E2A;&#x529F;&#x80FD;&#x5F80;&#x5F80;&#x9700;&#x8981;&#x4F9D;&#x8D56;&#x591A;&#x4E2A;&#x670D;&#x52A1;&#xFF0C;&#x5E76;&#x53D1;&#x7684;&#x5904;&#x7406;&#x4F9D;&#x8D56;&#x53EF;&#x4EE5;&#x6709;&#x6548;&#x7684;&#x964D;&#x4F4E;&#x4F9D;&#x8D56;&#x8017;&#x65F6;&#xFF0C;&#x63D0;&#x5347;&#x670D;&#x52A1;&#x7684;&#x6027;&#x80FD;&#x3002;</p>
+<p><img src="resource/b97bf7df-1781-436e-bf04-f1dd90c60537.png" alt="b97bf7df-1781-436e-bf04-f1dd90c60537.png"></p>
+<pre class="language-"><code class="lang-go">fx<span class="token punctuation">.</span><span class="token function">Parallel</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">userRPC</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// &#x4F9D;&#x8D56;1</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">accountRPC</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// &#x4F9D;&#x8D56;2</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">orderRPC</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// &#x4F9D;&#x8D56;3</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+<p>&#x6CE8;&#x610F;fx.Parallel&#x8FDB;&#x884C;&#x4F9D;&#x8D56;&#x5E76;&#x884C;&#x5904;&#x7406;&#x7684;&#x65F6;&#x5019;&#x4E0D;&#x4F1A;&#x6709;error&#x8FD4;&#x56DE;&#xFF0C;&#x5982;&#x9700;&#x6709;error&#x8FD4;&#x56DE;&#x6216;&#x8005;&#x6709;&#x4E00;&#x4E2A;&#x4F9D;&#x8D56;&#x62A5;&#x9519;&#x9700;&#x8981;&#x7ACB;&#x9A6C;&#x7ED3;&#x675F;&#x4F9D;&#x8D56;&#x8BF7;&#x6C42;&#x8BF7;&#x4F7F;&#x7528;<a href="https://gocn.vip/topics/10941" target="_blank">MapReduce</a> &#x5DE5;&#x5177;&#x8FDB;&#x884C;&#x5904;&#x7406;&#x3002;</p>
+<h3 id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</h3>
+<p>&#x672C;&#x7BC7;&#x6587;&#x7AE0;&#x4ECB;&#x7ECD;&#x4E86;&#x6D41;&#x5904;&#x7406;&#x7684;&#x57FA;&#x672C;&#x6982;&#x5FF5;&#x548C;go-zero&#x4E2D;&#x7684;&#x6D41;&#x5904;&#x7406;&#x5DE5;&#x5177;fx&#xFF0C;&#x5728;&#x5B9E;&#x9645;&#x7684;&#x751F;&#x4EA7;&#x4E2D;&#x6D41;&#x5904;&#x7406;&#x573A;&#x666F;&#x5E94;&#x7528;&#x4E5F;&#x975E;&#x5E38;&#x591A;&#xFF0C;&#x5E0C;&#x671B;&#x672C;&#x7BC7;&#x6587;&#x7AE0;&#x80FD;&#x7ED9;&#x5927;&#x5BB6;&#x5E26;&#x6765;&#x4E00;&#x5B9A;&#x7684;&#x542F;&#x53D1;&#xFF0C;&#x66F4;&#x597D;&#x7684;&#x5E94;&#x5BF9;&#x5DE5;&#x4F5C;&#x4E2D;&#x7684;&#x6D41;&#x5904;&#x7406;&#x573A;&#x666F;&#x3002;</p>
+<footer class="page-footer"><span class="copyright">Copyright &#xA9; 2019-2021 go-zero all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last UpdateTime&#xFF1A;
+2021-04-19 03:20:26
+</span></footer>
+<script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="datacenter.html" class="navigation navigation-prev " aria-label="Previous page: 我是如何用go-zero 实现一个中台系统">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="online-exchange.html" class="navigation navigation-next " aria-label="Next page: 10月3日线上交流问题汇总">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"流数据处理利器","level":"1.13.5","depth":2,"next":{"title":"10月3日线上交流问题汇总","level":"1.13.6","depth":2,"path":"online-exchange.md","ref":"online-exchange.md","articles":[]},"previous":{"title":"我是如何用go-zero 实现一个中台系统","level":"1.13.4","depth":2,"path":"datacenter.md","ref":"datacenter.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","code","-lunr","-search","search-pro","github","splitter","-sharing","sharing-plus","tbfed-pagefooter","flexible-alerts","page-toc-button","pageview-count","popup","hide-element","edit-link","-highlight","prism","theme-comscore"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © 2019-2021 go-zero","modify_label":"Last UpdateTime：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"lang":{"shell":"bash"},"css":["prismjs/themes/prism-tomorrow.css"]},"github":{"url":"https://github.com/tal-tech/go-zero"},"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"qq":false,"all":["douban","facebook","google","linkedin","twitter","weibo","qq","qzone","weibo"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true},"edit-link":{"label":"EDIT THIS PAGE","base":"https://github.com/zeromicro/go-zero-doc/blob/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"anqiansong","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"go-zero document","language":"zh-hans","gitbook":"*"},"file":{"path":"stream.md","mtime":"2021-04-19T03:20:26.731Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-19T03:21:17.214Z"},"basePath":".","book":{"language":"zh-hans"}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing-plus/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-flexible-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-page-toc-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-pageview-count/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-hide-element/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-edit-link/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-theme-comscore/test.js"></script>
+        
+    
+
+    </body>
+</html>
+

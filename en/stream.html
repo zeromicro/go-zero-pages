@@ -1,0 +1,1758 @@
+
+<!DOCTYPE HTML>
+<html lang="en" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Stream Handler · go-zero document</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="anqiansong">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-flexible-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-toc-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-pageview-count/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism-tomorrow.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-theme-comscore/test.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="online-exchange.html" />
+    
+    
+    <link rel="prev" href="datacenter.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="about-us.html">
+            
+                <a href="about-us.html">
+            
+                    
+                    About Us
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="join-us.html">
+            
+                <a href="join-us.html">
+            
+                    
+                    Join Us
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="concept-introduction.html">
+            
+                <a href="concept-introduction.html">
+            
+                    
+                    Concepts
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="quick-start.html">
+            
+                <a href="quick-start.html">
+            
+                    
+                    Quick Start
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="monolithic-service.html">
+            
+                <a href="monolithic-service.html">
+            
+                    
+                    Monolithic Service
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="micro-service.html">
+            
+                <a href="micro-service.html">
+            
+                    
+                    Micro Service
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="framework-design.html">
+            
+                <a href="framework-design.html">
+            
+                    
+                    Framework Design
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="go-zero-design.html">
+            
+                <a href="go-zero-design.html">
+            
+                    
+                    Go-Zero Design
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="go-zero-features.html">
+            
+                <a href="go-zero-features.html">
+            
+                    
+                    Go-Zero Features
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="api-grammar.html">
+            
+                <a href="api-grammar.html">
+            
+                    
+                    API IDL
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="api-dir.html">
+            
+                <a href="api-dir.html">
+            
+                    
+                    API Directory Structure
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="rpc-dir.html">
+            
+                <a href="rpc-dir.html">
+            
+                    
+                    RPC Directory Structure
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="project-dev.html">
+            
+                <a href="project-dev.html">
+            
+                    
+                    Project Development
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="prepare.html">
+            
+                <a href="prepare.html">
+            
+                    
+                    Prepare
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1.1" data-path="golang-install.html">
+            
+                <a href="golang-install.html">
+            
+                    
+                    Golang Installation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.2" data-path="gomod-config.html">
+            
+                <a href="gomod-config.html">
+            
+                    
+                    Go Module Configuration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.3" data-path="goctl-install.html">
+            
+                <a href="goctl-install.html">
+            
+                    
+                    Goctl Installation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.4" data-path="protoc-install.html">
+            
+                <a href="protoc-install.html">
+            
+                    
+                    protoc & protoc-gen-go Installation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.5" data-path="prepare-other.html">
+            
+                <a href="prepare-other.html">
+            
+                    
+                    More
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="dev-specification.html">
+            
+                <a href="dev-specification.html">
+            
+                    
+                    Development Rules
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.2.1" data-path="naming-spec.html">
+            
+                <a href="naming-spec.html">
+            
+                    
+                    Naming Rules
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.2" data-path="route-naming-spec.html">
+            
+                <a href="route-naming-spec.html">
+            
+                    
+                    Route Rules
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.3" data-path="coding-spec.html">
+            
+                <a href="coding-spec.html">
+            
+                    
+                    Coding Rules
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="dev-flow.html">
+            
+                <a href="dev-flow.html">
+            
+                    
+                    Development Flow
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="config-introduction.html">
+            
+                <a href="config-introduction.html">
+            
+                    
+                    Configuration Introduction
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.4.1" data-path="api-config.html">
+            
+                <a href="api-config.html">
+            
+                    
+                    API Configuration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4.2" data-path="rpc-config.html">
+            
+                <a href="rpc-config.html">
+            
+                    
+                    RPC Configuration
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="business-dev.html">
+            
+                <a href="business-dev.html">
+            
+                    
+                    Business Development
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.5.1" data-path="service-design.html">
+            
+                <a href="service-design.html">
+            
+                    
+                    Directory Structure
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.2" data-path="model-gen.html">
+            
+                <a href="model-gen.html">
+            
+                    
+                    Model Generation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.3" data-path="api-coding.html">
+            
+                <a href="api-coding.html">
+            
+                    
+                    API Coding
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.4" data-path="business-coding.html">
+            
+                <a href="business-coding.html">
+            
+                    
+                    Business Coding
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.5" data-path="jwt.html">
+            
+                <a href="jwt.html">
+            
+                    
+                    JWT
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.6" data-path="middleware.html">
+            
+                <a href="middleware.html">
+            
+                    
+                    Middleware
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.7" data-path="rpc-call.html">
+            
+                <a href="rpc-call.html">
+            
+                    
+                    RPC Implement & Call
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.8" data-path="error-handle.html">
+            
+                <a href="error-handle.html">
+            
+                    
+                    Error Handling
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="ci-cd.html">
+            
+                <a href="ci-cd.html">
+            
+                    
+                    CI/CD
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7" data-path="service-deployment.html">
+            
+                <a href="service-deployment.html">
+            
+                    
+                    Service Deployment
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.8" data-path="log-collection.html">
+            
+                <a href="log-collection.html">
+            
+                    
+                    Log Collection
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.9" data-path="trace.html">
+            
+                <a href="trace.html">
+            
+                    
+                    Trace
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.10" data-path="service-monitor.html">
+            
+                <a href="service-monitor.html">
+            
+                    
+                    Monitor
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="goctl.html">
+            
+                <a href="goctl.html">
+            
+                    
+                    Goctl
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="goctl-commands.html">
+            
+                <a href="goctl-commands.html">
+            
+                    
+                    Commands & Flags
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="goctl-api.html">
+            
+                <a href="goctl-api.html">
+            
+                    
+                    API Commands
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="goctl-rpc.html">
+            
+                <a href="goctl-rpc.html">
+            
+                    
+                    RPC Commands
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="goctl-model.html">
+            
+                <a href="goctl-model.html">
+            
+                    
+                    Model Commands
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" data-path="goctl-plugin.html">
+            
+                <a href="goctl-plugin.html">
+            
+                    
+                    Plugin Commands
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6" data-path="goctl-other.html">
+            
+                <a href="goctl-other.html">
+            
+                    
+                    More Commands
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="component-center.html">
+            
+                <a href="component-center.html">
+            
+                    
+                    Components
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="logx.html">
+            
+                <a href="logx.html">
+            
+                    
+                    logx
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="bloom.html">
+            
+                <a href="bloom.html">
+            
+                    
+                    bloom
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="executors.html">
+            
+                <a href="executors.html">
+            
+                    
+                    executors
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4" data-path="fx.html">
+            
+                <a href="fx.html">
+            
+                    
+                    fx
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.5" data-path="mysql.html">
+            
+                <a href="mysql.html">
+            
+                    
+                    mysql
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.6" data-path="redis-lock.html">
+            
+                <a href="redis-lock.html">
+            
+                    
+                    redis-lock
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.7" data-path="periodlimit.html">
+            
+                <a href="periodlimit.html">
+            
+                    
+                    periodlimit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.8" data-path="tokenlimit.html">
+            
+                <a href="tokenlimit.html">
+            
+                    
+                    tokenlimit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.9" data-path="timing-wheel.html">
+            
+                <a href="timing-wheel.html">
+            
+                    
+                    TimingWheel
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="tool-center.html">
+            
+                <a href="tool-center.html">
+            
+                    
+                    Tools
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="intellij.html">
+            
+                <a href="intellij.html">
+            
+                    
+                    Intellij Plugin
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="vscode.html">
+            
+                <a href="vscode.html">
+            
+                    
+                    VSCode Plugin
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="plugin-center.html">
+            
+                <a href="plugin-center.html">
+            
+                    
+                    Plugins
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="learning-resource.html">
+            
+                <a href="learning-resource.html">
+            
+                    
+                    Learning Resources
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="wechat.html">
+            
+                <a href="wechat.html">
+            
+                    
+                    Wechat
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="goreading.html">
+            
+                <a href="goreading.html">
+            
+                    
+                    Night
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" data-path="gotalk.html">
+            
+                <a href="gotalk.html">
+            
+                    
+                    OpenTalk
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="practise.html">
+            
+                <a href="practise.html">
+            
+                    
+                    User Practise
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.1" data-path="redis-cache.html">
+            
+                <a href="redis-cache.html">
+            
+                    
+                    Persistent layer cache
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.2" data-path="buiness-cache.html">
+            
+                <a href="buiness-cache.html">
+            
+                    
+                    Business layer cache
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.3" data-path="go-queue.html">
+            
+                <a href="go-queue.html">
+            
+                    
+                    Queue
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.4" data-path="datacenter.html">
+            
+                <a href="datacenter.html">
+            
+                    
+                    Middle Ground System
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.13.5" data-path="stream.html">
+            
+                <a href="stream.html">
+            
+                    
+                    Stream Handler
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.6" data-path="online-exchange.html">
+            
+                <a href="online-exchange.html">
+            
+                    
+                    Online Exchange
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" data-path="dev-log.html">
+            
+                <a href="dev-log.html">
+            
+                    
+                    Development Log
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1" data-path="goctl-log.html">
+            
+                <a href="goctl-log.html">
+            
+                    
+                    Goctl Log
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.2" data-path="intellij-log.html">
+            
+                <a href="intellij-log.html">
+            
+                    
+                    Intellij Log
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" data-path="contributor.html">
+            
+                <a href="contributor.html">
+            
+                    
+                    Contributor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16" data-path="doc-contibute.html">
+            
+                <a href="doc-contibute.html">
+            
+                    
+                    Document Contribute
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17" data-path="error.html">
+            
+                <a href="error.html">
+            
+                    
+                    Error
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18" data-path="source.html">
+            
+                <a href="source.html">
+            
+                    
+                    Source Code
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >Stream Handler</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="stream-processing">Stream processing</h1>
+<blockquote>
+<p>[!TIP]
+This document is machine-translated by Google. If you find grammatical and semantic errors, and the document description is not clear, please <a href="doc-contibute.html">PR</a></p>
+</blockquote>
+<p>Stream processing is a computer programming paradigm that allows given a data sequence (stream processing data source), a series of data operations (functions) are applied to each element in the stream. At the same time, stream processing tools can significantly improve programmers&apos; development efficiency, allowing them to write effective, clean, and concise code.</p>
+<p>Streaming data processing is very common in our daily work. For example, we often record many business logs in business development. These logs are usually sent to Kafka first, and then written to elasticsearch by the Job consumption Kafka, and the logs are in progress. In the process of stream processing, logs are often processed, such as filtering invalid logs, doing some calculations and recombining logs, etc. The schematic diagram is as follows:
+<img src="resource/fx_log.png" alt="fx_log.png"></p>
+<h3 id="fx">fx</h3>
+<p><a href="https://github.com/tal-tech/go-zero" target="_blank">go-zero</a> is a full-featured microservice framework. There are many very useful tools built in the framework, including streaming data processing tools <a href="https://github.com/tal-tech/go-zero/tree/master/core/fx" target="_blank">fx </a>, let&#x2019;s use a simple example to understand the tool:</p>
+<pre class="language-"><code class="lang-go"><span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+    <span class="token string">&quot;fmt&quot;</span>
+    <span class="token string">&quot;os&quot;</span>
+    <span class="token string">&quot;os/signal&quot;</span>
+    <span class="token string">&quot;syscall&quot;</span>
+    <span class="token string">&quot;time&quot;</span>
+
+    <span class="token string">&quot;github.com/tal-tech/go-zero/core/fx&quot;</span>
+<span class="token punctuation">)</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    ch <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">chan</span> <span class="token builtin">int</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">go</span> <span class="token function">inputStream</span><span class="token punctuation">(</span>ch<span class="token punctuation">)</span>
+    <span class="token keyword">go</span> <span class="token function">outputStream</span><span class="token punctuation">(</span>ch<span class="token punctuation">)</span>
+
+    c <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">chan</span> os<span class="token punctuation">.</span>Signal<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+    signal<span class="token punctuation">.</span><span class="token function">Notify</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> syscall<span class="token punctuation">.</span>SIGTERM<span class="token punctuation">,</span> syscall<span class="token punctuation">.</span>SIGINT<span class="token punctuation">)</span>
+    <span class="token operator">&lt;-</span>c
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token function">inputStream</span><span class="token punctuation">(</span>ch <span class="token keyword">chan</span> <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    count <span class="token operator">:=</span> <span class="token number">0</span>
+    <span class="token keyword">for</span> <span class="token punctuation">{</span>
+        ch <span class="token operator">&lt;-</span> count
+        time<span class="token punctuation">.</span><span class="token function">Sleep</span><span class="token punctuation">(</span>time<span class="token punctuation">.</span>Millisecond <span class="token operator">*</span> <span class="token number">500</span><span class="token punctuation">)</span>
+        count<span class="token operator">++</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token function">outputStream</span><span class="token punctuation">(</span>ch <span class="token keyword">chan</span> <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    fx<span class="token punctuation">.</span><span class="token function">From</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span>source <span class="token keyword">chan</span><span class="token operator">&lt;-</span> <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">for</span> c <span class="token operator">:=</span> <span class="token keyword">range</span> ch <span class="token punctuation">{</span>
+            source <span class="token operator">&lt;-</span> c
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Walk</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span>item <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> pipe <span class="token keyword">chan</span><span class="token operator">&lt;-</span> <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        count <span class="token operator">:=</span> item<span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token builtin">int</span><span class="token punctuation">)</span>
+        pipe <span class="token operator">&lt;-</span> count
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Filter</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span>item <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token builtin">bool</span> <span class="token punctuation">{</span>
+        itemInt <span class="token operator">:=</span> item<span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token builtin">int</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> itemInt<span class="token operator">%</span><span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token boolean">true</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">ForEach</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span>item <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>The inputStream function simulates the generation of stream data, and the outputStream function simulates the process of stream data. The From function is the input of the stream. The Walk function concurrently acts on each item. The Filter function filters the item as true and keeps it as false. Keep, the ForEach function traverses and outputs each item element.</p>
+<h3 id="intermediate-operations-of-streaming-data-processing">Intermediate operations of streaming data processing</h3>
+<p>There may be many intermediate operations in the data processing of a stream, and each intermediate operation can act on the stream. Just like the workers on the assembly line, each worker will return to the processed new part after operating the part, and in the same way, after the intermediate operation of the flow processing is completed, it will also return to a new flow.
+<img src="resource/7715f4b6-8739-41ac-8c8c-04d187172e9d.png" alt="7715f4b6-8739-41ac-8c8c-04d187172e9d.png">
+Intermediate operations of fx stream processing:</p>
+<table>
+<thead>
+<tr>
+<th>Operation function</th>
+<th>Features</th>
+<th>Input</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Distinct</td>
+<td>Remove duplicate items</td>
+<td>KeyFunc, return the key that needs to be deduplicated</td>
+</tr>
+<tr>
+<td>Filter</td>
+<td>Filter items that do not meet the conditions</td>
+<td>FilterFunc, Option controls the amount of concurrency</td>
+</tr>
+<tr>
+<td>Group</td>
+<td>Group items</td>
+<td>KeyFunc, group by key</td>
+</tr>
+<tr>
+<td>Head</td>
+<td>Take out the first n items and return to the new stream</td>
+<td>int64 reserved number</td>
+</tr>
+<tr>
+<td>Map</td>
+<td>Object conversion</td>
+<td>MapFunc, Option controls the amount of concurrency</td>
+</tr>
+<tr>
+<td>Merge</td>
+<td>Merge item into slice and generate new stream</td>
+<td></td>
+</tr>
+<tr>
+<td>Reverse</td>
+<td>Reverse item</td>
+<td></td>
+</tr>
+<tr>
+<td>Sort</td>
+<td>Sort items</td>
+<td>LessFunc implements sorting algorithm</td>
+</tr>
+<tr>
+<td>Tail</td>
+<td>Similar to the Head function, n items form a new stream after being taken out</td>
+<td>int64 reserved number</td>
+</tr>
+<tr>
+<td>Walk</td>
+<td>Act on each item</td>
+<td>WalkFunc, Option controls the amount of concurrency</td>
+</tr>
+</tbody>
+</table>
+<p>The following figure shows each step and the result of each step:</p>
+<p><img src="resource/3aefec98-56eb-45a6-a4b2-9adbdf4d63c0.png" alt="3aefec98-56eb-45a6-a4b2-9adbdf4d63c0.png"></p>
+<h3 id="usage-and-principle-analysis">Usage and principle analysis</h3>
+<h4 id="from">From</h4>
+<p>Construct a stream through the From function and return the Stream, and the stream data is stored through the channel:</p>
+<pre class="language-"><code class="lang-go"><span class="token comment">// Example</span>
+s <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">}</span>
+fx<span class="token punctuation">.</span><span class="token function">From</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span>source <span class="token keyword">chan</span><span class="token operator">&lt;-</span> <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">for</span> <span class="token boolean">_</span><span class="token punctuation">,</span> v <span class="token operator">:=</span> <span class="token keyword">range</span> s <span class="token punctuation">{</span>
+    source <span class="token operator">&lt;-</span> v
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment">// Source Code</span>
+<span class="token keyword">func</span> <span class="token function">From</span><span class="token punctuation">(</span>generate GenerateFunc<span class="token punctuation">)</span> Stream <span class="token punctuation">{</span>
+    source <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">chan</span> <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">go</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">defer</span> <span class="token function">close</span><span class="token punctuation">(</span>source<span class="token punctuation">)</span>
+        <span class="token function">generate</span><span class="token punctuation">(</span>source<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> <span class="token function">Range</span><span class="token punctuation">(</span>source<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="filter">Filter</h4>
+<p>The Filter function provides the function of filtering items, FilterFunc defines the filtering logic true to retain the item, and false to not retain:</p>
+<pre class="language-"><code class="lang-go"><span class="token comment">// Example: Keep even numbers</span>
+s <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">}</span>
+fx<span class="token punctuation">.</span><span class="token function">From</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span>source <span class="token keyword">chan</span><span class="token operator">&lt;-</span> <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">for</span> <span class="token boolean">_</span><span class="token punctuation">,</span> v <span class="token operator">:=</span> <span class="token keyword">range</span> s <span class="token punctuation">{</span>
+    source <span class="token operator">&lt;-</span> v
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Filter</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span>item <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token builtin">bool</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> item<span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token builtin">int</span><span class="token punctuation">)</span><span class="token operator">%</span><span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> <span class="token boolean">false</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment">// Source Code</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>p Stream<span class="token punctuation">)</span> <span class="token function">Filter</span><span class="token punctuation">(</span>fn FilterFunc<span class="token punctuation">,</span> opts <span class="token operator">...</span>Option<span class="token punctuation">)</span> Stream <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> p<span class="token punctuation">.</span><span class="token function">Walk</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span>item <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> pipe <span class="token keyword">chan</span><span class="token operator">&lt;-</span> <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Execute the filter function true to retain, false to discard</span>
+        <span class="token keyword">if</span> <span class="token function">fn</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            pipe <span class="token operator">&lt;-</span> item
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span> opts<span class="token operator">...</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="group">Group</h4>
+<p>Group groups the stream data. The key of the group needs to be defined. After the data is grouped, it is stored in the channel as slices:</p>
+<pre class="language-"><code class="lang-go"><span class="token comment">// Example Group according to the first character &quot;g&quot; or &quot;p&quot;, if not, it will be divided into another group</span>
+    ss <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">string</span><span class="token punctuation">{</span><span class="token string">&quot;golang&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;google&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;php&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;python&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;java&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;c++&quot;</span><span class="token punctuation">}</span>
+    fx<span class="token punctuation">.</span><span class="token function">From</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span>source <span class="token keyword">chan</span><span class="token operator">&lt;-</span> <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">for</span> <span class="token boolean">_</span><span class="token punctuation">,</span> s <span class="token operator">:=</span> <span class="token keyword">range</span> ss <span class="token punctuation">{</span>
+            source <span class="token operator">&lt;-</span> s
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Group</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span>item <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> strings<span class="token punctuation">.</span><span class="token function">HasPrefix</span><span class="token punctuation">(</span>item<span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token builtin">string</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">&quot;g&quot;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token string">&quot;g&quot;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> strings<span class="token punctuation">.</span><span class="token function">HasPrefix</span><span class="token punctuation">(</span>item<span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token builtin">string</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">&quot;p&quot;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token string">&quot;p&quot;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> <span class="token string">&quot;&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">ForEach</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span>item <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// Source Code</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>p Stream<span class="token punctuation">)</span> <span class="token function">Group</span><span class="token punctuation">(</span>fn KeyFunc<span class="token punctuation">)</span> Stream <span class="token punctuation">{</span>
+  <span class="token comment">// Define group storage map</span>
+    groups <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">map</span><span class="token punctuation">[</span><span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> item <span class="token operator">:=</span> <span class="token keyword">range</span> p<span class="token punctuation">.</span>source <span class="token punctuation">{</span>
+    <span class="token comment">// User-defined group key</span>
+        key <span class="token operator">:=</span> <span class="token function">fn</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span>
+    <span class="token comment">// Group the same key into a group</span>
+        groups<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">append</span><span class="token punctuation">(</span>groups<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">,</span> item<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+
+    source <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">chan</span> <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token keyword">go</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">for</span> <span class="token boolean">_</span><span class="token punctuation">,</span> group <span class="token operator">:=</span> <span class="token keyword">range</span> groups <span class="token punctuation">{</span>
+      <span class="token comment">// A group of data with the same key is written to the channel</span>
+            source <span class="token operator">&lt;-</span> group
+        <span class="token punctuation">}</span>
+        <span class="token function">close</span><span class="token punctuation">(</span>source<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> <span class="token function">Range</span><span class="token punctuation">(</span>source<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="reverse">Reverse</h4>
+<p>reverse can reverse the elements in the stream:</p>
+<p><img src="resource/7e0fd2b8-d4c1-4130-a216-a7d3d4301116.png" alt="7e0fd2b8-d4c1-4130-a216-a7d3d4301116.png"></p>
+<pre class="language-"><code class="lang-go"><span class="token comment">// Example</span>
+fx<span class="token punctuation">.</span><span class="token function">Just</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Reverse</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">ForEach</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span>item <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment">// Source Code</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>p Stream<span class="token punctuation">)</span> <span class="token function">Reverse</span><span class="token punctuation">(</span><span class="token punctuation">)</span> Stream <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> items <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+  <span class="token comment">// Get the data in the stream</span>
+    <span class="token keyword">for</span> item <span class="token operator">:=</span> <span class="token keyword">range</span> p<span class="token punctuation">.</span>source <span class="token punctuation">{</span>
+        items <span class="token operator">=</span> <span class="token function">append</span><span class="token punctuation">(</span>items<span class="token punctuation">,</span> item<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">// Reversal algorithm</span>
+    <span class="token keyword">for</span> i <span class="token operator">:=</span> <span class="token function">len</span><span class="token punctuation">(</span>items<span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">2</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&gt;=</span> <span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">--</span> <span class="token punctuation">{</span>
+        opp <span class="token operator">:=</span> <span class="token function">len</span><span class="token punctuation">(</span>items<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">-</span> i
+        items<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> items<span class="token punctuation">[</span>opp<span class="token punctuation">]</span> <span class="token operator">=</span> items<span class="token punctuation">[</span>opp<span class="token punctuation">]</span><span class="token punctuation">,</span> items<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+
+  <span class="token comment">// Write stream</span>
+    <span class="token keyword">return</span> <span class="token function">Just</span><span class="token punctuation">(</span>items<span class="token operator">...</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="distinct">Distinct</h4>
+<p>Distinct de-duplicates elements in the stream. De-duplication is commonly used in business development. It is often necessary to de-duplicate user IDs, etc.:</p>
+<pre class="language-"><code class="lang-go"><span class="token comment">// Example</span>
+fx<span class="token punctuation">.</span><span class="token function">Just</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Distinct</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span>item <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> item
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">ForEach</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span>item <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token comment">// Output: 1&#xFF0C;2&#xFF0C;3&#xFF0C;4&#xFF0C;5&#xFF0C;6</span>
+
+<span class="token comment">// Source Code</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>p Stream<span class="token punctuation">)</span> <span class="token function">Distinct</span><span class="token punctuation">(</span>fn KeyFunc<span class="token punctuation">)</span> Stream <span class="token punctuation">{</span>
+    source <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">chan</span> <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+    threading<span class="token punctuation">.</span><span class="token function">GoSafe</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">defer</span> <span class="token function">close</span><span class="token punctuation">(</span>source<span class="token punctuation">)</span>
+        <span class="token comment">// Deduplication is performed by key, and only one of the same key is kept</span>
+        keys <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">map</span><span class="token punctuation">[</span><span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">]</span>lang<span class="token punctuation">.</span>PlaceholderType<span class="token punctuation">)</span>
+        <span class="token keyword">for</span> item <span class="token operator">:=</span> <span class="token keyword">range</span> p<span class="token punctuation">.</span>source <span class="token punctuation">{</span>
+            key <span class="token operator">:=</span> <span class="token function">fn</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span>
+      <span class="token comment">// The key is not retained if it exists</span>
+            <span class="token keyword">if</span> <span class="token boolean">_</span><span class="token punctuation">,</span> ok <span class="token operator">:=</span> keys<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token operator">!</span>ok <span class="token punctuation">{</span>
+                source <span class="token operator">&lt;-</span> item
+                keys<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> lang<span class="token punctuation">.</span>Placeholder
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> <span class="token function">Range</span><span class="token punctuation">(</span>source<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="walk">Walk</h4>
+<p>The concurrency of the Walk function works on each item in the stream. You can set the number of concurrency through WithWorkers. The default number of concurrency is 16, and the minimum number of concurrency is 1. If you set unlimitedWorkers to true, the number of concurrency is unlimited, but the number of concurrent writes in the stream is unlimited. The data is limited by defaultWorkers. In WalkFunc, users can customize the elements that are subsequently written to the stream, and can write multiple elements without writing:</p>
+<pre class="language-"><code class="lang-go"><span class="token comment">// Example</span>
+fx<span class="token punctuation">.</span><span class="token function">Just</span><span class="token punctuation">(</span><span class="token string">&quot;aaa&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;bbb&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;ccc&quot;</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Walk</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span>item <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> pipe <span class="token keyword">chan</span><span class="token operator">&lt;-</span> <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  newItem <span class="token operator">:=</span> strings<span class="token punctuation">.</span><span class="token function">ToUpper</span><span class="token punctuation">(</span>item<span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token builtin">string</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+  pipe <span class="token operator">&lt;-</span> newItem
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">ForEach</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span>item <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment">// Source Code</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>p Stream<span class="token punctuation">)</span> <span class="token function">walkLimited</span><span class="token punctuation">(</span>fn WalkFunc<span class="token punctuation">,</span> option <span class="token operator">*</span>rxOptions<span class="token punctuation">)</span> Stream <span class="token punctuation">{</span>
+    pipe <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">chan</span> <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> option<span class="token punctuation">.</span>workers<span class="token punctuation">)</span>
+
+    <span class="token keyword">go</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">var</span> wg sync<span class="token punctuation">.</span>WaitGroup
+        pool <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">chan</span> lang<span class="token punctuation">.</span>PlaceholderType<span class="token punctuation">,</span> option<span class="token punctuation">.</span>workers<span class="token punctuation">)</span>
+
+        <span class="token keyword">for</span> <span class="token punctuation">{</span>
+      <span class="token comment">// Control the number of concurrent</span>
+            pool <span class="token operator">&lt;-</span> lang<span class="token punctuation">.</span>Placeholder
+            item<span class="token punctuation">,</span> ok <span class="token operator">:=</span> <span class="token operator">&lt;-</span>p<span class="token punctuation">.</span>source
+            <span class="token keyword">if</span> <span class="token operator">!</span>ok <span class="token punctuation">{</span>
+                <span class="token operator">&lt;-</span>pool
+                <span class="token keyword">break</span>
+            <span class="token punctuation">}</span>
+
+            wg<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+            <span class="token keyword">go</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">defer</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    wg<span class="token punctuation">.</span><span class="token function">Done</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                    <span class="token operator">&lt;-</span>pool
+                <span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token comment">// Acting on every element</span>
+                <span class="token function">fn</span><span class="token punctuation">(</span>item<span class="token punctuation">,</span> pipe<span class="token punctuation">)</span>
+            <span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+
+    <span class="token comment">// Wait for processing to complete</span>
+        wg<span class="token punctuation">.</span><span class="token function">Wait</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token function">close</span><span class="token punctuation">(</span>pipe<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> <span class="token function">Range</span><span class="token punctuation">(</span>pipe<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="concurrent-processing">Concurrent processing</h3>
+<p>In addition to stream data processing, the fx tool also provides function concurrency. The realization of a function in microservices often requires multiple services. Concurrent processing dependence can effectively reduce dependency time and improve service performance.</p>
+<p><img src="resource/b97bf7df-1781-436e-bf04-f1dd90c60537.png" alt="b97bf7df-1781-436e-bf04-f1dd90c60537.png"></p>
+<pre class="language-"><code class="lang-go">fx<span class="token punctuation">.</span><span class="token function">Parallel</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">userRPC</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">accountRPC</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">orderRPC</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+<p>Note that when fx.Parallel performs dependency parallel processing, there will be no error return. If you need an error return, or a dependency error report needs to end the dependency request immediately, please use the <a href="https://gocn.vip/topics/10941" target="_blank">MapReduce</a> tool To process.</p>
+<h3 id="summary">Summary</h3>
+<p>This article introduces the basic concepts of stream processing and the stream processing tool fx in go-zero. There are many stream processing scenarios in actual production. I hope this article can give you some inspiration and better response Stream processing scene at work.</p>
+<footer class="page-footer"><span class="copyright">Copyright &#xA9; 2019-2021 go-zero all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last UpdateTime&#xFF1A;
+2021-04-19 03:20:26
+</span></footer>
+<script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="datacenter.html" class="navigation navigation-prev " aria-label="Previous page: Middle Ground System">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="online-exchange.html" class="navigation navigation-next " aria-label="Next page: Online Exchange">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Stream Handler","level":"1.13.5","depth":2,"next":{"title":"Online Exchange","level":"1.13.6","depth":2,"path":"online-exchange.md","ref":"online-exchange.md","articles":[]},"previous":{"title":"Middle Ground System","level":"1.13.4","depth":2,"path":"datacenter.md","ref":"datacenter.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","code","-lunr","-search","search-pro","github","splitter","-sharing","sharing-plus","tbfed-pagefooter","flexible-alerts","page-toc-button","pageview-count","popup","hide-element","edit-link","-highlight","prism","theme-comscore"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © 2019-2021 go-zero","modify_label":"Last UpdateTime：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"lang":{"shell":"bash"},"css":["prismjs/themes/prism-tomorrow.css"]},"github":{"url":"https://github.com/tal-tech/go-zero"},"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"qq":false,"all":["douban","facebook","google","linkedin","twitter","weibo","qq","qzone","weibo"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true},"edit-link":{"label":"EDIT THIS PAGE","base":"https://github.com/zeromicro/go-zero-doc/blob/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"anqiansong","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"go-zero document","language":"en","gitbook":"*"},"file":{"path":"stream.md","mtime":"2021-04-19T03:20:26.651Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-19T03:21:17.214Z"},"basePath":".","book":{"language":"en"}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing-plus/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-flexible-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-page-toc-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-pageview-count/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-hide-element/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-edit-link/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-theme-comscore/test.js"></script>
+        
+    
+
+    </body>
+</html>
+

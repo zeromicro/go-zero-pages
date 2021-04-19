@@ -1,0 +1,1580 @@
+
+<!DOCTYPE HTML>
+<html lang="en" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Trace · go-zero document</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="anqiansong">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-flexible-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-toc-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-pageview-count/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism-tomorrow.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-theme-comscore/test.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="service-monitor.html" />
+    
+    
+    <link rel="prev" href="log-collection.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="about-us.html">
+            
+                <a href="about-us.html">
+            
+                    
+                    About Us
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="join-us.html">
+            
+                <a href="join-us.html">
+            
+                    
+                    Join Us
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="concept-introduction.html">
+            
+                <a href="concept-introduction.html">
+            
+                    
+                    Concepts
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="quick-start.html">
+            
+                <a href="quick-start.html">
+            
+                    
+                    Quick Start
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="monolithic-service.html">
+            
+                <a href="monolithic-service.html">
+            
+                    
+                    Monolithic Service
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="micro-service.html">
+            
+                <a href="micro-service.html">
+            
+                    
+                    Micro Service
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="framework-design.html">
+            
+                <a href="framework-design.html">
+            
+                    
+                    Framework Design
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="go-zero-design.html">
+            
+                <a href="go-zero-design.html">
+            
+                    
+                    Go-Zero Design
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="go-zero-features.html">
+            
+                <a href="go-zero-features.html">
+            
+                    
+                    Go-Zero Features
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="api-grammar.html">
+            
+                <a href="api-grammar.html">
+            
+                    
+                    API IDL
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="api-dir.html">
+            
+                <a href="api-dir.html">
+            
+                    
+                    API Directory Structure
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="rpc-dir.html">
+            
+                <a href="rpc-dir.html">
+            
+                    
+                    RPC Directory Structure
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="project-dev.html">
+            
+                <a href="project-dev.html">
+            
+                    
+                    Project Development
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="prepare.html">
+            
+                <a href="prepare.html">
+            
+                    
+                    Prepare
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1.1" data-path="golang-install.html">
+            
+                <a href="golang-install.html">
+            
+                    
+                    Golang Installation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.2" data-path="gomod-config.html">
+            
+                <a href="gomod-config.html">
+            
+                    
+                    Go Module Configuration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.3" data-path="goctl-install.html">
+            
+                <a href="goctl-install.html">
+            
+                    
+                    Goctl Installation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.4" data-path="protoc-install.html">
+            
+                <a href="protoc-install.html">
+            
+                    
+                    protoc & protoc-gen-go Installation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.5" data-path="prepare-other.html">
+            
+                <a href="prepare-other.html">
+            
+                    
+                    More
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="dev-specification.html">
+            
+                <a href="dev-specification.html">
+            
+                    
+                    Development Rules
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.2.1" data-path="naming-spec.html">
+            
+                <a href="naming-spec.html">
+            
+                    
+                    Naming Rules
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.2" data-path="route-naming-spec.html">
+            
+                <a href="route-naming-spec.html">
+            
+                    
+                    Route Rules
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.3" data-path="coding-spec.html">
+            
+                <a href="coding-spec.html">
+            
+                    
+                    Coding Rules
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="dev-flow.html">
+            
+                <a href="dev-flow.html">
+            
+                    
+                    Development Flow
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="config-introduction.html">
+            
+                <a href="config-introduction.html">
+            
+                    
+                    Configuration Introduction
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.4.1" data-path="api-config.html">
+            
+                <a href="api-config.html">
+            
+                    
+                    API Configuration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4.2" data-path="rpc-config.html">
+            
+                <a href="rpc-config.html">
+            
+                    
+                    RPC Configuration
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="business-dev.html">
+            
+                <a href="business-dev.html">
+            
+                    
+                    Business Development
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.5.1" data-path="service-design.html">
+            
+                <a href="service-design.html">
+            
+                    
+                    Directory Structure
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.2" data-path="model-gen.html">
+            
+                <a href="model-gen.html">
+            
+                    
+                    Model Generation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.3" data-path="api-coding.html">
+            
+                <a href="api-coding.html">
+            
+                    
+                    API Coding
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.4" data-path="business-coding.html">
+            
+                <a href="business-coding.html">
+            
+                    
+                    Business Coding
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.5" data-path="jwt.html">
+            
+                <a href="jwt.html">
+            
+                    
+                    JWT
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.6" data-path="middleware.html">
+            
+                <a href="middleware.html">
+            
+                    
+                    Middleware
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.7" data-path="rpc-call.html">
+            
+                <a href="rpc-call.html">
+            
+                    
+                    RPC Implement & Call
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.8" data-path="error-handle.html">
+            
+                <a href="error-handle.html">
+            
+                    
+                    Error Handling
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="ci-cd.html">
+            
+                <a href="ci-cd.html">
+            
+                    
+                    CI/CD
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7" data-path="service-deployment.html">
+            
+                <a href="service-deployment.html">
+            
+                    
+                    Service Deployment
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.8" data-path="log-collection.html">
+            
+                <a href="log-collection.html">
+            
+                    
+                    Log Collection
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.7.9" data-path="trace.html">
+            
+                <a href="trace.html">
+            
+                    
+                    Trace
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.10" data-path="service-monitor.html">
+            
+                <a href="service-monitor.html">
+            
+                    
+                    Monitor
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="goctl.html">
+            
+                <a href="goctl.html">
+            
+                    
+                    Goctl
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="goctl-commands.html">
+            
+                <a href="goctl-commands.html">
+            
+                    
+                    Commands & Flags
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="goctl-api.html">
+            
+                <a href="goctl-api.html">
+            
+                    
+                    API Commands
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="goctl-rpc.html">
+            
+                <a href="goctl-rpc.html">
+            
+                    
+                    RPC Commands
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="goctl-model.html">
+            
+                <a href="goctl-model.html">
+            
+                    
+                    Model Commands
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" data-path="goctl-plugin.html">
+            
+                <a href="goctl-plugin.html">
+            
+                    
+                    Plugin Commands
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6" data-path="goctl-other.html">
+            
+                <a href="goctl-other.html">
+            
+                    
+                    More Commands
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="component-center.html">
+            
+                <a href="component-center.html">
+            
+                    
+                    Components
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="logx.html">
+            
+                <a href="logx.html">
+            
+                    
+                    logx
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="bloom.html">
+            
+                <a href="bloom.html">
+            
+                    
+                    bloom
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="executors.html">
+            
+                <a href="executors.html">
+            
+                    
+                    executors
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4" data-path="fx.html">
+            
+                <a href="fx.html">
+            
+                    
+                    fx
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.5" data-path="mysql.html">
+            
+                <a href="mysql.html">
+            
+                    
+                    mysql
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.6" data-path="redis-lock.html">
+            
+                <a href="redis-lock.html">
+            
+                    
+                    redis-lock
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.7" data-path="periodlimit.html">
+            
+                <a href="periodlimit.html">
+            
+                    
+                    periodlimit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.8" data-path="tokenlimit.html">
+            
+                <a href="tokenlimit.html">
+            
+                    
+                    tokenlimit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.9" data-path="timing-wheel.html">
+            
+                <a href="timing-wheel.html">
+            
+                    
+                    TimingWheel
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="tool-center.html">
+            
+                <a href="tool-center.html">
+            
+                    
+                    Tools
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="intellij.html">
+            
+                <a href="intellij.html">
+            
+                    
+                    Intellij Plugin
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="vscode.html">
+            
+                <a href="vscode.html">
+            
+                    
+                    VSCode Plugin
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="plugin-center.html">
+            
+                <a href="plugin-center.html">
+            
+                    
+                    Plugins
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="learning-resource.html">
+            
+                <a href="learning-resource.html">
+            
+                    
+                    Learning Resources
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="wechat.html">
+            
+                <a href="wechat.html">
+            
+                    
+                    Wechat
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="goreading.html">
+            
+                <a href="goreading.html">
+            
+                    
+                    Night
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" data-path="gotalk.html">
+            
+                <a href="gotalk.html">
+            
+                    
+                    OpenTalk
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="practise.html">
+            
+                <a href="practise.html">
+            
+                    
+                    User Practise
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.1" data-path="redis-cache.html">
+            
+                <a href="redis-cache.html">
+            
+                    
+                    Persistent layer cache
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.2" data-path="buiness-cache.html">
+            
+                <a href="buiness-cache.html">
+            
+                    
+                    Business layer cache
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.3" data-path="go-queue.html">
+            
+                <a href="go-queue.html">
+            
+                    
+                    Queue
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.4" data-path="datacenter.html">
+            
+                <a href="datacenter.html">
+            
+                    
+                    Middle Ground System
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.5" data-path="stream.html">
+            
+                <a href="stream.html">
+            
+                    
+                    Stream Handler
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.6" data-path="online-exchange.html">
+            
+                <a href="online-exchange.html">
+            
+                    
+                    Online Exchange
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" data-path="dev-log.html">
+            
+                <a href="dev-log.html">
+            
+                    
+                    Development Log
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1" data-path="goctl-log.html">
+            
+                <a href="goctl-log.html">
+            
+                    
+                    Goctl Log
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.2" data-path="intellij-log.html">
+            
+                <a href="intellij-log.html">
+            
+                    
+                    Intellij Log
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" data-path="contributor.html">
+            
+                <a href="contributor.html">
+            
+                    
+                    Contributor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16" data-path="doc-contibute.html">
+            
+                <a href="doc-contibute.html">
+            
+                    
+                    Document Contribute
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17" data-path="error.html">
+            
+                <a href="error.html">
+            
+                    
+                    Error
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18" data-path="source.html">
+            
+                <a href="source.html">
+            
+                    
+                    Source Code
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >Trace</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="trace">Trace</h1>
+<blockquote>
+<p>[!TIP]
+This document is machine-translated by Google. If you find grammatical and semantic errors, and the document description is not clear, please <a href="doc-contibute.html">PR</a></p>
+</blockquote>
+<h2 id="foreword">Foreword</h2>
+<p>In the microservice architecture, the call chain may be very long, from <code>http</code> to <code>rpc</code>, and from <code>rpc</code> to <code>http</code>. Developers want to know the call status and performance of each link, the best solution is <strong>full link tracking</strong>.</p>
+<p>The tracking method is to generate its own <code>spanID</code> at the beginning of a request, and pass it down along the entire request link. We use this <code>spanID</code> to view the status of the entire link and performance issues.</p>
+<p>Let&apos;s take a look at the link implementation of <code>go-zero</code>.</p>
+<h2 id="code-structure">Code structure</h2>
+<ul>
+<li><a href="https://github.com/tal-tech/go-zero/blob/master/core/trace/spancontext.go" target="_blank">spancontext</a> &#xFF1A;&#x4FDD;&#x5B58;&#x94FE;&#x8DEF;&#x7684;&#x4E0A;&#x4E0B;&#x6587;&#x4FE1;&#x606F;&#x300C;traceid&#xFF0C;spanid&#xFF0C;&#x6216;&#x8005;&#x662F;&#x5176;&#x4ED6;&#x60F3;&#x8981;&#x4F20;&#x9012;&#x7684;&#x5185;&#x5BB9;&#x300D;</li>
+<li><a href="https://github.com/tal-tech/go-zero/blob/master/core/trace/span.go" target="_blank">span</a> &#xFF1A;&#x94FE;&#x8DEF;&#x4E2D;&#x7684;&#x4E00;&#x4E2A;&#x64CD;&#x4F5C;&#xFF0C;&#x5B58;&#x50A8;&#x65F6;&#x95F4;&#x548C;&#x67D0;&#x4E9B;&#x4FE1;&#x606F;</li>
+<li><a href="https://github.com/tal-tech/go-zero/blob/master/core/trace/propagator.go" target="_blank">propagator</a> &#xFF1A; <code>trace</code> &#x4F20;&#x64AD;&#x4E0B;&#x6E38;&#x7684;&#x64CD;&#x4F5C;&#x300C;&#x62BD;&#x53D6;&#xFF0C;&#x6CE8;&#x5165;&#x300D;</li>
+<li><a href="https://github.com/tal-tech/go-zero/blob/master/core/trace/noop.go" target="_blank">noop</a> &#xFF1A;&#x5B9E;&#x73B0;&#x4E86;&#x7A7A;&#x7684; <code>tracer</code> &#x5B9E;&#x73B0;</li>
+</ul>
+<p><img src="https://static.gocn.vip/photo/2020/2f244477-4ed3-4ad1-8003-ff82cbe2f8a0.png?x-oss-process=image/resize,w_1920" alt=""></p>
+<h2 id="concept">Concept</h2>
+<h3 id="spancontext">SpanContext</h3>
+<p>Before introducing <code>span</code>, first introduce <code>context</code>. SpanContext saves the context information of distributed tracing, including Trace id, Span id and other content that needs to be passed downstream. The implementation of OpenTracing needs to pass the SpanContext through a certain protocol to associate the Span in different processes to the same Trace. For HTTP requests, SpanContext is generally passed using HTTP headers.</p>
+<p>Below is the <code>spanContext</code> implemented by <code>go-zero</code> by default</p>
+<pre class="language-"><code class="lang-go"><span class="token keyword">type</span> spanContext <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+    traceId <span class="token builtin">string</span>      <span class="token comment">// TraceID represents the globally unique ID of tracer</span>
+    spanId  <span class="token builtin">string</span>      <span class="token comment">// SpanId indicates the unique ID of a span in a single trace, which is unique in the trace</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>At the same time, developers can also implement the interface methods provided by <code>SpanContext</code> to realize their own contextual information transfer:</p>
+<pre class="language-"><code class="lang-go"><span class="token keyword">type</span> SpanContext <span class="token keyword">interface</span> <span class="token punctuation">{</span>
+    <span class="token function">TraceId</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">string</span>                        <span class="token comment">// get TraceId</span>
+    <span class="token function">SpanId</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">string</span>                         <span class="token comment">// get SpanId</span>
+    <span class="token function">Visit</span><span class="token punctuation">(</span>fn <span class="token keyword">func</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> val <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token builtin">bool</span><span class="token punctuation">)</span>    <span class="token comment">// Custom operation TraceId, SpanId</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="span">Span</h3>
+<p>A REST call or database operation, etc., can be used as a <code>span</code>. <code>span</code> is the smallest tracking unit of distributed tracing. A trace is composed of multiple spans. The tracking information includes the following information:</p>
+<pre class="language-"><code class="lang-go"><span class="token keyword">type</span> Span <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+    ctx           spanContext       
+    serviceName   <span class="token builtin">string</span>           
+    operationName <span class="token builtin">string</span>           
+    startTime     time<span class="token punctuation">.</span>Time         
+    flag          <span class="token builtin">string</span>           
+    children      <span class="token builtin">int</span>              
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Judging from the definition structure of <code>span</code>: In microservices, this is a complete sub-calling process, with the start of the call <code>startTime</code>, the context structure <code>spanContext</code> that marks its own unique attribute, and the number of child nodes of fork.</p>
+<h2 id="example-application">Example application</h2>
+<p>In <code>go-zero</code>, http and rpc have been integrated as built-in middleware. We use <a href="https://github.com/tal-tech/go-zero/blob/master/rest/handler/tracinghandler.go" target="_blank">http</a>, <a href="https://github.com/tal-tech /go-zero/blob/master/zrpc/internal/clientinterceptors/tracinginterceptor.go" target="_blank">rpc</a>, take a look at how <code>tracing</code> is used:</p>
+<h3 id="http">HTTP</h3>
+<pre class="language-"><code class="lang-go"><span class="token keyword">func</span> <span class="token function">TracingHandler</span><span class="token punctuation">(</span>next http<span class="token punctuation">.</span>Handler<span class="token punctuation">)</span> http<span class="token punctuation">.</span>Handler <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> http<span class="token punctuation">.</span><span class="token function">HandlerFunc</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span>w http<span class="token punctuation">.</span>ResponseWriter<span class="token punctuation">,</span> r <span class="token operator">*</span>http<span class="token punctuation">.</span>Request<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// **1**</span>
+        carrier<span class="token punctuation">,</span> err <span class="token operator">:=</span> trace<span class="token punctuation">.</span><span class="token function">Extract</span><span class="token punctuation">(</span>trace<span class="token punctuation">.</span>HttpFormat<span class="token punctuation">,</span> r<span class="token punctuation">.</span>Header<span class="token punctuation">)</span>
+        <span class="token comment">// ErrInvalidCarrier means no trace id was set in http header</span>
+        <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token operator">&amp;&amp;</span> err <span class="token operator">!=</span> trace<span class="token punctuation">.</span>ErrInvalidCarrier <span class="token punctuation">{</span>
+            logx<span class="token punctuation">.</span><span class="token function">Error</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment">// **2**</span>
+        ctx<span class="token punctuation">,</span> span <span class="token operator">:=</span> trace<span class="token punctuation">.</span><span class="token function">StartServerSpan</span><span class="token punctuation">(</span>r<span class="token punctuation">.</span><span class="token function">Context</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> carrier<span class="token punctuation">,</span> sysx<span class="token punctuation">.</span><span class="token function">Hostname</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> r<span class="token punctuation">.</span>RequestURI<span class="token punctuation">)</span>
+        <span class="token keyword">defer</span> span<span class="token punctuation">.</span><span class="token function">Finish</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment">// **5**</span>
+        r <span class="token operator">=</span> r<span class="token punctuation">.</span><span class="token function">WithContext</span><span class="token punctuation">(</span>ctx<span class="token punctuation">)</span>
+
+        next<span class="token punctuation">.</span><span class="token function">ServeHTTP</span><span class="token punctuation">(</span>w<span class="token punctuation">,</span> r<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token function">StartServerSpan</span><span class="token punctuation">(</span>ctx context<span class="token punctuation">.</span>Context<span class="token punctuation">,</span> carrier Carrier<span class="token punctuation">,</span> serviceName<span class="token punctuation">,</span> operationName <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">(</span>
+    context<span class="token punctuation">.</span>Context<span class="token punctuation">,</span> tracespec<span class="token punctuation">.</span>Trace<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    span <span class="token operator">:=</span> <span class="token function">newServerSpan</span><span class="token punctuation">(</span>carrier<span class="token punctuation">,</span> serviceName<span class="token punctuation">,</span> operationName<span class="token punctuation">)</span>
+    <span class="token comment">// **4**</span>
+    <span class="token keyword">return</span> context<span class="token punctuation">.</span><span class="token function">WithValue</span><span class="token punctuation">(</span>ctx<span class="token punctuation">,</span> tracespec<span class="token punctuation">.</span>TracingKey<span class="token punctuation">,</span> span<span class="token punctuation">)</span><span class="token punctuation">,</span> span
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token function">newServerSpan</span><span class="token punctuation">(</span>carrier Carrier<span class="token punctuation">,</span> serviceName<span class="token punctuation">,</span> operationName <span class="token builtin">string</span><span class="token punctuation">)</span> tracespec<span class="token punctuation">.</span>Trace <span class="token punctuation">{</span>
+    <span class="token comment">// **3**</span>
+    traceId <span class="token operator">:=</span> stringx<span class="token punctuation">.</span><span class="token function">TakeWithPriority</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">string</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> carrier <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> carrier<span class="token punctuation">.</span><span class="token function">Get</span><span class="token punctuation">(</span>traceIdKey<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> <span class="token string">&quot;&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">string</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> stringx<span class="token punctuation">.</span><span class="token function">RandId</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    spanId <span class="token operator">:=</span> stringx<span class="token punctuation">.</span><span class="token function">TakeWithPriority</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">string</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> carrier <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> carrier<span class="token punctuation">.</span><span class="token function">Get</span><span class="token punctuation">(</span>spanIdKey<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> <span class="token string">&quot;&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">string</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> initSpanId
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> <span class="token operator">&amp;</span>Span<span class="token punctuation">{</span>
+        ctx<span class="token punctuation">:</span> spanContext<span class="token punctuation">{</span>
+            traceId<span class="token punctuation">:</span> traceId<span class="token punctuation">,</span>
+            spanId<span class="token punctuation">:</span>  spanId<span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        serviceName<span class="token punctuation">:</span>   serviceName<span class="token punctuation">,</span>
+        operationName<span class="token punctuation">:</span> operationName<span class="token punctuation">,</span>
+        startTime<span class="token punctuation">:</span>     timex<span class="token punctuation">.</span><span class="token function">Time</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token comment">// &#x6807;&#x8BB0;&#x4E3A;server</span>
+        flag<span class="token punctuation">:</span>          serverFlag<span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<ol>
+<li>Set header -&gt; carrier to get the traceId and other information in the header</li>
+<li>Open a new span and encapsulate <strong>&quot;traceId, spanId&quot;</strong> in the context</li>
+<li>Obtain traceId and spanId from the aforementioned carrier &quot;that is, header&quot;
+-See if it is set in the header
+-If it is not set, it will be randomly generated and returned</li>
+<li>Generate a new ctx from <code>request</code>, encapsulate the corresponding information in ctx, and return</li>
+<li>From the above context, copy a copy to the current <code>request</code></li>
+</ol>
+<p><img src="https://static.gocn.vip/photo/2020/a30daba2-ad12-477c-8ce5-131ef1cc3e76.png?x-oss-process=image/resize,w_1920" alt=""></p>
+<p>In this way, the information of the <code>span</code> is passed to the downstream service along with the <code>request</code>.</p>
+<h3 id="rpc">RPC</h3>
+<p>There are <code>client, server</code> in rpc, so from <code>tracing</code> there are also <code>clientTracing, serverTracing</code>. The logic of <code>serveTracing</code> is basically the same as that of http. Let&#x2019;s take a look at how <code>clientTracing</code> is used?</p>
+<pre class="language-"><code class="lang-go"><span class="token keyword">func</span> <span class="token function">TracingInterceptor</span><span class="token punctuation">(</span>ctx context<span class="token punctuation">.</span>Context<span class="token punctuation">,</span> method <span class="token builtin">string</span><span class="token punctuation">,</span> req<span class="token punctuation">,</span> reply <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    cc <span class="token operator">*</span>grpc<span class="token punctuation">.</span>ClientConn<span class="token punctuation">,</span> invoker grpc<span class="token punctuation">.</span>UnaryInvoker<span class="token punctuation">,</span> opts <span class="token operator">...</span>grpc<span class="token punctuation">.</span>CallOption<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+    <span class="token comment">// open clientSpan</span>
+    ctx<span class="token punctuation">,</span> span <span class="token operator">:=</span> trace<span class="token punctuation">.</span><span class="token function">StartClientSpan</span><span class="token punctuation">(</span>ctx<span class="token punctuation">,</span> cc<span class="token punctuation">.</span><span class="token function">Target</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> method<span class="token punctuation">)</span>
+    <span class="token keyword">defer</span> span<span class="token punctuation">.</span><span class="token function">Finish</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">var</span> pairs <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">string</span>
+    span<span class="token punctuation">.</span><span class="token function">Visit</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> val <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token builtin">bool</span> <span class="token punctuation">{</span>
+        pairs <span class="token operator">=</span> <span class="token function">append</span><span class="token punctuation">(</span>pairs<span class="token punctuation">,</span> key<span class="token punctuation">,</span> val<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token comment">// **3** Add the data in the pair to ctx in the form of a map</span>
+    ctx <span class="token operator">=</span> metadata<span class="token punctuation">.</span><span class="token function">AppendToOutgoingContext</span><span class="token punctuation">(</span>ctx<span class="token punctuation">,</span> pairs<span class="token operator">...</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> <span class="token function">invoker</span><span class="token punctuation">(</span>ctx<span class="token punctuation">,</span> method<span class="token punctuation">,</span> req<span class="token punctuation">,</span> reply<span class="token punctuation">,</span> cc<span class="token punctuation">,</span> opts<span class="token operator">...</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token function">StartClientSpan</span><span class="token punctuation">(</span>ctx context<span class="token punctuation">.</span>Context<span class="token punctuation">,</span> serviceName<span class="token punctuation">,</span> operationName <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">(</span>context<span class="token punctuation">.</span>Context<span class="token punctuation">,</span> tracespec<span class="token punctuation">.</span>Trace<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// **1**</span>
+    <span class="token keyword">if</span> span<span class="token punctuation">,</span> ok <span class="token operator">:=</span> ctx<span class="token punctuation">.</span><span class="token function">Value</span><span class="token punctuation">(</span>tracespec<span class="token punctuation">.</span>TracingKey<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token operator">*</span>Span<span class="token punctuation">)</span><span class="token punctuation">;</span> ok <span class="token punctuation">{</span>
+        <span class="token comment">// **2**</span>
+        <span class="token keyword">return</span> span<span class="token punctuation">.</span><span class="token function">Fork</span><span class="token punctuation">(</span>ctx<span class="token punctuation">,</span> serviceName<span class="token punctuation">,</span> operationName<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> ctx<span class="token punctuation">,</span> emptyNoopSpan
+<span class="token punctuation">}</span>
+</code></pre>
+<ol>
+<li>Get the span context information brought down by the upstream</li>
+<li>Create a new ctx from the acquired span, span &quot;inherit the traceId of the parent span&quot;</li>
+<li>Add the span generated data to ctx, pass it to the next middleware, and flow downstream</li>
+</ol>
+<h2 id="summary">Summary</h2>
+<p><code>go-zero</code> obtains the link traceID by intercepting the request, and then assigns a root Span at the entry of the middleware function, and then splits the child Spans in subsequent operations. Each span has its own specific identification. After Finsh Will be collected in the link tracking system. Developers can trace the traceID through the ELK tool to see the entire call chain.</p>
+<p>At the same time, <code>go-zero</code> does not provide a complete set of <code>trace</code> link solutions. Developers can encapsulate the existing <code>span</code> structure of <code>go-zero</code>, build their own reporting system, and access links such as <code>jaeger, zipkin</code>, etc. Tracking tool.</p>
+<h2 id="reference">Reference</h2>
+<ul>
+<li><a href="https://github.com/tal-tech/go-zero/tree/master/core/trace" target="_blank">go-zero trace</a> </li>
+</ul>
+<footer class="page-footer"><span class="copyright">Copyright &#xA9; 2019-2021 go-zero all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last UpdateTime&#xFF1A;
+2021-04-19 03:20:26
+</span></footer>
+<script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="log-collection.html" class="navigation navigation-prev " aria-label="Previous page: Log Collection">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="service-monitor.html" class="navigation navigation-next " aria-label="Next page: Monitor">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Trace","level":"1.7.9","depth":2,"next":{"title":"Monitor","level":"1.7.10","depth":2,"path":"service-monitor.md","ref":"service-monitor.md","articles":[]},"previous":{"title":"Log Collection","level":"1.7.8","depth":2,"path":"log-collection.md","ref":"log-collection.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","code","-lunr","-search","search-pro","github","splitter","-sharing","sharing-plus","tbfed-pagefooter","flexible-alerts","page-toc-button","pageview-count","popup","hide-element","edit-link","-highlight","prism","theme-comscore"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © 2019-2021 go-zero","modify_label":"Last UpdateTime：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"lang":{"shell":"bash"},"css":["prismjs/themes/prism-tomorrow.css"]},"github":{"url":"https://github.com/tal-tech/go-zero"},"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"qq":false,"all":["douban","facebook","google","linkedin","twitter","weibo","qq","qzone","weibo"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true},"edit-link":{"label":"EDIT THIS PAGE","base":"https://github.com/zeromicro/go-zero-doc/blob/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"anqiansong","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"go-zero document","language":"en","gitbook":"*"},"file":{"path":"trace.md","mtime":"2021-04-19T03:20:26.651Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-19T03:21:17.214Z"},"basePath":".","book":{"language":"en"}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing-plus/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-flexible-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-page-toc-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-pageview-count/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-hide-element/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-edit-link/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-theme-comscore/test.js"></script>
+        
+    
+
+    </body>
+</html>
+

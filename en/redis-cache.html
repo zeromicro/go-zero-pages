@@ -1,0 +1,1672 @@
+
+<!DOCTYPE HTML>
+<html lang="en" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Persistent layer cache · go-zero document</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="anqiansong">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-flexible-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-toc-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-pageview-count/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism-tomorrow.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-theme-comscore/test.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="buiness-cache.html" />
+    
+    
+    <link rel="prev" href="practise.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="about-us.html">
+            
+                <a href="about-us.html">
+            
+                    
+                    About Us
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="join-us.html">
+            
+                <a href="join-us.html">
+            
+                    
+                    Join Us
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="concept-introduction.html">
+            
+                <a href="concept-introduction.html">
+            
+                    
+                    Concepts
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="quick-start.html">
+            
+                <a href="quick-start.html">
+            
+                    
+                    Quick Start
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="monolithic-service.html">
+            
+                <a href="monolithic-service.html">
+            
+                    
+                    Monolithic Service
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="micro-service.html">
+            
+                <a href="micro-service.html">
+            
+                    
+                    Micro Service
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="framework-design.html">
+            
+                <a href="framework-design.html">
+            
+                    
+                    Framework Design
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="go-zero-design.html">
+            
+                <a href="go-zero-design.html">
+            
+                    
+                    Go-Zero Design
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="go-zero-features.html">
+            
+                <a href="go-zero-features.html">
+            
+                    
+                    Go-Zero Features
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="api-grammar.html">
+            
+                <a href="api-grammar.html">
+            
+                    
+                    API IDL
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="api-dir.html">
+            
+                <a href="api-dir.html">
+            
+                    
+                    API Directory Structure
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="rpc-dir.html">
+            
+                <a href="rpc-dir.html">
+            
+                    
+                    RPC Directory Structure
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="project-dev.html">
+            
+                <a href="project-dev.html">
+            
+                    
+                    Project Development
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="prepare.html">
+            
+                <a href="prepare.html">
+            
+                    
+                    Prepare
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1.1" data-path="golang-install.html">
+            
+                <a href="golang-install.html">
+            
+                    
+                    Golang Installation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.2" data-path="gomod-config.html">
+            
+                <a href="gomod-config.html">
+            
+                    
+                    Go Module Configuration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.3" data-path="goctl-install.html">
+            
+                <a href="goctl-install.html">
+            
+                    
+                    Goctl Installation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.4" data-path="protoc-install.html">
+            
+                <a href="protoc-install.html">
+            
+                    
+                    protoc & protoc-gen-go Installation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.5" data-path="prepare-other.html">
+            
+                <a href="prepare-other.html">
+            
+                    
+                    More
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="dev-specification.html">
+            
+                <a href="dev-specification.html">
+            
+                    
+                    Development Rules
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.2.1" data-path="naming-spec.html">
+            
+                <a href="naming-spec.html">
+            
+                    
+                    Naming Rules
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.2" data-path="route-naming-spec.html">
+            
+                <a href="route-naming-spec.html">
+            
+                    
+                    Route Rules
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.3" data-path="coding-spec.html">
+            
+                <a href="coding-spec.html">
+            
+                    
+                    Coding Rules
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="dev-flow.html">
+            
+                <a href="dev-flow.html">
+            
+                    
+                    Development Flow
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="config-introduction.html">
+            
+                <a href="config-introduction.html">
+            
+                    
+                    Configuration Introduction
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.4.1" data-path="api-config.html">
+            
+                <a href="api-config.html">
+            
+                    
+                    API Configuration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4.2" data-path="rpc-config.html">
+            
+                <a href="rpc-config.html">
+            
+                    
+                    RPC Configuration
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="business-dev.html">
+            
+                <a href="business-dev.html">
+            
+                    
+                    Business Development
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.5.1" data-path="service-design.html">
+            
+                <a href="service-design.html">
+            
+                    
+                    Directory Structure
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.2" data-path="model-gen.html">
+            
+                <a href="model-gen.html">
+            
+                    
+                    Model Generation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.3" data-path="api-coding.html">
+            
+                <a href="api-coding.html">
+            
+                    
+                    API Coding
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.4" data-path="business-coding.html">
+            
+                <a href="business-coding.html">
+            
+                    
+                    Business Coding
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.5" data-path="jwt.html">
+            
+                <a href="jwt.html">
+            
+                    
+                    JWT
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.6" data-path="middleware.html">
+            
+                <a href="middleware.html">
+            
+                    
+                    Middleware
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.7" data-path="rpc-call.html">
+            
+                <a href="rpc-call.html">
+            
+                    
+                    RPC Implement & Call
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.8" data-path="error-handle.html">
+            
+                <a href="error-handle.html">
+            
+                    
+                    Error Handling
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="ci-cd.html">
+            
+                <a href="ci-cd.html">
+            
+                    
+                    CI/CD
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7" data-path="service-deployment.html">
+            
+                <a href="service-deployment.html">
+            
+                    
+                    Service Deployment
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.8" data-path="log-collection.html">
+            
+                <a href="log-collection.html">
+            
+                    
+                    Log Collection
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.9" data-path="trace.html">
+            
+                <a href="trace.html">
+            
+                    
+                    Trace
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.10" data-path="service-monitor.html">
+            
+                <a href="service-monitor.html">
+            
+                    
+                    Monitor
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="goctl.html">
+            
+                <a href="goctl.html">
+            
+                    
+                    Goctl
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="goctl-commands.html">
+            
+                <a href="goctl-commands.html">
+            
+                    
+                    Commands & Flags
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="goctl-api.html">
+            
+                <a href="goctl-api.html">
+            
+                    
+                    API Commands
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="goctl-rpc.html">
+            
+                <a href="goctl-rpc.html">
+            
+                    
+                    RPC Commands
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="goctl-model.html">
+            
+                <a href="goctl-model.html">
+            
+                    
+                    Model Commands
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" data-path="goctl-plugin.html">
+            
+                <a href="goctl-plugin.html">
+            
+                    
+                    Plugin Commands
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6" data-path="goctl-other.html">
+            
+                <a href="goctl-other.html">
+            
+                    
+                    More Commands
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="component-center.html">
+            
+                <a href="component-center.html">
+            
+                    
+                    Components
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="logx.html">
+            
+                <a href="logx.html">
+            
+                    
+                    logx
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="bloom.html">
+            
+                <a href="bloom.html">
+            
+                    
+                    bloom
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="executors.html">
+            
+                <a href="executors.html">
+            
+                    
+                    executors
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4" data-path="fx.html">
+            
+                <a href="fx.html">
+            
+                    
+                    fx
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.5" data-path="mysql.html">
+            
+                <a href="mysql.html">
+            
+                    
+                    mysql
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.6" data-path="redis-lock.html">
+            
+                <a href="redis-lock.html">
+            
+                    
+                    redis-lock
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.7" data-path="periodlimit.html">
+            
+                <a href="periodlimit.html">
+            
+                    
+                    periodlimit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.8" data-path="tokenlimit.html">
+            
+                <a href="tokenlimit.html">
+            
+                    
+                    tokenlimit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.9" data-path="timing-wheel.html">
+            
+                <a href="timing-wheel.html">
+            
+                    
+                    TimingWheel
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="tool-center.html">
+            
+                <a href="tool-center.html">
+            
+                    
+                    Tools
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="intellij.html">
+            
+                <a href="intellij.html">
+            
+                    
+                    Intellij Plugin
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="vscode.html">
+            
+                <a href="vscode.html">
+            
+                    
+                    VSCode Plugin
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="plugin-center.html">
+            
+                <a href="plugin-center.html">
+            
+                    
+                    Plugins
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="learning-resource.html">
+            
+                <a href="learning-resource.html">
+            
+                    
+                    Learning Resources
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="wechat.html">
+            
+                <a href="wechat.html">
+            
+                    
+                    Wechat
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="goreading.html">
+            
+                <a href="goreading.html">
+            
+                    
+                    Night
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" data-path="gotalk.html">
+            
+                <a href="gotalk.html">
+            
+                    
+                    OpenTalk
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="practise.html">
+            
+                <a href="practise.html">
+            
+                    
+                    User Practise
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.13.1" data-path="redis-cache.html">
+            
+                <a href="redis-cache.html">
+            
+                    
+                    Persistent layer cache
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.2" data-path="buiness-cache.html">
+            
+                <a href="buiness-cache.html">
+            
+                    
+                    Business layer cache
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.3" data-path="go-queue.html">
+            
+                <a href="go-queue.html">
+            
+                    
+                    Queue
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.4" data-path="datacenter.html">
+            
+                <a href="datacenter.html">
+            
+                    
+                    Middle Ground System
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.5" data-path="stream.html">
+            
+                <a href="stream.html">
+            
+                    
+                    Stream Handler
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.6" data-path="online-exchange.html">
+            
+                <a href="online-exchange.html">
+            
+                    
+                    Online Exchange
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" data-path="dev-log.html">
+            
+                <a href="dev-log.html">
+            
+                    
+                    Development Log
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1" data-path="goctl-log.html">
+            
+                <a href="goctl-log.html">
+            
+                    
+                    Goctl Log
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.2" data-path="intellij-log.html">
+            
+                <a href="intellij-log.html">
+            
+                    
+                    Intellij Log
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" data-path="contributor.html">
+            
+                <a href="contributor.html">
+            
+                    
+                    Contributor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16" data-path="doc-contibute.html">
+            
+                <a href="doc-contibute.html">
+            
+                    
+                    Document Contribute
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17" data-path="error.html">
+            
+                <a href="error.html">
+            
+                    
+                    Error
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18" data-path="source.html">
+            
+                <a href="source.html">
+            
+                    
+                    Source Code
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >Persistent layer cache</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="persistent-layer-cache">Persistent layer cache</h1>
+<blockquote>
+<p>[!TIP]
+This document is machine-translated by Google. If you find grammatical and semantic errors, and the document description is not clear, please <a href="doc-contibute.html">PR</a></p>
+</blockquote>
+<h2 id="principles-of-cache-design">Principles of Cache Design</h2>
+<p>We only delete the cache without updating it. Once the data in the DB is modified, we will directly delete the corresponding cache instead of updating it.</p>
+<p>Let&apos;s see how the order of deleting the cache is correct.</p>
+<ul>
+<li>Delete the cache first, then update the DB</li>
+</ul>
+<p><img src="resource/redis-cache-01.png" alt="redis-cache-01"></p>
+<p>Let&apos;s look at the situation of two concurrent requests. A request needs to update the data. The cache is deleted first, and then B requests to read the data. At this time, there is no data in the cache, and the data is loaded from the DB and written back to the cache, and then A updates the DB , Then the data in the cache will always be dirty data at this time, until the cache expires or there is a new data update request. As shown</p>
+<p><img src="resource/redis-cache-02.png" alt="redis-cache-02"></p>
+<ul>
+<li><p>Update the DB first, then delete the cache</p>
+<p>  <img src="resource/redis-cache-03.png" alt="redis-cache-03"></p>
+</li>
+</ul>
+<p>A requests to update the DB first, and then B requests to read the data. At this time, the old data is returned. At this time, it can be considered that the A request has not been updated, and the final consistency is acceptable. Then A deletes the cache, and subsequent requests will Get the latest data, as shown in the figure
+<img src="resource/redis-cache-04.png" alt="redis-cache-04"></p>
+<p>Let&apos;s take another look at the normal request flow:</p>
+<ul>
+<li>The first request to update the DB and delete the cache</li>
+<li>The second request to read the cache, if there is no data, read the data from the DB and write it back to the cache</li>
+<li>All subsequent read requests can be read directly from the cache
+<img src="resource/redis-cache-05.png" alt="redis-cache-05"></li>
+</ul>
+<p>Let&apos;s take a look at the DB query, assuming that there are seven columns of ABCDEFG data in the row record:</p>
+<ul>
+<li><p>A request to query only part of the column data, such as ABC, CDE or EFG in the request, as shown in the figure
+<img src="resource/redis-cache-06.png" alt="redis-cache-06"></p>
+</li>
+<li><p>Query a single complete row record, as shown in the figure
+<img src="resource/redis-cache-07.png" alt="redis-cache-07"></p>
+</li>
+<li><p>Query part or all of the columns of multiple rows, as shown in the figure
+<img src="resource/redis-cache-08.png" alt="redis-cache-08"></p>
+</li>
+</ul>
+<p>For the above three cases, firstly, we don&#x2019;t need partial queries, because some queries cannot be cached. Once cached, the data is updated, and it is impossible to locate which data needs to be deleted; secondly, for multi-line queries, according to actual scenarios and If necessary, we will establish the corresponding mapping from the query conditions to the primary key in the business layer; and for the query of a single row of complete records, go-zero has a built-in complete cache management method. So the core principle is: <strong>go-zero cache must be a complete line record</strong>.</p>
+<p>Let&apos;s introduce in detail the cache processing methods of the three built-in scenarios in go-zero:</p>
+<ul>
+<li>Cache based on primary key<pre class="language-"><code class="lang-text">PRIMARY KEY (`id`)
+</code></pre>
+</li>
+</ul>
+<p>This kind of cache is relatively the easiest to handle, just use the primary key as the key in redis to cache line records.</p>
+<ul>
+<li>Cache based on unique index
+<img src="resource/redis-cache-09.webp" alt="redis-cache-09"></li>
+</ul>
+<p>When doing index-based cache design, I used the design method of database index for reference. In database design, if you use the index to check data, the engine will first find the primary key in the tree of index -&gt; primary key, and then use the primary key. To query row records, an indirect layer is introduced to solve the corresponding problem of index to row records. The same principle applies to the cache design of go-zero.</p>
+<p>Index-based cache is divided into single-column unique index and multi-column unique index:</p>
+<p>But for go-zero, single-column and multi-column are just different ways of generating cache keys, and the control logic behind them is the same. Then go-zero&apos;s built-in cache management can better control the data consistency problem, and also built-in to prevent the breakdown, penetration, and avalanche problems of the cache (these were discussed carefully when sharing at the gopherchina conference, see follow-up gopherchina Share video).</p>
+<p>In addition, go-zero has built-in cache access and access hit rate statistics, as shown below:</p>
+<pre class="language-"><code class="lang-text">dbcache(sqlc) - qpm: 5057, hit_ratio: 99.7%, hit: 5044, miss: 13, db_fails: 0
+</code></pre>
+<p>But for go-zero, single-column and multi-column are just different ways of generating cache keys, and the control logic behind them is the same. Then go-zero&apos;s built-in cache management can better control the data consistency problem, and also built-in to prevent the breakdown, penetration, and avalanche problems of the cache (these were discussed carefully when sharing at the gopherchina conference, see follow-up gopherchina Share video).</p>
+<ul>
+<li><p>The single-column unique index is as follows:</p>
+<pre class="language-"><code class="lang-text">UNIQUE KEY `product_idx` (`product`)
+</code></pre>
+</li>
+<li><p>The multi-column unique index is as follows:</p>
+<pre class="language-"><code class="lang-text">UNIQUE KEY `vendor_product_idx` (`vendor`, `product`)
+</code></pre>
+<h2 id="cache-code-interpretation">Cache code interpretation</h2>
+</li>
+</ul>
+<h3 id="1-cache-logic-based-on-the-primary-key">1. Cache logic based on the primary key</h3>
+<p><img src="resource/redis-cache-10.png" alt="redis-cache-10"></p>
+<p>The specific implementation code is as follows:</p>
+<pre class="language-"><code class="lang-go"><span class="token keyword">func</span> <span class="token punctuation">(</span>cc CachedConn<span class="token punctuation">)</span> <span class="token function">QueryRow</span><span class="token punctuation">(</span>v <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> key <span class="token builtin">string</span><span class="token punctuation">,</span> query QueryFn<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> cc<span class="token punctuation">.</span>cache<span class="token punctuation">.</span><span class="token function">Take</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span> key<span class="token punctuation">,</span> <span class="token keyword">func</span><span class="token punctuation">(</span>v <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token function">query</span><span class="token punctuation">(</span>cc<span class="token punctuation">.</span>db<span class="token punctuation">,</span> v<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>The <code>Take</code> method here is to first get the data from the cache via the <code>key</code>, if you get it, return it directly, if you can&apos;t get it, then use the <code>query</code> method to go to the <code>DB</code> to read the complete row record and write it back Cache, and then return the data. The whole logic is relatively simple and easy to understand.</p>
+<p>Let&apos;s take a look at the implementation of <code>Take</code> in detail:</p>
+<pre class="language-"><code class="lang-go"><span class="token keyword">func</span> <span class="token punctuation">(</span>c cacheNode<span class="token punctuation">)</span> <span class="token function">Take</span><span class="token punctuation">(</span>v <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> key <span class="token builtin">string</span><span class="token punctuation">,</span> query <span class="token keyword">func</span><span class="token punctuation">(</span>v <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token builtin">error</span><span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> c<span class="token punctuation">.</span><span class="token function">doTake</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span> key<span class="token punctuation">,</span> query<span class="token punctuation">,</span> <span class="token keyword">func</span><span class="token punctuation">(</span>v <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> c<span class="token punctuation">.</span><span class="token function">SetCache</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> v<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>The logic of <code>Take</code> is as follows:</p>
+<ul>
+<li>Use key to find data from cache</li>
+<li>If found, return the data</li>
+<li>If you can&apos;t find it, use the query method to read the data</li>
+<li>After reading it, call c.SetCache(key, v) to set the cache</li>
+</ul>
+<p>The code and explanation of <code>doTake</code> are as follows:</p>
+<pre class="language-"><code class="lang-go"><span class="token comment">// v - The data object that needs to be read</span>
+<span class="token comment">// key - Cache key</span>
+<span class="token comment">// query - Method used to read complete data from DB</span>
+<span class="token comment">// cacheVal - Method used to write cache</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>c cacheNode<span class="token punctuation">)</span> <span class="token function">doTake</span><span class="token punctuation">(</span>v <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> key <span class="token builtin">string</span><span class="token punctuation">,</span> query <span class="token keyword">func</span><span class="token punctuation">(</span>v <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token builtin">error</span><span class="token punctuation">,</span>
+  cacheVal <span class="token keyword">func</span><span class="token punctuation">(</span>v <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token builtin">error</span><span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+  <span class="token comment">// Use barriers to prevent cache breakdown and ensure that there is only one request in a process to load the data corresponding to the key</span>
+  val<span class="token punctuation">,</span> fresh<span class="token punctuation">,</span> err <span class="token operator">:=</span> c<span class="token punctuation">.</span>barrier<span class="token punctuation">.</span><span class="token function">DoEx</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token builtin">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Read data from the cache</span>
+    <span class="token keyword">if</span> err <span class="token operator">:=</span> c<span class="token punctuation">.</span><span class="token function">doGetCache</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> v<span class="token punctuation">)</span><span class="token punctuation">;</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+      <span class="token comment">// If it is a placeholder that was put in beforehand (to prevent cache penetration), then the default errNotFound is returned</span>
+      <span class="token comment">// If it is an unknown error, then return directly, because we can&apos;t give up the cache error and directly send all requests to the DB,</span>
+      <span class="token comment">// This will kill the DB in a high concurrency scenario</span>
+      <span class="token keyword">if</span> err <span class="token operator">==</span> errPlaceholder <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token boolean">nil</span><span class="token punctuation">,</span> c<span class="token punctuation">.</span>errNotFound
+      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> err <span class="token operator">!=</span> c<span class="token punctuation">.</span>errNotFound <span class="token punctuation">{</span>
+        <span class="token comment">// why we just return the error instead of query from db,</span>
+        <span class="token comment">// because we don&apos;t allow the disaster pass to the DBs.</span>
+        <span class="token comment">// fail fast, in case we bring down the dbs.</span>
+        <span class="token keyword">return</span> <span class="token boolean">nil</span><span class="token punctuation">,</span> err
+      <span class="token punctuation">}</span>
+
+      <span class="token comment">// request DB</span>
+      <span class="token comment">// If the returned error is errNotFound, then we need to set a placeholder in the cache to prevent the cache from penetrating</span>
+      <span class="token keyword">if</span> err <span class="token operator">=</span> <span class="token function">query</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">;</span> err <span class="token operator">==</span> c<span class="token punctuation">.</span>errNotFound <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> err <span class="token operator">=</span> c<span class="token punctuation">.</span><span class="token function">setCacheWithNotFound</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">;</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+          logx<span class="token punctuation">.</span><span class="token function">Error</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">return</span> <span class="token boolean">nil</span><span class="token punctuation">,</span> c<span class="token punctuation">.</span>errNotFound
+      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+        <span class="token comment">// Statistics DB failed</span>
+        c<span class="token punctuation">.</span>stat<span class="token punctuation">.</span><span class="token function">IncrementDbFails</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token boolean">nil</span><span class="token punctuation">,</span> err
+      <span class="token punctuation">}</span>
+
+      <span class="token comment">// Write data to cache</span>
+      <span class="token keyword">if</span> err <span class="token operator">=</span> <span class="token function">cacheVal</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">;</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+        logx<span class="token punctuation">.</span><span class="token function">Error</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// Return json serialized data</span>
+    <span class="token keyword">return</span> jsonx<span class="token punctuation">.</span><span class="token function">Marshal</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> err
+  <span class="token punctuation">}</span>
+  <span class="token keyword">if</span> fresh <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token boolean">nil</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// got the result from previous ongoing query</span>
+  c<span class="token punctuation">.</span>stat<span class="token punctuation">.</span><span class="token function">IncrementTotal</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  c<span class="token punctuation">.</span>stat<span class="token punctuation">.</span><span class="token function">IncrementHit</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+  <span class="token comment">// Write data to the incoming v object</span>
+  <span class="token keyword">return</span> jsonx<span class="token punctuation">.</span><span class="token function">Unmarshal</span><span class="token punctuation">(</span>val<span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">byte</span><span class="token punctuation">)</span><span class="token punctuation">,</span> v<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="2-cache-logic-based-on-unique-index">2. Cache logic based on unique index</h3>
+<p>Because this block is more complicated, I used different colors to mark out the code block and logic of the response. <code>block 2</code> is actually the same as the cache based on the primary key. Here, I mainly talk about the logic of <code>block 1</code>.
+<img src="resource/redis-cache-11.webp" alt="redis-cache-11"></p>
+<p>The block 1 part of the code block is divided into two cases:</p>
+<ul>
+<li><p>The primary key can be found from the cache through the index. At this time, the primary key is used directly to walk the logic of <code>block 2</code>, and the follow-up is the same as the above-based primary key-based caching logic.</p>
+</li>
+<li><p>The primary key cannot be found in the cache through the index</p>
+<ul>
+<li>Query the complete row record from the DB through the index, if there is an error, return</li>
+<li>After the complete row record is found, the cache of the primary key to the complete row record and the cache of the index to the primary key will be written to <code>redis</code> at the same time</li>
+<li>Return the required row data</li>
+</ul>
+</li>
+</ul>
+<pre class="language-"><code class="lang-go"><span class="token comment">// v-the data object that needs to be read</span>
+<span class="token comment">// key-cache key generated by index</span>
+<span class="token comment">// keyer-Use the primary key to generate a key based on the primary key cache</span>
+<span class="token comment">// indexQuery-method to read complete data from DB using index, need to return the primary key</span>
+<span class="token comment">// primaryQuery-method to get complete data from DB with primary key</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>cc CachedConn<span class="token punctuation">)</span> <span class="token function">QueryRowIndex</span><span class="token punctuation">(</span>v <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> key <span class="token builtin">string</span><span class="token punctuation">,</span> keyer <span class="token keyword">func</span><span class="token punctuation">(</span>primary <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token builtin">string</span><span class="token punctuation">,</span>
+  indexQuery IndexQueryFn<span class="token punctuation">,</span> primaryQuery PrimaryQueryFn<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> primaryKey <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+  <span class="token keyword">var</span> found <span class="token builtin">bool</span>
+
+  <span class="token comment">// First query the cache through the index to see if there is a cache from the index to the primary key</span>
+  <span class="token keyword">if</span> err <span class="token operator">:=</span> cc<span class="token punctuation">.</span>cache<span class="token punctuation">.</span><span class="token function">TakeWithExpire</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>primaryKey<span class="token punctuation">,</span> key<span class="token punctuation">,</span> <span class="token keyword">func</span><span class="token punctuation">(</span>val <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> expire time<span class="token punctuation">.</span>Duration<span class="token punctuation">)</span> <span class="token punctuation">(</span>err <span class="token builtin">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// If there is no cache of the index to the primary key, then the complete data is queried through the index</span>
+    primaryKey<span class="token punctuation">,</span> err <span class="token operator">=</span> <span class="token function">indexQuery</span><span class="token punctuation">(</span>cc<span class="token punctuation">.</span>db<span class="token punctuation">,</span> v<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// The complete data is queried through the index, set to &#x201C;found&#x201D; and used directly later, no need to read data from the cache anymore</span>
+    found <span class="token operator">=</span> <span class="token boolean">true</span>
+    <span class="token comment">// Save the mapping from the primary key to the complete data in the cache. The TakeWithExpire method has saved the mapping from the index to the primary key in the cache.</span>
+    <span class="token keyword">return</span> cc<span class="token punctuation">.</span>cache<span class="token punctuation">.</span><span class="token function">SetCacheWithExpire</span><span class="token punctuation">(</span><span class="token function">keyer</span><span class="token punctuation">(</span>primaryKey<span class="token punctuation">)</span><span class="token punctuation">,</span> v<span class="token punctuation">,</span> expire<span class="token operator">+</span>cacheSafeGapBetweenIndexAndPrimary<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> err
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// The data has been found through the index, just return directly</span>
+  <span class="token keyword">if</span> found <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token boolean">nil</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// Read data from the cache through the primary key, if the cache is not available, read from the DB through the primaryQuery method and write back to the cache and then return the data</span>
+  <span class="token keyword">return</span> cc<span class="token punctuation">.</span>cache<span class="token punctuation">.</span><span class="token function">Take</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span> <span class="token function">keyer</span><span class="token punctuation">(</span>primaryKey<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">func</span><span class="token punctuation">(</span>v <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token function">primaryQuery</span><span class="token punctuation">(</span>cc<span class="token punctuation">.</span>db<span class="token punctuation">,</span> v<span class="token punctuation">,</span> primaryKey<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Let&apos;s look at a practical example</p>
+<pre class="language-"><code class="lang-go"><span class="token keyword">func</span> <span class="token punctuation">(</span>m <span class="token operator">*</span>defaultUserModel<span class="token punctuation">)</span> <span class="token function">FindOneByUser</span><span class="token punctuation">(</span>user <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token operator">*</span>User<span class="token punctuation">,</span> <span class="token builtin">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> resp User
+  <span class="token comment">// Generate index-based keys</span>
+  indexKey <span class="token operator">:=</span> fmt<span class="token punctuation">.</span><span class="token function">Sprintf</span><span class="token punctuation">(</span><span class="token string">&quot;%s%v&quot;</span><span class="token punctuation">,</span> cacheUserPrefix<span class="token punctuation">,</span> user<span class="token punctuation">)</span>
+
+  err <span class="token operator">:=</span> m<span class="token punctuation">.</span><span class="token function">QueryRowIndex</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>resp<span class="token punctuation">,</span> indexKey<span class="token punctuation">,</span>
+    <span class="token comment">// Generate a complete data cache key based on the primary key</span>
+    <span class="token keyword">func</span><span class="token punctuation">(</span>primary <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token builtin">string</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> fmt<span class="token punctuation">.</span><span class="token function">Sprintf</span><span class="token punctuation">(</span><span class="token string">&quot;user#%v&quot;</span><span class="token punctuation">,</span> primary<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token comment">// Index-based DB query method</span>
+    <span class="token keyword">func</span><span class="token punctuation">(</span>conn sqlx<span class="token punctuation">.</span>SqlConn<span class="token punctuation">,</span> v <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">(</span>i <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> e <span class="token builtin">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      query <span class="token operator">:=</span> fmt<span class="token punctuation">.</span><span class="token function">Sprintf</span><span class="token punctuation">(</span><span class="token string">&quot;select %s from %s where user = ? limit 1&quot;</span><span class="token punctuation">,</span> userRows<span class="token punctuation">,</span> m<span class="token punctuation">.</span>table<span class="token punctuation">)</span>
+      <span class="token keyword">if</span> err <span class="token operator">:=</span> conn<span class="token punctuation">.</span><span class="token function">QueryRow</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>resp<span class="token punctuation">,</span> query<span class="token punctuation">,</span> user<span class="token punctuation">)</span><span class="token punctuation">;</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token boolean">nil</span><span class="token punctuation">,</span> err
+      <span class="token punctuation">}</span>
+      <span class="token keyword">return</span> resp<span class="token punctuation">.</span>Id<span class="token punctuation">,</span> <span class="token boolean">nil</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token comment">// DB query method based on primary key</span>
+    <span class="token keyword">func</span><span class="token punctuation">(</span>conn sqlx<span class="token punctuation">.</span>SqlConn<span class="token punctuation">,</span> v<span class="token punctuation">,</span> primary <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+      query <span class="token operator">:=</span> fmt<span class="token punctuation">.</span><span class="token function">Sprintf</span><span class="token punctuation">(</span><span class="token string">&quot;select %s from %s where id = ?&quot;</span><span class="token punctuation">,</span> userRows<span class="token punctuation">,</span> m<span class="token punctuation">.</span>table<span class="token punctuation">)</span>
+      <span class="token keyword">return</span> conn<span class="token punctuation">.</span><span class="token function">QueryRow</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>resp<span class="token punctuation">,</span> query<span class="token punctuation">,</span> primary<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+ <span class="token comment">// Error handling, you need to determine whether the returned sqlc.ErrNotFound is, if it is, we use the ErrNotFound defined in this package to return</span>
+ <span class="token comment">// Prevent users from perceiving whether or not the cache is used, and at the same time isolate the underlying dependencies</span>
+  <span class="token keyword">switch</span> err <span class="token punctuation">{</span>
+    <span class="token keyword">case</span> <span class="token boolean">nil</span><span class="token punctuation">:</span>
+      <span class="token keyword">return</span> <span class="token operator">&amp;</span>resp<span class="token punctuation">,</span> <span class="token boolean">nil</span>
+    <span class="token keyword">case</span> sqlc<span class="token punctuation">.</span>ErrNotFound<span class="token punctuation">:</span>
+      <span class="token keyword">return</span> <span class="token boolean">nil</span><span class="token punctuation">,</span> ErrNotFound
+    <span class="token keyword">default</span><span class="token punctuation">:</span>
+      <span class="token keyword">return</span> <span class="token boolean">nil</span><span class="token punctuation">,</span> err
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>All the above cache automatic management codes can be automatically generated through <a href="goctl.html">goctl</a>, and the internal <code>CRUD</code> and cache of our team are basically automatically generated through <a href="goctl.html">goctl</a>, which can save A lot of development time, and the cache code itself is also very error-prone. Even with good code experience, it is difficult to write it correctly every time. Therefore, we recommend using automatic cache code generation tools as much as possible to avoid errors.</p>
+<h1 id="guess-you-wants">Guess you wants</h1>
+<ul>
+<li><a href="https://www.bilibili.com/video/BV1Jy4y127Xu" target="_blank">The fourth phase-how to design go-zero cache in OpenTalk</a></li>
+<li><a href="goctl.html">Goctl</a> </li>
+</ul>
+<footer class="page-footer"><span class="copyright">Copyright &#xA9; 2019-2021 go-zero all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last UpdateTime&#xFF1A;
+2021-04-19 03:20:26
+</span></footer>
+<script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="practise.html" class="navigation navigation-prev " aria-label="Previous page: User Practise">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="buiness-cache.html" class="navigation navigation-next " aria-label="Next page: Business layer cache">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Persistent layer cache","level":"1.13.1","depth":2,"next":{"title":"Business layer cache","level":"1.13.2","depth":2,"path":"buiness-cache.md","ref":"buiness-cache.md","articles":[]},"previous":{"title":"User Practise","level":"1.13","depth":1,"path":"practise.md","ref":"practise.md","articles":[{"title":"Persistent layer cache","level":"1.13.1","depth":2,"path":"redis-cache.md","ref":"redis-cache.md","articles":[]},{"title":"Business layer cache","level":"1.13.2","depth":2,"path":"buiness-cache.md","ref":"buiness-cache.md","articles":[]},{"title":"Queue","level":"1.13.3","depth":2,"path":"go-queue.md","ref":"go-queue.md","articles":[]},{"title":"Middle Ground System","level":"1.13.4","depth":2,"path":"datacenter.md","ref":"datacenter.md","articles":[]},{"title":"Stream Handler","level":"1.13.5","depth":2,"path":"stream.md","ref":"stream.md","articles":[]},{"title":"Online Exchange","level":"1.13.6","depth":2,"path":"online-exchange.md","ref":"online-exchange.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","code","-lunr","-search","search-pro","github","splitter","-sharing","sharing-plus","tbfed-pagefooter","flexible-alerts","page-toc-button","pageview-count","popup","hide-element","edit-link","-highlight","prism","theme-comscore"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © 2019-2021 go-zero","modify_label":"Last UpdateTime：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"lang":{"shell":"bash"},"css":["prismjs/themes/prism-tomorrow.css"]},"github":{"url":"https://github.com/tal-tech/go-zero"},"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"qq":false,"all":["douban","facebook","google","linkedin","twitter","weibo","qq","qzone","weibo"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true},"edit-link":{"label":"EDIT THIS PAGE","base":"https://github.com/zeromicro/go-zero-doc/blob/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"anqiansong","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"go-zero document","language":"en","gitbook":"*"},"file":{"path":"redis-cache.md","mtime":"2021-04-19T03:20:26.567Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-19T03:21:17.214Z"},"basePath":".","book":{"language":"en"}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing-plus/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-flexible-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-page-toc-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-pageview-count/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-hide-element/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-edit-link/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-theme-comscore/test.js"></script>
+        
+    
+
+    </body>
+</html>
+

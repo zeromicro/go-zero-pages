@@ -1,0 +1,1717 @@
+
+<!DOCTYPE HTML>
+<html lang="en" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>executors · go-zero document</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="anqiansong">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-flexible-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-toc-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-pageview-count/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism-tomorrow.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-theme-comscore/test.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="fx.html" />
+    
+    
+    <link rel="prev" href="bloom.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="about-us.html">
+            
+                <a href="about-us.html">
+            
+                    
+                    About Us
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="join-us.html">
+            
+                <a href="join-us.html">
+            
+                    
+                    Join Us
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="concept-introduction.html">
+            
+                <a href="concept-introduction.html">
+            
+                    
+                    Concepts
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="quick-start.html">
+            
+                <a href="quick-start.html">
+            
+                    
+                    Quick Start
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="monolithic-service.html">
+            
+                <a href="monolithic-service.html">
+            
+                    
+                    Monolithic Service
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="micro-service.html">
+            
+                <a href="micro-service.html">
+            
+                    
+                    Micro Service
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="framework-design.html">
+            
+                <a href="framework-design.html">
+            
+                    
+                    Framework Design
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="go-zero-design.html">
+            
+                <a href="go-zero-design.html">
+            
+                    
+                    Go-Zero Design
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="go-zero-features.html">
+            
+                <a href="go-zero-features.html">
+            
+                    
+                    Go-Zero Features
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="api-grammar.html">
+            
+                <a href="api-grammar.html">
+            
+                    
+                    API IDL
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="api-dir.html">
+            
+                <a href="api-dir.html">
+            
+                    
+                    API Directory Structure
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="rpc-dir.html">
+            
+                <a href="rpc-dir.html">
+            
+                    
+                    RPC Directory Structure
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="project-dev.html">
+            
+                <a href="project-dev.html">
+            
+                    
+                    Project Development
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="prepare.html">
+            
+                <a href="prepare.html">
+            
+                    
+                    Prepare
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1.1" data-path="golang-install.html">
+            
+                <a href="golang-install.html">
+            
+                    
+                    Golang Installation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.2" data-path="gomod-config.html">
+            
+                <a href="gomod-config.html">
+            
+                    
+                    Go Module Configuration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.3" data-path="goctl-install.html">
+            
+                <a href="goctl-install.html">
+            
+                    
+                    Goctl Installation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.4" data-path="protoc-install.html">
+            
+                <a href="protoc-install.html">
+            
+                    
+                    protoc & protoc-gen-go Installation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.5" data-path="prepare-other.html">
+            
+                <a href="prepare-other.html">
+            
+                    
+                    More
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="dev-specification.html">
+            
+                <a href="dev-specification.html">
+            
+                    
+                    Development Rules
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.2.1" data-path="naming-spec.html">
+            
+                <a href="naming-spec.html">
+            
+                    
+                    Naming Rules
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.2" data-path="route-naming-spec.html">
+            
+                <a href="route-naming-spec.html">
+            
+                    
+                    Route Rules
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.3" data-path="coding-spec.html">
+            
+                <a href="coding-spec.html">
+            
+                    
+                    Coding Rules
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="dev-flow.html">
+            
+                <a href="dev-flow.html">
+            
+                    
+                    Development Flow
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="config-introduction.html">
+            
+                <a href="config-introduction.html">
+            
+                    
+                    Configuration Introduction
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.4.1" data-path="api-config.html">
+            
+                <a href="api-config.html">
+            
+                    
+                    API Configuration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4.2" data-path="rpc-config.html">
+            
+                <a href="rpc-config.html">
+            
+                    
+                    RPC Configuration
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="business-dev.html">
+            
+                <a href="business-dev.html">
+            
+                    
+                    Business Development
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.5.1" data-path="service-design.html">
+            
+                <a href="service-design.html">
+            
+                    
+                    Directory Structure
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.2" data-path="model-gen.html">
+            
+                <a href="model-gen.html">
+            
+                    
+                    Model Generation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.3" data-path="api-coding.html">
+            
+                <a href="api-coding.html">
+            
+                    
+                    API Coding
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.4" data-path="business-coding.html">
+            
+                <a href="business-coding.html">
+            
+                    
+                    Business Coding
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.5" data-path="jwt.html">
+            
+                <a href="jwt.html">
+            
+                    
+                    JWT
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.6" data-path="middleware.html">
+            
+                <a href="middleware.html">
+            
+                    
+                    Middleware
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.7" data-path="rpc-call.html">
+            
+                <a href="rpc-call.html">
+            
+                    
+                    RPC Implement & Call
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.8" data-path="error-handle.html">
+            
+                <a href="error-handle.html">
+            
+                    
+                    Error Handling
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="ci-cd.html">
+            
+                <a href="ci-cd.html">
+            
+                    
+                    CI/CD
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7" data-path="service-deployment.html">
+            
+                <a href="service-deployment.html">
+            
+                    
+                    Service Deployment
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.8" data-path="log-collection.html">
+            
+                <a href="log-collection.html">
+            
+                    
+                    Log Collection
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.9" data-path="trace.html">
+            
+                <a href="trace.html">
+            
+                    
+                    Trace
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.10" data-path="service-monitor.html">
+            
+                <a href="service-monitor.html">
+            
+                    
+                    Monitor
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="goctl.html">
+            
+                <a href="goctl.html">
+            
+                    
+                    Goctl
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="goctl-commands.html">
+            
+                <a href="goctl-commands.html">
+            
+                    
+                    Commands & Flags
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="goctl-api.html">
+            
+                <a href="goctl-api.html">
+            
+                    
+                    API Commands
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="goctl-rpc.html">
+            
+                <a href="goctl-rpc.html">
+            
+                    
+                    RPC Commands
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="goctl-model.html">
+            
+                <a href="goctl-model.html">
+            
+                    
+                    Model Commands
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" data-path="goctl-plugin.html">
+            
+                <a href="goctl-plugin.html">
+            
+                    
+                    Plugin Commands
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6" data-path="goctl-other.html">
+            
+                <a href="goctl-other.html">
+            
+                    
+                    More Commands
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="component-center.html">
+            
+                <a href="component-center.html">
+            
+                    
+                    Components
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="logx.html">
+            
+                <a href="logx.html">
+            
+                    
+                    logx
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="bloom.html">
+            
+                <a href="bloom.html">
+            
+                    
+                    bloom
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.9.3" data-path="executors.html">
+            
+                <a href="executors.html">
+            
+                    
+                    executors
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4" data-path="fx.html">
+            
+                <a href="fx.html">
+            
+                    
+                    fx
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.5" data-path="mysql.html">
+            
+                <a href="mysql.html">
+            
+                    
+                    mysql
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.6" data-path="redis-lock.html">
+            
+                <a href="redis-lock.html">
+            
+                    
+                    redis-lock
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.7" data-path="periodlimit.html">
+            
+                <a href="periodlimit.html">
+            
+                    
+                    periodlimit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.8" data-path="tokenlimit.html">
+            
+                <a href="tokenlimit.html">
+            
+                    
+                    tokenlimit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.9" data-path="timing-wheel.html">
+            
+                <a href="timing-wheel.html">
+            
+                    
+                    TimingWheel
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="tool-center.html">
+            
+                <a href="tool-center.html">
+            
+                    
+                    Tools
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="intellij.html">
+            
+                <a href="intellij.html">
+            
+                    
+                    Intellij Plugin
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="vscode.html">
+            
+                <a href="vscode.html">
+            
+                    
+                    VSCode Plugin
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="plugin-center.html">
+            
+                <a href="plugin-center.html">
+            
+                    
+                    Plugins
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="learning-resource.html">
+            
+                <a href="learning-resource.html">
+            
+                    
+                    Learning Resources
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="wechat.html">
+            
+                <a href="wechat.html">
+            
+                    
+                    Wechat
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="goreading.html">
+            
+                <a href="goreading.html">
+            
+                    
+                    Night
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" data-path="gotalk.html">
+            
+                <a href="gotalk.html">
+            
+                    
+                    OpenTalk
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="practise.html">
+            
+                <a href="practise.html">
+            
+                    
+                    User Practise
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.1" data-path="redis-cache.html">
+            
+                <a href="redis-cache.html">
+            
+                    
+                    Persistent layer cache
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.2" data-path="buiness-cache.html">
+            
+                <a href="buiness-cache.html">
+            
+                    
+                    Business layer cache
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.3" data-path="go-queue.html">
+            
+                <a href="go-queue.html">
+            
+                    
+                    Queue
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.4" data-path="datacenter.html">
+            
+                <a href="datacenter.html">
+            
+                    
+                    Middle Ground System
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.5" data-path="stream.html">
+            
+                <a href="stream.html">
+            
+                    
+                    Stream Handler
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.6" data-path="online-exchange.html">
+            
+                <a href="online-exchange.html">
+            
+                    
+                    Online Exchange
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" data-path="dev-log.html">
+            
+                <a href="dev-log.html">
+            
+                    
+                    Development Log
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1" data-path="goctl-log.html">
+            
+                <a href="goctl-log.html">
+            
+                    
+                    Goctl Log
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.2" data-path="intellij-log.html">
+            
+                <a href="intellij-log.html">
+            
+                    
+                    Intellij Log
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" data-path="contributor.html">
+            
+                <a href="contributor.html">
+            
+                    
+                    Contributor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16" data-path="doc-contibute.html">
+            
+                <a href="doc-contibute.html">
+            
+                    
+                    Document Contribute
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17" data-path="error.html">
+            
+                <a href="error.html">
+            
+                    
+                    Error
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18" data-path="source.html">
+            
+                <a href="source.html">
+            
+                    
+                    Source Code
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >executors</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="executors">executors</h1>
+<blockquote>
+<p>[!TIP]
+This document is machine-translated by Google. If you find grammatical and semantic errors, and the document description is not clear, please <a href="doc-contibute.html">PR</a></p>
+</blockquote>
+<p>In <code>go-zero</code>, <code>executors</code> act as a task pool, do multi-task buffering, and use tasks for batch processing. Such as: <code>clickhouse</code> large batch <code>insert</code>, <code>sql batch insert</code>. At the same time, you can also see <code>executors</code> in <code>go-queue</code> [In <code>queue</code>, <code>ChunkExecutor</code> is used to limit the byte size of task submission].</p>
+<p>So when you have the following requirements, you can use this component:</p>
+<ul>
+<li>Submit tasks in batches</li>
+<li>Buffer part of tasks and submit lazily</li>
+<li>Delay task submission</li>
+</ul>
+<p>Before explaining it in detail, let&apos;s give a rough overview:
+<img src="resource/c42c34e8d33d48ec8a63e56feeae882a.png" alt="c42c34e8d33d48ec8a63e56feeae882a"></p>
+<h2 id="interface-design">Interface design</h2>
+<p>Under the <code>executors</code> package, there are the following <code>executors</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Margin value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bulkexecutor</code></td>
+<td>Reach <code>maxTasks</code> [Maximum number of tasks] Submit</td>
+</tr>
+<tr>
+<td><code>chunkexecutor</code></td>
+<td>Reach <code>maxChunkSize</code>[Maximum number of bytes] Submit</td>
+</tr>
+<tr>
+<td><code>periodicalexecutor</code></td>
+<td><code>basic executor</code></td>
+</tr>
+<tr>
+<td><code>delayexecutor</code></td>
+<td>Delay the execution of the passed <code>fn()</code></td>
+</tr>
+<tr>
+<td><code>lessexecutor</code></td>
+</tr>
+</tbody>
+</table>
+<p>You will see that except for the special functions of <code>delay</code> and <code>less</code>, the other three are all combinations of <code>executor</code> + <code>container</code>:</p>
+<pre class="language-"><code class="lang-go"><span class="token keyword">func</span> <span class="token function">NewBulkExecutor</span><span class="token punctuation">(</span>execute Execute<span class="token punctuation">,</span> opts <span class="token operator">...</span>BulkOption<span class="token punctuation">)</span> <span class="token operator">*</span>BulkExecutor <span class="token punctuation">{</span>
+    <span class="token comment">// Option mode: It appears in many places in go-zero. In multiple configurations, better design ideas</span>
+    <span class="token comment">// https://halls-of-valhalla.org/beta/articles/functional-options-pattern-in-go,54/</span>
+    options <span class="token operator">:=</span> <span class="token function">newBulkOptions</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> <span class="token boolean">_</span><span class="token punctuation">,</span> opt <span class="token operator">:=</span> <span class="token keyword">range</span> opts <span class="token punctuation">{</span>
+        <span class="token function">opt</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>options<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">// 1. task container: [execute the function that actually does the execution] [maxTasks execution critical point]</span>
+    container <span class="token operator">:=</span> <span class="token operator">&amp;</span>bulkContainer<span class="token punctuation">{</span>
+        execute<span class="token punctuation">:</span>  execute<span class="token punctuation">,</span>
+        maxTasks<span class="token punctuation">:</span> options<span class="token punctuation">.</span>cachedTasks<span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">// 2. It can be seen that the underlying bulkexecutor depends on the periodicalexecutor</span>
+    executor <span class="token operator">:=</span> <span class="token operator">&amp;</span>BulkExecutor<span class="token punctuation">{</span>
+        executor<span class="token punctuation">:</span>  <span class="token function">NewPeriodicalExecutor</span><span class="token punctuation">(</span>options<span class="token punctuation">.</span>flushInterval<span class="token punctuation">,</span> container<span class="token punctuation">)</span><span class="token punctuation">,</span>
+        container<span class="token punctuation">:</span> container<span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> executor
+<span class="token punctuation">}</span>
+</code></pre>
+<p>And this <code>container</code> is an <code>interface</code>:</p>
+<pre class="language-"><code class="lang-go">TaskContainer <span class="token keyword">interface</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Add task to container</span>
+    <span class="token function">AddTask</span><span class="token punctuation">(</span>task <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token builtin">bool</span>
+    <span class="token comment">// Is actually to execute the incoming execute func()</span>
+    <span class="token function">Execute</span><span class="token punctuation">(</span>tasks <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token comment">// When the critical value is reached, remove all tasks in the container and pass them to execute func() through the channel for execution</span>
+    <span class="token function">RemoveAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>This shows the dependency between:</p>
+<ul>
+<li><code>bulkexecutor</code>&#xFF1A;<code>periodicalexecutor</code> + <code>bulkContainer</code></li>
+<li><code>chunkexecutor</code>&#xFF1A;<code>periodicalexecutor</code> + <code>chunkContainer</code></li>
+</ul>
+<blockquote>
+<p>[!TIP]
+So if you want to complete your own <code>executor</code>, you can implement these three interfaces of <code>container</code>, and then combine with <code>periodicalexecutor</code>.</p>
+</blockquote>
+<p>So back to the picture &#x1F446;, our focus is on the <code>periodicalexecutor</code>, and see how it is designed?</p>
+<h2 id="how-to-use">How to use</h2>
+<p>First look at how to use this component in business:</p>
+<p>There is a timed service to perform data synchronization from <code>mysql</code> to <code>clickhouse</code> at a fixed time every day:</p>
+<pre class="language-"><code class="lang-go"><span class="token keyword">type</span> DailyTask <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+    ckGroup        <span class="token operator">*</span>clickhousex<span class="token punctuation">.</span>Cluster
+    insertExecutor <span class="token operator">*</span>executors<span class="token punctuation">.</span>BulkExecutor
+    mysqlConn      sqlx<span class="token punctuation">.</span>SqlConn
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Initialize <code>bulkExecutor</code>:</p>
+<pre class="language-"><code class="lang-go"><span class="token keyword">func</span> <span class="token punctuation">(</span>dts <span class="token operator">*</span>DailyTask<span class="token punctuation">)</span> <span class="token function">Init</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// insertIntoCk() is the real insert execution function [requires developers to write specific business logic by themselves]</span>
+    dts<span class="token punctuation">.</span>insertExecutor <span class="token operator">=</span> executors<span class="token punctuation">.</span><span class="token function">NewBulkExecutor</span><span class="token punctuation">(</span>
+        dts<span class="token punctuation">.</span>insertIntoCk<span class="token punctuation">,</span>
+        executors<span class="token punctuation">.</span><span class="token function">WithBulkInterval</span><span class="token punctuation">(</span>time<span class="token punctuation">.</span>Second<span class="token operator">*</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span>    <span class="token comment">// The container will automatically refresh the task to execute every 3s.</span>
+        executors<span class="token punctuation">.</span><span class="token function">WithBulkTasks</span><span class="token punctuation">(</span><span class="token number">10240</span><span class="token punctuation">)</span><span class="token punctuation">,</span>                <span class="token comment">// The maximum number of tasks for the container. Generally set to a power of 2</span>
+    <span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<blockquote>
+<p>[!TIP]
+An additional introduction: <code>clickhouse</code> is suitable for mass insertion, because the insert speed is very fast, mass insert can make full use of clickhouse</p>
+</blockquote>
+<p>Main business logic preparation:</p>
+<pre class="language-"><code class="lang-go"><span class="token keyword">func</span> <span class="token punctuation">(</span>dts <span class="token operator">*</span>DailyTask<span class="token punctuation">)</span> <span class="token function">insertNewData</span><span class="token punctuation">(</span>ch <span class="token keyword">chan</span> <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> sqlFromDb <span class="token operator">*</span>model<span class="token punctuation">.</span>Task<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+    <span class="token keyword">for</span> item <span class="token operator">:=</span> <span class="token keyword">range</span> ch <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> r<span class="token punctuation">,</span> vok <span class="token operator">:=</span> item<span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token operator">*</span>model<span class="token punctuation">.</span>Task<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">!</span>vok <span class="token punctuation">{</span>
+            <span class="token keyword">continue</span>
+        <span class="token punctuation">}</span>
+        err <span class="token operator">:=</span> dts<span class="token punctuation">.</span>insertExecutor<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span>r<span class="token punctuation">)</span>
+        <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+            r<span class="token punctuation">.</span>Tag <span class="token operator">=</span> sqlFromDb<span class="token punctuation">.</span>Tag
+            r<span class="token punctuation">.</span>TagId <span class="token operator">=</span> sqlFromDb<span class="token punctuation">.</span>Id
+            r<span class="token punctuation">.</span>InsertId <span class="token operator">=</span> <span class="token function">genInsertId</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            r<span class="token punctuation">.</span>ToRedis <span class="token operator">=</span> toRedis <span class="token operator">==</span> constant<span class="token punctuation">.</span>INCACHED
+            r<span class="token punctuation">.</span>UpdateWay <span class="token operator">=</span> sqlFromDb<span class="token punctuation">.</span>UpdateWay
+            <span class="token comment">// 1. Add Task</span>
+            err <span class="token operator">:=</span> dts<span class="token punctuation">.</span>insertExecutor<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span>r<span class="token punctuation">)</span>
+            <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+                logx<span class="token punctuation">.</span><span class="token function">Error</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">// 2. Flush Task container</span>
+    dts<span class="token punctuation">.</span>insertExecutor<span class="token punctuation">.</span><span class="token function">Flush</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token comment">// 3. Wait All Task Finish</span>
+    dts<span class="token punctuation">.</span>insertExecutor<span class="token punctuation">.</span><span class="token function">Wait</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<blockquote>
+<p>[!TIP]
+You may be wondering why <code>Flush(), Wait()</code> is needed, and I will analyze it through the source code later.</p>
+</blockquote>
+<p>There are 3 steps to use as a whole:</p>
+<ul>
+<li><code>Add()</code>: Add to task</li>
+<li><code>Flush()</code>: Refresh tasks in <code>container</code></li>
+<li><code>Wait()</code>: Wait for the completion of all tasks</li>
+</ul>
+<h2 id="source-code-analysis">Source code analysis</h2>
+<blockquote>
+<p>[!TIP]
+The main analysis here is <code>periodicalexecutor</code>, because the other two commonly used <code>executors</code> rely on it.</p>
+</blockquote>
+<h3 id="initialization">Initialization</h3>
+<pre class="language-"><code class="lang-go"><span class="token keyword">func</span> New<span class="token operator">...</span><span class="token punctuation">(</span>interval time<span class="token punctuation">.</span>Duration<span class="token punctuation">,</span> container TaskContainer<span class="token punctuation">)</span> <span class="token operator">*</span>PeriodicalExecutor <span class="token punctuation">{</span>
+    executor <span class="token operator">:=</span> <span class="token operator">&amp;</span>PeriodicalExecutor<span class="token punctuation">{</span>
+        commander<span class="token punctuation">:</span>   <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">chan</span> <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        interval<span class="token punctuation">:</span>    interval<span class="token punctuation">,</span>
+        container<span class="token punctuation">:</span>   container<span class="token punctuation">,</span>
+        confirmChan<span class="token punctuation">:</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">chan</span> lang<span class="token punctuation">.</span>PlaceholderType<span class="token punctuation">)</span><span class="token punctuation">,</span>
+        newTicker<span class="token punctuation">:</span> <span class="token keyword">func</span><span class="token punctuation">(</span>d time<span class="token punctuation">.</span>Duration<span class="token punctuation">)</span> timex<span class="token punctuation">.</span>Ticker <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> timex<span class="token punctuation">.</span><span class="token function">NewTicker</span><span class="token punctuation">(</span>interval<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+    <span class="token operator">...</span>
+    <span class="token keyword">return</span> executor
+<span class="token punctuation">}</span>
+</code></pre>
+<ul>
+<li><code>commander</code>: Pass the channel of <code>tasks</code></li>
+<li><code>container</code>: Temporarily store the task of <code>Add()</code></li>
+<li><code>confirmChan</code>: Block <code>Add()</code>, at the beginning of this time, <code>executeTasks()</code> will let go of blocking</li>
+<li><code>ticker</code>: To prevent the blocking of <code>Add()</code>, there will be a chance to execute regularly and release the temporarily stored task in time</li>
+</ul>
+<h3 id="add">Add()</h3>
+<p>After initialization, the first step in the business logic is to add task to <code>executor</code>:</p>
+<pre class="language-"><code class="lang-go"><span class="token keyword">func</span> <span class="token punctuation">(</span>pe <span class="token operator">*</span>PeriodicalExecutor<span class="token punctuation">)</span> <span class="token function">Add</span><span class="token punctuation">(</span>task <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> vals<span class="token punctuation">,</span> ok <span class="token operator">:=</span> pe<span class="token punctuation">.</span><span class="token function">addAndCheck</span><span class="token punctuation">(</span>task<span class="token punctuation">)</span><span class="token punctuation">;</span> ok <span class="token punctuation">{</span>
+        pe<span class="token punctuation">.</span>commander <span class="token operator">&lt;-</span> vals
+        <span class="token operator">&lt;-</span>pe<span class="token punctuation">.</span>confirmChan
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token punctuation">(</span>pe <span class="token operator">*</span>PeriodicalExecutor<span class="token punctuation">)</span> <span class="token function">addAndCheck</span><span class="token punctuation">(</span>task <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token builtin">bool</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    pe<span class="token punctuation">.</span>lock<span class="token punctuation">.</span><span class="token function">Lock</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">defer</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// default false</span>
+        <span class="token keyword">var</span> start <span class="token builtin">bool</span>
+        <span class="token keyword">if</span> <span class="token operator">!</span>pe<span class="token punctuation">.</span>guarded <span class="token punctuation">{</span>
+            <span class="token comment">// backgroundFlush() will reset guarded</span>
+            pe<span class="token punctuation">.</span>guarded <span class="token operator">=</span> <span class="token boolean">true</span>
+            start <span class="token operator">=</span> <span class="token boolean">true</span>
+        <span class="token punctuation">}</span>
+        pe<span class="token punctuation">.</span>lock<span class="token punctuation">.</span><span class="token function">Unlock</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment">// The backgroundFlush() in if will be executed when the first task is added. Background coroutine brush task</span>
+        <span class="token keyword">if</span> start <span class="token punctuation">{</span>
+            pe<span class="token punctuation">.</span><span class="token function">backgroundFlush</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token comment">// Control maxTask, &gt;=maxTask will pop and return tasks in the container</span>
+    <span class="token keyword">if</span> pe<span class="token punctuation">.</span>container<span class="token punctuation">.</span><span class="token function">AddTask</span><span class="token punctuation">(</span>task<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> pe<span class="token punctuation">.</span>container<span class="token punctuation">.</span><span class="token function">RemoveAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> <span class="token boolean">nil</span><span class="token punctuation">,</span> <span class="token boolean">false</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>In <code>addAndCheck()</code>, <code>AddTask()</code> is controlling the maximum number of tasks. If it exceeds the number of tasks, <code>RemoveAll()</code> will be executed, and the tasks pop of the temporarily stored <code>container</code> will be passed to the <code>commander</code>, followed by goroutine loop reading , And then execute tasks.</p>
+<h3 id="backgroundflush">backgroundFlush()</h3>
+<p>Start a background coroutine, and constantly refresh the tasks in the <code>container</code>:</p>
+<pre class="language-"><code class="lang-go"><span class="token keyword">func</span> <span class="token punctuation">(</span>pe <span class="token operator">*</span>PeriodicalExecutor<span class="token punctuation">)</span> <span class="token function">backgroundFlush</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Encapsulate go func(){}</span>
+    threading<span class="token punctuation">.</span><span class="token function">GoSafe</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        ticker <span class="token operator">:=</span> pe<span class="token punctuation">.</span><span class="token function">newTicker</span><span class="token punctuation">(</span>pe<span class="token punctuation">.</span>interval<span class="token punctuation">)</span>
+        <span class="token keyword">defer</span> ticker<span class="token punctuation">.</span><span class="token function">Stop</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+        <span class="token keyword">var</span> commanded <span class="token builtin">bool</span>
+        last <span class="token operator">:=</span> timex<span class="token punctuation">.</span><span class="token function">Now</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">for</span> <span class="token punctuation">{</span>
+            <span class="token keyword">select</span> <span class="token punctuation">{</span>
+            <span class="token comment">// Get []tasks from channel</span>
+            <span class="token keyword">case</span> vals <span class="token operator">:=</span> <span class="token operator">&lt;-</span>pe<span class="token punctuation">.</span>commander<span class="token punctuation">:</span>
+                commanded <span class="token operator">=</span> <span class="token boolean">true</span>
+                <span class="token comment">// Substance: wg.Add(1)</span>
+                pe<span class="token punctuation">.</span><span class="token function">enterExecution</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token comment">// Let go of the blocking of Add(), and the temporary storage area is also empty at this time. Just start a new task to join</span>
+                pe<span class="token punctuation">.</span>confirmChan <span class="token operator">&lt;-</span> lang<span class="token punctuation">.</span>Placeholder
+                <span class="token comment">// Really execute task logic</span>
+                pe<span class="token punctuation">.</span><span class="token function">executeTasks</span><span class="token punctuation">(</span>vals<span class="token punctuation">)</span>
+                last <span class="token operator">=</span> timex<span class="token punctuation">.</span><span class="token function">Now</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token keyword">case</span> <span class="token operator">&lt;-</span>ticker<span class="token punctuation">.</span><span class="token function">Chan</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+                <span class="token keyword">if</span> commanded <span class="token punctuation">{</span>
+                    <span class="token comment">// Due to the randomness of select, if the two conditions are met at the same time and the above is executed at the same time, this treatment is reversed and this paragraph is skipped.</span>
+                    <span class="token comment">// https://draveness.me/golang/docs/part2-foundation/ch05-keyword/golang-select/</span>
+                    commanded <span class="token operator">=</span> <span class="token boolean">false</span>
+                <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> pe<span class="token punctuation">.</span><span class="token function">Flush</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token comment">// The refresh is complete and the timer is cleared. The temporary storage area is empty, start the next timed refresh</span>
+                    last <span class="token operator">=</span> timex<span class="token punctuation">.</span><span class="token function">Now</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> timex<span class="token punctuation">.</span><span class="token function">Since</span><span class="token punctuation">(</span>last<span class="token punctuation">)</span> <span class="token operator">&gt;</span> pe<span class="token punctuation">.</span>interval<span class="token operator">*</span>idleRound <span class="token punctuation">{</span>
+                    <span class="token comment">// If maxTask is not reached, Flush() err, and last-&gt;now is too long, Flush() will be triggered again</span>
+                    <span class="token comment">// Only when this is reversed will a new backgroundFlush() background coroutine be opened</span>
+                    pe<span class="token punctuation">.</span>guarded <span class="token operator">=</span> <span class="token boolean">false</span>
+                    <span class="token comment">// Refresh again to prevent missing</span>
+                    pe<span class="token punctuation">.</span><span class="token function">Flush</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                    <span class="token keyword">return</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Overall two processes:</p>
+<ul>
+<li><code>commander</code> receives the tasks passed by <code>RemoveAll()</code>, then executes it, and releases the blocking of <code>Add()</code> to continue <code>Add()</code></li>
+<li>It&#x2019;s time for <code>ticker</code>, if the first step is not executed, it will automatically <code>Flush()</code> and execute the task.</li>
+</ul>
+<h3 id="wait">Wait()</h3>
+<p>In <code>backgroundFlush()</code>, a function is mentioned: <code>enterExecution()</code>:</p>
+<pre class="language-"><code class="lang-go"><span class="token keyword">func</span> <span class="token punctuation">(</span>pe <span class="token operator">*</span>PeriodicalExecutor<span class="token punctuation">)</span> <span class="token function">enterExecution</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    pe<span class="token punctuation">.</span>wgBarrier<span class="token punctuation">.</span><span class="token function">Guard</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        pe<span class="token punctuation">.</span>waitGroup<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token punctuation">(</span>pe <span class="token operator">*</span>PeriodicalExecutor<span class="token punctuation">)</span> <span class="token function">Wait</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    pe<span class="token punctuation">.</span>wgBarrier<span class="token punctuation">.</span><span class="token function">Guard</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        pe<span class="token punctuation">.</span>waitGroup<span class="token punctuation">.</span><span class="token function">Wait</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>By enumerating in this way, you can know why you have to bring <code>dts.insertExecutor.Wait()</code> at the end. Of course, you have to wait for all <code>goroutine tasks</code> to complete.</p>
+<h2 id="thinking">Thinking</h2>
+<p>In looking at the source code, I thought about some other design ideas, do you have similar questions:</p>
+<ul>
+<li>In the analysis of <code>executors</code>, you will find that there are <code>lock</code> in many places</li>
+</ul>
+<blockquote>
+<p>[!TIP]
+There is a race condition in <code>go test</code>, use locking to avoid this situation</p>
+</blockquote>
+<ul>
+<li>After analyzing <code>confirmChan</code>, it was found that this <a href="https://github.com/tal-tech/go-zero/commit/9d9399ad1014c171cc9bd9c87f78b5d2ac238ce4" target="_blank">submit</a> only appeared, why is it designed like this?</li>
+</ul>
+<blockquote>
+<p>It used to be: <code>wg.Add(1)</code> was written in <code>executeTasks()</code>; now it is: first <code>wg.Add(1)</code>, then release <code>confirmChan</code> blocking
+If the execution of <code>executor func</code> is blocked, <code>Add task</code> is still in progress, because there is no block, it may be executed to <code>Executor.Wait()</code> soon, and this is where <code>wg.Wait()</code> appears in <code>wg.Add ()</code> before execution, this will be <code>panic</code></p>
+</blockquote>
+<p>For details, please see the latest version of <code>TestPeriodicalExecutor_WaitFast()</code>, you may wish to run on this version to reproduce.</p>
+<h2 id="summary">Summary</h2>
+<p>There are still a few more analysis of <code>executors</code>, I leave it to you to look at the source code.</p>
+<p>In short, the overall design:</p>
+<ul>
+<li>Follow interface-oriented design</li>
+<li>Flexible use of concurrent tools such as <code>channel</code> and <code>waitgroup</code></li>
+<li>The combination of execution unit + storage unit</li>
+</ul>
+<p>There are many useful component tools in <code>go-zero</code>. Good use of tools is very helpful to improve service performance and development efficiency. I hope this article can bring you some gains.</p>
+<footer class="page-footer"><span class="copyright">Copyright &#xA9; 2019-2021 go-zero all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last UpdateTime&#xFF1A;
+2021-04-19 03:20:26
+</span></footer>
+<script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="bloom.html" class="navigation navigation-prev " aria-label="Previous page: bloom">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="fx.html" class="navigation navigation-next " aria-label="Next page: fx">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"executors","level":"1.9.3","depth":2,"next":{"title":"fx","level":"1.9.4","depth":2,"path":"fx.md","ref":"fx.md","articles":[]},"previous":{"title":"bloom","level":"1.9.2","depth":2,"path":"bloom.md","ref":"bloom.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","code","-lunr","-search","search-pro","github","splitter","-sharing","sharing-plus","tbfed-pagefooter","flexible-alerts","page-toc-button","pageview-count","popup","hide-element","edit-link","-highlight","prism","theme-comscore"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © 2019-2021 go-zero","modify_label":"Last UpdateTime：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"lang":{"shell":"bash"},"css":["prismjs/themes/prism-tomorrow.css"]},"github":{"url":"https://github.com/tal-tech/go-zero"},"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"qq":false,"all":["douban","facebook","google","linkedin","twitter","weibo","qq","qzone","weibo"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true},"edit-link":{"label":"EDIT THIS PAGE","base":"https://github.com/zeromicro/go-zero-doc/blob/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"anqiansong","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"go-zero document","language":"en","gitbook":"*"},"file":{"path":"executors.md","mtime":"2021-04-19T03:20:26.567Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-19T03:21:17.214Z"},"basePath":".","book":{"language":"en"}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing-plus/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-flexible-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-page-toc-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-pageview-count/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-hide-element/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-edit-link/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-theme-comscore/test.js"></script>
+        
+    
+
+    </body>
+</html>
+
