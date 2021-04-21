@@ -1,0 +1,1558 @@
+
+<!DOCTYPE HTML>
+<html lang="cn" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>日志收集 · go-zero document</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="anqiansong">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-flexible-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-toc-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-pageview-count/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism-tomorrow.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-theme-comscore/test.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="trace.html" />
+    
+    
+    <link rel="prev" href="service-deployment.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="about-us.html">
+            
+                <a href="about-us.html">
+            
+                    
+                    关于我们
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="join-us.html">
+            
+                <a href="join-us.html">
+            
+                    
+                    加入我们
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="concept-introduction.html">
+            
+                <a href="concept-introduction.html">
+            
+                    
+                    概念介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="quick-start.html">
+            
+                <a href="quick-start.html">
+            
+                    
+                    快速开发
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="monolithic-service.html">
+            
+                <a href="monolithic-service.html">
+            
+                    
+                    单体服务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="micro-service.html">
+            
+                <a href="micro-service.html">
+            
+                    
+                    微服务
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="framework-design.html">
+            
+                <a href="framework-design.html">
+            
+                    
+                    框架设计
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="go-zero-design.html">
+            
+                <a href="go-zero-design.html">
+            
+                    
+                    go-zero设计理念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="go-zero-features.html">
+            
+                <a href="go-zero-features.html">
+            
+                    
+                    go-zero特点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="api-grammar.html">
+            
+                <a href="api-grammar.html">
+            
+                    
+                    api语法介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="api-dir.html">
+            
+                <a href="api-dir.html">
+            
+                    
+                    api目录结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="rpc-dir.html">
+            
+                <a href="rpc-dir.html">
+            
+                    
+                    rpc目录结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="project-dev.html">
+            
+                <a href="project-dev.html">
+            
+                    
+                    项目开发
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="prepare.html">
+            
+                <a href="prepare.html">
+            
+                    
+                    准备工作
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1.1" data-path="golang-install.html">
+            
+                <a href="golang-install.html">
+            
+                    
+                    golang安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.2" data-path="gomod-config.html">
+            
+                <a href="gomod-config.html">
+            
+                    
+                    go module配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.3" data-path="goctl-install.html">
+            
+                <a href="goctl-install.html">
+            
+                    
+                    goctl安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.4" data-path="protoc-install.html">
+            
+                <a href="protoc-install.html">
+            
+                    
+                    protoc&protoc-gen-go安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.5" data-path="prepare-other.html">
+            
+                <a href="prepare-other.html">
+            
+                    
+                    其他
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="dev-specification.html">
+            
+                <a href="dev-specification.html">
+            
+                    
+                    开发规范
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.2.1" data-path="naming-spec.html">
+            
+                <a href="naming-spec.html">
+            
+                    
+                    命名规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.2" data-path="route-naming-spec.html">
+            
+                <a href="route-naming-spec.html">
+            
+                    
+                    路由规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.3" data-path="coding-spec.html">
+            
+                <a href="coding-spec.html">
+            
+                    
+                    编码规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="dev-flow.html">
+            
+                <a href="dev-flow.html">
+            
+                    
+                    开发流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="config-introduction.html">
+            
+                <a href="config-introduction.html">
+            
+                    
+                    配置介绍
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.4.1" data-path="api-config.html">
+            
+                <a href="api-config.html">
+            
+                    
+                    api配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4.2" data-path="rpc-config.html">
+            
+                <a href="rpc-config.html">
+            
+                    
+                    rpc配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="business-dev.html">
+            
+                <a href="business-dev.html">
+            
+                    
+                    业务开发
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.5.1" data-path="service-design.html">
+            
+                <a href="service-design.html">
+            
+                    
+                    目录拆分
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.2" data-path="model-gen.html">
+            
+                <a href="model-gen.html">
+            
+                    
+                    model生成
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.3" data-path="api-coding.html">
+            
+                <a href="api-coding.html">
+            
+                    
+                    api文件编写
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.4" data-path="business-coding.html">
+            
+                <a href="business-coding.html">
+            
+                    
+                    业务编码
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.5" data-path="jwt.html">
+            
+                <a href="jwt.html">
+            
+                    
+                    jwt鉴权
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.6" data-path="middleware.html">
+            
+                <a href="middleware.html">
+            
+                    
+                    中间件使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.7" data-path="rpc-call.html">
+            
+                <a href="rpc-call.html">
+            
+                    
+                    rpc服务编写与调用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.8" data-path="error-handle.html">
+            
+                <a href="error-handle.html">
+            
+                    
+                    错误处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="ci-cd.html">
+            
+                <a href="ci-cd.html">
+            
+                    
+                    CI/CD
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7" data-path="service-deployment.html">
+            
+                <a href="service-deployment.html">
+            
+                    
+                    服务部署
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.7.8" data-path="log-collection.html">
+            
+                <a href="log-collection.html">
+            
+                    
+                    日志收集
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.9" data-path="trace.html">
+            
+                <a href="trace.html">
+            
+                    
+                    链路追踪
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.10" data-path="service-monitor.html">
+            
+                <a href="service-monitor.html">
+            
+                    
+                    服务监控
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="goctl.html">
+            
+                <a href="goctl.html">
+            
+                    
+                    Goctl
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="goctl-commands.html">
+            
+                <a href="goctl-commands.html">
+            
+                    
+                    命令大全
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="goctl-api.html">
+            
+                <a href="goctl-api.html">
+            
+                    
+                    api命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="goctl-rpc.html">
+            
+                <a href="goctl-rpc.html">
+            
+                    
+                    rpc命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="goctl-model.html">
+            
+                <a href="goctl-model.html">
+            
+                    
+                    model命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" data-path="goctl-plugin.html">
+            
+                <a href="goctl-plugin.html">
+            
+                    
+                    plugin命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6" data-path="goctl-other.html">
+            
+                <a href="goctl-other.html">
+            
+                    
+                    其他命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="component-center.html">
+            
+                <a href="component-center.html">
+            
+                    
+                    组件中心
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="logx.html">
+            
+                <a href="logx.html">
+            
+                    
+                    logx
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="bloom.html">
+            
+                <a href="bloom.html">
+            
+                    
+                    bloom
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="executors.html">
+            
+                <a href="executors.html">
+            
+                    
+                    executors
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4" data-path="fx.html">
+            
+                <a href="fx.html">
+            
+                    
+                    fx
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.5" data-path="mysql.html">
+            
+                <a href="mysql.html">
+            
+                    
+                    mysql
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.6" data-path="redis-lock.html">
+            
+                <a href="redis-lock.html">
+            
+                    
+                    redis-lock
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.7" data-path="periodlimit.html">
+            
+                <a href="periodlimit.html">
+            
+                    
+                    periodlimit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.8" data-path="tokenlimit.html">
+            
+                <a href="tokenlimit.html">
+            
+                    
+                    tokenlimit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.9" data-path="timing-wheel.html">
+            
+                <a href="timing-wheel.html">
+            
+                    
+                    TimingWheel
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="tool-center.html">
+            
+                <a href="tool-center.html">
+            
+                    
+                    工具中心
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="intellij.html">
+            
+                <a href="intellij.html">
+            
+                    
+                    intellij插件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="vscode.html">
+            
+                <a href="vscode.html">
+            
+                    
+                    vscode插件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="plugin-center.html">
+            
+                <a href="plugin-center.html">
+            
+                    
+                    插件中心
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="learning-resource.html">
+            
+                <a href="learning-resource.html">
+            
+                    
+                    学习资源
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="wechat.html">
+            
+                <a href="wechat.html">
+            
+                    
+                    公众号
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="goreading.html">
+            
+                <a href="goreading.html">
+            
+                    
+                    Go夜读
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" data-path="gotalk.html">
+            
+                <a href="gotalk.html">
+            
+                    
+                    Go开源说
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="practise.html">
+            
+                <a href="practise.html">
+            
+                    
+                    开发实践
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.1" data-path="redis-cache.html">
+            
+                <a href="redis-cache.html">
+            
+                    
+                    go-zero缓存设计之持久层缓存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.2" data-path="buiness-cache.html">
+            
+                <a href="buiness-cache.html">
+            
+                    
+                    go-zero缓存设计之业务层缓存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.3" data-path="go-queue.html">
+            
+                <a href="go-queue.html">
+            
+                    
+                    go-zero分布式定时任务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.4" data-path="datacenter.html">
+            
+                <a href="datacenter.html">
+            
+                    
+                    我是如何用go-zero 实现一个中台系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.5" data-path="stream.html">
+            
+                <a href="stream.html">
+            
+                    
+                    流数据处理利器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.6" data-path="online-exchange.html">
+            
+                <a href="online-exchange.html">
+            
+                    
+                    10月3日线上交流问题汇总
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" data-path="dev-log.html">
+            
+                <a href="dev-log.html">
+            
+                    
+                    开发日志
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1" data-path="goctl-log.html">
+            
+                <a href="goctl-log.html">
+            
+                    
+                    goctl开发日志
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.2" data-path="intellij-log.html">
+            
+                <a href="intellij-log.html">
+            
+                    
+                    intellij开发日志
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" data-path="contributor.html">
+            
+                <a href="contributor.html">
+            
+                    
+                    贡献人员
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16" data-path="doc-contibute.html">
+            
+                <a href="doc-contibute.html">
+            
+                    
+                    文档贡献
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17" data-path="error.html">
+            
+                <a href="error.html">
+            
+                    
+                    常见错误处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18" data-path="source.html">
+            
+                <a href="source.html">
+            
+                    
+                    相关源码
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >日志收集</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x65E5;&#x5FD7;&#x6536;&#x96C6;">&#x65E5;&#x5FD7;&#x6536;&#x96C6;</h1>
+<p>&#x4E3A;&#x4E86;&#x4FDD;&#x8BC1;&#x4E1A;&#x52A1;&#x7A33;&#x5B9A;&#x8FD0;&#x884C;&#xFF0C;&#x9884;&#x6D4B;&#x670D;&#x52A1;&#x4E0D;&#x5065;&#x5EB7;&#x98CE;&#x9669;&#xFF0C;&#x65E5;&#x5FD7;&#x7684;&#x6536;&#x96C6;&#x53EF;&#x4EE5;&#x5E2E;&#x52A9;&#x6211;&#x4EEC;&#x5F88;&#x597D;&#x7684;&#x89C2;&#x5BDF;&#x5F53;&#x524D;&#x670D;&#x52A1;&#x7684;&#x5065;&#x5EB7;&#x72B6;&#x51B5;&#xFF0C;
+&#x5728;&#x4F20;&#x7EDF;&#x4E1A;&#x52A1;&#x5F00;&#x53D1;&#x4E2D;&#xFF0C;&#x673A;&#x5668;&#x90E8;&#x7F72;&#x8FD8;&#x4E0D;&#x662F;&#x5F88;&#x591A;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x4E00;&#x822C;&#x90FD;&#x662F;&#x76F4;&#x63A5;&#x767B;&#x5F55;&#x670D;&#x52A1;&#x5668;&#x8FDB;&#x884C;&#x65E5;&#x5FD7;&#x67E5;&#x770B;&#x3001;&#x8C03;&#x8BD5;&#xFF0C;&#x4F46;&#x968F;&#x7740;&#x4E1A;&#x52A1;&#x7684;&#x589E;&#x5927;&#xFF0C;&#x670D;&#x52A1;&#x7684;&#x4E0D;&#x65AD;&#x62C6;&#x5206;&#xFF0C;
+&#x670D;&#x52A1;&#x7684;&#x7EF4;&#x62A4;&#x6210;&#x672C;&#x4E5F;&#x4F1A;&#x968F;&#x4E4B;&#x53D8;&#x5F97;&#x8D8A;&#x6765;&#x8D8A;&#x590D;&#x6742;&#xFF0C;&#x5728;&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;&#x4E2D;&#xFF0C;&#x670D;&#x52A1;&#x5668;&#x673A;&#x5B50;&#x589E;&#x591A;&#xFF0C;&#x670D;&#x52A1;&#x5206;&#x5E03;&#x5728;&#x4E0D;&#x540C;&#x7684;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#xFF0C;&#x5F53;&#x9047;&#x5230;&#x95EE;&#x9898;&#x65F6;&#xFF0C;
+&#x6211;&#x4EEC;&#x4E0D;&#x80FD;&#x4F7F;&#x7528;&#x4F20;&#x7EDF;&#x505A;&#x6CD5;&#xFF0C;&#x767B;&#x5F55;&#x5230;&#x670D;&#x52A1;&#x5668;&#x8FDB;&#x884C;&#x65E5;&#x5FD7;&#x6392;&#x67E5;&#x548C;&#x8C03;&#x8BD5;&#xFF0C;&#x8FD9;&#x4E2A;&#x590D;&#x6742;&#x5EA6;&#x53EF;&#x60F3;&#x800C;&#x77E5;&#x3002;
+<img src="resource/log-flow.png" alt="log-flow"></p>
+<blockquote>
+<p>[!TIP]
+&#x5982;&#x679C;&#x662F;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x5355;&#x4F53;&#x670D;&#x52A1;&#x7CFB;&#x7EDF;&#x6216;&#x8005;&#x670D;&#x52A1;&#x8FC7;&#x4E8E;&#x5C0F;&#x4E0D;&#x5EFA;&#x8BAE;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#xFF0C;&#x5426;&#x5219;&#x4F1A;&#x9002;&#x5F97;&#x5176;&#x53CD;&#x3002;</p>
+</blockquote>
+<h2 id="&#x51C6;&#x5907;&#x5DE5;&#x4F5C;">&#x51C6;&#x5907;&#x5DE5;&#x4F5C;</h2>
+<ul>
+<li>kafka</li>
+<li>elasticsearch</li>
+<li>kibana</li>
+<li>filebeat&#x3001;Log-Pilot&#xFF08;k8s&#xFF09;</li>
+<li>go-stash</li>
+</ul>
+<h2 id="filebeat&#x914D;&#x7F6E;">filebeat&#x914D;&#x7F6E;</h2>
+<pre class="language-"><code class="lang-shell">$ <span class="token function">vim</span> xx/filebeat.yaml
+</code></pre>
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">filebeat.inputs</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> <span class="token key atrule">type</span><span class="token punctuation">:</span> log
+  <span class="token key atrule">enabled</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token comment"># &#x5F00;&#x542F;json&#x89E3;&#x6790;</span>
+  <span class="token key atrule">json.keys_under_root</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">json.add_error_key</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token comment"># &#x65E5;&#x5FD7;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;</span>
+  <span class="token key atrule">paths</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> /var/log/order/<span class="token important">*.log</span>
+
+<span class="token key atrule">setup.template.settings</span><span class="token punctuation">:</span>
+  <span class="token key atrule">index.number_of_shards</span><span class="token punctuation">:</span> <span class="token number">1</span>
+
+<span class="token comment"># &#x5B9A;&#x4E49;kafka topic field</span>
+<span class="token key atrule">fields</span><span class="token punctuation">:</span>
+  <span class="token key atrule">log_topic</span><span class="token punctuation">:</span> log<span class="token punctuation">-</span>collection
+
+<span class="token comment"># &#x8F93;&#x51FA;&#x5230;kafka</span>
+<span class="token key atrule">output.kafka</span><span class="token punctuation">:</span>
+  <span class="token key atrule">hosts</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&quot;127.0.0.1:9092&quot;</span><span class="token punctuation">]</span>
+  <span class="token key atrule">topic</span><span class="token punctuation">:</span> <span class="token string">&apos;%{[fields.log_topic]}&apos;</span>
+  <span class="token key atrule">partition.round_robin</span><span class="token punctuation">:</span>
+    <span class="token key atrule">reachable_only</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+  <span class="token key atrule">required_acks</span><span class="token punctuation">:</span> <span class="token number">1</span>
+  <span class="token key atrule">keep_alive</span><span class="token punctuation">:</span> 10s
+
+<span class="token comment"># ================================= Processors =================================</span>
+<span class="token key atrule">processors</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">decode_json_fields</span><span class="token punctuation">:</span>
+      <span class="token key atrule">fields</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&apos;@timestamp&apos;</span><span class="token punctuation">,</span><span class="token string">&apos;level&apos;</span><span class="token punctuation">,</span><span class="token string">&apos;content&apos;</span><span class="token punctuation">,</span><span class="token string">&apos;trace&apos;</span><span class="token punctuation">,</span><span class="token string">&apos;span&apos;</span><span class="token punctuation">,</span><span class="token string">&apos;duration&apos;</span><span class="token punctuation">]</span>
+      <span class="token key atrule">target</span><span class="token punctuation">:</span> <span class="token string">&quot;&quot;</span>
+</code></pre>
+<blockquote>
+<p>[!TIP]
+xx&#x4E3A;filebeat.yaml&#x6240;&#x5728;&#x8DEF;&#x5F84;</p>
+</blockquote>
+<h2 id="go-stash&#x914D;&#x7F6E;">go-stash&#x914D;&#x7F6E;</h2>
+<ul>
+<li>&#x65B0;&#x5EFA;<code>config.yaml</code>&#x6587;&#x4EF6;</li>
+<li>&#x6DFB;&#x52A0;&#x914D;&#x7F6E;&#x5185;&#x5BB9;</li>
+</ul>
+<pre class="language-"><code class="lang-shell">$ <span class="token function">vim</span> config.yaml
+</code></pre>
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">Clusters</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> <span class="token key atrule">Input</span><span class="token punctuation">:</span>
+    <span class="token key atrule">Kafka</span><span class="token punctuation">:</span>
+      <span class="token key atrule">Name</span><span class="token punctuation">:</span> go<span class="token punctuation">-</span>stash
+      <span class="token key atrule">Log</span><span class="token punctuation">:</span>
+        <span class="token key atrule">Mode</span><span class="token punctuation">:</span> file
+      <span class="token key atrule">Brokers</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token string">&quot;127.0.0.1:9092&quot;</span>
+      <span class="token key atrule">Topics</span><span class="token punctuation">:</span> 
+      <span class="token punctuation">-</span> log<span class="token punctuation">-</span>collection
+      <span class="token key atrule">Group</span><span class="token punctuation">:</span> stash
+      <span class="token key atrule">Conns</span><span class="token punctuation">:</span> <span class="token number">3</span>
+      <span class="token key atrule">Consumers</span><span class="token punctuation">:</span> <span class="token number">10</span>
+      <span class="token key atrule">Processors</span><span class="token punctuation">:</span> <span class="token number">60</span>
+      <span class="token key atrule">MinBytes</span><span class="token punctuation">:</span> <span class="token number">1048576</span>
+      <span class="token key atrule">MaxBytes</span><span class="token punctuation">:</span> <span class="token number">10485760</span>
+      <span class="token key atrule">Offset</span><span class="token punctuation">:</span> first
+  <span class="token key atrule">Filters</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">Action</span><span class="token punctuation">:</span> drop
+    <span class="token key atrule">Conditions</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">Key</span><span class="token punctuation">:</span> status
+        <span class="token key atrule">Value</span><span class="token punctuation">:</span> <span class="token string">&quot;503&quot;</span>
+        <span class="token key atrule">Type</span><span class="token punctuation">:</span> contains
+      <span class="token punctuation">-</span> <span class="token key atrule">Key</span><span class="token punctuation">:</span> type
+        <span class="token key atrule">Value</span><span class="token punctuation">:</span> <span class="token string">&quot;app&quot;</span>
+        <span class="token key atrule">Type</span><span class="token punctuation">:</span> match
+        <span class="token key atrule">Op</span><span class="token punctuation">:</span> and
+  <span class="token punctuation">-</span> <span class="token key atrule">Action</span><span class="token punctuation">:</span> remove_field
+    <span class="token key atrule">Fields</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> source
+    <span class="token punctuation">-</span> _score
+    <span class="token punctuation">-</span> <span class="token string">&quot;@metadata&quot;</span>
+    <span class="token punctuation">-</span> agent
+    <span class="token punctuation">-</span> ecs
+    <span class="token punctuation">-</span> input
+    <span class="token punctuation">-</span> log
+    <span class="token punctuation">-</span> fields
+  <span class="token key atrule">Output</span><span class="token punctuation">:</span>
+    <span class="token key atrule">ElasticSearch</span><span class="token punctuation">:</span>
+      <span class="token key atrule">Hosts</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token string">&quot;http://127.0.0.1:9200&quot;</span>
+      <span class="token key atrule">Index</span><span class="token punctuation">:</span> <span class="token string">&quot;go-stash-{{yyyy.MM.dd}}&quot;</span>
+      <span class="token key atrule">MaxChunkBytes</span><span class="token punctuation">:</span> <span class="token number">5242880</span>
+      <span class="token key atrule">GracePeriod</span><span class="token punctuation">:</span> 10s
+      <span class="token key atrule">Compress</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+      <span class="token key atrule">TimeZone</span><span class="token punctuation">:</span> UTC
+</code></pre>
+<h2 id="&#x542F;&#x52A8;&#x670D;&#x52A1;&#x6309;&#x987A;&#x5E8F;&#x542F;&#x52A8;">&#x542F;&#x52A8;&#x670D;&#x52A1;(&#x6309;&#x987A;&#x5E8F;&#x542F;&#x52A8;)</h2>
+<ul>
+<li>&#x542F;&#x52A8;kafka</li>
+<li>&#x542F;&#x52A8;elasticsearch</li>
+<li>&#x542F;&#x52A8;kibana</li>
+<li>&#x542F;&#x52A8;go-stash</li>
+<li>&#x542F;&#x52A8;filebeat</li>
+<li>&#x542F;&#x52A8;order-api&#x670D;&#x52A1;&#x53CA;&#x5176;&#x4F9D;&#x8D56;&#x670D;&#x52A1;&#xFF08;go-zero-demo&#x5DE5;&#x7A0B;&#x4E2D;&#x7684;order-api&#x670D;&#x52A1;&#xFF09;</li>
+</ul>
+<h2 id="&#x8BBF;&#x95EE;kibana">&#x8BBF;&#x95EE;kibana</h2>
+<p>&#x8FDB;&#x5165;127.0.0.1:5601
+<img src="resource/log.png" alt="log"></p>
+<blockquote>
+<p>[!TIP]
+&#x8FD9;&#x91CC;&#x4EC5;&#x6F14;&#x793A;&#x6536;&#x96C6;&#x670D;&#x52A1;&#x4E2D;&#x901A;&#x8FC7;logx&#x4EA7;&#x751F;&#x7684;&#x65E5;&#x5FD7;&#xFF0C;nginx&#x4E2D;&#x65E5;&#x5FD7;&#x6536;&#x96C6;&#x540C;&#x7406;&#x3002;</p>
+</blockquote>
+<h1 id="&#x53C2;&#x8003;&#x6587;&#x6863;">&#x53C2;&#x8003;&#x6587;&#x6863;</h1>
+<ul>
+<li><a href="http://kafka.apache.org/" target="_blank">kafka</a></li>
+<li><a href="https://www.elastic.co/cn/elasticsearch/" target="_blank">elasticsearch</a></li>
+<li><a href="https://www.elastic.co/cn/kibana" target="_blank">kibana</a></li>
+<li><a href="https://www.elastic.co/cn/beats/filebeat" target="_blank">filebeat</a></li>
+<li><a href="https://github.com/tal-tech/go-stash" target="_blank">go-stash</a></li>
+<li><a href="https://www.elastic.co/guide/en/beats/filebeat/current/index.html" target="_blank">filebeat&#x914D;&#x7F6E;</a></li>
+</ul>
+<footer class="page-footer"><span class="copyright">Copyright &#xA9; 2019-2021 go-zero all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last UpdateTime&#xFF1A;
+2021-04-21 08:48:19
+</span></footer>
+<script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="service-deployment.html" class="navigation navigation-prev " aria-label="Previous page: 服务部署">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="trace.html" class="navigation navigation-next " aria-label="Next page: 链路追踪">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"日志收集","level":"1.7.8","depth":2,"next":{"title":"链路追踪","level":"1.7.9","depth":2,"path":"trace.md","ref":"trace.md","articles":[]},"previous":{"title":"服务部署","level":"1.7.7","depth":2,"path":"service-deployment.md","ref":"service-deployment.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","code","-lunr","-search","search-pro","github","splitter","-sharing","sharing-plus","tbfed-pagefooter","flexible-alerts","page-toc-button","pageview-count","popup","hide-element","edit-link","-highlight","prism","theme-comscore"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © 2019-2021 go-zero","modify_label":"Last UpdateTime：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"lang":{"shell":"bash"},"css":["prismjs/themes/prism-tomorrow.css"]},"github":{"url":"https://github.com/tal-tech/go-zero"},"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"qq":false,"all":["douban","facebook","google","linkedin","twitter","weibo","qq","qzone","weibo"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true},"edit-link":{"label":"EDIT THIS PAGE","base":"https://github.com/zeromicro/go-zero-doc/blob/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"anqiansong","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"go-zero document","language":"cn","gitbook":"*"},"file":{"path":"log-collection.md","mtime":"2021-04-21T08:48:19.363Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-21T08:49:22.685Z"},"basePath":".","book":{"language":"cn"}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing-plus/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-flexible-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-page-toc-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-pageview-count/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-hide-element/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-edit-link/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-theme-comscore/test.js"></script>
+        
+    
+
+    </body>
+</html>
+
