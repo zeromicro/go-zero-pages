@@ -24,7 +24,7 @@
 </head>
 <body>
 <script>
-    if (navigator.language.toLowerCase() === 'zh-cn') {
+    if (navigator.language.toLowerCase().startsWith("zh")) {
         window.location.href = "cn/"
     } else {
         window.location.href = "en/"
