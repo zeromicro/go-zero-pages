@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>其他 · go-zero document</title>
+        <title>自定义模板 · go-zero document</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -93,10 +93,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="dev-specification.html" />
+    <link rel="next" href="component-center.html" />
     
     
-    <link rel="prev" href="protoc-install.html" />
+    <link rel="prev" href="goctl-other.html" />
     
 
     </head>
@@ -399,7 +399,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.8.1.5" data-path="prepare-other.html">
+        <li class="chapter " data-level="1.8.1.5" data-path="prepare-other.html">
             
                 <a href="prepare-other.html">
             
@@ -823,7 +823,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.10" data-path="template.html">
+        <li class="chapter active" data-level="1.10" data-path="template.html">
             
                 <a href="template.html">
             
@@ -1280,7 +1280,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >其他</a>
+        <a href="." >自定义模板</a>
     </h1>
 </div>
 
@@ -1295,15 +1295,155 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x5176;&#x4ED6;">&#x5176;&#x4ED6;</h1>
-<p>&#x5728;&#x4E4B;&#x524D;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x5BF9;Go&#x73AF;&#x5883;&#x3001;Go Module&#x914D;&#x7F6E;&#x3001;Goctl&#x3001;protoc&amp;protoc-gen-go&#x5B89;&#x88C5;&#x51C6;&#x5907;&#x5C31;&#x7EEA;&#xFF0C;&#x8FD9;&#x4E9B;&#x662F;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x5728;&#x5F00;&#x53D1;&#x9636;&#x6BB5;&#x5FC5;&#x987B;&#x8981;&#x51C6;&#x5907;&#x7684;&#x73AF;&#x5883;&#xFF0C;&#x800C;&#x63A5;&#x4E0B;&#x6765;&#x7684;&#x73AF;&#x5883;&#x4F60;&#x53EF;&#x4EE5;&#x9009;&#x62E9;&#x6027;&#x7684;&#x5B89;&#x88C5;&#xFF0C;
-&#x56E0;&#x4E3A;&#x8FD9;&#x4E9B;&#x73AF;&#x5883;&#x4E00;&#x822C;&#x5B58;&#x5728;&#x4E8E;&#x670D;&#x52A1;&#x5668;&#xFF08;&#x5B89;&#x88C5;&#x5DE5;&#x4F5C;&#x8FD0;&#x7EF4;&#x4F1A;&#x66FF;&#x4F60;&#x5B8C;&#x6210;&#xFF09;&#xFF0C;&#x4F46;&#x662F;&#x4E3A;&#x4E86;&#x540E;&#x7EED;<strong>&#x6F14;&#x793A;</strong>&#x6D41;&#x7A0B;&#x80FD;&#x591F;&#x5B8C;&#x6574;&#x8D70;&#x4E0B;&#x53BB;&#xFF0C;&#x6211;&#x5EFA;&#x8BAE;&#x5927;&#x5BB6;&#x5728;&#x672C;&#x5730;&#x4E5F;&#x5B89;&#x88C5;&#x4E00;&#x4E0B;&#xFF0C;&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x7684;&#x6F14;&#x793A;&#x73AF;&#x5883;&#x5927;&#x90E8;&#x5206;&#x4F1A;&#x4EE5;&#x672C;&#x5730;&#x4E3A;&#x4E3B;&#x3002;
-&#x4EE5;&#x4E0B;&#x4EC5;&#x7ED9;&#x51FA;&#x4E86;&#x9700;&#x8981;&#x7684;&#x51C6;&#x5907;&#x5DE5;&#x4F5C;&#xFF0C;&#x4E0D;&#x4EE5;&#x6587;&#x6863;&#x7BC7;&#x5E45;&#x4F5C;&#x8BE6;&#x7EC6;&#x4ECB;&#x7ECD;&#x4E86;&#x3002;</p>
-<h2 id="&#x5176;&#x4ED6;&#x73AF;&#x5883;">&#x5176;&#x4ED6;&#x73AF;&#x5883;</h2>
+                                <h1 id="&#x6A21;&#x677F;&#x4FEE;&#x6539;">&#x6A21;&#x677F;&#x4FEE;&#x6539;</h1>
+<h2 id="&#x573A;&#x666F;">&#x573A;&#x666F;</h2>
+<p>&#x5B9E;&#x73B0;&#x7EDF;&#x4E00;&#x683C;&#x5F0F;&#x7684;body&#x76F8;&#x5E94;&#xFF0C;&#x683C;&#x5F0F;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre class="language-"><code class="lang-json"><span class="token punctuation">{</span>
+  <span class="token property">&quot;code&quot;</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;msg&quot;</span><span class="token operator">:</span> <span class="token string">&quot;OK&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<blockquote>
+<p>[!TIP]
+<code>go-zero</code>&#x751F;&#x6210;&#x7684;&#x4EE3;&#x7801;&#x6CA1;&#x6709;&#x5BF9;&#x5176;&#x8FDB;&#x884C;&#x5904;&#x7406;</p>
+<h2 id="&#x51C6;&#x5907;&#x5DE5;&#x4F5C;">&#x51C6;&#x5907;&#x5DE5;&#x4F5C;</h2>
+<p>&#x6211;&#x4EEC;&#x63D0;&#x524D;&#x5728;<code>module</code>&#x4E3A;<code>greet</code>&#x7684;&#x5DE5;&#x7A0B;&#x4E0B;&#x7684;<code>response</code>&#x5305;&#x4E2D;&#x5199;&#x4E00;&#x4E2A;<code>Response</code>&#x65B9;&#x6CD5;&#xFF0C;&#x76EE;&#x5F55;&#x6811;&#x7C7B;&#x4F3C;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre class="language-"><code class="lang-text">greet
+&#x251C;&#x2500;&#x2500; reponse
+&#x2502;   &#x2514;&#x2500;&#x2500; response.go
+&#x2514;&#x2500;&#x2500; xxx...
+</code></pre>
+</blockquote>
+<p>&#x4EE3;&#x7801;&#x5982;&#x4E0B;</p>
+<pre class="language-"><code class="lang-go"><span class="token keyword">package</span> reponse
+
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+    <span class="token string">&quot;net/http&quot;</span>
+
+    <span class="token string">&quot;github.com/tal-tech/go-zero/rest/httpx&quot;</span>
+<span class="token punctuation">)</span>
+
+<span class="token keyword">type</span> Body <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+    Code <span class="token builtin">int</span>         <span class="token string">`json:&quot;code&quot;`</span>
+    Msg  <span class="token builtin">string</span>      <span class="token string">`json:&quot;msg&quot;`</span>
+    Data <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token string">`json:&quot;data,omitempty&quot;`</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token function">Response</span><span class="token punctuation">(</span>w http<span class="token punctuation">.</span>ResponseWriter<span class="token punctuation">,</span> resp <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> err <span class="token builtin">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> body Body
+    <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+        body<span class="token punctuation">.</span>Code <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span>
+        body<span class="token punctuation">.</span>Msg <span class="token operator">=</span> err<span class="token punctuation">.</span><span class="token function">Error</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        body<span class="token punctuation">.</span>Msg <span class="token operator">=</span> <span class="token string">&quot;OK&quot;</span>
+        body<span class="token punctuation">.</span>Data <span class="token operator">=</span> resp
+    <span class="token punctuation">}</span>
+    httpx<span class="token punctuation">.</span><span class="token function">OkJson</span><span class="token punctuation">(</span>w<span class="token punctuation">,</span> body<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="&#x4FEE;&#x6539;handler&#x6A21;&#x677F;">&#x4FEE;&#x6539;<code>handler</code>&#x6A21;&#x677F;</h2>
+<pre class="language-"><code class="lang-shell">$ <span class="token function">vim</span> ~/.goctl/api/handler.tpl
+</code></pre>
+<p>&#x5C06;&#x6A21;&#x677F;&#x66FF;&#x6362;&#x4E3A;&#x4EE5;&#x4E0B;&#x5185;&#x5BB9;</p>
+<pre class="language-"><code class="lang-go"><span class="token keyword">package</span> handler
+
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+    <span class="token string">&quot;net/http&quot;</span>
+    <span class="token string">&quot;greet/response&quot;</span><span class="token comment">// &#x2460;</span>
+
+    <span class="token punctuation">{</span><span class="token punctuation">{</span><span class="token punctuation">.</span>ImportPackages<span class="token punctuation">}</span><span class="token punctuation">}</span>
+<span class="token punctuation">)</span>
+
+<span class="token keyword">func</span> <span class="token punctuation">{</span><span class="token punctuation">{</span><span class="token punctuation">.</span>HandlerName<span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">(</span>ctx <span class="token operator">*</span>svc<span class="token punctuation">.</span>ServiceContext<span class="token punctuation">)</span> http<span class="token punctuation">.</span>HandlerFunc <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">func</span><span class="token punctuation">(</span>w http<span class="token punctuation">.</span>ResponseWriter<span class="token punctuation">,</span> r <span class="token operator">*</span>http<span class="token punctuation">.</span>Request<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token punctuation">{</span><span class="token punctuation">{</span><span class="token keyword">if</span> <span class="token punctuation">.</span>HasRequest<span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token keyword">var</span> req types<span class="token punctuation">.</span><span class="token punctuation">{</span><span class="token punctuation">{</span><span class="token punctuation">.</span>RequestType<span class="token punctuation">}</span><span class="token punctuation">}</span>
+        <span class="token keyword">if</span> err <span class="token operator">:=</span> httpx<span class="token punctuation">.</span><span class="token function">Parse</span><span class="token punctuation">(</span>r<span class="token punctuation">,</span> <span class="token operator">&amp;</span>req<span class="token punctuation">)</span><span class="token punctuation">;</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+            httpx<span class="token punctuation">.</span><span class="token function">Error</span><span class="token punctuation">(</span>w<span class="token punctuation">,</span> err<span class="token punctuation">)</span>
+            <span class="token keyword">return</span>
+        <span class="token punctuation">}</span><span class="token punctuation">{</span><span class="token punctuation">{</span>end<span class="token punctuation">}</span><span class="token punctuation">}</span>
+
+        l <span class="token operator">:=</span> logic<span class="token punctuation">.</span>New<span class="token punctuation">{</span><span class="token punctuation">{</span><span class="token punctuation">.</span>LogicType<span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">(</span>r<span class="token punctuation">.</span><span class="token function">Context</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> ctx<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span><span class="token punctuation">{</span><span class="token keyword">if</span> <span class="token punctuation">.</span>HasResp<span class="token punctuation">}</span><span class="token punctuation">}</span>resp<span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token punctuation">{</span>end<span class="token punctuation">}</span><span class="token punctuation">}</span>err <span class="token operator">:=</span> l<span class="token punctuation">.</span><span class="token punctuation">{</span><span class="token punctuation">{</span><span class="token punctuation">.</span>Call<span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">{</span><span class="token keyword">if</span> <span class="token punctuation">.</span>HasRequest<span class="token punctuation">}</span><span class="token punctuation">}</span>req<span class="token punctuation">{</span><span class="token punctuation">{</span>end<span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span><span class="token punctuation">{</span><span class="token keyword">if</span> <span class="token punctuation">.</span>HasResp<span class="token punctuation">}</span><span class="token punctuation">}</span>reponse<span class="token punctuation">.</span><span class="token function">Response</span><span class="token punctuation">(</span>w<span class="token punctuation">,</span> resp<span class="token punctuation">,</span> err<span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">{</span><span class="token keyword">else</span><span class="token punctuation">}</span><span class="token punctuation">}</span>reponse<span class="token punctuation">.</span><span class="token function">Response</span><span class="token punctuation">(</span>w<span class="token punctuation">,</span> <span class="token boolean">nil</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">{</span>end<span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token comment">//&#x2461;</span>
+
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>&#x2460; &#x66FF;&#x6362;&#x4E3A;&#x4F60;&#x771F;&#x5B9E;&#x7684;<code>response</code>&#x5305;&#x540D;&#xFF0C;&#x4EC5;&#x4F9B;&#x53C2;&#x8003;</p>
+<p>&#x2461; &#x81EA;&#x5B9A;&#x4E49;&#x6A21;&#x677F;&#x5185;&#x5BB9;</p>
+<blockquote>
+<p>[!TIP]</p>
+<p>1.&#x5982;&#x679C;&#x672C;&#x5730;&#x6CA1;&#x6709;<code>~/.goctl/api/handler.tpl</code>&#x6587;&#x4EF6;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x6A21;&#x677F;&#x521D;&#x59CB;&#x5316;&#x547D;&#x4EE4;<code>goctl template init</code>&#x8FDB;&#x884C;&#x521D;&#x59CB;&#x5316;</p>
+</blockquote>
+<h2 id="&#x4FEE;&#x6539;&#x6A21;&#x677F;&#x524D;&#x540E;&#x5BF9;&#x6BD4;">&#x4FEE;&#x6539;&#x6A21;&#x677F;&#x524D;&#x540E;&#x5BF9;&#x6BD4;</h2>
 <ul>
-<li><a href="https://etcd.io/docs/current/rfc/v3api/" target="_blank">etcd</a></li>
-<li><a href="https://redis.io/" target="_blank">redis</a></li>
-<li><a href="https://www.mysql.com/" target="_blank">mysql</a> </li>
+<li><p>&#x4FEE;&#x6539;&#x524D;</p>
+<pre class="language-"><code class="lang-go"><span class="token keyword">func</span> <span class="token function">GreetHandler</span><span class="token punctuation">(</span>ctx <span class="token operator">*</span>svc<span class="token punctuation">.</span>ServiceContext<span class="token punctuation">)</span> http<span class="token punctuation">.</span>HandlerFunc <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token keyword">func</span><span class="token punctuation">(</span>w http<span class="token punctuation">.</span>ResponseWriter<span class="token punctuation">,</span> r <span class="token operator">*</span>http<span class="token punctuation">.</span>Request<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">var</span> req types<span class="token punctuation">.</span>Request
+      <span class="token keyword">if</span> err <span class="token operator">:=</span> httpx<span class="token punctuation">.</span><span class="token function">Parse</span><span class="token punctuation">(</span>r<span class="token punctuation">,</span> <span class="token operator">&amp;</span>req<span class="token punctuation">)</span><span class="token punctuation">;</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+          httpx<span class="token punctuation">.</span><span class="token function">Error</span><span class="token punctuation">(</span>w<span class="token punctuation">,</span> err<span class="token punctuation">)</span>
+          <span class="token keyword">return</span>
+      <span class="token punctuation">}</span>
+
+      l <span class="token operator">:=</span> logic<span class="token punctuation">.</span><span class="token function">NewGreetLogic</span><span class="token punctuation">(</span>r<span class="token punctuation">.</span><span class="token function">Context</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> ctx<span class="token punctuation">)</span>
+      resp<span class="token punctuation">,</span> err <span class="token operator">:=</span> l<span class="token punctuation">.</span><span class="token function">Greet</span><span class="token punctuation">(</span>req<span class="token punctuation">)</span>
+      <span class="token comment">// &#x4EE5;&#x4E0B;&#x5185;&#x5BB9;&#x5C06;&#x88AB;&#x81EA;&#x5B9A;&#x4E49;&#x6A21;&#x677F;&#x66FF;&#x6362;</span>
+      <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+          httpx<span class="token punctuation">.</span><span class="token function">Error</span><span class="token punctuation">(</span>w<span class="token punctuation">,</span> err<span class="token punctuation">)</span>
+      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+          httpx<span class="token punctuation">.</span><span class="token function">OkJson</span><span class="token punctuation">(</span>w<span class="token punctuation">,</span> resp<span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+</li>
+<li><p>&#x4FEE;&#x6539;&#x540E;</p>
+<pre class="language-"><code class="lang-go"><span class="token keyword">func</span> <span class="token function">GreetHandler</span><span class="token punctuation">(</span>ctx <span class="token operator">*</span>svc<span class="token punctuation">.</span>ServiceContext<span class="token punctuation">)</span> http<span class="token punctuation">.</span>HandlerFunc <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token keyword">func</span><span class="token punctuation">(</span>w http<span class="token punctuation">.</span>ResponseWriter<span class="token punctuation">,</span> r <span class="token operator">*</span>http<span class="token punctuation">.</span>Request<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">var</span> req types<span class="token punctuation">.</span>Request
+      <span class="token keyword">if</span> err <span class="token operator">:=</span> httpx<span class="token punctuation">.</span><span class="token function">Parse</span><span class="token punctuation">(</span>r<span class="token punctuation">,</span> <span class="token operator">&amp;</span>req<span class="token punctuation">)</span><span class="token punctuation">;</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+          httpx<span class="token punctuation">.</span><span class="token function">Error</span><span class="token punctuation">(</span>w<span class="token punctuation">,</span> err<span class="token punctuation">)</span>
+          <span class="token keyword">return</span>
+      <span class="token punctuation">}</span>
+
+      l <span class="token operator">:=</span> logic<span class="token punctuation">.</span><span class="token function">NewGreetLogic</span><span class="token punctuation">(</span>r<span class="token punctuation">.</span><span class="token function">Context</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> ctx<span class="token punctuation">)</span>
+      resp<span class="token punctuation">,</span> err <span class="token operator">:=</span> l<span class="token punctuation">.</span><span class="token function">Greet</span><span class="token punctuation">(</span>req<span class="token punctuation">)</span>
+      reponse<span class="token punctuation">.</span><span class="token function">Response</span><span class="token punctuation">(</span>w<span class="token punctuation">,</span> resp<span class="token punctuation">,</span> err<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+</li>
+</ul>
+<h2 id="&#x4FEE;&#x6539;&#x6A21;&#x677F;&#x524D;&#x540E;&#x54CD;&#x5E94;&#x4F53;&#x5BF9;&#x6BD4;">&#x4FEE;&#x6539;&#x6A21;&#x677F;&#x524D;&#x540E;&#x54CD;&#x5E94;&#x4F53;&#x5BF9;&#x6BD4;</h2>
+<ul>
+<li><p>&#x4FEE;&#x6539;&#x524D;</p>
+<pre class="language-"><code class="lang-json"><span class="token punctuation">{</span>
+<span class="token property">&quot;message&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Hello go-zero!&quot;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+</li>
+<li><p>&#x4FEE;&#x6539;&#x540E;</p>
+<pre class="language-"><code class="lang-json"><span class="token punctuation">{</span>
+<span class="token property">&quot;code&quot;</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+<span class="token property">&quot;msg&quot;</span><span class="token operator">:</span> <span class="token string">&quot;OK&quot;</span><span class="token punctuation">,</span>
+<span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token property">&quot;message&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Hello go-zero!&quot;</span>
+<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+</li>
+</ul>
+<h1 id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</h1>
+<p>&#x672C;&#x6587;&#x6863;&#x4EC5;&#x5BF9;http&#x76F8;&#x5E94;&#x4E3A;&#x4F8B;&#x8BB2;&#x8FF0;&#x4E86;&#x81EA;&#x5B9A;&#x4E49;&#x6A21;&#x677F;&#x7684;&#x6D41;&#x7A0B;&#xFF0C;&#x9664;&#x6B64;&#x4E4B;&#x5916;&#xFF0C;&#x81EA;&#x5B9A;&#x4E49;&#x6A21;&#x677F;&#x7684;&#x573A;&#x666F;&#x8FD8;&#x6709;&#xFF1A;</p>
+<ul>
+<li>model &#x5C42;&#x6DFB;&#x52A0;kmq</li>
+<li>model &#x5C42;&#x751F;&#x6210;&#x5F85;&#x6709;&#x6548;&#x671F;option&#x7684;model&#x5B9E;&#x4F8B;</li>
+<li>http&#x81EA;&#x5B9A;&#x4E49;&#x76F8;&#x5E94;&#x683C;&#x5F0F;
+... </li>
 </ul>
 <footer class="page-footer"><span class="copyright">Copyright &#xA9; 2019-2021 go-zero all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last UpdateTime&#xFF1A;
 2021-07-14 08:42:46
@@ -1335,12 +1475,12 @@
 
             
                 
-                <a href="protoc-install.html" class="navigation navigation-prev " aria-label="Previous page: protoc&protoc-gen-go安装">
+                <a href="goctl-other.html" class="navigation navigation-prev " aria-label="Previous page: 其他命令">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="dev-specification.html" class="navigation navigation-next " aria-label="Next page: 开发规范">
+                <a href="component-center.html" class="navigation navigation-next " aria-label="Next page: 组件中心">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1351,7 +1491,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"其他","level":"1.8.1.5","depth":3,"next":{"title":"开发规范","level":"1.8.2","depth":2,"path":"dev-specification.md","ref":"dev-specification.md","articles":[{"title":"命名规范","level":"1.8.2.1","depth":3,"path":"naming-spec.md","ref":"naming-spec.md","articles":[]},{"title":"路由规范","level":"1.8.2.2","depth":3,"path":"route-naming-spec.md","ref":"route-naming-spec.md","articles":[]},{"title":"编码规范","level":"1.8.2.3","depth":3,"path":"coding-spec.md","ref":"coding-spec.md","articles":[]}]},"previous":{"title":"protoc&protoc-gen-go安装","level":"1.8.1.4","depth":3,"path":"protoc-install.md","ref":"protoc-install.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","code","-lunr","-search","search-pro","github","splitter","-sharing","sharing-plus","tbfed-pagefooter","flexible-alerts","page-toc-button","pageview-count","popup","hide-element","edit-link","-highlight","prism","theme-comscore"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © 2019-2021 go-zero","modify_label":"Last UpdateTime：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"lang":{"shell":"bash"},"css":["prismjs/themes/prism-tomorrow.css"]},"github":{"url":"https://github.com/tal-tech/go-zero"},"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"qq":false,"all":["douban","facebook","google","linkedin","twitter","weibo","qq","qzone","weibo"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true},"edit-link":{"label":"EDIT THIS PAGE","base":"https://github.com/zeromicro/go-zero-doc/blob/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"anqiansong","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"go-zero document","language":"cn","gitbook":"*","description":"Golang 微服务框架 | 集成各种工程实践的 WEB 和 RPC 框架 | 一键生成 Go, iOS, Android, Kotlin, Dart, TypeScript, JavaScript 代码"},"file":{"path":"prepare-other.md","mtime":"2021-07-14T08:42:46.733Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-14T08:43:38.704Z"},"basePath":".","book":{"language":"cn"}});
+            gitbook.page.hasChanged({"page":{"title":"自定义模板","level":"1.10","depth":1,"next":{"title":"组件中心","level":"1.11","depth":1,"path":"component-center.md","ref":"component-center.md","articles":[{"title":"logx","level":"1.11.1","depth":2,"path":"logx.md","ref":"logx.md","articles":[]},{"title":"bloom","level":"1.11.2","depth":2,"path":"bloom.md","ref":"bloom.md","articles":[]},{"title":"executors","level":"1.11.3","depth":2,"path":"executors.md","ref":"executors.md","articles":[]},{"title":"fx","level":"1.11.4","depth":2,"path":"fx.md","ref":"fx.md","articles":[]},{"title":"mysql","level":"1.11.5","depth":2,"path":"mysql.md","ref":"mysql.md","articles":[]},{"title":"redis-lock","level":"1.11.6","depth":2,"path":"redis-lock.md","ref":"redis-lock.md","articles":[]},{"title":"periodlimit","level":"1.11.7","depth":2,"path":"periodlimit.md","ref":"periodlimit.md","articles":[]},{"title":"tokenlimit","level":"1.11.8","depth":2,"path":"tokenlimit.md","ref":"tokenlimit.md","articles":[]},{"title":"TimingWheel","level":"1.11.9","depth":2,"path":"timing-wheel.md","ref":"timing-wheel.md","articles":[]}]},"previous":{"title":"其他命令","level":"1.9.6","depth":2,"path":"goctl-other.md","ref":"goctl-other.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","code","-lunr","-search","search-pro","github","splitter","-sharing","sharing-plus","tbfed-pagefooter","flexible-alerts","page-toc-button","pageview-count","popup","hide-element","edit-link","-highlight","prism","theme-comscore"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © 2019-2021 go-zero","modify_label":"Last UpdateTime：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"lang":{"shell":"bash"},"css":["prismjs/themes/prism-tomorrow.css"]},"github":{"url":"https://github.com/tal-tech/go-zero"},"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"qq":false,"all":["douban","facebook","google","linkedin","twitter","weibo","qq","qzone","weibo"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true},"edit-link":{"label":"EDIT THIS PAGE","base":"https://github.com/zeromicro/go-zero-doc/blob/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"anqiansong","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"go-zero document","language":"cn","gitbook":"*","description":"Golang 微服务框架 | 集成各种工程实践的 WEB 和 RPC 框架 | 一键生成 Go, iOS, Android, Kotlin, Dart, TypeScript, JavaScript 代码"},"file":{"path":"template.md","mtime":"2021-07-14T08:42:46.817Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-14T08:43:38.704Z"},"basePath":".","book":{"language":"cn"}});
         });
     </script>
 </div>
