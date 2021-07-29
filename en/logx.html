@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>OpenTalk · go-zero document</title>
+        <title>logx · go-zero document</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -93,10 +93,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="practise.html" />
+    <link rel="next" href="bloom.html" />
     
     
-    <link rel="prev" href="goreading.html" />
+    <link rel="prev" href="component-center.html" />
     
 
     </head>
@@ -869,7 +869,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.10.1" data-path="logx.html">
+        <li class="chapter active" data-level="1.10.1" data-path="logx.html">
             
                 <a href="logx.html">
             
@@ -1089,7 +1089,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.13.3" data-path="gotalk.html">
+        <li class="chapter " data-level="1.13.3" data-path="gotalk.html">
             
                 <a href="gotalk.html">
             
@@ -1286,7 +1286,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >OpenTalk</a>
+        <a href="." >logx</a>
     </h1>
 </div>
 
@@ -1301,14 +1301,150 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="opentalk">OpenTalk</h1>
+                                <h1 id="logx">logx</h1>
 <blockquote>
 <p>[!TIP]
 This document is machine-translated by Google. If you find grammatical and semantic errors, and the document description is not clear, please <a href="doc-contibute.html">PR</a></p>
 </blockquote>
+<h2 id="example">Example</h2>
+<pre class="language-"><code class="lang-go"><span class="token keyword">var</span> c logx<span class="token punctuation">.</span>LogConf
+<span class="token comment">// Initialize the configuration from the yaml file</span>
+conf<span class="token punctuation">.</span><span class="token function">MustLoad</span><span class="token punctuation">(</span><span class="token string">&quot;config.yaml&quot;</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>c<span class="token punctuation">)</span>
+
+<span class="token comment">// logx is initialized according to the configuration</span>
+logx<span class="token punctuation">.</span><span class="token function">MustSetup</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span>
+
+logx<span class="token punctuation">.</span><span class="token function">Info</span><span class="token punctuation">(</span><span class="token string">&quot;This is info!&quot;</span><span class="token punctuation">)</span>
+logx<span class="token punctuation">.</span><span class="token function">Infof</span><span class="token punctuation">(</span><span class="token string">&quot;This is %s!&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;info&quot;</span><span class="token punctuation">)</span>
+
+logx<span class="token punctuation">.</span><span class="token function">Error</span><span class="token punctuation">(</span><span class="token string">&quot;This is error!&quot;</span><span class="token punctuation">)</span>
+logx<span class="token punctuation">.</span><span class="token function">Errorf</span><span class="token punctuation">(</span><span class="token string">&quot;this is %s!&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;error&quot;</span><span class="token punctuation">)</span>
+
+logx<span class="token punctuation">.</span><span class="token function">Close</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="initialization">Initialization</h2>
+<p>logx has many configurable items, you can refer to the definition in logx.LogConf. Currently available</p>
+<pre class="language-"><code class="lang-go">logx<span class="token punctuation">.</span><span class="token function">MustSetUp</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span>
+</code></pre>
+<p>Perform the initial configuration. If the initial configuration is not performed, all the configurations will use the default configuration.</p>
+<h2 id="level">Level</h2>
+<p>The print log levels supported by logx are:</p>
 <ul>
-<li><a href="https://www.bilibili.com/video/BV1Jy4y127Xu" target="_blank">OpenTalk 4th - Go-Zero</a> </li>
+<li>info</li>
+<li>error</li>
+<li>server</li>
+<li>fatal</li>
+<li>slow</li>
+<li>stat</li>
 </ul>
+<p>You can use the corresponding method to print out the log of the corresponding level.
+At the same time, in order to facilitate debugging and online use, the log printing level can be dynamically adjusted. The level can be set through <strong>logx.SetLevel(uint32)</strong> or through configuration initialization. The currently supported parameters are:</p>
+<pre class="language-"><code class="lang-go"><span class="token keyword">const</span> <span class="token punctuation">(</span>
+    <span class="token comment">// Print all levels of logs</span>
+    InfoLevel <span class="token operator">=</span> iotas
+    <span class="token comment">// Print errors, slows, stacks logs</span>
+    ErrorLevel
+    <span class="token comment">// Only print server level logs</span>
+    SevereLevel
+<span class="token punctuation">)</span>
+</code></pre>
+<h2 id="log-mode">Log mode</h2>
+<p>At present, the log printing mode is mainly divided into two types, one is file output, and the other is console output. The recommended way, when using k8s, docker and other deployment methods, you can output the log to the console, use the log collector to collect and import it to es for log analysis. If it is a direct deployment method, the file output method can be used, and logx will automatically create log files corresponding to 5 corresponding levels in the specified file directory to save the logs.</p>
+<pre class="language-"><code class="lang-bash"><span class="token builtin class-name">.</span>
+&#x251C;&#x2500;&#x2500; access.log
+&#x251C;&#x2500;&#x2500; error.log
+&#x251C;&#x2500;&#x2500; severe.log
+&#x251C;&#x2500;&#x2500; slow.log
+&#x2514;&#x2500;&#x2500; stat.log
+</code></pre>
+<p>At the same time, the file will be divided according to the natural day. When the specified number of days is exceeded, the log file will be automatically deleted, packaged and other operations.</p>
+<h2 id="disable-log">Disable log</h2>
+<p>If you don&apos;t need log printing, you can use <strong>logx.Close()</strong> to close the log output. Note that when log output is disabled, it cannot be opened again. For details, please refer to the implementation of <strong>logx.RotateLogger</strong> and <strong>logx.DailyRotateRule</strong>.</p>
+<h2 id="close-log">Close log</h2>
+<p>Because logx uses asynchronous log output, if the log is not closed normally, some logs may be lost. The log output must be turned off where the program exits:</p>
+<pre class="language-"><code class="lang-go">logx<span class="token punctuation">.</span><span class="token function">Close</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<p>Log configuration and shutdown related operations have already been done in most places such as rest and zrpc in the framework, so users don&apos;t need to care.
+At the same time, note that when the log output is turned off, the log cannot be printed again.</p>
+<p>Recommended writing:</p>
+<pre class="language-"><code class="lang-go"><span class="token keyword">import</span> <span class="token string">&quot;github.com/tal-tech/go-zero/core/proc&quot;</span>
+
+<span class="token comment">// grace close log</span>
+proc<span class="token punctuation">.</span><span class="token function">AddShutdownListener</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    logx<span class="token punctuation">.</span><span class="token function">Close</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="duration">Duration</h2>
+<p>When we print the log, we may need to print the time-consuming situation, we can use <strong>logx.WithDuration(time.Duration)</strong>, refer to the following example:</p>
+<pre class="language-"><code class="lang-go">startTime <span class="token operator">:=</span> timex<span class="token punctuation">.</span><span class="token function">Now</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment">// Database query</span>
+rows<span class="token punctuation">,</span> err <span class="token operator">:=</span> conn<span class="token punctuation">.</span><span class="token function">Query</span><span class="token punctuation">(</span>q<span class="token punctuation">,</span> args<span class="token operator">...</span><span class="token punctuation">)</span>
+duration <span class="token operator">:=</span> timex<span class="token punctuation">.</span><span class="token function">Since</span><span class="token punctuation">(</span>startTime<span class="token punctuation">)</span>
+<span class="token keyword">if</span> duration <span class="token operator">&gt;</span> slowThreshold <span class="token punctuation">{</span>
+    logx<span class="token punctuation">.</span><span class="token function">WithDuration</span><span class="token punctuation">(</span>duration<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Slowf</span><span class="token punctuation">(</span><span class="token string">&quot;[SQL] query: slowcall - %s&quot;</span><span class="token punctuation">,</span> stmt<span class="token punctuation">)</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    logx<span class="token punctuation">.</span><span class="token function">WithDuration</span><span class="token punctuation">(</span>duration<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Infof</span><span class="token punctuation">(</span><span class="token string">&quot;sql query: %s&quot;</span><span class="token punctuation">,</span> stmt<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Will output the following format:</p>
+<pre class="language-"><code class="lang-json"><span class="token punctuation">{</span><span class="token property">&quot;@timestamp&quot;</span><span class="token operator">:</span><span class="token string">&quot;2020-09-12T01:22:55.552+08&quot;</span><span class="token punctuation">,</span><span class="token property">&quot;level&quot;</span><span class="token operator">:</span><span class="token string">&quot;info&quot;</span><span class="token punctuation">,</span><span class="token property">&quot;duration&quot;</span><span class="token operator">:</span><span class="token string">&quot;3.0ms&quot;</span><span class="token punctuation">,</span><span class="token property">&quot;content&quot;</span><span class="token operator">:</span><span class="token string">&quot;sql query:...&quot;</span><span class="token punctuation">}</span>
+<span class="token punctuation">{</span><span class="token property">&quot;@timestamp&quot;</span><span class="token operator">:</span><span class="token string">&quot;2020-09-12T01:22:55.552+08&quot;</span><span class="token punctuation">,</span><span class="token property">&quot;level&quot;</span><span class="token operator">:</span><span class="token string">&quot;slow&quot;</span><span class="token punctuation">,</span><span class="token property">&quot;duration&quot;</span><span class="token operator">:</span><span class="token string">&quot;500ms&quot;</span><span class="token punctuation">,</span><span class="token property">&quot;content&quot;</span><span class="token operator">:</span><span class="token string">&quot;[SQL] query: slowcall - ...&quot;</span><span class="token punctuation">}</span>
+</code></pre>
+<p>In this way, it is easy to collect statistics about slow sql related information.</p>
+<h2 id="tracelog">TraceLog</h2>
+<p>tracingEntry is customized for link tracing log output. You can print the traceId and spanId information in the context. With our <strong>rest</strong> and <strong>zrpc</strong>, it is easy to complete the related printing of the link log. The example is as follows:</p>
+<pre class="language-"><code class="lang-go">logx<span class="token punctuation">.</span><span class="token function">WithContext</span><span class="token punctuation">(</span>context<span class="token punctuation">.</span>Context<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Info</span><span class="token punctuation">(</span><span class="token string">&quot;This is info!&quot;</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="syslog">SysLog</h2>
+<p>Some applications may use system log for log printing. Logx uses the same encapsulation method, which makes it easy to collect log-related logs into logx.</p>
+<pre class="language-"><code class="lang-go">logx<span class="token punctuation">.</span><span class="token function">CollectSysLog</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<h1 id="log-configuration-related">Log configuration related</h1>
+<p><strong>LogConf</strong> Define the basic configuration required for the logging system</p>
+<p>The complete definition is as follows:</p>
+<pre class="language-"><code class="lang-go"><span class="token keyword">type</span> LogConf <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+    ServiceName         <span class="token builtin">string</span> <span class="token string">`json:&quot;,optional&quot;`</span>
+    Mode                <span class="token builtin">string</span> <span class="token string">`json:&quot;,default=console,options=console|file|volume&quot;`</span>
+    Path                <span class="token builtin">string</span> <span class="token string">`json:&quot;,default=logs&quot;`</span>
+    Level               <span class="token builtin">string</span> <span class="token string">`json:&quot;,default=info,options=info|error|severe&quot;`</span>
+    Compress            <span class="token builtin">bool</span>   <span class="token string">`json:&quot;,optional&quot;`</span>
+    KeepDays            <span class="token builtin">int</span>    <span class="token string">`json:&quot;,optional&quot;`</span>
+    StackCooldownMillis <span class="token builtin">int</span>    <span class="token string">`json:&quot;,default=100&quot;`</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="mode">Mode</h2>
+<p><strong>Mode</strong> defines the log printing method. The default mode is <strong>console</strong>, which will print to the console.</p>
+<p>The currently supported modes are as follows:</p>
+<ul>
+<li>console<ul>
+<li>Print to the console</li>
+</ul>
+</li>
+<li>file<ul>
+<li>Print to access.log, error.log, stat.log and other files in the specified path</li>
+</ul>
+</li>
+<li>volume<ul>
+<li>In order to print to the storage that the mount comes in in k8s, because multiple pods may overwrite the same file, the volume mode automatically recognizes the pod and writes separate log files according to the pod.</li>
+</ul>
+</li>
+</ul>
+<h2 id="path">Path</h2>
+<p><strong>Path</strong> defines the output path of the file log, the default value is <strong>logs</strong>.</p>
+<h2 id="level">Level</h2>
+<p><strong>Level</strong> defines the log printing level, and the default value is <strong>info</strong>.
+The currently supported levels are as follows:</p>
+<ul>
+<li>info</li>
+<li>error</li>
+<li>severe</li>
+</ul>
+<h2 id="compress">Compress</h2>
+<p><strong>Compress</strong> defines whether the log needs to be compressed, the default value is <strong>false</strong>. When Mode is file mode, the file will finally be packaged and compressed into a .gz file.</p>
+<h2 id="keepdays">KeepDays</h2>
+<p><strong>KeepDays</strong> defines the maximum number of days to keep logs. The default value is 0, which means that old logs will not be deleted. When Mode is file mode, if the maximum retention days are exceeded, the old log files will be deleted.</p>
+<h2 id="stackcooldownmillis">StackCooldownMillis</h2>
+<p><strong>StackCooldownMillis</strong> defines the log output interval, the default is 100 milliseconds.</p>
 <footer class="page-footer"><span class="copyright">Copyright &#xA9; 2019-2021 go-zero all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last UpdateTime&#xFF1A;
 2021-07-29 07:54:21
 </span></footer>
@@ -1339,12 +1475,12 @@ This document is machine-translated by Google. If you find grammatical and seman
 
             
                 
-                <a href="goreading.html" class="navigation navigation-prev " aria-label="Previous page: Night">
+                <a href="component-center.html" class="navigation navigation-prev " aria-label="Previous page: Components">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="practise.html" class="navigation navigation-next " aria-label="Next page: User Practise">
+                <a href="bloom.html" class="navigation navigation-next " aria-label="Next page: bloom">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1355,7 +1491,7 @@ This document is machine-translated by Google. If you find grammatical and seman
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"OpenTalk","level":"1.13.3","depth":2,"next":{"title":"User Practise","level":"1.14","depth":1,"path":"practise.md","ref":"practise.md","articles":[{"title":"Persistent layer cache","level":"1.14.1","depth":2,"path":"redis-cache.md","ref":"redis-cache.md","articles":[]},{"title":"Business layer cache","level":"1.14.2","depth":2,"path":"buiness-cache.md","ref":"buiness-cache.md","articles":[]},{"title":"Queue","level":"1.14.3","depth":2,"path":"go-queue.md","ref":"go-queue.md","articles":[]},{"title":"Middle Ground System","level":"1.14.4","depth":2,"path":"datacenter.md","ref":"datacenter.md","articles":[]},{"title":"Stream Handler","level":"1.14.5","depth":2,"path":"stream.md","ref":"stream.md","articles":[]},{"title":"Online Exchange","level":"1.14.6","depth":2,"path":"online-exchange.md","ref":"online-exchange.md","articles":[]}]},"previous":{"title":"Night","level":"1.13.2","depth":2,"path":"goreading.md","ref":"goreading.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","code","-lunr","-search","search-pro","github","splitter","-sharing","sharing-plus","tbfed-pagefooter","flexible-alerts","page-toc-button","pageview-count","popup","hide-element","edit-link","-highlight","prism","theme-comscore"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © 2019-2021 go-zero","modify_label":"Last UpdateTime：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"lang":{"shell":"bash"},"css":["prismjs/themes/prism-tomorrow.css"]},"github":{"url":"https://github.com/tal-tech/go-zero"},"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"qq":false,"all":["douban","facebook","google","linkedin","twitter","weibo","qq","qzone","weibo"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true},"edit-link":{"label":"EDIT THIS PAGE","base":"https://github.com/zeromicro/go-zero-doc/blob/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"anqiansong","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"go-zero document","language":"en","gitbook":"*","description":"Golang 微服务框架 | 集成各种工程实践的 WEB 和 RPC 框架 | 一键生成 Go, iOS, Android, Kotlin, Dart, TypeScript, JavaScript 代码"},"file":{"path":"gotalk.md","mtime":"2021-07-29T07:54:21.981Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-29T07:55:15.467Z"},"basePath":".","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"logx","level":"1.10.1","depth":2,"next":{"title":"bloom","level":"1.10.2","depth":2,"path":"bloom.md","ref":"bloom.md","articles":[]},"previous":{"title":"Components","level":"1.10","depth":1,"path":"component-center.md","ref":"component-center.md","articles":[{"title":"logx","level":"1.10.1","depth":2,"path":"logx.md","ref":"logx.md","articles":[]},{"title":"bloom","level":"1.10.2","depth":2,"path":"bloom.md","ref":"bloom.md","articles":[]},{"title":"executors","level":"1.10.3","depth":2,"path":"executors.md","ref":"executors.md","articles":[]},{"title":"fx","level":"1.10.4","depth":2,"path":"fx.md","ref":"fx.md","articles":[]},{"title":"mysql","level":"1.10.5","depth":2,"path":"mysql.md","ref":"mysql.md","articles":[]},{"title":"redis-lock","level":"1.10.6","depth":2,"path":"redis-lock.md","ref":"redis-lock.md","articles":[]},{"title":"periodlimit","level":"1.10.7","depth":2,"path":"periodlimit.md","ref":"periodlimit.md","articles":[]},{"title":"tokenlimit","level":"1.10.8","depth":2,"path":"tokenlimit.md","ref":"tokenlimit.md","articles":[]},{"title":"TimingWheel","level":"1.10.9","depth":2,"path":"timing-wheel.md","ref":"timing-wheel.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","code","-lunr","-search","search-pro","github","splitter","-sharing","sharing-plus","tbfed-pagefooter","flexible-alerts","page-toc-button","pageview-count","popup","hide-element","edit-link","-highlight","prism","theme-comscore"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © 2019-2021 go-zero","modify_label":"Last UpdateTime：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"lang":{"shell":"bash"},"css":["prismjs/themes/prism-tomorrow.css"]},"github":{"url":"https://github.com/tal-tech/go-zero"},"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"qq":false,"all":["douban","facebook","google","linkedin","twitter","weibo","qq","qzone","weibo"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true},"edit-link":{"label":"EDIT THIS PAGE","base":"https://github.com/zeromicro/go-zero-doc/blob/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"anqiansong","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"go-zero document","language":"en","gitbook":"*","description":"Golang 微服务框架 | 集成各种工程实践的 WEB 和 RPC 框架 | 一键生成 Go, iOS, Android, Kotlin, Dart, TypeScript, JavaScript 代码"},"file":{"path":"logx.md","mtime":"2021-07-29T07:54:21.981Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-29T07:55:15.467Z"},"basePath":".","book":{"language":"en"}});
         });
     </script>
 </div>

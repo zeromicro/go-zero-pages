@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>命名规范 · go-zero document</title>
+        <title>模板操作 · go-zero document</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -93,10 +93,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="route-naming-spec.html" />
+    <link rel="next" href="template.html" />
     
     
-    <link rel="prev" href="dev-specification.html" />
+    <link rel="prev" href="template-manage.html" />
     
 
     </head>
@@ -431,7 +431,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.8.2.1" data-path="naming-spec.html">
+        <li class="chapter " data-level="1.8.2.1" data-path="naming-spec.html">
             
                 <a href="naming-spec.html">
             
@@ -837,7 +837,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.10.1" data-path="template-cmd.html">
+        <li class="chapter active" data-level="1.10.1" data-path="template-cmd.html">
             
                 <a href="template-cmd.html">
             
@@ -1312,7 +1312,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >命名规范</a>
+        <a href="." >模板操作</a>
     </h1>
 </div>
 
@@ -1327,61 +1327,102 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x547D;&#x540D;&#x89C4;&#x8303;">&#x547D;&#x540D;&#x89C4;&#x8303;</h1>
-<p>&#x5728;&#x4EFB;&#x4F55;&#x8BED;&#x8A00;&#x5F00;&#x53D1;&#x4E2D;&#xFF0C;&#x90FD;&#x6709;&#x5176;&#x8BED;&#x8A00;&#x9886;&#x57DF;&#x7684;&#x4E00;&#x4E9B;&#x547D;&#x540D;&#x89C4;&#x8303;&#xFF0C;&#x597D;&#x7684;&#x547D;&#x540D;&#x53EF;&#x4EE5;&#xFF1A;</p>
-<ul>
-<li>&#x964D;&#x4F4E;&#x4EE3;&#x7801;&#x9605;&#x8BFB;&#x6210;&#x672C;</li>
-<li>&#x964D;&#x4F4E;&#x7EF4;&#x62A4;&#x96BE;&#x5EA6;</li>
-<li>&#x964D;&#x4F4E;&#x4EE3;&#x7801;&#x590D;&#x6742;&#x5EA6;</li>
-</ul>
-<h2 id="&#x89C4;&#x8303;&#x5EFA;&#x8BAE;">&#x89C4;&#x8303;&#x5EFA;&#x8BAE;</h2>
-<p>&#x5728;&#x6211;&#x4EEC;&#x5B9E;&#x9645;&#x5F00;&#x53D1;&#x4E2D;&#xFF0C;&#x6709;&#x5F88;&#x591A;&#x5F00;&#x53D1;&#x4EBA;&#x53EF;&#x80FD;&#x662F;&#x7531;&#x67D0;&#x4E00;&#x8BED;&#x8A00;&#x8F6C;&#x5230;&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x8BED;&#x8A00;&#x9886;&#x57DF;&#xFF0C;&#x5728;&#x8F6C;&#x5230;&#x53E6;&#x5916;&#x4E00;&#x95E8;&#x8BED;&#x8A00;&#x540E;&#xFF0C;
-&#x6211;&#x4EEC;&#x90FD;&#x4F1A;&#x4FDD;&#x7559;&#x7740;&#x5BF9;&#x65E7;&#x8BED;&#x8A00;&#x7684;&#x7F16;&#x7A0B;&#x4E60;&#x60EF;&#xFF0C;&#x5728;&#x8FD9;&#x91CC;&#xFF0C;&#x6211;&#x5EFA;&#x8BAE;&#x7684;&#x662F;&#xFF0C;&#x867D;&#x7136;&#x4E0D;&#x540C;&#x8BED;&#x8A00;&#x4E4B;&#x524D;&#x7684;&#x67D0;&#x4E9B;&#x89C4;&#x8303;&#x53EF;&#x80FD;&#x662F;&#x76F8;&#x901A;&#x7684;&#xFF0C;
-&#x4F46;&#x662F;&#x6211;&#x4EEC;&#x6700;&#x597D;&#x80FD;&#x591F;&#x6309;&#x7167;&#x5B98;&#x65B9;&#x7684;&#x4E00;&#x4E9B;demo&#x6765;&#x719F;&#x6089;&#x662F;&#x6E10;&#x6E10;&#x9002;&#x5E94;&#x5F53;&#x524D;&#x8BED;&#x8A00;&#x7684;&#x7F16;&#x7A0B;&#x89C4;&#x8303;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x76F4;&#x63A5;&#x5C06;&#x539F;&#x6765;&#x8BED;&#x8A00;&#x7684;&#x7F16;&#x7A0B;&#x89C4;&#x8303;&#x4E5F;&#x968F;&#x4E4B;&#x8FC1;&#x79FB;&#x8FC7;&#x6765;&#x3002;</p>
-<h2 id="&#x547D;&#x540D;&#x51C6;&#x5219;">&#x547D;&#x540D;&#x51C6;&#x5219;</h2>
-<ul>
-<li>&#x5F53;&#x53D8;&#x91CF;&#x540D;&#x79F0;&#x5728;&#x5B9A;&#x4E49;&#x548C;&#x6700;&#x540E;&#x4F9D;&#x6B21;&#x4F7F;&#x7528;&#x4E4B;&#x95F4;&#x7684;&#x8DDD;&#x79BB;&#x5F88;&#x77ED;&#x65F6;&#xFF0C;&#x7B80;&#x77ED;&#x7684;&#x540D;&#x79F0;&#x770B;&#x8D77;&#x6765;&#x4F1A;&#x66F4;&#x597D;&#x3002;</li>
-<li>&#x53D8;&#x91CF;&#x547D;&#x540D;&#x5E94;&#x5C3D;&#x91CF;&#x63CF;&#x8FF0;&#x5176;&#x5185;&#x5BB9;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x7C7B;&#x578B;</li>
-<li>&#x5E38;&#x91CF;&#x547D;&#x540D;&#x5E94;&#x5C3D;&#x91CF;&#x63CF;&#x8FF0;&#x5176;&#x503C;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x5982;&#x4F55;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x503C;</li>
-<li>&#x5728;&#x9047;&#x5230;for&#xFF0C;if&#x7B49;&#x5FAA;&#x73AF;&#x6216;&#x5206;&#x652F;&#x65F6;&#xFF0C;&#x63A8;&#x8350;&#x5355;&#x4E2A;&#x5B57;&#x6BCD;&#x547D;&#x540D;&#x6765;&#x6807;&#x8BC6;&#x53C2;&#x6570;&#x548C;&#x8FD4;&#x56DE;&#x503C;</li>
-<li>method&#x3001;interface&#x3001;type&#x3001;package&#x63A8;&#x8350;&#x4F7F;&#x7528;&#x5355;&#x8BCD;&#x547D;&#x540D;</li>
-<li>package&#x540D;&#x79F0;&#x4E5F;&#x662F;&#x547D;&#x540D;&#x7684;&#x4E00;&#x90E8;&#x5206;&#xFF0C;&#x8BF7;&#x5C3D;&#x91CF;&#x5C06;&#x5176;&#x5229;&#x7528;&#x8D77;&#x6765;</li>
-<li>&#x4F7F;&#x7528;&#x4E00;&#x81F4;&#x7684;&#x547D;&#x540D;&#x98CE;&#x683C;</li>
-</ul>
-<h2 id="&#x6587;&#x4EF6;&#x547D;&#x540D;&#x89C4;&#x8303;">&#x6587;&#x4EF6;&#x547D;&#x540D;&#x89C4;&#x8303;</h2>
-<ul>
-<li>&#x5168;&#x90E8;&#x5C0F;&#x5199;</li>
-<li>&#x9664;unit test&#x5916;&#x907F;&#x514D;&#x4E0B;&#x5212;&#x7EBF;(_)</li>
-<li>&#x6587;&#x4EF6;&#x540D;&#x79F0;&#x4E0D;&#x5B9C;&#x8FC7;&#x957F;</li>
-</ul>
-<h2 id="&#x53D8;&#x91CF;&#x547D;&#x540D;&#x89C4;&#x8303;&#x53C2;&#x8003;">&#x53D8;&#x91CF;&#x547D;&#x540D;&#x89C4;&#x8303;&#x53C2;&#x8003;</h2>
-<ul>
-<li>&#x9996;&#x5B57;&#x6BCD;&#x5C0F;&#x5199;</li>
-<li>&#x9A7C;&#x5CF0;&#x547D;&#x540D;</li>
-<li>&#x89C1;&#x540D;&#x77E5;&#x4E49;&#xFF0C;&#x907F;&#x514D;&#x62FC;&#x97F3;&#x66FF;&#x4EE3;&#x82F1;&#x6587;</li>
-<li>&#x4E0D;&#x5EFA;&#x8BAE;&#x5305;&#x542B;&#x4E0B;&#x5212;&#x7EBF;(_)</li>
-<li>&#x4E0D;&#x5EFA;&#x8BAE;&#x5305;&#x542B;&#x6570;&#x5B57;</li>
-</ul>
-<p><strong>&#x9002;&#x7528;&#x8303;&#x56F4;</strong></p>
-<ul>
-<li>&#x5C40;&#x90E8;&#x53D8;&#x91CF;</li>
-<li>&#x51FD;&#x6570;&#x51FA;&#x53C2;&#x3001;&#x5165;&#x53C2;</li>
-</ul>
-<h2 id="&#x51FD;&#x6570;&#x3001;&#x5E38;&#x91CF;&#x547D;&#x540D;&#x89C4;&#x8303;">&#x51FD;&#x6570;&#x3001;&#x5E38;&#x91CF;&#x547D;&#x540D;&#x89C4;&#x8303;</h2>
-<ul>
-<li>&#x9A7C;&#x5CF0;&#x5F0F;&#x547D;&#x540D;</li>
-<li>&#x53EF;exported&#x7684;&#x5FC5;&#x987B;&#x9996;&#x5B57;&#x6BCD;&#x5927;&#x5199;</li>
-<li>&#x4E0D;&#x53EF;exported&#x7684;&#x5FC5;&#x987B;&#x9996;&#x5B57;&#x6BCD;&#x5C0F;&#x5199;</li>
-<li>&#x907F;&#x514D;&#x5168;&#x90E8;&#x5927;&#x5199;&#x4E0E;&#x4E0B;&#x5212;&#x7EBF;(_)&#x7EC4;&#x5408;</li>
-</ul>
+                                <h1 id="&#x6A21;&#x677F;&#x64CD;&#x4F5C;">&#x6A21;&#x677F;&#x64CD;&#x4F5C;</h1>
+<p>&#x6A21;&#x677F;&#xFF08;Template&#xFF09;&#x662F;&#x6570;&#x636E;&#x9A71;&#x52A8;&#x751F;&#x6210;&#x7684;&#x57FA;&#x7840;&#xFF0C;&#x6240;&#x6709;&#x7684;&#x4EE3;&#x7801;&#xFF08;rest api&#x3001;rpc&#x3001;model&#x3001;docker&#x3001;kube&#xFF09;&#x751F;&#x6210;&#x90FD;&#x4F1A;&#x4F9D;&#x8D56;&#x6A21;&#x677F;&#xFF0C;
+&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x6A21;&#x677F;&#x751F;&#x6210;&#x5668;&#x4F1A;&#x9009;&#x62E9;&#x5185;&#x5B58;&#x4E2D;&#x7684;&#x6A21;&#x677F;&#x8FDB;&#x884C;&#x751F;&#x6210;&#xFF0C;&#x800C;&#x5BF9;&#x4E8E;&#x6709;&#x6A21;&#x677F;&#x4FEE;&#x6539;&#x9700;&#x6C42;&#x7684;&#x5F00;&#x53D1;&#x8005;&#x6765;&#x8BB2;&#xFF0C;&#x5219;&#x9700;&#x8981;&#x5C06;&#x6A21;&#x677F;&#x8FDB;&#x884C;&#x843D;&#x76D8;&#xFF0C;
+&#x4ECE;&#x800C;&#x8FDB;&#x884C;&#x6A21;&#x677F;&#x4FEE;&#x6539;&#xFF0C;&#x5728;&#x4E0B;&#x6B21;&#x4EE3;&#x7801;&#x751F;&#x6210;&#x65F6;&#x4F1A;&#x52A0;&#x8F7D;&#x6307;&#x5B9A;&#x8DEF;&#x5F84;&#x4E0B;&#x7684;&#x6A21;&#x677F;&#x8FDB;&#x884C;&#x751F;&#x6210;&#x3002;</p>
+<h2 id="&#x4F7F;&#x7528;&#x5E2E;&#x52A9;">&#x4F7F;&#x7528;&#x5E2E;&#x52A9;</h2>
+<pre class="language-"><code class="lang-text">NAME:
+   goctl template - template operation
+
+USAGE:
+   goctl template command [command options] [arguments...]
+
+COMMANDS:
+   init    initialize the all templates(force update)
+   clean   clean the all cache templates
+   update  update template of the target category to the latest
+   revert  revert the target template to the latest
+
+OPTIONS:
+   --help, -h  show help
+</code></pre>
+<h2 id="&#x6A21;&#x677F;&#x521D;&#x59CB;&#x5316;">&#x6A21;&#x677F;&#x521D;&#x59CB;&#x5316;</h2>
+<pre class="language-"><code class="lang-text">NAME:
+   goctl template init - initialize the all templates(force update)
+
+USAGE:
+   goctl template init [command options] [arguments...]
+
+OPTIONS:
+   --home value  the goctl home path of the template
+</code></pre>
+<h2 id="&#x6E05;&#x9664;&#x6A21;&#x677F;">&#x6E05;&#x9664;&#x6A21;&#x677F;</h2>
+<pre class="language-"><code class="lang-text">NAME:
+   goctl template clean - clean the all cache templates
+
+USAGE:
+   goctl template clean [command options] [arguments...]
+
+OPTIONS:
+   --home value  the goctl home path of the template
+</code></pre>
+<h2 id="&#x56DE;&#x6EDA;&#x6307;&#x5B9A;&#x5206;&#x7C7B;&#x6A21;&#x677F;">&#x56DE;&#x6EDA;&#x6307;&#x5B9A;&#x5206;&#x7C7B;&#x6A21;&#x677F;</h2>
+<pre class="language-"><code class="lang-text">NAME:
+   goctl template update - update template of the target category to the latest
+
+USAGE:
+   goctl template update [command options] [arguments...]
+
+OPTIONS:
+   --category value, -c value  the category of template, enum [api,rpc,model,docker,kube]
+   --home value                the goctl home path of the template
+</code></pre>
+<h2 id="&#x56DE;&#x6EDA;&#x6A21;&#x677F;">&#x56DE;&#x6EDA;&#x6A21;&#x677F;</h2>
+<pre class="language-"><code class="lang-text">NAME:
+   goctl template revert - revert the target template to the latest
+
+USAGE:
+   goctl template revert [command options] [arguments...]
+
+OPTIONS:
+   --category value, -c value  the category of template, enum [api,rpc,model,docker,kube]
+   --name value, -n value      the target file name of template
+   --home value                the goctl home path of the template
+</code></pre>
 <blockquote>
-<p>[!TIP]
-&#x5982;&#x679C;&#x662F;go-zero&#x4EE3;&#x7801;&#x8D21;&#x732E;&#xFF0C;&#x5219;&#x5FC5;&#x987B;&#x4E25;&#x683C;&#x9075;&#x5FAA;&#x6B64;&#x547D;&#x540D;&#x89C4;&#x8303;</p>
+<p>[!TIP]</p>
+<p><code>--home</code> &#x6307;&#x5B9A;&#x6A21;&#x677F;&#x5B58;&#x50A8;&#x8DEF;&#x5F84;</p>
 </blockquote>
-<h1 id="&#x53C2;&#x8003;&#x6587;&#x6863;">&#x53C2;&#x8003;&#x6587;&#x6863;</h1>
+<h2 id="&#x6A21;&#x677F;&#x52A0;&#x8F7D;">&#x6A21;&#x677F;&#x52A0;&#x8F7D;</h2>
+<p>&#x5728;&#x4EE3;&#x7801;&#x751F;&#x6210;&#x65F6;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;<code>--home</code>&#x6765;&#x6307;&#x5B9A;&#x6A21;&#x677F;&#x6240;&#x5728;&#x6587;&#x4EF6;&#x5939;&#xFF0C;&#x76EE;&#x524D;&#x5DF2;&#x652F;&#x6301;&#x6307;&#x5B9A;&#x6A21;&#x677F;&#x76EE;&#x5F55;&#x7684;&#x547D;&#x4EE4;&#x6709;&#xFF1A;</p>
 <ul>
-<li><a href="https://dave.cheney.net/practical-go/presentations/gophercon-singapore-2019.html#_simplicity" target="_blank">Practical Go: Real world advice for writing maintainable Go programs</a></li>
+<li><code>goctl api go</code> &#x8BE6;&#x60C5;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;<code>goctl api go --help</code>&#x67E5;&#x770B;&#x5E2E;&#x52A9;</li>
+<li><code>goctl docker</code> &#x8BE6;&#x60C5;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;<code>goctl docker --help</code>&#x67E5;&#x770B;&#x5E2E;&#x52A9;</li>
+<li><code>goctl kube</code> &#x8BE6;&#x60C5;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;<code>goctl kube --help</code>&#x67E5;&#x770B;&#x5E2E;&#x52A9;</li>
+<li><code>goctl rpc new</code> &#x8BE6;&#x60C5;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;<code>goctl rpc new --help</code>&#x67E5;&#x770B;&#x5E2E;&#x52A9;</li>
+<li><code>goctl rpc proto</code> &#x8BE6;&#x60C5;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;<code>goctl rpc proto --help</code>&#x67E5;&#x770B;&#x5E2E;&#x52A9;</li>
+<li><code>goctl model mysql ddl</code> &#x8BE6;&#x60C5;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;<code>goctl model mysql ddl --help</code>&#x67E5;&#x770B;&#x5E2E;&#x52A9;</li>
+<li><code>goctl model mysql datasource</code> &#x8BE6;&#x60C5;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;<code>goctl model mysql datasource --help</code>&#x67E5;&#x770B;&#x5E2E;&#x52A9;</li>
+<li><code>goctl model postgresql datasource</code> &#x8BE6;&#x60C5;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;<code>goctl model mysql datasource --help</code>&#x67E5;&#x770B;&#x5E2E;&#x52A9;</li>
+<li><code>goctl model mongo</code> &#x8BE6;&#x60C5;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;<code>goctl model mongo --help</code>&#x67E5;&#x770B;&#x5E2E;&#x52A9;</li>
 </ul>
+<p>&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#xFF08;&#x5728;&#x4E0D;&#x6307;&#x5B9A;<code>--home</code>&#xFF09;&#x4F1A;&#x4ECE;<code>$HOME/.goctl</code>&#x76EE;&#x5F55;&#x4E0B;&#x8BFB;&#x53D6;&#x3002;</p>
+<h2 id="&#x4F7F;&#x7528;&#x793A;&#x4F8B;">&#x4F7F;&#x7528;&#x793A;&#x4F8B;</h2>
+<ul>
+<li>&#x521D;&#x59CB;&#x5316;&#x6A21;&#x677F;&#x5230;&#x6307;&#x5B9A;<code>$HOME/template</code>&#x76EE;&#x5F55;&#x4E0B;<pre class="language-"><code class="lang-text">$ goctl template init --home $HOME/template
+</code></pre>
+</li>
+</ul>
+<pre class="language-"><code class="lang-text">Templates are generated in /Users/anqiansong/template, edit on your risk!
+</code></pre>
+<ul>
+<li>&#x4F7F;&#x7528;<code>$HOME/template</code>&#x6A21;&#x677F;&#x8FDB;&#x884C;greet rpc&#x751F;&#x6210;<pre class="language-"><code class="lang-text">$ goctl rpc new greet --home $HOME/template
+</code></pre>
+</li>
+</ul>
+<pre class="language-"><code class="lang-text">Done
+</code></pre>
 <footer class="page-footer"><span class="copyright">Copyright &#xA9; 2019-2021 go-zero all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last UpdateTime&#xFF1A;
 2021-07-29 07:54:21
 </span></footer>
@@ -1412,12 +1453,12 @@
 
             
                 
-                <a href="dev-specification.html" class="navigation navigation-prev " aria-label="Previous page: 开发规范">
+                <a href="template-manage.html" class="navigation navigation-prev " aria-label="Previous page: 模板管理">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="route-naming-spec.html" class="navigation navigation-next " aria-label="Next page: 路由规范">
+                <a href="template.html" class="navigation navigation-next " aria-label="Next page: 自定义模板">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1428,7 +1469,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"命名规范","level":"1.8.2.1","depth":3,"next":{"title":"路由规范","level":"1.8.2.2","depth":3,"path":"route-naming-spec.md","ref":"route-naming-spec.md","articles":[]},"previous":{"title":"开发规范","level":"1.8.2","depth":2,"path":"dev-specification.md","ref":"dev-specification.md","articles":[{"title":"命名规范","level":"1.8.2.1","depth":3,"path":"naming-spec.md","ref":"naming-spec.md","articles":[]},{"title":"路由规范","level":"1.8.2.2","depth":3,"path":"route-naming-spec.md","ref":"route-naming-spec.md","articles":[]},{"title":"编码规范","level":"1.8.2.3","depth":3,"path":"coding-spec.md","ref":"coding-spec.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","code","-lunr","-search","search-pro","github","splitter","-sharing","sharing-plus","tbfed-pagefooter","flexible-alerts","page-toc-button","pageview-count","popup","hide-element","edit-link","-highlight","prism","theme-comscore"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © 2019-2021 go-zero","modify_label":"Last UpdateTime：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"lang":{"shell":"bash"},"css":["prismjs/themes/prism-tomorrow.css"]},"github":{"url":"https://github.com/tal-tech/go-zero"},"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"qq":false,"all":["douban","facebook","google","linkedin","twitter","weibo","qq","qzone","weibo"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true},"edit-link":{"label":"EDIT THIS PAGE","base":"https://github.com/zeromicro/go-zero-doc/blob/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"anqiansong","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"go-zero document","language":"cn","gitbook":"*","description":"Golang 微服务框架 | 集成各种工程实践的 WEB 和 RPC 框架 | 一键生成 Go, iOS, Android, Kotlin, Dart, TypeScript, JavaScript 代码"},"file":{"path":"naming-spec.md","mtime":"2021-07-29T07:54:21.885Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-29T07:55:15.467Z"},"basePath":".","book":{"language":"cn"}});
+            gitbook.page.hasChanged({"page":{"title":"模板操作","level":"1.10.1","depth":2,"next":{"title":"自定义模板","level":"1.10.2","depth":2,"path":"template.md","ref":"template.md","articles":[]},"previous":{"title":"模板管理","level":"1.10","depth":1,"path":"template-manage.md","ref":"template-manage.md","articles":[{"title":"模板操作","level":"1.10.1","depth":2,"path":"template-cmd.md","ref":"template-cmd.md","articles":[]},{"title":"自定义模板","level":"1.10.2","depth":2,"path":"template.md","ref":"template.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","code","-lunr","-search","search-pro","github","splitter","-sharing","sharing-plus","tbfed-pagefooter","flexible-alerts","page-toc-button","pageview-count","popup","hide-element","edit-link","-highlight","prism","theme-comscore"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © 2019-2021 go-zero","modify_label":"Last UpdateTime：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"lang":{"shell":"bash"},"css":["prismjs/themes/prism-tomorrow.css"]},"github":{"url":"https://github.com/tal-tech/go-zero"},"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"qq":false,"all":["douban","facebook","google","linkedin","twitter","weibo","qq","qzone","weibo"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true},"edit-link":{"label":"EDIT THIS PAGE","base":"https://github.com/zeromicro/go-zero-doc/blob/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"anqiansong","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"go-zero document","language":"cn","gitbook":"*","description":"Golang 微服务框架 | 集成各种工程实践的 WEB 和 RPC 框架 | 一键生成 Go, iOS, Android, Kotlin, Dart, TypeScript, JavaScript 代码"},"file":{"path":"template-cmd.md","mtime":"2021-07-29T07:54:21.981Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-29T07:55:15.467Z"},"basePath":".","book":{"language":"cn"}});
         });
     </script>
 </div>
