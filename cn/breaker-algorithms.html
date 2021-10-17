@@ -1,0 +1,1678 @@
+
+<!DOCTYPE HTML>
+<html lang="cn" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>熔断原理与实现 · go-zero document</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="anqiansong">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-flexible-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-toc-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-pageview-count/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism-tomorrow.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-theme-comscore/test.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="collection.html" />
+    
+    
+    <link rel="prev" href="timing-wheel.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="tips.html">
+            
+                <a href="tips.html">
+            
+                    
+                    阅读须知
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="about-us.html">
+            
+                <a href="about-us.html">
+            
+                    
+                    关于我们
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="join-us.html">
+            
+                <a href="join-us.html">
+            
+                    
+                    加入我们
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="concept-introduction.html">
+            
+                <a href="concept-introduction.html">
+            
+                    
+                    概念介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="quick-start.html">
+            
+                <a href="quick-start.html">
+            
+                    
+                    快速开发
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="monolithic-service.html">
+            
+                <a href="monolithic-service.html">
+            
+                    
+                    单体服务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="micro-service.html">
+            
+                <a href="micro-service.html">
+            
+                    
+                    微服务
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="framework-design.html">
+            
+                <a href="framework-design.html">
+            
+                    
+                    框架设计
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="go-zero-design.html">
+            
+                <a href="go-zero-design.html">
+            
+                    
+                    go-zero设计理念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="go-zero-features.html">
+            
+                <a href="go-zero-features.html">
+            
+                    
+                    go-zero特点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="api-grammar.html">
+            
+                <a href="api-grammar.html">
+            
+                    
+                    api语法介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="api-dir.html">
+            
+                <a href="api-dir.html">
+            
+                    
+                    api目录结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="rpc-dir.html">
+            
+                <a href="rpc-dir.html">
+            
+                    
+                    rpc目录结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="project-dev.html">
+            
+                <a href="project-dev.html">
+            
+                    
+                    项目开发
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="prepare.html">
+            
+                <a href="prepare.html">
+            
+                    
+                    准备工作
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1.1" data-path="golang-install.html">
+            
+                <a href="golang-install.html">
+            
+                    
+                    golang安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.1.2" data-path="gomod-config.html">
+            
+                <a href="gomod-config.html">
+            
+                    
+                    go module配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.1.3" data-path="goctl-install.html">
+            
+                <a href="goctl-install.html">
+            
+                    
+                    goctl安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.1.4" data-path="protoc-install.html">
+            
+                <a href="protoc-install.html">
+            
+                    
+                    protoc&protoc-gen-go安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.1.5" data-path="prepare-other.html">
+            
+                <a href="prepare-other.html">
+            
+                    
+                    其他
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="dev-specification.html">
+            
+                <a href="dev-specification.html">
+            
+                    
+                    开发规范
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.2.1" data-path="naming-spec.html">
+            
+                <a href="naming-spec.html">
+            
+                    
+                    命名规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.2" data-path="route-naming-spec.html">
+            
+                <a href="route-naming-spec.html">
+            
+                    
+                    路由规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.3" data-path="coding-spec.html">
+            
+                <a href="coding-spec.html">
+            
+                    
+                    编码规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="dev-flow.html">
+            
+                <a href="dev-flow.html">
+            
+                    
+                    开发流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="config-introduction.html">
+            
+                <a href="config-introduction.html">
+            
+                    
+                    配置介绍
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.4.1" data-path="api-config.html">
+            
+                <a href="api-config.html">
+            
+                    
+                    api配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.2" data-path="rpc-config.html">
+            
+                <a href="rpc-config.html">
+            
+                    
+                    rpc配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" data-path="business-dev.html">
+            
+                <a href="business-dev.html">
+            
+                    
+                    业务开发
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.5.1" data-path="service-design.html">
+            
+                <a href="service-design.html">
+            
+                    
+                    目录拆分
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5.2" data-path="model-gen.html">
+            
+                <a href="model-gen.html">
+            
+                    
+                    model生成
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5.3" data-path="api-coding.html">
+            
+                <a href="api-coding.html">
+            
+                    
+                    api文件编写
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5.4" data-path="business-coding.html">
+            
+                <a href="business-coding.html">
+            
+                    
+                    业务编码
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5.5" data-path="jwt.html">
+            
+                <a href="jwt.html">
+            
+                    
+                    jwt鉴权
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5.6" data-path="middleware.html">
+            
+                <a href="middleware.html">
+            
+                    
+                    中间件使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5.7" data-path="rpc-call.html">
+            
+                <a href="rpc-call.html">
+            
+                    
+                    rpc服务编写与调用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5.8" data-path="error-handle.html">
+            
+                <a href="error-handle.html">
+            
+                    
+                    错误处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6" data-path="ci-cd.html">
+            
+                <a href="ci-cd.html">
+            
+                    
+                    CI/CD
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7" data-path="service-deployment.html">
+            
+                <a href="service-deployment.html">
+            
+                    
+                    服务部署
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.8" data-path="log-collection.html">
+            
+                <a href="log-collection.html">
+            
+                    
+                    日志收集
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.9" data-path="trace.html">
+            
+                <a href="trace.html">
+            
+                    
+                    链路追踪
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.10" data-path="service-monitor.html">
+            
+                <a href="service-monitor.html">
+            
+                    
+                    服务监控
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="goctl.html">
+            
+                <a href="goctl.html">
+            
+                    
+                    Goctl
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="goctl-commands.html">
+            
+                <a href="goctl-commands.html">
+            
+                    
+                    命令大全
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="goctl-api.html">
+            
+                <a href="goctl-api.html">
+            
+                    
+                    api命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="goctl-rpc.html">
+            
+                <a href="goctl-rpc.html">
+            
+                    
+                    rpc命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4" data-path="goctl-model.html">
+            
+                <a href="goctl-model.html">
+            
+                    
+                    model命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.5" data-path="goctl-plugin.html">
+            
+                <a href="goctl-plugin.html">
+            
+                    
+                    plugin命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.6" data-path="goctl-other.html">
+            
+                <a href="goctl-other.html">
+            
+                    
+                    其他命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="template-manage.html">
+            
+                <a href="template-manage.html">
+            
+                    
+                    模板管理
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="template-cmd.html">
+            
+                <a href="template-cmd.html">
+            
+                    
+                    模板操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="template.html">
+            
+                <a href="template.html">
+            
+                    
+                    自定义模板
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="extended-reading.html">
+            
+                <a href="extended-reading.html">
+            
+                    
+                    扩展阅读
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="shorturl.html">
+            
+                <a href="shorturl.html">
+            
+                    
+                    快速构建高并发微服务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.2" data-path="logx.html">
+            
+                <a href="logx.html">
+            
+                    
+                    日志组件介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.3" data-path="bloom.html">
+            
+                <a href="bloom.html">
+            
+                    
+                    布隆过滤器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.4" data-path="executors.html">
+            
+                <a href="executors.html">
+            
+                    
+                    executors
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.5" data-path="fx.html">
+            
+                <a href="fx.html">
+            
+                    
+                    流处理组件 fx
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.6" data-path="mysql.html">
+            
+                <a href="mysql.html">
+            
+                    
+                    go-zero mysql使用介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.7" data-path="redis-lock.html">
+            
+                <a href="redis-lock.html">
+            
+                    
+                    redis锁
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.8" data-path="periodlimit.html">
+            
+                <a href="periodlimit.html">
+            
+                    
+                    periodlimit限流
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.9" data-path="tokenlimit.html">
+            
+                <a href="tokenlimit.html">
+            
+                    
+                    令牌桶限流
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.10" data-path="timing-wheel.html">
+            
+                <a href="timing-wheel.html">
+            
+                    
+                    时间轮介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.11.11" data-path="breaker-algorithms.html">
+            
+                <a href="breaker-algorithms.html">
+            
+                    
+                    熔断原理与实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.12" data-path="collection.html">
+            
+                <a href="collection.html">
+            
+                    
+                    进程内缓存组件 collection.Cache
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.13" data-path="keywords.html">
+            
+                <a href="keywords.html">
+            
+                    
+                    高效的关键词替换和敏感词过滤工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.14" data-path="loadshedding.html">
+            
+                <a href="loadshedding.html">
+            
+                    
+                    服务自适应降载保护设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.15" data-path="mapping.html">
+            
+                <a href="mapping.html">
+            
+                    
+                    文本序列化和反序列化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.16" data-path="mapreduce.html">
+            
+                <a href="mapreduce.html">
+            
+                    
+                    并发处理工具 MapReduce
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.17" data-path="metric.html">
+            
+                <a href="metric.html">
+            
+                    
+                    基于prometheus的微服务指标监控
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.18" data-path="sharedcalls.html">
+            
+                <a href="sharedcalls.html">
+            
+                    
+                    防止缓存击穿之进程内共享调用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.19" data-path="sql-cache.html">
+            
+                <a href="sql-cache.html">
+            
+                    
+                    DB缓存机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.20" data-path="zrpc.html">
+            
+                <a href="zrpc.html">
+            
+                    
+                    zrpc 使用介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.21" data-path="redis-cache.html">
+            
+                <a href="redis-cache.html">
+            
+                    
+                    go-zero缓存设计之持久层缓存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.22" data-path="buiness-cache.html">
+            
+                <a href="buiness-cache.html">
+            
+                    
+                    go-zero缓存设计之业务层缓存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.23" data-path="go-queue.html">
+            
+                <a href="go-queue.html">
+            
+                    
+                    go-zero分布式定时任务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.24" data-path="datacenter.html">
+            
+                <a href="datacenter.html">
+            
+                    
+                    我是如何用go-zero 实现一个中台系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.25" data-path="stream.html">
+            
+                <a href="stream.html">
+            
+                    
+                    流数据处理利器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.26" data-path="online-exchange.html">
+            
+                <a href="online-exchange.html">
+            
+                    
+                    10月3日线上交流问题汇总
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="tool-center.html">
+            
+                <a href="tool-center.html">
+            
+                    
+                    工具中心
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="intellij.html">
+            
+                <a href="intellij.html">
+            
+                    
+                    intellij插件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="vscode.html">
+            
+                <a href="vscode.html">
+            
+                    
+                    vscode插件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="plugin-center.html">
+            
+                <a href="plugin-center.html">
+            
+                    
+                    插件中心
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" data-path="learning-resource.html">
+            
+                <a href="learning-resource.html">
+            
+                    
+                    学习资源
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1" data-path="wechat.html">
+            
+                <a href="wechat.html">
+            
+                    
+                    公众号
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.2" data-path="goreading.html">
+            
+                <a href="goreading.html">
+            
+                    
+                    Go夜读
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.3" data-path="gotalk.html">
+            
+                <a href="gotalk.html">
+            
+                    
+                    Go开源说
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" data-path="contributor.html">
+            
+                <a href="contributor.html">
+            
+                    
+                    贡献人员
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16" data-path="doc-contibute.html">
+            
+                <a href="doc-contibute.html">
+            
+                    
+                    文档贡献
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17" data-path="error.html">
+            
+                <a href="error.html">
+            
+                    
+                    常见错误处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18" data-path="faq.html">
+            
+                <a href="faq.html">
+            
+                    
+                    FAQ
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.19" data-path="source.html">
+            
+                <a href="source.html">
+            
+                    
+                    相关源码
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >熔断原理与实现</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x7194;&#x65AD;&#x539F;&#x7406;&#x4E0E;&#x5B9E;&#x73B0;">&#x7194;&#x65AD;&#x539F;&#x7406;&#x4E0E;&#x5B9E;&#x73B0;</h1>
+<p>&#x5728;&#x5FAE;&#x670D;&#x52A1;&#x4E2D;&#x670D;&#x52A1;&#x95F4;&#x4F9D;&#x8D56;&#x975E;&#x5E38;&#x5E38;&#x89C1;&#xFF0C;&#x6BD4;&#x5982;&#x8BC4;&#x8BBA;&#x670D;&#x52A1;&#x4F9D;&#x8D56;&#x5BA1;&#x6838;&#x670D;&#x52A1;&#x800C;&#x5BA1;&#x6838;&#x670D;&#x52A1;&#x53C8;&#x4F9D;&#x8D56;&#x53CD;&#x5783;&#x573E;&#x670D;&#x52A1;&#xFF0C;&#x5F53;&#x8BC4;&#x8BBA;&#x670D;&#x52A1;&#x8C03;&#x7528;&#x5BA1;&#x6838;&#x670D;&#x52A1;&#x65F6;&#xFF0C;&#x5BA1;&#x6838;&#x670D;&#x52A1;&#x53C8;&#x8C03;&#x7528;&#x53CD;&#x5783;&#x573E;&#x670D;&#x52A1;&#xFF0C;&#x800C;&#x8FD9;&#x65F6;&#x53CD;&#x5783;&#x573E;&#x670D;&#x52A1;&#x8D85;&#x65F6;&#x4E86;&#xFF0C;&#x7531;&#x4E8E;&#x5BA1;&#x6838;&#x670D;&#x52A1;&#x4F9D;&#x8D56;&#x53CD;&#x5783;&#x573E;&#x670D;&#x52A1;&#xFF0C;&#x53CD;&#x5783;&#x573E;&#x670D;&#x52A1;&#x8D85;&#x65F6;&#x5BFC;&#x81F4;&#x5BA1;&#x6838;&#x670D;&#x52A1;&#x903B;&#x8F91;&#x4E00;&#x76F4;&#x7B49;&#x5F85;&#xFF0C;&#x800C;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x8BC4;&#x8BBA;&#x670D;&#x52A1;&#x53C8;&#x5728;&#x4E00;&#x76F4;&#x8C03;&#x7528;&#x5BA1;&#x6838;&#x670D;&#x52A1;&#xFF0C;&#x5BA1;&#x6838;&#x670D;&#x52A1;&#x5C31;&#x6709;&#x53EF;&#x80FD;&#x56E0;&#x4E3A;&#x5806;&#x79EF;&#x4E86;&#x5927;&#x91CF;&#x8BF7;&#x6C42;&#x800C;&#x5BFC;&#x81F4;&#x670D;&#x52A1;&#x5B95;&#x673A;</p>
+<p><img src="resource/call_chain.png" alt="call_chain"></p>
+<p>&#x7531;&#x6B64;&#x53EF;&#x89C1;&#xFF0C;&#x5728;&#x6574;&#x4E2A;&#x8C03;&#x7528;&#x94FE;&#x4E2D;&#xFF0C;&#x4E2D;&#x95F4;&#x7684;&#x67D0;&#x4E00;&#x4E2A;&#x73AF;&#x8282;&#x51FA;&#x73B0;&#x5F02;&#x5E38;&#x5C31;&#x4F1A;&#x5F15;&#x8D77;&#x4E0A;&#x6E38;&#x8C03;&#x7528;&#x670D;&#x52A1;&#x51FA;&#x73B0;&#x4E00;&#x4E9B;&#x5217;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x751A;&#x81F3;&#x5BFC;&#x81F4;&#x6574;&#x4E2A;&#x8C03;&#x7528;&#x94FE;&#x7684;&#x670D;&#x52A1;&#x90FD;&#x5B95;&#x673A;&#xFF0C;&#x8FD9;&#x662F;&#x975E;&#x5E38;&#x53EF;&#x6015;&#x7684;&#x3002;&#x56E0;&#x6B64;&#x4E00;&#x4E2A;&#x670D;&#x52A1;&#x4F5C;&#x4E3A;&#x8C03;&#x7528;&#x65B9;&#x8C03;&#x7528;&#x53E6;&#x4E00;&#x4E2A;&#x670D;&#x52A1;&#x65F6;&#xFF0C;&#x4E3A;&#x4E86;&#x9632;&#x6B62;&#x88AB;&#x8C03;&#x7528;&#x670D;&#x52A1;&#x51FA;&#x73B0;&#x95EE;&#x9898;&#x8FDB;&#x800C;&#x5BFC;&#x81F4;&#x8C03;&#x7528;&#x670D;&#x52A1;&#x51FA;&#x73B0;&#x95EE;&#x9898;&#xFF0C;&#x6240;&#x4EE5;&#x8C03;&#x7528;&#x670D;&#x52A1;&#x9700;&#x8981;&#x8FDB;&#x884C;&#x81EA;&#x6211;&#x4FDD;&#x62A4;&#xFF0C;&#x800C;&#x4FDD;&#x62A4;&#x7684;&#x5E38;&#x7528;&#x624B;&#x6BB5;&#x5C31;&#x662F;<strong><em>&#x7194;&#x65AD;</em></strong></p>
+<h3 id="&#x7194;&#x65AD;&#x5668;&#x539F;&#x7406;">&#x7194;&#x65AD;&#x5668;&#x539F;&#x7406;</h3>
+<p>&#x7194;&#x65AD;&#x673A;&#x5236;&#x5176;&#x5B9E;&#x662F;&#x53C2;&#x8003;&#x4E86;&#x6211;&#x4EEC;&#x65E5;&#x5E38;&#x751F;&#x6D3B;&#x4E2D;&#x7684;&#x4FDD;&#x9669;&#x4E1D;&#x7684;&#x4FDD;&#x62A4;&#x673A;&#x5236;&#xFF0C;&#x5F53;&#x7535;&#x8DEF;&#x8D85;&#x8D1F;&#x8377;&#x8FD0;&#x884C;&#x65F6;&#xFF0C;&#x4FDD;&#x9669;&#x4E1D;&#x4F1A;&#x81EA;&#x52A8;&#x7684;&#x65AD;&#x5F00;&#xFF0C;&#x4ECE;&#x800C;&#x4FDD;&#x8BC1;&#x7535;&#x8DEF;&#x4E2D;&#x7684;&#x7535;&#x5668;&#x4E0D;&#x53D7;&#x635F;&#x5BB3;&#x3002;&#x800C;&#x670D;&#x52A1;&#x6CBB;&#x7406;&#x4E2D;&#x7684;&#x7194;&#x65AD;&#x673A;&#x5236;&#xFF0C;&#x6307;&#x7684;&#x662F;&#x5728;&#x53D1;&#x8D77;&#x670D;&#x52A1;&#x8C03;&#x7528;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5982;&#x679C;&#x88AB;&#x8C03;&#x7528;&#x65B9;&#x8FD4;&#x56DE;&#x7684;&#x9519;&#x8BEF;&#x7387;&#x8D85;&#x8FC7;&#x4E00;&#x5B9A;&#x7684;&#x9608;&#x503C;&#xFF0C;&#x90A3;&#x4E48;&#x540E;&#x7EED;&#x7684;&#x8BF7;&#x6C42;&#x5C06;&#x4E0D;&#x4F1A;&#x771F;&#x6B63;&#x53D1;&#x8D77;&#x8BF7;&#x6C42;&#xFF0C;&#x800C;&#x662F;&#x5728;&#x8C03;&#x7528;&#x65B9;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#x9519;&#x8BEF;</p>
+<p>&#x5728;&#x8FD9;&#x79CD;&#x6A21;&#x5F0F;&#x4E0B;&#xFF0C;&#x670D;&#x52A1;&#x8C03;&#x7528;&#x65B9;&#x4E3A;&#x6BCF;&#x4E00;&#x4E2A;&#x8C03;&#x7528;&#x670D;&#x52A1;(&#x8C03;&#x7528;&#x8DEF;&#x5F84;)&#x7EF4;&#x62A4;&#x4E00;&#x4E2A;&#x72B6;&#x6001;&#x673A;&#xFF0C;&#x5728;&#x8FD9;&#x4E2A;&#x72B6;&#x6001;&#x673A;&#x4E2D;&#x6709;&#x4E09;&#x4E2A;&#x72B6;&#x6001;&#xFF1A;</p>
+<ul>
+<li>&#x5173;&#x95ED;(Closed)&#xFF1A;&#x5728;&#x8FD9;&#x79CD;&#x72B6;&#x6001;&#x4E0B;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x4E00;&#x4E2A;&#x8BA1;&#x6570;&#x5668;&#x6765;&#x8BB0;&#x5F55;&#x8C03;&#x7528;&#x5931;&#x8D25;&#x7684;&#x6B21;&#x6570;&#x548C;&#x603B;&#x7684;&#x8BF7;&#x6C42;&#x6B21;&#x6570;&#xFF0C;&#x5982;&#x679C;&#x5728;&#x67D0;&#x4E2A;&#x65F6;&#x95F4;&#x7A97;&#x53E3;&#x5185;&#xFF0C;&#x5931;&#x8D25;&#x7684;&#x5931;&#x8D25;&#x7387;&#x8FBE;&#x5230;&#x9884;&#x8BBE;&#x7684;&#x9608;&#x503C;&#xFF0C;&#x5219;&#x5207;&#x6362;&#x5230;&#x65AD;&#x5F00;&#x72B6;&#x6001;&#xFF0C;&#x6B64;&#x65F6;&#x5F00;&#x542F;&#x4E00;&#x4E2A;&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#xFF0C;&#x5F53;&#x5230;&#x8FBE;&#x8BE5;&#x65F6;&#x95F4;&#x5219;&#x5207;&#x6362;&#x5230;&#x534A;&#x5173;&#x95ED;&#x72B6;&#x6001;&#xFF0C;&#x8BE5;&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#x662F;&#x7ED9;&#x4E86;&#x7CFB;&#x7EDF;&#x4E00;&#x6B21;&#x673A;&#x4F1A;&#x6765;&#x4FEE;&#x6B63;&#x5BFC;&#x81F4;&#x8C03;&#x7528;&#x5931;&#x8D25;&#x7684;&#x9519;&#x8BEF;&#xFF0C;&#x4EE5;&#x56DE;&#x5230;&#x6B63;&#x5E38;&#x7684;&#x5DE5;&#x4F5C;&#x72B6;&#x6001;&#x3002;&#x5728;&#x5173;&#x95ED;&#x72B6;&#x6001;&#x4E0B;&#xFF0C;&#x8C03;&#x7528;&#x9519;&#x8BEF;&#x662F;&#x57FA;&#x4E8E;&#x65F6;&#x95F4;&#x7684;&#xFF0C;&#x5728;&#x7279;&#x5B9A;&#x7684;&#x65F6;&#x95F4;&#x95F4;&#x9694;&#x5185;&#x4F1A;&#x91CD;&#x7F6E;&#xFF0C;&#x8FD9;&#x80FD;&#x591F;&#x9632;&#x6B62;&#x5076;&#x7136;&#x9519;&#x8BEF;&#x5BFC;&#x81F4;&#x7194;&#x65AD;&#x5668;&#x8FDB;&#x53BB;&#x65AD;&#x5F00;&#x72B6;&#x6001;</li>
+<li>&#x6253;&#x5F00;(Open)&#xFF1A;&#x5728;&#x8BE5;&#x72B6;&#x6001;&#x4E0B;&#xFF0C;&#x53D1;&#x8D77;&#x8BF7;&#x6C42;&#x65F6;&#x4F1A;&#x7ACB;&#x5373;&#x8FD4;&#x56DE;&#x9519;&#x8BEF;&#xFF0C;&#x4E00;&#x822C;&#x4F1A;&#x542F;&#x52A8;&#x4E00;&#x4E2A;&#x8D85;&#x65F6;&#x8BA1;&#x65F6;&#x5668;&#xFF0C;&#x5F53;&#x8BA1;&#x65F6;&#x5668;&#x8D85;&#x65F6;&#x540E;&#xFF0C;&#x72B6;&#x6001;&#x5207;&#x6362;&#x5230;&#x534A;&#x6253;&#x5F00;&#x72B6;&#x6001;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x5B9A;&#x65F6;&#x5668;&#xFF0C;&#x5B9A;&#x671F;&#x7684;&#x63A2;&#x6D4B;&#x670D;&#x52A1;&#x662F;&#x5426;&#x6062;&#x590D;</li>
+<li>&#x534A;&#x6253;&#x5F00;(Half-Open)&#xFF1A;&#x5728;&#x8BE5;&#x72B6;&#x6001;&#x4E0B;&#xFF0C;&#x5141;&#x8BB8;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4E00;&#x5B9A;&#x6570;&#x91CF;&#x7684;&#x8BF7;&#x6C42;&#x53D1;&#x5F80;&#x88AB;&#x8C03;&#x7528;&#x670D;&#x52A1;&#xFF0C;&#x5982;&#x679C;&#x8FD9;&#x4E9B;&#x8C03;&#x7528;&#x6B63;&#x5E38;&#xFF0C;&#x90A3;&#x4E48;&#x53EF;&#x4EE5;&#x8BA4;&#x4E3A;&#x88AB;&#x8C03;&#x7528;&#x670D;&#x52A1;&#x5DF2;&#x7ECF;&#x6062;&#x590D;&#x6B63;&#x5E38;&#xFF0C;&#x6B64;&#x65F6;&#x7194;&#x65AD;&#x5668;&#x5207;&#x6362;&#x5230;&#x5173;&#x95ED;&#x72B6;&#x6001;&#xFF0C;&#x540C;&#x65F6;&#x9700;&#x8981;&#x91CD;&#x7F6E;&#x8BA1;&#x6570;&#x3002;&#x5982;&#x679C;&#x8FD9;&#x90E8;&#x5206;&#x4ECD;&#x6709;&#x8C03;&#x7528;&#x5931;&#x8D25;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x5219;&#x8BA4;&#x4E3A;&#x88AB;&#x8C03;&#x7528;&#x65B9;&#x4ECD;&#x7136;&#x6CA1;&#x6709;&#x6062;&#x590D;&#xFF0C;&#x7194;&#x65AD;&#x5668;&#x4F1A;&#x5207;&#x6362;&#x5230;&#x5173;&#x95ED;&#x72B6;&#x6001;&#xFF0C;&#x7136;&#x540E;&#x91CD;&#x7F6E;&#x8BA1;&#x6570;&#x5668;&#xFF0C;&#x534A;&#x6253;&#x5F00;&#x72B6;&#x6001;&#x80FD;&#x591F;&#x6709;&#x6548;&#x9632;&#x6B62;&#x6B63;&#x5728;&#x6062;&#x590D;&#x4E2D;&#x7684;&#x670D;&#x52A1;&#x88AB;&#x7A81;&#x7136;&#x5927;&#x91CF;&#x8BF7;&#x6C42;&#x518D;&#x6B21;&#x6253;&#x57AE;</li>
+</ul>
+<p><img src="resource/breaker_state.png" alt="breaker_state"></p>
+<p>&#x670D;&#x52A1;&#x6CBB;&#x7406;&#x4E2D;&#x5F15;&#x5165;&#x7194;&#x65AD;&#x673A;&#x5236;&#xFF0C;&#x4F7F;&#x5F97;&#x7CFB;&#x7EDF;&#x66F4;&#x52A0;&#x7A33;&#x5B9A;&#x548C;&#x6709;&#x5F39;&#x6027;&#xFF0C;&#x5728;&#x7CFB;&#x7EDF;&#x4ECE;&#x9519;&#x8BEF;&#x4E2D;&#x6062;&#x590D;&#x7684;&#x65F6;&#x5019;&#x63D0;&#x4F9B;&#x7A33;&#x5B9A;&#x6027;&#xFF0C;&#x5E76;&#x4E14;&#x51CF;&#x5C11;&#x4E86;&#x9519;&#x8BEF;&#x5BF9;&#x7CFB;&#x7EDF;&#x6027;&#x80FD;&#x7684;&#x5F71;&#x54CD;&#xFF0C;&#x53EF;&#x4EE5;&#x5FEB;&#x901F;&#x62D2;&#x7EDD;&#x53EF;&#x80FD;&#x5BFC;&#x81F4;&#x9519;&#x8BEF;&#x7684;&#x670D;&#x52A1;&#x8C03;&#x7528;&#xFF0C;&#x800C;&#x4E0D;&#x9700;&#x8981;&#x7B49;&#x5F85;&#x771F;&#x6B63;&#x7684;&#x9519;&#x8BEF;&#x8FD4;&#x56DE;</p>
+<h3 id="&#x7194;&#x65AD;&#x5668;&#x5F15;&#x5165;">&#x7194;&#x65AD;&#x5668;&#x5F15;&#x5165;</h3>
+<p>&#x4E0A;&#x9762;&#x4ECB;&#x7ECD;&#x4E86;&#x7194;&#x65AD;&#x5668;&#x7684;&#x539F;&#x7406;&#xFF0C;&#x5728;&#x4E86;&#x89E3;&#x5B8C;&#x539F;&#x7406;&#x540E;&#xFF0C;&#x4F60;&#x662F;&#x5426;&#x6709;&#x601D;&#x8003;&#x6211;&#x4EEC;&#x5982;&#x4F55;&#x5F15;&#x5165;&#x7194;&#x65AD;&#x5668;&#x5462;&#xFF1F;&#x4E00;&#x79CD;&#x65B9;&#x6848;&#x662F;&#x5728;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x4E2D;&#x53EF;&#x4EE5;&#x52A0;&#x5165;&#x7194;&#x65AD;&#x5668;&#xFF0C;&#x4F46;&#x663E;&#x7136;&#x662F;&#x4E0D;&#x591F;&#x4F18;&#x96C5;&#x4E5F;&#x4E0D;&#x591F;&#x901A;&#x7528;&#x7684;&#xFF0C;&#x56E0;&#x6B64;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x628A;&#x7194;&#x65AD;&#x5668;&#x96C6;&#x6210;&#x5728;&#x6846;&#x67B6;&#x5185;&#xFF0C;&#x5728;<a href="https://github.com/zeromicro/go-zero/tree/master/zrpc" target="_blank">zRPC</a>&#x6846;&#x67B6;&#x5185;&#x5C31;&#x5185;&#x7F6E;&#x4E86;&#x7194;&#x65AD;&#x5668;</p>
+<p>&#x6211;&#x4EEC;&#x77E5;&#x9053;&#xFF0C;&#x7194;&#x65AD;&#x5668;&#x4E3B;&#x8981;&#x662F;&#x7528;&#x6765;&#x4FDD;&#x62A4;&#x8C03;&#x7528;&#x7AEF;&#xFF0C;&#x8C03;&#x7528;&#x7AEF;&#x5728;&#x53D1;&#x8D77;&#x8BF7;&#x6C42;&#x7684;&#x65F6;&#x5019;&#x9700;&#x8981;&#x5148;&#x7ECF;&#x8FC7;&#x7194;&#x65AD;&#x5668;&#xFF0C;&#x800C;&#x5BA2;&#x6237;&#x7AEF;&#x62E6;&#x622A;&#x5668;&#x6B63;&#x597D;&#x517C;&#x5177;&#x4E86;&#x8FD9;&#x4E2A;&#x8FD9;&#x4E2A;&#x529F;&#x80FD;&#xFF0C;&#x6240;&#x4EE5;&#x5728;zRPC&#x6846;&#x67B6;&#x5185;&#x7194;&#x65AD;&#x5668;&#x662F;&#x5B9E;&#x73B0;&#x5728;&#x5BA2;&#x6237;&#x7AEF;&#x62E6;&#x622A;&#x5668;&#x5185;&#xFF0C;&#x62E6;&#x622A;&#x5668;&#x7684;&#x539F;&#x7406;&#x5982;&#x4E0B;&#x56FE;&#xFF1A;</p>
+<p><img src="resource/interceptor.png" alt="interceptor"></p>
+<p>&#x5BF9;&#x5E94;&#x7684;&#x4EE3;&#x7801;&#x4E3A;&#xFF1A;</p>
+<pre class="language-"><code class="lang-go"><span class="token keyword">func</span> <span class="token function">BreakerInterceptor</span><span class="token punctuation">(</span>ctx context<span class="token punctuation">.</span>Context<span class="token punctuation">,</span> method <span class="token builtin">string</span><span class="token punctuation">,</span> req<span class="token punctuation">,</span> reply <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    cc <span class="token operator">*</span>grpc<span class="token punctuation">.</span>ClientConn<span class="token punctuation">,</span> invoker grpc<span class="token punctuation">.</span>UnaryInvoker<span class="token punctuation">,</span> opts <span class="token operator">...</span>grpc<span class="token punctuation">.</span>CallOption<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+  <span class="token comment">// &#x57FA;&#x4E8E;&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#x8FDB;&#x884C;&#x7194;&#x65AD;</span>
+    breakerName <span class="token operator">:=</span> path<span class="token punctuation">.</span><span class="token function">Join</span><span class="token punctuation">(</span>cc<span class="token punctuation">.</span><span class="token function">Target</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> method<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> breaker<span class="token punctuation">.</span><span class="token function">DoWithAcceptable</span><span class="token punctuation">(</span>breakerName<span class="token punctuation">,</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+    <span class="token comment">// &#x771F;&#x6B63;&#x53D1;&#x8D77;&#x8C03;&#x7528;</span>
+        <span class="token keyword">return</span> <span class="token function">invoker</span><span class="token punctuation">(</span>ctx<span class="token punctuation">,</span> method<span class="token punctuation">,</span> req<span class="token punctuation">,</span> reply<span class="token punctuation">,</span> cc<span class="token punctuation">,</span> opts<span class="token operator">...</span><span class="token punctuation">)</span>
+    <span class="token comment">// codes.Acceptable&#x5224;&#x65AD;&#x54EA;&#x79CD;&#x9519;&#x8BEF;&#x9700;&#x8981;&#x52A0;&#x5165;&#x7194;&#x65AD;&#x9519;&#x8BEF;&#x8BA1;&#x6570;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span> codes<span class="token punctuation">.</span>Acceptable<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="&#x7194;&#x65AD;&#x5668;&#x5B9E;&#x73B0;">&#x7194;&#x65AD;&#x5668;&#x5B9E;&#x73B0;</h3>
+<p>zRPC&#x4E2D;&#x7194;&#x65AD;&#x5668;&#x7684;&#x5B9E;&#x73B0;&#x53C2;&#x8003;&#x4E86;<a href="https://landing.google.com/sre/sre-book/chapters/handling-overload/#eq2101" target="_blank">Google Sre&#x8FC7;&#x8F7D;&#x4FDD;&#x62A4;&#x7B97;&#x6CD5;</a>&#xFF0C;&#x8BE5;&#x7B97;&#x6CD5;&#x7684;&#x539F;&#x7406;&#x5982;&#x4E0B;&#xFF1A;</p>
+<ul>
+<li>&#x8BF7;&#x6C42;&#x6570;&#x91CF;(requests)&#xFF1A;&#x8C03;&#x7528;&#x65B9;&#x53D1;&#x8D77;&#x8BF7;&#x6C42;&#x7684;&#x6570;&#x91CF;&#x603B;&#x548C;</li>
+<li>&#x8BF7;&#x6C42;&#x63A5;&#x53D7;&#x6570;&#x91CF;(accepts)&#xFF1A;&#x88AB;&#x8C03;&#x7528;&#x65B9;&#x6B63;&#x5E38;&#x5904;&#x7406;&#x7684;&#x8BF7;&#x6C42;&#x6570;&#x91CF;</li>
+</ul>
+<p>&#x5728;&#x6B63;&#x5E38;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x8FD9;&#x4E24;&#x4E2A;&#x503C;&#x662F;&#x76F8;&#x7B49;&#x7684;&#xFF0C;&#x968F;&#x7740;&#x88AB;&#x8C03;&#x7528;&#x65B9;&#x670D;&#x52A1;&#x51FA;&#x73B0;&#x5F02;&#x5E38;&#x5F00;&#x59CB;&#x62D2;&#x7EDD;&#x8BF7;&#x6C42;&#xFF0C;&#x8BF7;&#x6C42;&#x63A5;&#x53D7;&#x6570;&#x91CF;(accepts)&#x7684;&#x503C;&#x5F00;&#x59CB;&#x9010;&#x6E10;&#x5C0F;&#x4E8E;&#x8BF7;&#x6C42;&#x6570;&#x91CF;(requests)&#xFF0C;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x8C03;&#x7528;&#x65B9;&#x53EF;&#x4EE5;&#x7EE7;&#x7EED;&#x53D1;&#x9001;&#x8BF7;&#x6C42;&#xFF0C;&#x76F4;&#x5230;requests = K * accepts&#xFF0C;&#x4E00;&#x65E6;&#x8D85;&#x8FC7;&#x8FD9;&#x4E2A;&#x9650;&#x5236;&#xFF0C;&#x7194;&#x65AD;&#x5668;&#x5C31;&#x56DE;&#x6253;&#x5F00;&#xFF0C;&#x65B0;&#x7684;&#x8BF7;&#x6C42;&#x4F1A;&#x5728;&#x672C;&#x5730;&#x4EE5;&#x4E00;&#x5B9A;&#x7684;&#x6982;&#x7387;&#x88AB;&#x629B;&#x5F03;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#x9519;&#x8BEF;&#xFF0C;&#x6982;&#x7387;&#x7684;&#x8BA1;&#x7B97;&#x516C;&#x5F0F;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p><img src="resource/client_rejection2.png" alt="client_rejection2"></p>
+<p>&#x901A;&#x8FC7;&#x4FEE;&#x6539;&#x7B97;&#x6CD5;&#x4E2D;&#x7684;K(&#x500D;&#x503C;)&#xFF0C;&#x53EF;&#x4EE5;&#x8C03;&#x8282;&#x7194;&#x65AD;&#x5668;&#x7684;&#x654F;&#x611F;&#x5EA6;&#xFF0C;&#x5F53;&#x964D;&#x4F4E;&#x8BE5;&#x500D;&#x503C;&#x4F1A;&#x4F7F;&#x81EA;&#x9002;&#x5E94;&#x7194;&#x65AD;&#x7B97;&#x6CD5;&#x66F4;&#x654F;&#x611F;&#xFF0C;&#x5F53;&#x589E;&#x52A0;&#x8BE5;&#x500D;&#x503C;&#x4F1A;&#x4F7F;&#x5F97;&#x81EA;&#x9002;&#x5E94;&#x7194;&#x65AD;&#x7B97;&#x6CD5;&#x964D;&#x4F4E;&#x654F;&#x611F;&#x5EA6;&#xFF0C;&#x4E3E;&#x4F8B;&#x6765;&#x8BF4;&#xFF0C;&#x5047;&#x8BBE;&#x5C06;&#x8C03;&#x7528;&#x65B9;&#x7684;&#x8BF7;&#x6C42;&#x4E0A;&#x9650;&#x4ECE; requests = 2 <em> acceptst &#x8C03;&#x6574;&#x4E3A; requests = 1.1 </em> accepts &#x90A3;&#x4E48;&#x5C31;&#x610F;&#x5473;&#x7740;&#x8C03;&#x7528;&#x65B9;&#x6BCF;&#x5341;&#x4E2A;&#x8BF7;&#x6C42;&#x4E4B;&#x4E2D;&#x5C31;&#x6709;&#x4E00;&#x4E2A;&#x8BF7;&#x6C42;&#x4F1A;&#x89E6;&#x53D1;&#x7194;&#x65AD;</p>
+<p>&#x4EE3;&#x7801;&#x8DEF;&#x5F84;&#x4E3A;go-zero/core/breaker</p>
+<pre class="language-"><code class="lang-go"><span class="token keyword">type</span> googleBreaker <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+    k     <span class="token builtin">float64</span>  <span class="token comment">// &#x500D;&#x503C; &#x9ED8;&#x8BA4;1.5</span>
+    stat  <span class="token operator">*</span>collection<span class="token punctuation">.</span>RollingWindow <span class="token comment">// &#x6ED1;&#x52A8;&#x65F6;&#x95F4;&#x7A97;&#x53E3;&#xFF0C;&#x7528;&#x6765;&#x5BF9;&#x8BF7;&#x6C42;&#x5931;&#x8D25;&#x548C;&#x6210;&#x529F;&#x8BA1;&#x6570;</span>
+    proba <span class="token operator">*</span>mathx<span class="token punctuation">.</span>Proba <span class="token comment">// &#x52A8;&#x6001;&#x6982;&#x7387;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>&#x81EA;&#x9002;&#x5E94;&#x7194;&#x65AD;&#x7B97;&#x6CD5;&#x5B9E;&#x73B0;</p>
+<pre class="language-"><code class="lang-go"><span class="token keyword">func</span> <span class="token punctuation">(</span>b <span class="token operator">*</span>googleBreaker<span class="token punctuation">)</span> <span class="token function">accept</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+    accepts<span class="token punctuation">,</span> total <span class="token operator">:=</span> b<span class="token punctuation">.</span><span class="token function">history</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment">// &#x8BF7;&#x6C42;&#x63A5;&#x53D7;&#x6570;&#x91CF;&#x548C;&#x8BF7;&#x6C42;&#x603B;&#x91CF;</span>
+    weightedAccepts <span class="token operator">:=</span> b<span class="token punctuation">.</span>k <span class="token operator">*</span> <span class="token function">float64</span><span class="token punctuation">(</span>accepts<span class="token punctuation">)</span>
+  <span class="token comment">// &#x8BA1;&#x7B97;&#x4E22;&#x5F03;&#x8BF7;&#x6C42;&#x6982;&#x7387;</span>
+    dropRatio <span class="token operator">:=</span> math<span class="token punctuation">.</span><span class="token function">Max</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token function">float64</span><span class="token punctuation">(</span>total<span class="token operator">-</span>protection<span class="token punctuation">)</span><span class="token operator">-</span>weightedAccepts<span class="token punctuation">)</span><span class="token operator">/</span><span class="token function">float64</span><span class="token punctuation">(</span>total<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> dropRatio <span class="token operator">&lt;=</span> <span class="token number">0</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token boolean">nil</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">// &#x52A8;&#x6001;&#x5224;&#x65AD;&#x662F;&#x5426;&#x89E6;&#x53D1;&#x7194;&#x65AD;</span>
+    <span class="token keyword">if</span> b<span class="token punctuation">.</span>proba<span class="token punctuation">.</span><span class="token function">TrueOnProba</span><span class="token punctuation">(</span>dropRatio<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> ErrServiceUnavailable
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> <span class="token boolean">nil</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>&#x6BCF;&#x6B21;&#x53D1;&#x8D77;&#x8BF7;&#x6C42;&#x4F1A;&#x8C03;&#x7528;doReq&#x65B9;&#x6CD5;&#xFF0C;&#x5728;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x4E2D;&#x9996;&#x5148;&#x901A;&#x8FC7;accept&#x6548;&#x9A8C;&#x662F;&#x5426;&#x89E6;&#x53D1;&#x7194;&#x65AD;&#xFF0C;acceptable&#x7528;&#x6765;&#x5224;&#x65AD;&#x54EA;&#x4E9B;error&#x4F1A;&#x8BA1;&#x5165;&#x5931;&#x8D25;&#x8BA1;&#x6570;&#xFF0C;&#x5B9A;&#x4E49;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre class="language-"><code class="lang-go"><span class="token keyword">func</span> <span class="token function">Acceptable</span><span class="token punctuation">(</span>err <span class="token builtin">error</span><span class="token punctuation">)</span> <span class="token builtin">bool</span> <span class="token punctuation">{</span>
+    <span class="token keyword">switch</span> status<span class="token punctuation">.</span><span class="token function">Code</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">case</span> codes<span class="token punctuation">.</span>DeadlineExceeded<span class="token punctuation">,</span> codes<span class="token punctuation">.</span>Internal<span class="token punctuation">,</span> codes<span class="token punctuation">.</span>Unavailable<span class="token punctuation">,</span> codes<span class="token punctuation">.</span>DataLoss<span class="token punctuation">:</span> <span class="token comment">// &#x5F02;&#x5E38;&#x8BF7;&#x6C42;&#x9519;&#x8BEF;</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span>
+    <span class="token keyword">default</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>&#x5982;&#x679C;&#x8BF7;&#x6C42;&#x6B63;&#x5E38;&#x5219;&#x901A;&#x8FC7;markSuccess&#x628A;&#x8BF7;&#x6C42;&#x6570;&#x91CF;&#x548C;&#x8BF7;&#x6C42;&#x63A5;&#x53D7;&#x6570;&#x91CF;&#x90FD;&#x52A0;&#x4E00;&#xFF0C;&#x5982;&#x679C;&#x8BF7;&#x6C42;&#x4E0D;&#x6B63;&#x5E38;&#x5219;&#x53EA;&#x6709;&#x8BF7;&#x6C42;&#x6570;&#x91CF;&#x4F1A;&#x52A0;&#x4E00;</p>
+<pre class="language-"><code class="lang-go"><span class="token keyword">func</span> <span class="token punctuation">(</span>b <span class="token operator">*</span>googleBreaker<span class="token punctuation">)</span> <span class="token function">doReq</span><span class="token punctuation">(</span>req <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">error</span><span class="token punctuation">,</span> fallback <span class="token keyword">func</span><span class="token punctuation">(</span>err <span class="token builtin">error</span><span class="token punctuation">)</span> <span class="token builtin">error</span><span class="token punctuation">,</span> acceptable Acceptable<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+    <span class="token comment">// &#x5224;&#x65AD;&#x662F;&#x5426;&#x89E6;&#x53D1;&#x7194;&#x65AD;</span>
+  <span class="token keyword">if</span> err <span class="token operator">:=</span> b<span class="token punctuation">.</span><span class="token function">accept</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> fallback <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token function">fallback</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> err
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">defer</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> e <span class="token operator">:=</span> <span class="token function">recover</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> e <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+            b<span class="token punctuation">.</span><span class="token function">markFailure</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token function">panic</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+  <span class="token comment">// &#x6267;&#x884C;&#x771F;&#x6B63;&#x7684;&#x8C03;&#x7528;</span>
+    err <span class="token operator">:=</span> <span class="token function">req</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token comment">// &#x6B63;&#x5E38;&#x8BF7;&#x6C42;&#x8BA1;&#x6570;</span>
+    <span class="token keyword">if</span> <span class="token function">acceptable</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        b<span class="token punctuation">.</span><span class="token function">markSuccess</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token comment">// &#x5F02;&#x5E38;&#x8BF7;&#x6C42;&#x8BA1;&#x6570;</span>
+        b<span class="token punctuation">.</span><span class="token function">markFailure</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> err
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</h3>
+<p>&#x8C03;&#x7528;&#x7AEF;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x7194;&#x65AD;&#x673A;&#x5236;&#x8FDB;&#x884C;&#x81EA;&#x6211;&#x4FDD;&#x62A4;&#xFF0C;&#x9632;&#x6B62;&#x8C03;&#x7528;&#x4E0B;&#x6E38;&#x670D;&#x52A1;&#x51FA;&#x73B0;&#x5F02;&#x5E38;&#xFF0C;&#x6216;&#x8005;&#x8017;&#x65F6;&#x8FC7;&#x957F;&#x5F71;&#x54CD;&#x8C03;&#x7528;&#x7AEF;&#x7684;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#xFF0C;&#x5F88;&#x591A;&#x529F;&#x80FD;&#x5B8C;&#x6574;&#x7684;&#x5FAE;&#x670D;&#x52A1;&#x6846;&#x67B6;&#x90FD;&#x4F1A;&#x5185;&#x7F6E;&#x7194;&#x65AD;&#x5668;&#x3002;&#x5176;&#x5B9E;&#xFF0C;&#x4E0D;&#x4EC5;&#x5FAE;&#x670D;&#x52A1;&#x8C03;&#x7528;&#x4E4B;&#x95F4;&#x9700;&#x8981;&#x7194;&#x65AD;&#x5668;&#xFF0C;&#x5728;&#x8C03;&#x7528;&#x4F9D;&#x8D56;&#x8D44;&#x6E90;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6BD4;&#x5982;mysql&#x3001;redis&#x7B49;&#x4E5F;&#x53EF;&#x4EE5;&#x5F15;&#x5165;&#x7194;&#x65AD;&#x5668;&#x7684;&#x673A;&#x5236;&#x3002;</p>
+<footer class="page-footer"><span class="copyright">Copyright &#xA9; 2019-2021 go-zero all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last UpdateTime&#xFF1A;
+2021-10-17 14:52:27
+</span></footer>
+<script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="timing-wheel.html" class="navigation navigation-prev " aria-label="Previous page: 时间轮介绍">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="collection.html" class="navigation navigation-next " aria-label="Next page: 进程内缓存组件 collection.Cache">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"熔断原理与实现","level":"1.11.11","depth":2,"next":{"title":"进程内缓存组件 collection.Cache","level":"1.11.12","depth":2,"path":"collection.md","ref":"collection.md","articles":[]},"previous":{"title":"时间轮介绍","level":"1.11.10","depth":2,"path":"timing-wheel.md","ref":"timing-wheel.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","code","-lunr","-search","search-pro","github","splitter","-sharing","sharing-plus","tbfed-pagefooter","flexible-alerts","page-toc-button","pageview-count","popup","hide-element","edit-link","-highlight","prism","theme-comscore"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © 2019-2021 go-zero","modify_label":"Last UpdateTime：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"lang":{"shell":"bash"},"css":["prismjs/themes/prism-tomorrow.css"]},"github":{"url":"https://github.com/zeromicro/go-zero"},"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"qq":false,"all":["douban","facebook","google","linkedin","twitter","weibo","qq","qzone","weibo"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true},"edit-link":{"label":"EDIT THIS PAGE","base":"https://github.com/zeromicro/zero-doc/tree/main/go-zero.dev"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"anqiansong","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"go-zero document","language":"cn","gitbook":"*","description":"Golang 微服务框架 | 集成各种工程实践的 WEB 和 RPC 框架 | 一键生成 Go, iOS, Android, Kotlin, Dart, TypeScript, JavaScript 代码"},"file":{"path":"breaker-algorithms.md","mtime":"2021-10-17T14:52:27.271Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-10-17T14:53:25.776Z"},"basePath":".","book":{"language":"cn"}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing-plus/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-flexible-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-page-toc-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-pageview-count/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-hide-element/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-edit-link/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-theme-comscore/test.js"></script>
+        
+    
+
+    </body>
+</html>
+
