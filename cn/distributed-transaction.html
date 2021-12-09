@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>文档贡献 · go-zero document</title>
+        <title>分布式事务支持 · go-zero document</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -93,10 +93,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="error.html" />
+    <link rel="next" href="plugin-center.html" />
     
     
-    <link rel="prev" href="contributor.html" />
+    <link rel="prev" href="vscode.html" />
     
 
     </head>
@@ -1284,7 +1284,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.12.2" data-path="distributed-transaction.html">
+        <li class="chapter active" data-level="1.12.2" data-path="distributed-transaction.html">
             
                 <a href="distributed-transaction.html">
             
@@ -1386,7 +1386,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.15" data-path="doc-contibute.html">
+        <li class="chapter " data-level="1.15" data-path="doc-contibute.html">
             
                 <a href="doc-contibute.html">
             
@@ -1468,7 +1468,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >文档贡献</a>
+        <a href="." >分布式事务支持</a>
     </h1>
 </div>
 
@@ -1483,58 +1483,24 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x6587;&#x6863;&#x8D21;&#x732E;">&#x6587;&#x6863;&#x8D21;&#x732E;</h1>
-<h2 id="&#x600E;&#x4E48;&#x8D21;&#x732E;&#x6587;&#x6863;&#xFF1F;">&#x600E;&#x4E48;&#x8D21;&#x732E;&#x6587;&#x6863;&#xFF1F;</h2>
-<p>&#x70B9;&#x51FB;&#x9876;&#x90E8;&quot;&#x7F16;&#x8F91;&#x6B64;&#x9875;&quot;&#x6309;&#x94AE;&#x5373;&#x53EF;&#x8FDB;&#x5165;&#x6E90;&#x7801;&#x4ED3;&#x5E93;&#x5BF9;&#x5E94;&#x7684;&#x6587;&#x4EF6;&#xFF0C;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x5C06;&#x4FEE;&#x6539;&#xFF08;&#x6DFB;&#x52A0;&#xFF09;&#x7684;&#x6587;&#x6863;&#x901A;&#x8FC7;pr&#x5F62;&#x5F0F;&#x63D0;&#x4EA4;&#xFF0C;
-&#x6211;&#x4EEC;&#x6536;&#x5230;pr&#x540E;&#x4F1A;&#x8FDB;&#x884C;&#x6587;&#x6863;&#x5BA1;&#x6838;&#xFF0C;&#x4E00;&#x65E6;&#x5BA1;&#x6838;&#x901A;&#x8FC7;&#x5373;&#x53EF;&#x66F4;&#x65B0;&#x6587;&#x6863;&#x3002;
-<img src="resource/doc-edit.png" alt="doc-edit"></p>
-<h2 id="&#x53EF;&#x4EE5;&#x8D21;&#x732E;&#x54EA;&#x4E9B;&#x6587;&#x6863;&#xFF1F;">&#x53EF;&#x4EE5;&#x8D21;&#x732E;&#x54EA;&#x4E9B;&#x6587;&#x6863;&#xFF1F;</h2>
+                                <h1 id="&#x5206;&#x5E03;&#x5F0F;&#x4E8B;&#x52A1;&#x652F;&#x6301;">&#x5206;&#x5E03;&#x5F0F;&#x4E8B;&#x52A1;&#x652F;&#x6301;</h1>
+<h2 id="&#x9700;&#x6C42;&#x573A;&#x666F;">&#x9700;&#x6C42;&#x573A;&#x666F;</h2>
+<p>&#x5728;&#x5FAE;&#x670D;&#x52A1;&#x67B6;&#x6784;&#x4E2D;&#xFF0C;&#x5F53;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x8DE8;&#x670D;&#x52A1;&#x4FDD;&#x8BC1;&#x6570;&#x636E;&#x4E00;&#x81F4;&#x6027;&#x65F6;&#xFF0C;&#x539F;&#x5148;&#x7684;&#x6570;&#x636E;&#x5E93;&#x4E8B;&#x52A1;&#x529B;&#x4E0D;&#x4ECE;&#x5FC3;&#xFF0C;&#x65E0;&#x6CD5;&#x5C06;&#x8DE8;&#x5E93;&#x3001;&#x8DE8;&#x670D;&#x52A1;&#x7684;&#x591A;&#x4E2A;&#x64CD;&#x4F5C;&#x653E;&#x5728;&#x4E00;&#x4E2A;&#x4E8B;&#x52A1;&#x4E2D;&#x3002;&#x8FD9;&#x6837;&#x7684;&#x5E94;&#x7528;&#x573A;&#x666F;&#x975E;&#x5E38;&#x591A;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5217;&#x4E3E;&#x51FA;&#x5F88;&#x591A;&#xFF1A;</p>
 <ul>
-<li>&#x6587;&#x6863;&#x7F16;&#x5199;&#x9519;&#x8BEF;</li>
-<li>&#x6587;&#x6863;&#x4E0D;&#x89C4;&#x8303;&#x3001;&#x4E0D;&#x5B8C;&#x6574;</li>
-<li>go-zero&#x5E94;&#x7528;&#x5B9E;&#x8DF5;&#x3001;&#x5FC3;&#x5F97;</li>
-<li>&#x7EC4;&#x4EF6;&#x4E2D;&#x5FC3;</li>
+<li>&#x8DE8;&#x884C;&#x8F6C;&#x8D26;&#x573A;&#x666F;&#xFF0C;&#x6570;&#x636E;&#x4E0D;&#x5728;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x4F46;&#x9700;&#x8981;&#x4FDD;&#x8BC1;&#x4F59;&#x989D;&#x6263;&#x51CF;&#x548C;&#x4F59;&#x989D;&#x589E;&#x52A0;&#x8981;&#x4E48;&#x540C;&#x65F6;&#x6210;&#x529F;&#xFF0C;&#x8981;&#x4E48;&#x540C;&#x65F6;&#x5931;&#x8D25;</li>
+<li>&#x53D1;&#x5E03;&#x6587;&#x7AE0;&#x540E;&#xFF0C;&#x66F4;&#x65B0;&#x6587;&#x7AE0;&#x603B;&#x6570;&#x7B49;&#x7EDF;&#x8BA1;&#x4FE1;&#x606F;&#x3002;&#x5176;&#x4E2D;&#x53D1;&#x5E03;&#x6587;&#x7AE0;&#x548C;&#x66F4;&#x65B0;&#x7EDF;&#x8BA1;&#x4FE1;&#x606F;&#x901A;&#x5E38;&#x4E0D;&#x518D;&#x4E00;&#x4E2A;&#x5FAE;&#x670D;&#x52A1;&#x4E2D;</li>
+<li>&#x5FAE;&#x670D;&#x52A1;&#x5316;&#x4E4B;&#x540E;&#x7684;&#x8BA2;&#x5355;&#x7CFB;&#x7EDF;</li>
+<li>&#x51FA;&#x884C;&#x65C5;&#x6E38;&#x9700;&#x8981;&#x5728;&#x7B2C;&#x4E09;&#x65B9;&#x7CFB;&#x7EDF;&#x540C;&#x65F6;&#x5B9A;&#x51E0;&#x5F20;&#x7968;</li>
 </ul>
-<h2 id="&#x6587;&#x6863;pr&#x901A;&#x8FC7;&#x540E;&#x6587;&#x6863;&#x591A;&#x4E45;&#x4F1A;&#x66F4;&#x65B0;&#xFF1F;">&#x6587;&#x6863;pr&#x901A;&#x8FC7;&#x540E;&#x6587;&#x6863;&#x591A;&#x4E45;&#x4F1A;&#x66F4;&#x65B0;&#xFF1F;</h2>
-<p>&#x5728;pr&#x63A5;&#x53D7;&#x540E;&#xFF0C;github action&#x4F1A;&#x81EA;&#x52A8;build gitbook&#x5E76;&#x53D1;&#x5E03;&#xFF0C;&#x56E0;&#x6B64;&#x5728;github action&#x6210;&#x529F;&#x540E;1-2&#x5206;&#x949F;&#x5373;&#x53EF;&#x67E5;&#x770B;&#x66F4;&#x65B0;&#x540E;&#x7684;&#x6587;&#x6863;&#x3002;</p>
-<h2 id="&#x6587;&#x6863;&#x8D21;&#x732E;&#x6CE8;&#x610F;&#x4E8B;&#x9879;">&#x6587;&#x6863;&#x8D21;&#x732E;&#x6CE8;&#x610F;&#x4E8B;&#x9879;</h2>
+<p>&#x9762;&#x5BF9;&#x8FD9;&#x4E9B;&#x672C;&#x5730;&#x4E8B;&#x52A1;&#x65E0;&#x6CD5;&#x89E3;&#x51B3;&#x7684;&#x573A;&#x666F;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5206;&#x5E03;&#x5F0F;&#x4E8B;&#x52A1;&#x7684;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#xFF0C;&#x4FDD;&#x8BC1;&#x8DE8;&#x670D;&#x52A1;&#x3001;&#x8DE8;&#x6570;&#x636E;&#x5E93;&#x66F4;&#x65B0;&#x6570;&#x636E;&#x7684;&#x4E00;&#x81F4;&#x6027;&#x3002;</p>
+<h2 id="&#x89E3;&#x51B3;&#x65B9;&#x6848;">&#x89E3;&#x51B3;&#x65B9;&#x6848;</h2>
+<p>go-zero&#x4E0E;<a href="https://github.com/yedf/dtm" target="_blank">dtm</a>&#x5F3A;&#x5F3A;&#x8054;&#x5408;&#xFF0C;&#x63A8;&#x51FA;&#x4E86;&#x5728;go-zero&#x4E2D;&#x65E0;&#x7F1D;&#x63A5;&#x5165;dtm&#x7684;&#x6781;&#x7B80;&#x65B9;&#x6848;&#xFF0C;&#x662F;go&#x751F;&#x6001;&#x4E2D;&#x9996;&#x5BB6;&#x63D0;&#x4F9B;&#x5206;&#x5E03;&#x5F0F;&#x4E8B;&#x52A1;&#x80FD;&#x529B;&#x7684;&#x5FAE;&#x670D;&#x52A1;&#x6846;&#x67B6;&#x3002;&#x8BE5;&#x65B9;&#x6848;&#x5177;&#x5907;&#x4EE5;&#x4E0B;&#x7279;&#x5F81;&#xFF1A;</p>
 <ul>
-<li>&#x7EA0;&#x9519;&#x3001;&#x5B8C;&#x5584;&#x6E90;&#x6587;&#x6863;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x7F16;&#x5199;&#x539F;&#x6765;&#x7684;md&#x6587;&#x4EF6;</li>
-<li>&#x65B0;&#x589E;&#x7EC4;&#x4EF6;&#x6587;&#x6863;&#x9700;&#x8981;&#x4FDD;&#x8BC1;&#x6587;&#x6863;&#x6392;&#x7248;&#x3001;&#x6613;&#x8BFB;&#xFF0C;&#x4E14;&#x7EC4;&#x4EF6;&#x6587;&#x6863;&#x9700;&#x8981;&#x653E;&#x5728;<a href="extended-reading.html">&#x7EC4;&#x4EF6;&#x4E2D;&#x5FC3;</a>&#x5B50;&#x76EE;&#x5F55;&#x4E2D;</li>
-<li>go-zero&#x5E94;&#x7528;&#x5B9E;&#x8DF5;&#x5206;&#x4EAB;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x653E;&#x5728;<a href="practise.md">&#x5F00;&#x53D1;&#x5B9E;&#x8DF5;</a>&#x5B50;&#x76EE;&#x5F55;&#x4E0B;</li>
+<li>dtm&#x670D;&#x52A1;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x914D;&#x7F6E;&#xFF0C;&#x76F4;&#x63A5;&#x6CE8;&#x518C;&#x5230;go-zero&#x7684;&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;</li>
+<li>go-zero&#x80FD;&#x591F;&#x4EE5;&#x5185;&#x5EFA;&#x7684;target&#x683C;&#x5F0F;&#x8BBF;&#x95EE;dtm&#x670D;&#x52A1;&#x5668;</li>
+<li>dtm&#x80FD;&#x591F;&#x8BC6;&#x522B;go-zero&#x7684;target&#x683C;&#x5F0F;&#xFF0C;&#x52A8;&#x6001;&#x8BBF;&#x95EE;go-zero&#x4E2D;&#x7684;&#x670D;&#x52A1;</li>
 </ul>
-<h2 id="&#x76EE;&#x5F55;&#x7ED3;&#x6784;&#x89C4;&#x8303;">&#x76EE;&#x5F55;&#x7ED3;&#x6784;&#x89C4;&#x8303;</h2>
-<ul>
-<li>&#x76EE;&#x5F55;&#x7ED3;&#x6784;&#x4E0D;&#x5B9C;&#x8FC7;&#x6DF1;&#xFF0C;&#x6700;&#x597D;&#x4E0D;&#x8981;&#x8D85;&#x8FC7;3&#x5C42;</li>
-<li>&#x7EC4;&#x4EF6;&#x6587;&#x6863;&#x9700;&#x8981;&#x5728;&#x5F52;&#x5C5E;&#x5230;<a href="extended-reading.html">&#x7EC4;&#x4EF6;&#x4E2D;&#x5FC3;</a>&#xFF0C;&#x5982;<pre class="language-"><code class="lang-markdown"><span class="token list punctuation">*</span> <span class="token url">[<span class="token content">&#x5F00;&#x53D1;&#x5B9E;&#x8DF5;</span>](<span class="token url">practise.md</span>)</span>
-  <span class="token list punctuation">*</span> <span class="token url">[<span class="token content">logx</span>](<span class="token url">logx.md</span>)</span>
-  <span class="token list punctuation">*</span> <span class="token url">[<span class="token content">bloom</span>](<span class="token url">bloom.md</span>)</span>
-  <span class="token list punctuation">*</span> <span class="token url">[<span class="token content">executors</span>](<span class="token url">executors.md</span>)</span>
-  <span class="token list punctuation">*</span> &#x4F60;&#x7684;&#x6587;&#x6863;&#x76EE;&#x5F55;&#x540D;&#x79F0;
-</code></pre>
-</li>
-<li>&#x5E94;&#x7528;&#x5B9E;&#x8DF5;&#x9700;&#x8981;&#x5F52;&#x5C5E;&#x5230;<a href="practise.md">&#x5F00;&#x53D1;&#x5B9E;&#x8DF5;</a>&#xFF0C;&#x5982;<pre class="language-"><code class="lang-markdown"><span class="token list punctuation">*</span> <span class="token url">[<span class="token content">&#x5F00;&#x53D1;&#x5B9E;&#x8DF5;</span>](<span class="token url">practise.md</span>)</span>
-  <span class="token list punctuation">*</span> <span class="token url">[<span class="token content">&#x6211;&#x662F;&#x5982;&#x4F55;&#x7528;go-zero &#x5B9E;&#x73B0;&#x4E00;&#x4E2A;&#x4E2D;&#x53F0;&#x7CFB;&#x7EDF;</span>](<span class="token url">datacenter.md</span>)</span>
-  <span class="token list punctuation">*</span> <span class="token url">[<span class="token content">&#x6D41;&#x6570;&#x636E;&#x5904;&#x7406;&#x5229;&#x5668;</span>](<span class="token url">stream.md</span>)</span>
-  <span class="token list punctuation">*</span> [10&#x6708;3&#x65E5;&#x7EBF;&#x4E0A;&#x4EA4;&#x6D41;&#x95EE;&#x9898;&#x6C47;&#x603B;](online-exchange.md
-  <span class="token list punctuation">*</span> &#x4F60;&#x7684;&#x6587;&#x6863;&#x76EE;&#x5F55;&#x540D;&#x79F0;
-</code></pre>
-</li>
-</ul>
-<h2 id="&#x5F00;&#x53D1;&#x5B9E;&#x8DF5;&#x6587;&#x6863;&#x6A21;&#x677F;">&#x5F00;&#x53D1;&#x5B9E;&#x8DF5;&#x6587;&#x6863;&#x6A21;&#x677F;</h2>
-<pre class="language-"><code class="lang-markdown">  <span class="token title important"><span class="token punctuation">#</span> &#x6807;&#x9898;</span>
-
-  &gt; &#x4F5C;&#x8005;&#xFF1A;&#x586B;&#x5165;&#x4F5C;&#x8005;&#x540D;&#x79F0;
-  &gt;
-  &gt; &#x539F;&#x6587;&#x8FDE;&#x63A5;&#xFF1A; &#x539F;&#x6587;&#x8FDE;&#x63A5;
-
-  some markdown content
-</code></pre>
-<h1 id="&#x731C;&#x4F60;&#x60F3;&#x770B;">&#x731C;&#x4F60;&#x60F3;&#x770B;</h1>
-<ul>
-<li><a href="join-us.html">&#x600E;&#x4E48;&#x53C2;&#x4E0E;&#x8D21;&#x732E;</a></li>
-<li><a href="https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/proposing-changes-to-your-work-with-pull-requests" target="_blank">Github Pull request</a></li>
-</ul>
+<p>&#x8BE6;&#x7EC6;&#x7684;&#x63A5;&#x5165;&#x65B9;&#x5F0F;&#xFF0C;&#x53C2;&#x89C1;<a href="https://dtm.pub/protocol/gozero.html" target="_blank">dtm&#x6587;&#x6863;&#xFF1A;go-zero&#x652F;&#x6301;</a></p>
 <footer class="page-footer"><span class="copyright">Copyright &#xA9; 2019-2021 go-zero all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last UpdateTime&#xFF1A;
 2021-12-09 12:17:45
 </span></footer>
@@ -1565,12 +1531,12 @@
 
             
                 
-                <a href="contributor.html" class="navigation navigation-prev " aria-label="Previous page: 贡献人员">
+                <a href="vscode.html" class="navigation navigation-prev " aria-label="Previous page: vscode插件">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="error.html" class="navigation navigation-next " aria-label="Next page: 常见错误处理">
+                <a href="plugin-center.html" class="navigation navigation-next " aria-label="Next page: 插件中心">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1581,7 +1547,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"文档贡献","level":"1.15","depth":1,"next":{"title":"常见错误处理","level":"1.16","depth":1,"path":"error.md","ref":"error.md","articles":[]},"previous":{"title":"贡献人员","level":"1.14","depth":1,"path":"contributor.md","ref":"contributor.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","code","-lunr","-search","search-pro","github","splitter","-sharing","sharing-plus","tbfed-pagefooter","flexible-alerts","page-toc-button","pageview-count","popup","hide-element","edit-link","-highlight","prism","theme-comscore"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © 2019-2021 go-zero","modify_label":"Last UpdateTime：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"lang":{"shell":"bash"},"css":["prismjs/themes/prism-tomorrow.css"]},"github":{"url":"https://github.com/zeromicro/go-zero"},"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"qq":false,"all":["douban","facebook","google","linkedin","twitter","weibo","qq","qzone","weibo"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true},"edit-link":{"label":"EDIT THIS PAGE","base":"https://github.com/zeromicro/zero-doc/tree/main/go-zero.dev"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"anqiansong","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"go-zero document","language":"cn","gitbook":"*","description":"Golang 微服务框架 | 集成各种工程实践的 WEB 和 RPC 框架 | 一键生成 Go, iOS, Android, Kotlin, Dart, TypeScript, JavaScript 代码"},"file":{"path":"doc-contibute.md","mtime":"2021-12-09T12:17:45.165Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-12-09T12:18:40.766Z"},"basePath":".","book":{"language":"cn"}});
+            gitbook.page.hasChanged({"page":{"title":"分布式事务支持","level":"1.12.2","depth":2,"next":{"title":"插件中心","level":"1.12.3","depth":2,"path":"plugin-center.md","ref":"plugin-center.md","articles":[]},"previous":{"title":"vscode插件","level":"1.12.1.2","depth":3,"path":"vscode.md","ref":"vscode.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","code","-lunr","-search","search-pro","github","splitter","-sharing","sharing-plus","tbfed-pagefooter","flexible-alerts","page-toc-button","pageview-count","popup","hide-element","edit-link","-highlight","prism","theme-comscore"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © 2019-2021 go-zero","modify_label":"Last UpdateTime：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"lang":{"shell":"bash"},"css":["prismjs/themes/prism-tomorrow.css"]},"github":{"url":"https://github.com/zeromicro/go-zero"},"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"qq":false,"all":["douban","facebook","google","linkedin","twitter","weibo","qq","qzone","weibo"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true},"edit-link":{"label":"EDIT THIS PAGE","base":"https://github.com/zeromicro/zero-doc/tree/main/go-zero.dev"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"anqiansong","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"go-zero document","language":"cn","gitbook":"*","description":"Golang 微服务框架 | 集成各种工程实践的 WEB 和 RPC 框架 | 一键生成 Go, iOS, Android, Kotlin, Dart, TypeScript, JavaScript 代码"},"file":{"path":"distributed-transaction.md","mtime":"2021-12-09T12:17:45.165Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-12-09T12:18:40.766Z"},"basePath":".","book":{"language":"cn"}});
         });
     </script>
 </div>
