@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>vscode插件 · go-zero document</title>
+        <title>使用go-zero开发一个旅游系统go-zero-looklook · go-zero document</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -93,10 +93,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="distributed-transaction.html" />
+    <link rel="next" href="datacenter.html" />
     
     
-    <link rel="prev" href="intellij.html" />
+    <link rel="prev" href="go-queue.html" />
     
 
     </head>
@@ -1181,7 +1181,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.11.24" data-path="go-zero-looklook.html">
+        <li class="chapter active" data-level="1.11.24" data-path="go-zero-looklook.html">
             
                 <a href="go-zero-looklook.html">
             
@@ -1279,7 +1279,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.12.1.2" data-path="vscode.html">
+        <li class="chapter " data-level="1.12.1.2" data-path="vscode.html">
             
                 <a href="vscode.html">
             
@@ -1481,7 +1481,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >vscode插件</a>
+        <a href="." >使用go-zero开发一个旅游系统go-zero-looklook</a>
     </h1>
 </div>
 
@@ -1496,37 +1496,95 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="vs-code-&#x63D2;&#x4EF6;">vs code &#x63D2;&#x4EF6;</h1>
-<p>&#x8BE5;&#x63D2;&#x4EF6;&#x53EF;&#x4EE5;&#x5B89;&#x88C5;&#x5728; 1.46.0+ &#x7248;&#x672C;&#x7684; Visual Studio Code &#x4E0A;&#xFF0C;&#x9996;&#x5148;&#x8BF7;&#x786E;&#x4FDD;&#x4F60;&#x7684; Visual Studio Code &#x7248;&#x672C;&#x7B26;&#x5408;&#x8981;&#x6C42;&#xFF0C;&#x5E76;&#x5DF2;&#x5B89;&#x88C5; goctl &#x547D;&#x4EE4;&#x884C;&#x5DE5;&#x5177;&#x3002;&#x5982;&#x679C;&#x5C1A;&#x672A;&#x5B89;&#x88C5; Visual Studio Code&#xFF0C;&#x8BF7;&#x5B89;&#x88C5;&#x5E76;&#x6253;&#x5F00; Visual Studio Code&#x3002; &#x5BFC;&#x822A;&#x5230;&#x201C;&#x6269;&#x5C55;&#x201D;&#x7A97;&#x683C;&#xFF0C;&#x641C;&#x7D22; goctl &#x5E76;&#x5B89;&#x88C5;&#x6B64;&#x6269;&#x5C55;&#xFF08;&#x53D1;&#x5E03;&#x8005;ID&#x4E3A; &#x201C;xiaoxin-technology.goctl&#x201D;&#xFF09;&#x3002;</p>
-<p>Visual Studio Code &#x6269;&#x5C55;&#x4F7F;&#x7528;&#x8BF7;&#x53C2;&#x8003;<a href="https://code.visualstudio.com/docs/editor/extension-gallery" target="_blank">&#x8FD9;&#x91CC;</a>&#x3002;</p>
-<h2 id="&#x529F;&#x80FD;&#x5217;&#x8868;">&#x529F;&#x80FD;&#x5217;&#x8868;</h2>
-<p>&#x5DF2;&#x5B9E;&#x73B0;&#x529F;&#x80FD;</p>
+                                <h4 id="&#x4F7F;&#x7528;go-zero&#x5F00;&#x53D1;&#x4E00;&#x4E2A;&#x65C5;&#x6E38;&#x7CFB;&#x7EDF;go-zero-looklook">&#x4F7F;&#x7528;go-zero&#x5F00;&#x53D1;&#x4E00;&#x4E2A;&#x65C5;&#x6E38;&#x7CFB;&#x7EDF;go-zero-looklook</h4>
+<p>&#x56E0;&#x4E3A;&#x5927;&#x5BB6;&#x90FD;&#x5728;&#x8BF4;&#x76EE;&#x524D;go-zero&#x6CA1;&#x6709;&#x4E00;&#x4E2A;&#x5B8C;&#x6574;&#x7684;&#x9879;&#x76EE;&#x4F8B;&#x5B50;&#xFF0C;&#x672C;&#x4EBA;&#x63A5;&#x89E6;go-zero&#x53EF;&#x80FD;&#x6BD4;&#x8F83;&#x65E9;&#xFF0C;go-zero&#x5728;&#x5927;&#x7EA6;1000start&#x5DE6;&#x53F3;&#x6211;&#x5C31;&#x5728;&#x7528;&#x4E86;&#xFF0C;&#x540E;&#x6765;&#x8DDF;go-zero&#x4F5C;&#x8005;&#x52A0;&#x4E86;&#x5FAE;&#x4FE1;&#x4E5F;&#x719F;&#x6089;&#x4E86;&#xFF0C;go-zero&#x4F5C;&#x8005;&#x975E;&#x5E38;&#x70ED;&#x5FC3;&#x4EE5;&#x53CA;&#x8010;&#x5FC3;&#x7684;&#x5E2E;&#x6211;&#x89E3;&#x7B54;&#x4E86;&#x5F88;&#x591A;&#x95EE;&#x9898;&#xFF0C;&#x6211;&#x4E5F;&#x60F3;&#x79EF;&#x6781;&#x5E2E;&#x52A9;go-zero&#x63A8;&#x5E7F;&#x793E;&#x533A;&#xFF0C;&#x57FA;&#x672C;&#x662F;&#x5728;&#x793E;&#x533A;&#x7FA4;&#x5185;&#x56DE;&#x7B54;&#x5927;&#x5BB6;&#x76F8;&#x5173;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x56E0;&#x4E3A;&#x5728;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x4E2D;&#x53D1;&#x73B0;&#x5F88;&#x591A;&#x4EBA;&#x89C9;&#x5F97;go-zero&#x6CA1;&#x6709;&#x4E00;&#x4E2A;&#x5B8C;&#x6574;&#x7684;&#x9879;&#x76EE;&#x4F8B;&#x5B50;&#xFF0C;&#x4F5C;&#x4E3A;&#x60F3;&#x63A8;&#x52A8;&#x793E;&#x533A;&#x7684;&#x4E00;&#x5458;&#xFF0C;&#x7D22;&#x6027;&#x6211;&#x5C31;&#x628A;&#x5185;&#x90E8;&#x9879;&#x76EE;&#x5220;&#x51CF;&#x4E86;&#x4E00;&#x4E9B;&#x5173;&#x952E;&#x4E1C;&#x897F;&#xFF0C;&#x5C31;&#x641E;&#x4E86;&#x4E2A;&#x53EF;&#x7528;&#x7248;&#x672C;&#x5F00;&#x6E90;&#x51FA;&#x6765;&#xFF0C;&#x4E3B;&#x8981;&#x6280;&#x672F;&#x6808;&#x5305;&#x542B;&#x5982;&#x4E0B;&#xFF1A;</p>
 <ul>
-<li>&#x8BED;&#x6CD5;&#x9AD8;&#x4EAE;</li>
-<li>&#x8DF3;&#x8F6C;&#x5230;&#x5B9A;&#x4E49;/&#x5F15;&#x7528;</li>
-<li>&#x4EE3;&#x7801;&#x683C;&#x5F0F;&#x5316;</li>
-<li>&#x4EE3;&#x7801;&#x5757;&#x63D0;&#x793A;</li>
+<li>go-zero</li>
+<li>nginx&#x7F51;&#x5173;</li>
+<li>filebeat</li>
+<li>kafka</li>
+<li>go-stash</li>
+<li>elasticsearch</li>
+<li>kibana</li>
+<li>prometheus</li>
+<li>grafana</li>
+<li>jaeger</li>
+<li>go-queue</li>
+<li>asynq</li>
+<li>asynqmon</li>
+<li>dtm</li>
+<li>docker</li>
+<li>docker-compose</li>
+<li>mysql</li>
+<li>redis</li>
 </ul>
-<p>&#x672A;&#x5B9E;&#x73B0;&#x529F;&#x80FD;:</p>
+<h2 id="&#x9879;&#x76EE;&#x5730;&#x5740;">&#x9879;&#x76EE;&#x5730;&#x5740;</h2>
+<p><a href="https://github.com/Mikaelemmmm/go-zero-looklook" target="_blank">https://github.com/Mikaelemmmm/go-zero-looklook</a></p>
+<h2 id="&#x9879;&#x76EE;&#x6587;&#x6863;">&#x9879;&#x76EE;&#x6587;&#x6863;</h2>
+<p><a href="https://github.com/Mikaelemmmm/go-zero-looklook/tree/main/doc" target="_blank">https://github.com/Mikaelemmmm/go-zero-looklook/tree/main/doc</a></p>
+<h2 id="&#x9879;&#x76EE;&#x7B80;&#x4ECB;">&#x9879;&#x76EE;&#x7B80;&#x4ECB;</h2>
+<p>&#x6574;&#x4E2A;&#x9879;&#x76EE;&#x4F7F;&#x7528;&#x4E86;go-zero&#x5F00;&#x53D1;&#x7684;&#x5FAE;&#x670D;&#x52A1;&#xFF0C;&#x57FA;&#x672C;&#x5305;&#x542B;&#x4E86;go-zero&#x4EE5;&#x53CA;&#x76F8;&#x5173;go-zero&#x4F5C;&#x8005;&#x5F00;&#x53D1;&#x7684;&#x4E00;&#x4E9B;&#x4E2D;&#x95F4;&#x4EF6;&#xFF0C;&#x6240;&#x7528;&#x5230;&#x7684;&#x6280;&#x672F;&#x6808;&#x57FA;&#x672C;&#x662F;go-zero&#x9879;&#x76EE;&#x7EC4;&#x7684;&#x81EA;&#x7814;&#x7EC4;&#x4EF6;&#xFF0C;&#x57FA;&#x672C;&#x662F;go-zero&#x5168;&#x5BB6;&#x6876;&#x4E86;
+&#x53E6;&#x5916;&#xFF0C;&#x524D;&#x7AEF;&#x662F;&#x5C0F;&#x7A0B;&#x5E8F;&#xFF0C;&#x672C;&#x9879;&#x76EE;&#x5DF2;&#x7ECF;&#x5BF9;&#x63A5;&#x597D;&#x4E86;&#x5C0F;&#x7A0B;&#x5E8F;&#x6388;&#x6743;&#x767B;&#x5F55; &#x4EE5;&#x53CA; &#x5FAE;&#x4FE1;&#x652F;&#x4ED8;&#x4E86; &#xFF0C;&#x524D;&#x7AEF;&#x770B;&#x770B;&#x540E;&#x9762;&#x662F;&#x5426;&#x80FD;&#x5F00;&#x6E90;&#x5427;</p>
+<p>&#x9879;&#x76EE;&#x76EE;&#x5F55;&#x7ED3;&#x6784;&#x5982;&#x4E0B;&#xFF1A;</p>
 <ul>
-<li>&#x8BED;&#x6CD5;&#x9519;&#x8BEF;&#x68C0;&#x67E5;</li>
-<li>&#x8DE8;&#x6587;&#x4EF6;&#x4EE3;&#x7801;&#x8DF3;&#x8F6C;</li>
-<li>goctl &#x547D;&#x4EE4;&#x884C;&#x8C03;&#x7528;</li>
+<li><p>app&#xFF1A;&#x6240;&#x6709;&#x4E1A;&#x52A1;&#x4EE3;&#x7801;&#x5305;&#x542B;api&#x3001;rpc&#x4EE5;&#x53CA;mq&#xFF08;&#x6D88;&#x606F;&#x961F;&#x5217;&#x3001;&#x5EF6;&#x8FDF;&#x961F;&#x5217;&#x3001;&#x5B9A;&#x65F6;&#x4EFB;&#x52A1;&#xFF09;</p>
+</li>
+<li><p>common&#xFF1A;&#x901A;&#x7528;&#x7EC4;&#x4EF6; error&#x3001;middleware&#x3001;interceptor&#x3001;tool&#x3001;ctxdata&#x7B49;</p>
+</li>
+<li><p>data&#xFF1A;&#x8BE5;&#x9879;&#x76EE;&#x5305;&#x542B;&#x8BE5;&#x76EE;&#x5F55;&#x4F9D;&#x8D56;&#x6240;&#x6709;&#x4E2D;&#x95F4;&#x4EF6;(mysql&#x3001;es&#x3001;redis&#x3001;grafana&#x7B49;)&#x4EA7;&#x751F;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x6B64;&#x76EE;&#x5F55;&#x4E0B;&#x7684;&#x6240;&#x6709;&#x5185;&#x5BB9;&#x5E94;&#x8BE5;&#x5728;git&#x5FFD;&#x7565;&#x6587;&#x4EF6;&#x4E2D;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x63D0;&#x4EA4;&#x3002;</p>
+</li>
+<li><p>deploy&#xFF1A;</p>
+<ul>
+<li>filebeat: docker&#x90E8;&#x7F72;filebeat&#x914D;&#x7F6E;</li>
+<li>go-stash&#xFF1A;go-stash&#x914D;&#x7F6E;</li>
+<li>nginx: nginx&#x7F51;&#x5173;&#x914D;&#x7F6E;</li>
+<li>prometheus &#xFF1A; prometheus&#x914D;&#x7F6E;</li>
+<li>script&#xFF1A;<ul>
+<li>gencode&#xFF1A;&#x751F;&#x6210;api&#x3001;rpc&#xFF0C;&#x4EE5;&#x53CA;&#x521B;&#x5EFA;kafka&#x8BED;&#x53E5;&#xFF0C;&#x590D;&#x5236;&#x7C98;&#x8D34;&#x4F7F;&#x7528;</li>
+<li>mysql&#xFF1A;&#x751F;&#x6210;model&#x7684;sh&#x5DE5;&#x5177;</li>
 </ul>
-<h3 id="&#x8BED;&#x6CD5;&#x9AD8;&#x4EAE;">&#x8BED;&#x6CD5;&#x9AD8;&#x4EAE;</h3>
-<h3 id="&#x4EE3;&#x7801;&#x8DF3;&#x8F6C;">&#x4EE3;&#x7801;&#x8DF3;&#x8F6C;</h3>
-<p><img src="resource/jump.gif" alt="jump"></p>
-<h3 id="&#x4EE3;&#x7801;&#x683C;&#x5F0F;&#x5316;">&#x4EE3;&#x7801;&#x683C;&#x5F0F;&#x5316;</h3>
-<p>&#x8C03;&#x7528; goctl &#x547D;&#x4EE4;&#x884C;&#x683C;&#x5F0F;&#x5316;&#x5DE5;&#x5177;&#xFF0C;&#x4F7F;&#x7528;&#x524D;&#x8BF7;&#x786E;&#x8BA4; goctl &#x5DF2;&#x52A0;&#x5165; <code>$PATH</code> &#x4E14;&#x6709;&#x53EF;&#x6267;&#x884C;&#x6743;&#x9650;</p>
-<h3 id="&#x4EE3;&#x7801;&#x5757;&#x63D0;&#x793A;">&#x4EE3;&#x7801;&#x5757;&#x63D0;&#x793A;</h3>
-<h4 id="info-&#x4EE3;&#x7801;&#x5757;">info &#x4EE3;&#x7801;&#x5757;</h4>
-<p><img src="resource/info.gif" alt="info"></p>
-<h4 id="type-&#x4EE3;&#x7801;&#x5757;">type &#x4EE3;&#x7801;&#x5757;</h4>
-<p><img src="resource/type.gif" alt="type"></p>
-<h4 id="service-&#x4EE3;&#x7801;&#x5757;">service &#x4EE3;&#x7801;&#x5757;</h4>
-<p><img src="resource/service.gif" alt="type"></p>
-<h4 id="handler-&#x4EE3;&#x7801;&#x5757;">handler &#x4EE3;&#x7801;&#x5757;</h4>
-<p><img src="resource/handler.gif" alt="type"></p>
+</li>
+<li>goctl: &#x8BE5;&#x9879;&#x76EE;goctl&#x7684;template&#xFF0C;goctl&#x751F;&#x6210;&#x81EA;&#x5B9A;&#x4E49;&#x4EE3;&#x7801;&#x6A21;&#x7248;&#xFF0C;tempalte&#x7528;&#x6CD5;&#x53EF;&#x53C2;&#x8003;go-zero&#x6587;&#x6863;&#xFF0C;&#x590D;&#x5236;&#x5230;&#x5BB6;&#x76EE;&#x5F55;&#x4E0B;.goctl&#x5373;&#x53EF;&#xFF0C;
+&#x8BE5;&#x9879;&#x76EE;&#x7528;&#x5230;goctl&#x7248;&#x672C;&#x662F;v1.2.3</li>
+</ul>
+</li>
+<li><p>doc : &#x8BE5;&#x9879;&#x76EE;&#x7CFB;&#x5217;&#x6587;&#x6863;</p>
+</li>
+</ul>
+<h2 id="&#x7CFB;&#x7EDF;&#x67B6;&#x6784;&#x56FE;">&#x7CFB;&#x7EDF;&#x67B6;&#x6784;&#x56FE;</h2>
+<p><img src="resource/gozerolooklook.png" alt="jiagou"></p>
+<h2 id="&#x4E1A;&#x52A1;&#x67B6;&#x6784;&#x56FE;">&#x4E1A;&#x52A1;&#x67B6;&#x6784;&#x56FE;</h2>
+<p><img src="resource/looklook-service.jpg" alt="jiagou"></p>
+<h2 id="&#x7F51;&#x5173;">&#x7F51;&#x5173;</h2>
+<p>nginx&#x505A;&#x7F51;&#x5173;&#xFF0C;&#x4F7F;&#x7528;nginx&#x7684;auth&#x6A21;&#x5757;&#xFF0C;&#x8C03;&#x7528;&#x540E;&#x7AEF;&#x7684;identity&#x670D;&#x52A1;&#x7EDF;&#x4E00;&#x9274;&#x6743;&#xFF0C;&#x4E1A;&#x52A1;&#x5185;&#x90E8;&#x4E0D;&#x9274;&#x6743;&#xFF0C;&#x5982;&#x679C;&#x6D89;&#x53CA;&#x5230;&#x4E1A;&#x52A1;&#x8D44;&#x91D1;&#x6BD4;&#x8F83;&#x591A;&#x4E5F;&#x53EF;&#x4EE5;&#x5728;&#x4E1A;&#x52A1;&#x4E2D;&#x8FDB;&#x884C;&#x4E8C;&#x6B21;&#x9274;&#x6743;&#xFF0C;&#x4E3A;&#x4E86;&#x5B89;&#x5168;&#x561B;&#x3002;</p>
+<p>&#x53E6;&#x5916;&#xFF0C;&#x5F88;&#x591A;&#x540C;&#x5B66;&#x89C9;&#x5F97;nginx&#x505A;&#x7F51;&#x5173;&#x4E0D;&#x592A;&#x597D;&#xFF0C;&#x8FD9;&#x5757;&#x539F;&#x7406;&#x57FA;&#x672C;&#x4E00;&#x6837;&#xFF0C;&#x53EF;&#x4EE5;&#x81EA;&#x884C;&#x66FF;&#x6362;&#x6210;apisix&#x3001;kong&#x7B49;</p>
+<h2 id="&#x5F00;&#x53D1;&#x6A21;&#x5F0F;">&#x5F00;&#x53D1;&#x6A21;&#x5F0F;</h2>
+<p>&#x672C;&#x9879;&#x76EE;&#x4F7F;&#x7528;&#x7684;&#x662F;&#x5FAE;&#x670D;&#x52A1;&#x5F00;&#x53D1;&#xFF0C;api &#xFF08;http&#xFF09; + rpc&#xFF08;grpc&#xFF09; &#xFF0C; api&#x5145;&#x5F53;&#x805A;&#x5408;&#x670D;&#x52A1;&#xFF0C;&#x590D;&#x6742;&#x3001;&#x6D89;&#x53CA;&#x5230;&#x5176;&#x4ED6;&#x4E1A;&#x52A1;&#x8C03;&#x7528;&#x7684;&#x7EDF;&#x4E00;&#x5199;&#x5728;rpc&#x4E2D;&#xFF0C;&#x5982;&#x679C;&#x4E00;&#x4E9B;&#x4E0D;&#x4F1A;&#x88AB;&#x5176;&#x4ED6;&#x670D;&#x52A1;&#x4F9D;&#x8D56;&#x4F7F;&#x7528;&#x7684;&#x7B80;&#x5355;&#x4E1A;&#x52A1;&#xFF0C;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x5199;&#x5728;api&#x7684;logic&#x4E2D;</p>
+<h2 id="&#x65E5;&#x5FD7;">&#x65E5;&#x5FD7;</h2>
+<p>&#x5173;&#x4E8E;&#x65E5;&#x5FD7;&#xFF0C;&#x7EDF;&#x4E00;&#x4F7F;&#x7528;filebeat&#x6536;&#x96C6;&#xFF0C;&#x4E0A;&#x62A5;&#x5230;kafka&#x4E2D;&#xFF0C;&#x7531;&#x4E8E;logstash&#x61C2;&#x5F97;&#x90FD;&#x61C2;&#xFF0C;&#x8D44;&#x6E90;&#x5360;&#x7528;&#x592A;&#x5938;&#x5F20;&#x4E86;&#xFF0C;&#x8FD9;&#x91CC;&#x4F7F;&#x7528;&#x4E86;go-stash&#x66FF;&#x6362;&#x4E86;logstash</p>
+<p>&#x94FE;&#x63A5;&#xFF1A;<a href="https://github.com/kevwan/go-stash" target="_blank">https://github.com/kevwan/go-stash</a>  &#xFF0C; go-stash&#x662F;&#x7531;go-zero&#x5F00;&#x53D1;&#x56E2;&#x961F;&#x5F00;&#x53D1;&#x7684;&#xFF0C;&#x6027;&#x80FD;&#x5F88;&#x9AD8;&#x4E0D;&#x5360;&#x8D44;&#x6E90;&#xFF0C;&#x4E3B;&#x8981;&#x4EE3;&#x7801;&#x91CF;&#x6CA1;&#x591A;&#x5C11;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x914D;&#x7F6E;&#x5C31;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#xFF0C;&#x5F88;&#x7B80;&#x5355;&#x3002;&#x5B83;&#x662F;&#x5427;kafka&#x6570;&#x636E;&#x6E90;&#x540C;&#x6B65;&#x5230;elasticsearch&#x4E2D;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E0D;&#x652F;&#x6301;elasticsearch&#x8D26;&#x53F7;&#x5BC6;&#x7801;&#xFF0C;&#x6211;fork&#x4E86;&#x4E00;&#x4EFD;&#x4FEE;&#x6539;&#x4E86;&#x4E00;&#x4E0B;&#xFF0C;&#x5F88;&#x7B80;&#x5355;&#x652F;&#x6301;&#x4E86;&#x8D26;&#x53F7;&#x3001;&#x5BC6;&#x7801;</p>
+<h2 id="&#x76D1;&#x63A7;">&#x76D1;&#x63A7;</h2>
+<p>&#x76D1;&#x63A7;&#x91C7;&#x7528;prometheus&#xFF0C;&#x8FD9;&#x4E2A;go-zero&#x539F;&#x751F;&#x652F;&#x6301;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x914D;&#x7F6E;&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#xFF0C;&#x8FD9;&#x91CC;&#x53EF;&#x4EE5;&#x770B;&#x9879;&#x76EE;&#x4E2D;&#x7684;&#x914D;&#x7F6E;</p>
+<h2 id="&#x94FE;&#x8DEF;&#x8FFD;&#x8E2A;">&#x94FE;&#x8DEF;&#x8FFD;&#x8E2A;</h2>
+<p>go-zero&#x9ED8;&#x8BA4;jaeger&#x3001;zipkin&#x652F;&#x6301;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x914D;&#x7F6E;&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x914D;&#x7F6E;</p>
+<h2 id="&#x6D88;&#x606F;&#x961F;&#x5217;">&#x6D88;&#x606F;&#x961F;&#x5217;</h2>
+<p>&#x6D88;&#x606F;&#x961F;&#x5217;&#x4F7F;&#x7528;&#x7684;&#x662F;go-zero&#x5F00;&#x53D1;&#x56E2;&#x961F;&#x5F00;&#x53D1;&#x7684;go-queue&#xFF0C;&#x94FE;&#x63A5;&#xFF1A;<a href="https://github.com/zeromicro/go-queue" target="_blank">https://github.com/zeromicro/go-queue</a></p>
+<p>&#x8FD9;&#x91CC;&#x4F7F;&#x7528;&#x53EF;kq&#xFF0C;kq&#x662F;&#x57FA;&#x4E8E;kafka&#x505A;&#x7684;&#x9AD8;&#x6027;&#x80FD;&#x6D88;&#x606F;&#x961F;&#x5217;</p>
+<p>&#x901A;&#x7528;go-queue&#x4E2D;&#x4E5F;&#x6709;dq&#xFF0C;&#x662F;&#x5EF6;&#x8FDF;&#x961F;&#x5217;&#xFF0C;&#x4E0D;&#x8FC7;&#x5F53;&#x524D;&#x9879;&#x76EE;&#x6CA1;&#x6709;&#x4F7F;&#x7528;dq</p>
+<h2 id="&#x5EF6;&#x8FDF;&#x961F;&#x5217;&#x3001;&#x5B9A;&#x65F6;&#x4EFB;&#x52A1;">&#x5EF6;&#x8FDF;&#x961F;&#x5217;&#x3001;&#x5B9A;&#x65F6;&#x4EFB;&#x52A1;</h2>
+<p>&#x5EF6;&#x8FDF;&#x961F;&#x5217;&#x3001;&#x5B9A;&#x65F6;&#x4EFB;&#x52A1;&#x672C;&#x9879;&#x76EE;&#x4F7F;&#x7528;&#x7684;&#x662F;asynq &#xFF0C; google&#x56E2;&#x961F;&#x7ED9;&#x4E88;redis&#x5F00;&#x53D1;&#x7684;&#x7B80;&#x5355;&#x4E2D;&#x95F4;&#x4EF6;&#xFF0C;</p>
+<p>&#x5F53;&#x7136;&#x4E86;asynq&#x4E5F;&#x652F;&#x6301;&#x6D88;&#x606F;&#x961F;&#x5217;&#xFF0C;&#x4F60;&#x4E5F;&#x53EF;&#x4E5F;&#x628A;kq&#x6D88;&#x606F;&#x961F;&#x5217;&#x66FF;&#x6362;&#x6210;&#x8FD9;&#x4E2A;&#xFF0C;&#x6BD5;&#x7ADF;&#x53EA;&#x9700;&#x8981;redis&#x4E0D;&#x9700;&#x8981;&#x5728;&#x53BB;&#x7EF4;&#x62A4;&#x4E00;&#x4E2A;kafka&#x4E5F;&#x662F;&#x4E0D;&#x9519;&#x7684;</p>
+<p>&#x94FE;&#x63A5;&#xFF1A;<a href="https://github.com/hibiken/asynq" target="_blank">https://github.com/hibiken/asynq</a></p>
+<h2 id="&#x5206;&#x5E03;&#x5F0F;&#x4E8B;&#x52A1;">&#x5206;&#x5E03;&#x5F0F;&#x4E8B;&#x52A1;</h2>
+<p>&#x5206;&#x5E03;&#x5F0F;&#x4E8B;&#x52A1;&#x51C6;&#x5907;&#x4F7F;&#x7528;&#x7684;&#x662F;dtm&#xFF0C; &#x55EF; &#xFF0C;&#x5F88;&#x8212;&#x670D;&#xFF0C;&#x4E4B;&#x524D;&#x6211;&#x5199;&#x8FC7;&#x4E00;&#x7BC7; &quot;go-zero&#x5BF9;&#x63A5;&#x5206;&#x5E03;&#x5F0F;&#x4E8B;&#x52A1;dtm&#x4FDD;&#x59C6;&#x5F0F;&#x6559;&#x7A0B;&quot; &#x94FE;&#x63A5;&#x5730;&#x5740;&#xFF1A;<a href="https://github.com/Mikaelemmmm/gozerodtm" target="_blank">https://github.com/Mikaelemmmm/gozerodtm</a> &#xFF0C; &#x672C;&#x9879;&#x76EE;&#x76EE;&#x524D;&#x8FD8;&#x672A;&#x4F7F;&#x7528;&#x5230;&#xFF0C;&#x540E;&#x7EED;&#x51C6;&#x5907;&#x76F4;&#x63A5;&#x96C6;&#x6210;&#x5C31;&#x597D;&#x4E86;&#xFF0C;&#x5982;&#x679C;&#x8BFB;&#x8005;&#x4F7F;&#x7528;&#x76F4;&#x63A5;&#x53BB;&#x770B;&#x90A3;&#x4E2A;&#x6E90;&#x7801;&#x5C31;&#x884C;&#x4E86;</p>
+<h2 id="&#x90E8;&#x7F72;">&#x90E8;&#x7F72;</h2>
+<p>&#x90E8;&#x7F72;&#x7684;&#x8BDD;&#xFF0C;&#x76EE;&#x524D;&#x8FD9;&#x4E2A;&#x76F4;&#x63A5;&#x4F7F;&#x7528;docker&#x53EF;&#x4EE5;&#x90E8;&#x7F72;&#x6574;&#x5957;&#x6280;&#x672F;&#x6808;&#xFF0C;&#x5982;&#x679C;&#x4E0A;k8s&#x7684;&#x8BDD; &#xFF0C;&#x6700;&#x7B80;&#x5355;&#x76F4;&#x63A5;&#x7528;&#x963F;&#x91CC;&#x4E91;&#x7684;&#x5427;</p>
+<p>&#x6211;&#x8BF4;&#x4E0B;&#x601D;&#x8DEF;&#xFF0C;&#x8FD9;&#x4E2A;&#x540E;&#x7EED;&#x4F1A;&#x51FA;&#x4E00;&#x4E2A;&#x57FA;&#x4E8E;&#x963F;&#x91CC;&#x4E91;&#x6548;&#x7684;&#x90E8;&#x7F72;&#x5230;k8s&#x6587;&#x6863;&#x6559;&#x7A0B;&#xFF0C;&#x81EA;&#x5DF1;&#x642D;&#x5EFA;&#x4E00;&#x4E2A;gitlab&#x3001;jenkins&#x3001;harbor&#x53BB;&#x505A;&#x7684;&#x8BDD;&#x592A;&#x8D39;&#x65F6;&#x95F4;&#x4E86;</p>
+<p>1&#x3001;&#x5C06;&#x4EE3;&#x7801;&#x653E;&#x5728;&#x963F;&#x91CC;&#x4E91;&#x6548;&#xFF08;&#x5F53;&#x7136;&#x4F60;&#x6574;&#x5230;gitlab&#x4E5F;&#x884C;&#xFF09;</p>
+<p>2&#x3001;&#x5728;&#x963F;&#x91CC;&#x4E91;&#x6548;&#x521B;&#x5EFA;&#x6D41;&#x6C34;&#x7EBF;&#xFF0C;&#x57FA;&#x672C;&#x662F;&#x4E00;&#x4E2A;&#x670D;&#x52A1;&#x4E00;&#x4E2A;&#x6D41;&#x6C34;&#x7EBF;&#x4E86;</p>
+<p>3&#x3001;&#x6D41;&#x6C34;&#x7EBF;&#x6B65;&#x9AA4; &#xFF1A;</p>
+<p>&#x200B;        &#x62C9;&#x53D6;&#x4EE3;&#x7801;---&gt;ci&#x68C0;&#x6D4B;&#xFF08;&#x8FD9;&#x91CC;&#x53EF;&#x4EE5;&#x7701;&#x7565;&#x54C8;&#xFF0C;&#x81EA;&#x5DF1;&#x770B;&#x7740;&#x529E;&#xFF09;---&gt;&#x6784;&#x5EFA;&#x955C;&#x50CF;&#xFF08;go-zero&#x5B98;&#x65B9;&#x6709;Dockerfile&#x8FD8;&#x6709;&#x6559;&#x7A0B;&#xFF0C;&#x522B;&#x544A;&#x8BC9;&#x6211;&#x4E0D;&#x4F1A;&#xFF09;--&gt;&#x63A8;&#x9001;&#x5230;&#x963F;&#x91CC;&#x4E91;&#x955C;&#x50CF;&#x670D;&#x52A1;---&gt;&#x4F7F;&#x7528;kubectl&#x53BB;&#x963F;&#x91CC;&#x4E91;k8s&#x62C9;&#x53D6;&#x955C;&#x50CF;&#xFF08;ack&#x3001;ask&#x90FD;&#x884C;&#xFF0C;ask&#x65E0;&#x6CD5;&#x4F7F;&#x7528;daemonset &#x4E0D;&#x80FD;&#x7528;filebeat&#xFF09;----&gt;ok&#x4E86;</p>
+<p>&#x53E6;&#x5916;&#xFF0C; &#x5982;&#x679C;&#x4F60;&#x60F3;&#x81EA;&#x5DF1;&#x57FA;&#x4E8E;gitlab&#x3001;jenkins&#x3001;harbor&#x53BB;&#x505A;&#x7684;&#x8BDD;&#xFF0C;&#x55EF; &#x81EA;&#x5DF1;&#x53BB;&#x627E;&#x8FD0;&#x7EF4;&#x5F04;&#x5427;&#xFF0C;&#x6211;&#x4E4B;&#x524D;&#x4E5F;&#x5199;&#x8FC7;&#x4E00;&#x4E2A;&#x6559;&#x7A0B;&#xFF0C;&#x6709;&#x7A7A;&#x5728;&#x6574;&#x5427;&#x8001;&#x54E5;&#x4EEC;&#xFF01;&#xFF01;</p>
 <footer class="page-footer"><span class="copyright">Copyright &#xA9; 2019-2021 go-zero all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last UpdateTime&#xFF1A;
 2022-01-18 07:03:27
 </span></footer>
@@ -1557,12 +1615,12 @@
 
             
                 
-                <a href="intellij.html" class="navigation navigation-prev " aria-label="Previous page: intellij插件">
+                <a href="go-queue.html" class="navigation navigation-prev " aria-label="Previous page: go-zero分布式定时任务">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="distributed-transaction.html" class="navigation navigation-next " aria-label="Next page: 分布式事务支持">
+                <a href="datacenter.html" class="navigation navigation-next " aria-label="Next page: 我是如何用go-zero 实现一个中台系统">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1573,7 +1631,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"vscode插件","level":"1.12.1.2","depth":3,"next":{"title":"分布式事务支持","level":"1.12.2","depth":2,"path":"distributed-transaction.md","ref":"distributed-transaction.md","articles":[]},"previous":{"title":"intellij插件","level":"1.12.1.1","depth":3,"path":"intellij.md","ref":"intellij.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","code","-lunr","-search","search-pro","github","splitter","-sharing","sharing-plus","tbfed-pagefooter","flexible-alerts","page-toc-button","pageview-count","popup","hide-element","edit-link","-highlight","prism","theme-comscore"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © 2019-2021 go-zero","modify_label":"Last UpdateTime：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"lang":{"shell":"bash"},"css":["prismjs/themes/prism-tomorrow.css"]},"github":{"url":"https://github.com/zeromicro/go-zero"},"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"qq":false,"all":["douban","facebook","google","linkedin","twitter","weibo","qq","qzone","weibo"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true},"edit-link":{"label":"EDIT THIS PAGE","base":"https://github.com/zeromicro/zero-doc/tree/main/go-zero.dev"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"anqiansong","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"go-zero document","language":"cn","gitbook":"*","description":"Golang 微服务框架 | 集成各种工程实践的 WEB 和 RPC 框架 | 一键生成 Go, iOS, Android, Kotlin, Dart, TypeScript, JavaScript 代码"},"file":{"path":"vscode.md","mtime":"2022-01-18T07:03:27.389Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-01-18T07:04:35.213Z"},"basePath":".","book":{"language":"cn"}});
+            gitbook.page.hasChanged({"page":{"title":"使用go-zero开发一个旅游系统go-zero-looklook","level":"1.11.24","depth":2,"next":{"title":"我是如何用go-zero 实现一个中台系统","level":"1.11.25","depth":2,"path":"datacenter.md","ref":"datacenter.md","articles":[]},"previous":{"title":"go-zero分布式定时任务","level":"1.11.23","depth":2,"path":"go-queue.md","ref":"go-queue.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","code","-lunr","-search","search-pro","github","splitter","-sharing","sharing-plus","tbfed-pagefooter","flexible-alerts","page-toc-button","pageview-count","popup","hide-element","edit-link","-highlight","prism","theme-comscore"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © 2019-2021 go-zero","modify_label":"Last UpdateTime：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"lang":{"shell":"bash"},"css":["prismjs/themes/prism-tomorrow.css"]},"github":{"url":"https://github.com/zeromicro/go-zero"},"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"qq":false,"all":["douban","facebook","google","linkedin","twitter","weibo","qq","qzone","weibo"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true},"edit-link":{"label":"EDIT THIS PAGE","base":"https://github.com/zeromicro/zero-doc/tree/main/go-zero.dev"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"anqiansong","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"go-zero document","language":"cn","gitbook":"*","description":"Golang 微服务框架 | 集成各种工程实践的 WEB 和 RPC 框架 | 一键生成 Go, iOS, Android, Kotlin, Dart, TypeScript, JavaScript 代码"},"file":{"path":"go-zero-looklook.md","mtime":"2022-01-18T07:03:27.277Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-01-18T07:04:35.213Z"},"basePath":".","book":{"language":"cn"}});
         });
     </script>
 </div>
