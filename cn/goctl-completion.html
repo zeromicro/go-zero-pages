@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>业务编码 · go-zero document</title>
+        <title>自动补全设置 · go-zero document</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -93,10 +93,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="jwt.html" />
+    <link rel="next" href="goctl-commands.html" />
     
     
-    <link rel="prev" href="api-coding.html" />
+    <link rel="prev" href="goctl.html" />
     
 
     </head>
@@ -586,7 +586,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.8.5.4" data-path="business-coding.html">
+        <li class="chapter " data-level="1.8.5.4" data-path="business-coding.html">
             
                 <a href="business-coding.html">
             
@@ -740,7 +740,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.9.1" data-path="goctl-completion.html">
+        <li class="chapter active" data-level="1.9.1" data-path="goctl-completion.html">
             
                 <a href="goctl-completion.html">
             
@@ -1494,7 +1494,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >业务编码</a>
+        <a href="." >自动补全设置</a>
     </h1>
 </div>
 
@@ -1509,116 +1509,51 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x4E1A;&#x52A1;&#x7F16;&#x7801;">&#x4E1A;&#x52A1;&#x7F16;&#x7801;</h1>
-<p>&#x524D;&#x9762;&#x4E00;&#x8282;&#xFF0C;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x6839;&#x636E;&#x521D;&#x6B65;&#x9700;&#x6C42;&#x7F16;&#x5199;&#x4E86;user.api&#x6765;&#x63CF;&#x8FF0;user&#x670D;&#x52A1;&#x5BF9;&#x5916;&#x63D0;&#x4F9B;&#x54EA;&#x4E9B;&#x670D;&#x52A1;&#x8BBF;&#x95EE;&#xFF0C;&#x5728;&#x672C;&#x8282;&#x6211;&#x4EEC;&#x63A5;&#x7740;&#x524D;&#x9762;&#x7684;&#x6B65;&#x4F10;&#xFF0C;
-&#x901A;&#x8FC7;&#x4E1A;&#x52A1;&#x7F16;&#x7801;&#x6765;&#x8BB2;&#x8FF0;go-zero&#x600E;&#x4E48;&#x5728;&#x5B9E;&#x9645;&#x4E1A;&#x52A1;&#x4E2D;&#x4F7F;&#x7528;&#x3002;</p>
-<h2 id="&#x6DFB;&#x52A0;mysql&#x914D;&#x7F6E;">&#x6DFB;&#x52A0;Mysql&#x914D;&#x7F6E;</h2>
-<pre class="language-"><code class="lang-shell">$ <span class="token function">vim</span> service/user/cmd/api/internal/config/config.go
-</code></pre>
-<pre class="language-"><code class="lang-go"><span class="token keyword">package</span> config
+                                <h1 id="goctl&#x81EA;&#x52A8;&#x8865;&#x5168;">goctl&#x81EA;&#x52A8;&#x8865;&#x5168;</h1>
+<p>goctl &#x81EA;&#x52A8;&#x8865;&#x5168;&#x4EC5;&#x652F;&#x6301; unix-like &#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;</p>
+<h2 id="&#x7528;&#x6CD5;">&#x7528;&#x6CD5;</h2>
+<pre class="language-"><code class="lang-shell">$ goctl completion -h
+NAME:
+   goctl completion - generation completion script, it only works <span class="token keyword">for</span> unix-like OS
 
-<span class="token keyword">import</span> <span class="token string">&quot;github.com/zeromicro/go-zero/rest&quot;</span>
+USAGE:
+   goctl completion <span class="token punctuation">[</span>command options<span class="token punctuation">]</span> <span class="token punctuation">[</span>arguments<span class="token punctuation">..</span>.<span class="token punctuation">]</span>
 
-<span class="token keyword">type</span> Config <span class="token keyword">struct</span> <span class="token punctuation">{</span>
-    rest<span class="token punctuation">.</span>RestConf
-    Mysql <span class="token keyword">struct</span><span class="token punctuation">{</span>
-        DataSource <span class="token builtin">string</span>
-    <span class="token punctuation">}</span>
-
-    CacheRedis cache<span class="token punctuation">.</span>CacheConf
-<span class="token punctuation">}</span>
+OPTIONS:
+   --name value, -n value  the filename of auto complete script, default is <span class="token punctuation">[</span>goctl_autocomplete<span class="token punctuation">]</span>
 </code></pre>
-<h2 id="&#x5B8C;&#x5584;yaml&#x914D;&#x7F6E;">&#x5B8C;&#x5584;yaml&#x914D;&#x7F6E;</h2>
-<pre class="language-"><code class="lang-shell">$ <span class="token function">vim</span> service/user/cmd/api/etc/user-api.yaml
+<h2 id="&#x751F;&#x6210;&#x81EA;&#x52A8;&#x8865;&#x5168;&#x6587;&#x4EF6;">&#x751F;&#x6210;&#x81EA;&#x52A8;&#x8865;&#x5168;&#x6587;&#x4EF6;</h2>
+<pre class="language-"><code class="lang-shell">$ goctl completion
+generation auto completion success<span class="token operator">!</span>
+executes the following script to setting shell:
+<span class="token builtin class-name">echo</span> <span class="token assign-left variable">PROG</span><span class="token operator">=</span>goctl <span class="token builtin class-name">source</span> /Users/keson/.goctl/.auto_complete/zsh/goctl_autocomplete <span class="token operator">&gt;&gt;</span> ~/.zshrc <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">source</span> ~/.zshrc
+or
+<span class="token builtin class-name">echo</span> <span class="token assign-left variable">PROG</span><span class="token operator">=</span>goctl <span class="token builtin class-name">source</span> /Users/keson/.goctl/.auto_complete/bash/goctl_autocomplete <span class="token operator">&gt;&gt;</span> ~/.bashrc <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">source</span> ~/.bashrc
 </code></pre>
-<pre class="language-"><code class="lang-yaml"><span class="token key atrule">Name</span><span class="token punctuation">:</span> user<span class="token punctuation">-</span>api
-<span class="token key atrule">Host</span><span class="token punctuation">:</span> 0.0.0.0
-<span class="token key atrule">Port</span><span class="token punctuation">:</span> <span class="token number">8888</span>
-<span class="token key atrule">Mysql</span><span class="token punctuation">:</span>
-  <span class="token key atrule">DataSource</span><span class="token punctuation">:</span> $user<span class="token punctuation">:</span>$password@tcp($url)/$db<span class="token punctuation">?</span>charset=utf8mb4<span class="token important">&amp;parseTime=true&amp;loc=Asia%2FShanghai</span>
-<span class="token key atrule">CacheRedis</span><span class="token punctuation">:</span>
-  <span class="token punctuation">-</span> <span class="token key atrule">Host</span><span class="token punctuation">:</span> $host
-    <span class="token key atrule">Pass</span><span class="token punctuation">:</span> $pass
-    <span class="token key atrule">Type</span><span class="token punctuation">:</span> node
-</code></pre>
-<blockquote>
-<p>[!TIP]
-$user: mysql&#x6570;&#x636E;&#x5E93;user</p>
-<p>$password: mysql&#x6570;&#x636E;&#x5E93;&#x5BC6;&#x7801;</p>
-<p>$url: mysql&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;&#x5730;&#x5740;</p>
-<p>$db: mysql&#x6570;&#x636E;&#x5E93;db&#x540D;&#x79F0;&#xFF0C;&#x5373;user&#x8868;&#x6240;&#x5728;database</p>
-<p>$host: redis&#x8FDE;&#x63A5;&#x5730;&#x5740; &#x683C;&#x5F0F;&#xFF1A;ip:port&#xFF0C;&#x5982;:127.0.0.1:6379</p>
-<p>$pass: redis&#x5BC6;&#x7801;</p>
-<p>&#x66F4;&#x591A;&#x914D;&#x7F6E;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x53C2;&#x8003;<a href="api-config.html">api&#x914D;&#x7F6E;&#x4ECB;&#x7ECD;</a></p>
-</blockquote>
-<h2 id="&#x5B8C;&#x5584;&#x670D;&#x52A1;&#x4F9D;&#x8D56;">&#x5B8C;&#x5584;&#x670D;&#x52A1;&#x4F9D;&#x8D56;</h2>
-<pre class="language-"><code class="lang-shell">$ <span class="token function">vim</span> service/user/cmd/api/internal/svc/servicecontext.go
-</code></pre>
-<pre class="language-"><code class="lang-go"><span class="token keyword">type</span> ServiceContext <span class="token keyword">struct</span> <span class="token punctuation">{</span>
-    Config    config<span class="token punctuation">.</span>Config
-    UserModel model<span class="token punctuation">.</span>UserModel
-<span class="token punctuation">}</span>
-
-<span class="token keyword">func</span> <span class="token function">NewServiceContext</span><span class="token punctuation">(</span>c config<span class="token punctuation">.</span>Config<span class="token punctuation">)</span> <span class="token operator">*</span>ServiceContext <span class="token punctuation">{</span>
-    conn<span class="token operator">:=</span>sqlx<span class="token punctuation">.</span><span class="token function">NewMysql</span><span class="token punctuation">(</span>c<span class="token punctuation">.</span>Mysql<span class="token punctuation">.</span>DataSource<span class="token punctuation">)</span>
-    <span class="token keyword">return</span> <span class="token operator">&amp;</span>ServiceContext<span class="token punctuation">{</span>
-        Config<span class="token punctuation">:</span> c<span class="token punctuation">,</span>
-        UserModel<span class="token punctuation">:</span> model<span class="token punctuation">.</span><span class="token function">NewUserModel</span><span class="token punctuation">(</span>conn<span class="token punctuation">,</span>c<span class="token punctuation">.</span>CacheRedis<span class="token punctuation">)</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<h2 id="&#x586B;&#x5145;&#x767B;&#x5F55;&#x903B;&#x8F91;">&#x586B;&#x5145;&#x767B;&#x5F55;&#x903B;&#x8F91;</h2>
-<pre class="language-"><code class="lang-shell">$ <span class="token function">vim</span> service/user/cmd/api/internal/logic/loginlogic.go
-</code></pre>
-<pre class="language-"><code class="lang-go"><span class="token keyword">func</span> <span class="token punctuation">(</span>l <span class="token operator">*</span>LoginLogic<span class="token punctuation">)</span> <span class="token function">Login</span><span class="token punctuation">(</span>req types<span class="token punctuation">.</span>LoginReq<span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token operator">*</span>types<span class="token punctuation">.</span>LoginReply<span class="token punctuation">,</span> <span class="token builtin">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token function">len</span><span class="token punctuation">(</span>strings<span class="token punctuation">.</span><span class="token function">TrimSpace</span><span class="token punctuation">(</span>req<span class="token punctuation">.</span>Username<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">||</span> <span class="token function">len</span><span class="token punctuation">(</span>strings<span class="token punctuation">.</span><span class="token function">TrimSpace</span><span class="token punctuation">(</span>req<span class="token punctuation">.</span>Password<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token boolean">nil</span><span class="token punctuation">,</span> errors<span class="token punctuation">.</span><span class="token function">New</span><span class="token punctuation">(</span><span class="token string">&quot;&#x53C2;&#x6570;&#x9519;&#x8BEF;&quot;</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-
-    userInfo<span class="token punctuation">,</span> err <span class="token operator">:=</span> l<span class="token punctuation">.</span>svcCtx<span class="token punctuation">.</span>UserModel<span class="token punctuation">.</span><span class="token function">FindOneByNumber</span><span class="token punctuation">(</span>req<span class="token punctuation">.</span>Username<span class="token punctuation">)</span>
-    <span class="token keyword">switch</span> err <span class="token punctuation">{</span>
-    <span class="token keyword">case</span> <span class="token boolean">nil</span><span class="token punctuation">:</span>
-    <span class="token keyword">case</span> model<span class="token punctuation">.</span>ErrNotFound<span class="token punctuation">:</span>
-        <span class="token keyword">return</span> <span class="token boolean">nil</span><span class="token punctuation">,</span> errors<span class="token punctuation">.</span><span class="token function">New</span><span class="token punctuation">(</span><span class="token string">&quot;&#x7528;&#x6237;&#x540D;&#x4E0D;&#x5B58;&#x5728;&quot;</span><span class="token punctuation">)</span>
-    <span class="token keyword">default</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> <span class="token boolean">nil</span><span class="token punctuation">,</span> err
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">if</span> userInfo<span class="token punctuation">.</span>Password <span class="token operator">!=</span> req<span class="token punctuation">.</span>Password <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token boolean">nil</span><span class="token punctuation">,</span> errors<span class="token punctuation">.</span><span class="token function">New</span><span class="token punctuation">(</span><span class="token string">&quot;&#x7528;&#x6237;&#x5BC6;&#x7801;&#x4E0D;&#x6B63;&#x786E;&quot;</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token comment">// ---start---</span>
-    now <span class="token operator">:=</span> time<span class="token punctuation">.</span><span class="token function">Now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Unix</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    accessExpire <span class="token operator">:=</span> l<span class="token punctuation">.</span>svcCtx<span class="token punctuation">.</span>Config<span class="token punctuation">.</span>Auth<span class="token punctuation">.</span>AccessExpire
-    jwtToken<span class="token punctuation">,</span> err <span class="token operator">:=</span> l<span class="token punctuation">.</span><span class="token function">getJwtToken</span><span class="token punctuation">(</span>l<span class="token punctuation">.</span>svcCtx<span class="token punctuation">.</span>Config<span class="token punctuation">.</span>Auth<span class="token punctuation">.</span>AccessSecret<span class="token punctuation">,</span> now<span class="token punctuation">,</span> l<span class="token punctuation">.</span>svcCtx<span class="token punctuation">.</span>Config<span class="token punctuation">.</span>Auth<span class="token punctuation">.</span>AccessExpire<span class="token punctuation">,</span> userInfo<span class="token punctuation">.</span>Id<span class="token punctuation">)</span>
-    <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token boolean">nil</span><span class="token punctuation">,</span> err
-    <span class="token punctuation">}</span>
-    <span class="token comment">// ---end---</span>
-
-    <span class="token keyword">return</span> <span class="token operator">&amp;</span>types<span class="token punctuation">.</span>LoginReply<span class="token punctuation">{</span>
-        Id<span class="token punctuation">:</span>           userInfo<span class="token punctuation">.</span>Id<span class="token punctuation">,</span>
-        Name<span class="token punctuation">:</span>         userInfo<span class="token punctuation">.</span>Name<span class="token punctuation">,</span>
-        Gender<span class="token punctuation">:</span>       userInfo<span class="token punctuation">.</span>Gender<span class="token punctuation">,</span>
-        AccessToken<span class="token punctuation">:</span>  jwtToken<span class="token punctuation">,</span>
-        AccessExpire<span class="token punctuation">:</span> now <span class="token operator">+</span> accessExpire<span class="token punctuation">,</span>
-        RefreshAfter<span class="token punctuation">:</span> now <span class="token operator">+</span> accessExpire<span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token boolean">nil</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<blockquote>
-<p>[!TIP]
-&#x4E0A;&#x8FF0;&#x4EE3;&#x7801;&#x4E2D; [start]-[end]&#x7684;&#x4EE3;&#x7801;&#x5B9E;&#x73B0;&#x89C1;<a href="jwt.html">jwt&#x9274;&#x6743;</a>&#x7AE0;&#x8282;</p>
-</blockquote>
-<h1 id="&#x731C;&#x4F60;&#x60F3;&#x770B;">&#x731C;&#x4F60;&#x60F3;&#x770B;</h1>
+<h2 id="shell-&#x914D;&#x7F6E;">shell &#x914D;&#x7F6E;</h2>
 <ul>
-<li><a href="api-grammar.html">api&#x8BED;&#x6CD5;</a></li>
-<li><a href="goctl-api.html">goctl api&#x547D;&#x4EE4;</a></li>
-<li><a href="api-dir.html">api&#x76EE;&#x5F55;&#x7ED3;&#x6784;&#x4ECB;&#x7ECD;</a></li>
-<li><a href="jwt.html">jwt&#x9274;&#x6743;</a></li>
-<li><a href="api-config.html">api&#x914D;&#x7F6E;&#x4ECB;&#x7ECD;</a></li>
+<li>zsh<pre class="language-"><code class="lang-shell">$ <span class="token builtin class-name">echo</span> <span class="token assign-left variable">PROG</span><span class="token operator">=</span>goctl <span class="token builtin class-name">source</span> /Users/keson/.goctl/.auto_complete/zsh/goctl_autocomplete <span class="token operator">&gt;&gt;</span> ~/.zshrc <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">source</span> ~/.zshrc
+</code></pre>
+</li>
+<li>bash<pre class="language-"><code class="lang-shell">$ <span class="token builtin class-name">echo</span> <span class="token assign-left variable">PROG</span><span class="token operator">=</span>goctl <span class="token builtin class-name">source</span> /Users/keson/.goctl/.auto_complete/bash/goctl_autocomplete <span class="token operator">&gt;&gt;</span> ~/.bashrc <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">source</span> ~/.bashrc
+</code></pre>
+</li>
 </ul>
+<h2 id="&#x6F14;&#x793A;&#x6548;&#x679C;">&#x6F14;&#x793A;&#x6548;&#x679C;</h2>
+<p>&#x4F7F;&#x7528; <code>tab</code> &#x952E;&#x51FA;&#x73B0;&#x81EA;&#x52A8;&#x8865;&#x5168;&#x63D0;&#x793A;</p>
+<pre class="language-"><code class="lang-shell">$ goctl completion -h
+api            -- generate api related files
+bug            -- report a bug
+completion     -- generation completion script, it only works <span class="token keyword">for</span> unix-like OS
+<span class="token function">docker</span>         -- generate Dockerfile
+<span class="token builtin class-name">help</span>        h  -- Shows a list of commands or <span class="token builtin class-name">help</span> <span class="token keyword">for</span> one <span class="token builtin class-name">command</span>
+kube           -- generate kubernetes files
+migrate        -- migrate from tal-tech to zeromicro
+model          -- generate model code
+rpc            -- generate rpc code
+template       -- template operation
+upgrade        -- upgrade goctl to latest version
+</code></pre>
 <footer class="page-footer"><span class="copyright">Copyright &#xA9; 2019-2021 go-zero all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last UpdateTime&#xFF1A;
 2022-02-07 12:09:50
 </span></footer>
@@ -1649,12 +1584,12 @@ $user: mysql&#x6570;&#x636E;&#x5E93;user</p>
 
             
                 
-                <a href="api-coding.html" class="navigation navigation-prev " aria-label="Previous page: api文件编写">
+                <a href="goctl.html" class="navigation navigation-prev " aria-label="Previous page: Goctl">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="jwt.html" class="navigation navigation-next " aria-label="Next page: jwt鉴权">
+                <a href="goctl-commands.html" class="navigation navigation-next " aria-label="Next page: 命令大全">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1665,7 +1600,7 @@ $user: mysql&#x6570;&#x636E;&#x5E93;user</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"业务编码","level":"1.8.5.4","depth":3,"next":{"title":"jwt鉴权","level":"1.8.5.5","depth":3,"path":"jwt.md","ref":"jwt.md","articles":[]},"previous":{"title":"api文件编写","level":"1.8.5.3","depth":3,"path":"api-coding.md","ref":"api-coding.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","code","-lunr","-search","search-pro","github","splitter","-sharing","sharing-plus","tbfed-pagefooter","flexible-alerts","page-toc-button","pageview-count","popup","hide-element","edit-link","-highlight","prism","theme-comscore"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © 2019-2021 go-zero","modify_label":"Last UpdateTime：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"lang":{"shell":"bash"},"css":["prismjs/themes/prism-tomorrow.css"]},"github":{"url":"https://github.com/zeromicro/go-zero"},"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"qq":false,"all":["douban","facebook","google","linkedin","twitter","weibo","qq","qzone","weibo"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true},"edit-link":{"label":"EDIT THIS PAGE","base":"https://github.com/zeromicro/zero-doc/tree/main/go-zero.dev"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"anqiansong","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"go-zero document","language":"cn","gitbook":"*","description":"Golang 微服务框架 | 集成各种工程实践的 WEB 和 RPC 框架 | 一键生成 Go, iOS, Android, Kotlin, Dart, TypeScript, JavaScript 代码"},"file":{"path":"business-coding.md","mtime":"2022-02-07T12:09:50.800Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-02-07T12:10:44.600Z"},"basePath":".","book":{"language":"cn"}});
+            gitbook.page.hasChanged({"page":{"title":"自动补全设置","level":"1.9.1","depth":2,"next":{"title":"命令大全","level":"1.9.2","depth":2,"path":"goctl-commands.md","ref":"goctl-commands.md","articles":[]},"previous":{"title":"Goctl","level":"1.9","depth":1,"path":"goctl.md","ref":"goctl.md","articles":[{"title":"自动补全设置","level":"1.9.1","depth":2,"path":"goctl-completion.md","ref":"goctl-completion.md","articles":[]},{"title":"命令大全","level":"1.9.2","depth":2,"path":"goctl-commands.md","ref":"goctl-commands.md","articles":[]},{"title":"api命令","level":"1.9.3","depth":2,"path":"goctl-api.md","ref":"goctl-api.md","articles":[]},{"title":"rpc命令","level":"1.9.4","depth":2,"path":"goctl-rpc.md","ref":"goctl-rpc.md","articles":[]},{"title":"model命令","level":"1.9.5","depth":2,"path":"goctl-model.md","ref":"goctl-model.md","articles":[]},{"title":"plugin命令","level":"1.9.6","depth":2,"path":"goctl-plugin.md","ref":"goctl-plugin.md","articles":[]},{"title":"其他命令","level":"1.9.7","depth":2,"path":"goctl-other.md","ref":"goctl-other.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","code","-lunr","-search","search-pro","github","splitter","-sharing","sharing-plus","tbfed-pagefooter","flexible-alerts","page-toc-button","pageview-count","popup","hide-element","edit-link","-highlight","prism","theme-comscore"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © 2019-2021 go-zero","modify_label":"Last UpdateTime：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"lang":{"shell":"bash"},"css":["prismjs/themes/prism-tomorrow.css"]},"github":{"url":"https://github.com/zeromicro/go-zero"},"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"qq":false,"all":["douban","facebook","google","linkedin","twitter","weibo","qq","qzone","weibo"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true},"edit-link":{"label":"EDIT THIS PAGE","base":"https://github.com/zeromicro/zero-doc/tree/main/go-zero.dev"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"anqiansong","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"go-zero document","language":"cn","gitbook":"*","description":"Golang 微服务框架 | 集成各种工程实践的 WEB 和 RPC 框架 | 一键生成 Go, iOS, Android, Kotlin, Dart, TypeScript, JavaScript 代码"},"file":{"path":"goctl-completion.md","mtime":"2022-02-07T12:09:50.800Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-02-07T12:10:44.600Z"},"basePath":".","book":{"language":"cn"}});
         });
     </script>
 </div>

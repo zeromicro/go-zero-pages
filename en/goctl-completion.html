@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Commands & Flags · go-zero document</title>
+        <title>Auto Completion · go-zero document</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -93,10 +93,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="goctl-api.html" />
+    <link rel="next" href="goctl-commands.html" />
     
     
-    <link rel="prev" href="goctl-completion.html" />
+    <link rel="prev" href="goctl.html" />
     
 
     </head>
@@ -727,7 +727,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.8.1" data-path="goctl-completion.html">
+        <li class="chapter active" data-level="1.8.1" data-path="goctl-completion.html">
             
                 <a href="goctl-completion.html">
             
@@ -740,7 +740,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.8.2" data-path="goctl-commands.html">
+        <li class="chapter " data-level="1.8.2" data-path="goctl-commands.html">
             
                 <a href="goctl-commands.html">
             
@@ -1318,7 +1318,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Commands & Flags</a>
+        <a href="." >Auto Completion</a>
     </h1>
 </div>
 
@@ -1333,278 +1333,52 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="goctl-command-list">goctl command list</h1>
-<blockquote>
-<p>[!TIP]
-This document is machine-translated by Google. If you find grammatical and semantic errors, and the document description is not clear, please <a href="doc-contibute.html">PR</a></p>
-</blockquote>
-<p><img src="https://zeromicro.github.io/go-zero/en/resource/goctl-command.png" alt="goctl"></p>
-<h1 id="goctl">goctl</h1>
-<h2 id="api">api</h2>
-<p>(api service related operations)</p>
-<h3 id="o">-o</h3>
-<p>(Generate api file)</p>
+                                <h1 id="goctl-autocomplete">goctl autocomplete</h1>
+<p>goctl autocomplete only supports unix-like operating systems</p>
+<h2 id="usage">Usage</h2>
+<pre class="language-"><code class="lang-shell">$ goctl completion -h
+Name.
+goctl autocomplete - generates completion scripts, it only works on unix-like operating systems
+
+Usage.
+goctl completion <span class="token punctuation">[</span>command options<span class="token punctuation">]</span> <span class="token punctuation">[</span>arguments<span class="token punctuation">..</span>.<span class="token punctuation">]</span> <span class="token punctuation">(</span>command options<span class="token punctuation">)</span>.
+
+Options.
+--name value, -n value filename of the autocomplete script, default is <span class="token punctuation">[</span>goctl_autocomplete<span class="token punctuation">]</span>
+</code></pre>
+<h2 id="generate-autocomplete-file">Generate autocomplete file</h2>
+<pre class="language-"><code class="lang-shell">$ goctl completion
+Generate autocomplete successfully<span class="token operator">!</span>
+Execute the following script to <span class="token builtin class-name">set</span> up the shell.
+<span class="token builtin class-name">echo</span> <span class="token assign-left variable">PROG</span><span class="token operator">=</span>goctl <span class="token builtin class-name">source</span> /Users/keson/.goctl/.auto_complete/zsh/goctl_autocomplete <span class="token operator">&gt;&gt;</span> ~/.zshrc <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">source</span> ~/.zshrc
+or
+<span class="token builtin class-name">echo</span> <span class="token assign-left variable">PROG</span><span class="token operator">=</span>goctl <span class="token builtin class-name">source</span> /Users/keson/.goctl/.auto_complete/bash/goctl_autocomplete <span class="token operator">&gt;&gt;</span> ~/.bashrc <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">source</span> ~/.bashrc
+</code></pre>
+<h2 id="shell-configuration">shell configuration</h2>
 <ul>
-<li>Example: goctl api -o user.api</li>
-</ul>
-<h3 id="new">new</h3>
-<p>(Quickly create an api service)</p>
-<ul>
-<li>Example: goctl api new user</li>
-</ul>
-<h3 id="format">format</h3>
-<p>(api format, vscode use)</p>
-<ul>
-<li>-dir
-(Target directory)</li>
-<li>-iu
-(Whether to automatically update goctl)</li>
-<li>-stdin
-(Whether to read data from standard input)</li>
-</ul>
-<h3 id="validate">validate</h3>
-<p>(Verify that the api file is valid)</p>
-<ul>
-<li><p>-api
-(Specify the api file source)</p>
-<ul>
-<li>Example: goctl api validate -api user.api</li>
-</ul>
+<li>zsh<pre class="language-"><code class="lang-shell">$ <span class="token builtin class-name">echo</span> <span class="token assign-left variable">PROG</span><span class="token operator">=</span>goctl <span class="token builtin class-name">source</span> /Users/keson/.goctl/.auto_complete/zsh/goctl_autocomplete <span class="token operator">&gt;&gt;</span> ~/.zshrc <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">source</span> ~/.zshrc
+</code></pre>
+</li>
+<li>bash<pre class="language-"><code class="lang-shell">$ <span class="token builtin class-name">echo</span> <span class="token assign-left variable">PROG</span><span class="token operator">=</span>goctl <span class="token builtin class-name">source</span> /Users/keson/.goctl/.auto_complete/bash/goctl_autocomplete <span class="token operator">&gt;&gt;</span> ~/.bashrc <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">source</span> ~/.bashrc
+</code></pre>
 </li>
 </ul>
-<h3 id="doc">doc</h3>
-<p>(Generate doc markdown)</p>
-<ul>
-<li><p>-dir
-(Specify the directory)</p>
-<ul>
-<li>Example: goctl api doc -dir user</li>
-</ul>
-</li>
-</ul>
-<h3 id="go">go</h3>
-<p>(Generate golang api service)</p>
-<ul>
-<li>-dir
-(Specify the code storage directory)</li>
-<li>-api
-(Specify the api file source)</li>
-<li>-force
-(Whether to force overwrite existing files)</li>
-<li>-style
-(Specify the file name naming style, <code>gozero</code>: lowercase, <code>go_zero</code>: underscore, <code>GoZero</code>: camel case)</li>
-</ul>
-<h3 id="java">java</h3>
-<p>(Generate access api service code-java language)</p>
-<ul>
-<li>-dir
-(Specify the code storage directory)</li>
-<li>-api
-(Specify the api file source)</li>
-</ul>
-<h3 id="ts">ts</h3>
-<p>(Generate access api service code-ts language)</p>
-<ul>
-<li>-dir
-(Specify the code storage directory)</li>
-<li>-api
-(Specify the api file source)</li>
-<li>webapi</li>
-<li>caller</li>
-<li>unwrap</li>
-</ul>
-<h3 id="dart">dart</h3>
-<p>(Generate access api service code-dart language)</p>
-<ul>
-<li>-dir
-(Specify code storage target)</li>
-<li>-api
-(Specify the api file source)</li>
-</ul>
-<h3 id="kt">kt</h3>
-<p>(Generate access api service code-Kotlin language)</p>
-<ul>
-<li>-dir
-(Specify code storage target)</li>
-<li>-api
-(Specify the api file source)</li>
-<li>-pkg
-(Specify package name)</li>
-</ul>
-<h3 id="plugin">plugin</h3>
-<ul>
-<li>-plugin
-Executable file</li>
-<li>-dir
-Code storage destination folder</li>
-<li>-api
-api source file</li>
-<li>-style
-File name formatting</li>
-</ul>
-<h2 id="template">template</h2>
-<p>(Template operation)</p>
-<h3 id="init">init</h3>
-<p>(Cache api/rpc/model template)</p>
-<ul>
-<li>Example: goctl template init</li>
-</ul>
-<h3 id="clean">clean</h3>
-<p>(&#x6E05;&#x7A7A;&#x7F13;&#x5B58;&#x6A21;&#x677F;)</p>
-<ul>
-<li>Example: goctl template clean</li>
-</ul>
-<h3 id="update">update</h3>
-<p>(Update template)</p>
-<ul>
-<li><p>-category,c
-(Specify the group name that needs to be updated api|rpc|model)</p>
-<ul>
-<li>Example: goctl template update -c api</li>
-</ul>
-</li>
-</ul>
-<h3 id="revert">revert</h3>
-<p>(Restore the specified template file)</p>
-<ul>
-<li>-category,c
-(Specify the group name that needs to be updated api|rpc|model)</li>
-<li>-name,n
-(Specify the template file name)</li>
-</ul>
-<h2 id="config">config</h2>
-<p>(Configuration file generation)</p>
-<h3 id="pathp">-path,p</h3>
-<p>(Specify the configuration file storage directory)</p>
-<ul>
-<li>Example: goctl config -p user</li>
-</ul>
-<h2 id="docker">docker</h2>
-<p>(Generate Dockerfile)</p>
-<h3 id="go">-go</h3>
-<p>(Specify the main function file)</p>
-<h3 id="port">-port</h3>
-<p>(Specify the exposed port)</p>
-<h2 id="rpc-rpc-service-related-operations">rpc (rpc service related operations)</h2>
-<h3 id="new">new</h3>
-<p>(Quickly generate an rpc service)</p>
-<ul>
-<li>-idea
-(Identifies whether the command comes from the idea plug-in and is used for the development and use of the idea plug-in. Please ignore the terminal execution [optional])</li>
-<li>-style
-(Specify the file name naming style, <code>gozero</code>: lowercase, <code>go_zero</code>: underscore, <code>GoZero</code>: camel case)</li>
-</ul>
-<h3 id="template">template</h3>
-<p>(Create a proto template file)</p>
-<ul>
-<li>-idea
-(Identifies whether the command comes from the idea plug-in and is used for the development and use of the idea plug-in. Please ignore the terminal execution [optional])</li>
-<li>-out,o
-(Specify the code storage directory)</li>
-</ul>
-<h3 id="proto">proto</h3>
-<p>(Generate rpc service based on proto)</p>
-<ul>
-<li>-src,s
-(Specify the proto file source)</li>
-<li>-proto_path,I
-(Specify proto import to find the directory, protoc native commands, for specific usage, please refer to protoc -h to view)</li>
-<li>-dir,d
-(Specify the code storage directory)</li>
-<li>-idea
-(Identifies whether the command comes from the idea plug-in and is used for the development and use of the idea plug-in. Please ignore the terminal execution [optional])</li>
-<li>-style
-(Specify the file name naming style, <code>gozero</code>: lowercase, <code>go_zero</code>: underscore, <code>GoZero</code>: camel case)</li>
-</ul>
-<h3 id="model">model</h3>
-<p>(Model layer code operation)</p>
-<ul>
-<li><p>mysql
-(Generate model code from mysql)</p>
-<ul>
-<li><p>ddl
-(Specify the data source to generate model code for the ddl file)</p>
-<ul>
-<li>-src,s
-(Specify the source of the sql file containing ddl, support wildcard matching)</li>
-<li>-dir,d
-(Specify the code storage directory)</li>
-<li>-style
-(Specify the file name naming style, <code>gozero</code>: lowercase, <code>go_zero</code>: underscore, <code>GoZero</code>: camel case)</li>
-<li>-cache,c
-(Whether the generated code has redis cache logic, bool value)</li>
-<li>-idea
-(Identifies whether the command comes from the idea plug-in and is used for the development and use of the idea plug-in. Please ignore the terminal execution [optional])</li>
-</ul>
-</li>
-<li><p>datasource
-(Specify the data source to generate model code from the datasource)</p>
-<ul>
-<li>-url
-(Specify datasource)</li>
-<li>-table,t
-(Specify the table name, support wildcards)</li>
-<li>-dir,d
-(Specify the code storage directory)</li>
-<li>-style
-(Specify the file name naming style, <code>gozero</code>: lowercase, <code>go_zero</code>: underscore, <code>GoZero</code>: camel case)</li>
-<li>-cache,c
-(Whether the generated code has redis cache logic, bool value)</li>
-<li>-idea
-(Identifies whether the command comes from the idea plug-in and is used for the development and use of the idea plug-in. Please ignore the terminal execution [optional])</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>mongo
-(generate model code from mongo)</p>
-<p>-type,t
-(specify Go Type name)
--cache,c
-(generate code with redis cache logic or not, bool value, default no)
--dir,d
-(specify the code generation directory)
--style
-(specify filename naming style, gozero:lowercase, go_zero:underscore, GoZero:hump)</p>
-</li>
-</ul>
-<h2 id="upgrade">upgrade</h2>
-<p>Goctl updated to the latest version</p>
-<h2 id="kube">kube</h2>
-<p>Generate k8s deployment file</p>
-<h3 id="deploy">deploy</h3>
-<ul>
-<li>-name
-service name</li>
-<li>-namespace
-k8s namespace</li>
-<li>-image
-docker image</li>
-<li>-secret
-Specify the k8s secret to obtain the mirror</li>
-<li>-requestCpu
-Specify the default allocation of cpu</li>
-<li>-requestMem
-Specify the default allocation of memory</li>
-<li>-limitCpu
-Specify the maximum allocation of cpu</li>
-<li>-limitMem
-Specify the maximum amount of memory allocated</li>
-<li>-o
-<code>deployment.yaml</code> output directory</li>
-<li>-replicas
-Specify the replicas</li>
-<li>-revisions
-Specify the number of release records to keep</li>
-<li>-port
-Specify service port</li>
-<li>-nodePort
-Specify the service&apos;s external exposure port</li>
-<li>-minReplicas
-Specify the minimum number of copies</li>
-<li>-maxReplicas
-Specify the maximum number of copies</li>
-</ul>
+<h2 id="demo-effect">Demo effect</h2>
+<p>Use the <code>tab</code> key to bring up the autocomplete prompt</p>
+<pre class="language-"><code class="lang-shell">$ goctl completion -h
+api -- generate api-related files
+bug -- report a bug
+completion -- generates a completion script, <span class="token function">which</span> is only available <span class="token keyword">for</span> unix-like operating systems
+<span class="token function">docker</span> -- generates a Docker <span class="token function">file</span>
+<span class="token builtin class-name">help</span> h -- displays a list of commands or <span class="token builtin class-name">help</span> information <span class="token keyword">for</span> a <span class="token builtin class-name">command</span>
+kube -- generates kubernetes files
+migrate -- migrate from tal-tech to zeromicro
+model -- Generate model code
+rpc -- generate rpc code
+template -- Template operations
+upgrade -- upgrade goctl to the latest version
+</code></pre>
+<p>Translated with www.DeepL.com/Translator (free version) </p>
 <footer class="page-footer"><span class="copyright">Copyright &#xA9; 2019-2021 go-zero all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last UpdateTime&#xFF1A;
 2022-02-07 12:09:50
 </span></footer>
@@ -1635,12 +1409,12 @@ Specify the maximum number of copies</li>
 
             
                 
-                <a href="goctl-completion.html" class="navigation navigation-prev " aria-label="Previous page: Auto Completion">
+                <a href="goctl.html" class="navigation navigation-prev " aria-label="Previous page: Goctl">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="goctl-api.html" class="navigation navigation-next " aria-label="Next page: API Commands">
+                <a href="goctl-commands.html" class="navigation navigation-next " aria-label="Next page: Commands & Flags">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1651,7 +1425,7 @@ Specify the maximum number of copies</li>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Commands & Flags","level":"1.8.2","depth":2,"next":{"title":"API Commands","level":"1.8.3","depth":2,"path":"goctl-api.md","ref":"goctl-api.md","articles":[]},"previous":{"title":"Auto Completion","level":"1.8.1","depth":2,"path":"goctl-completion.md","ref":"goctl-completion.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","code","-lunr","-search","search-pro","github","splitter","-sharing","sharing-plus","tbfed-pagefooter","flexible-alerts","page-toc-button","pageview-count","popup","hide-element","edit-link","-highlight","prism","theme-comscore"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © 2019-2021 go-zero","modify_label":"Last UpdateTime：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"lang":{"shell":"bash"},"css":["prismjs/themes/prism-tomorrow.css"]},"github":{"url":"https://github.com/zeromicro/go-zero"},"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"qq":false,"all":["douban","facebook","google","linkedin","twitter","weibo","qq","qzone","weibo"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true},"edit-link":{"label":"EDIT THIS PAGE","base":"https://github.com/zeromicro/zero-doc/tree/main/go-zero.dev"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"anqiansong","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"go-zero document","language":"en","gitbook":"*","description":"Golang 微服务框架 | 集成各种工程实践的 WEB 和 RPC 框架 | 一键生成 Go, iOS, Android, Kotlin, Dart, TypeScript, JavaScript 代码"},"file":{"path":"goctl-commands.md","mtime":"2022-02-07T12:09:50.912Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-02-07T12:10:44.600Z"},"basePath":".","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"Auto Completion","level":"1.8.1","depth":2,"next":{"title":"Commands & Flags","level":"1.8.2","depth":2,"path":"goctl-commands.md","ref":"goctl-commands.md","articles":[]},"previous":{"title":"Goctl","level":"1.8","depth":1,"path":"goctl.md","ref":"goctl.md","articles":[{"title":"Auto Completion","level":"1.8.1","depth":2,"path":"goctl-completion.md","ref":"goctl-completion.md","articles":[]},{"title":"Commands & Flags","level":"1.8.2","depth":2,"path":"goctl-commands.md","ref":"goctl-commands.md","articles":[]},{"title":"API Commands","level":"1.8.3","depth":2,"path":"goctl-api.md","ref":"goctl-api.md","articles":[]},{"title":"RPC Commands","level":"1.8.4","depth":2,"path":"goctl-rpc.md","ref":"goctl-rpc.md","articles":[]},{"title":"Model Commands","level":"1.8.5","depth":2,"path":"goctl-model.md","ref":"goctl-model.md","articles":[]},{"title":"Plugin Commands","level":"1.8.6","depth":2,"path":"goctl-plugin.md","ref":"goctl-plugin.md","articles":[]},{"title":"More Commands","level":"1.8.7","depth":2,"path":"goctl-other.md","ref":"goctl-other.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","code","-lunr","-search","search-pro","github","splitter","-sharing","sharing-plus","tbfed-pagefooter","flexible-alerts","page-toc-button","pageview-count","popup","hide-element","edit-link","-highlight","prism","theme-comscore"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © 2019-2021 go-zero","modify_label":"Last UpdateTime：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"lang":{"shell":"bash"},"css":["prismjs/themes/prism-tomorrow.css"]},"github":{"url":"https://github.com/zeromicro/go-zero"},"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"qq":false,"all":["douban","facebook","google","linkedin","twitter","weibo","qq","qzone","weibo"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true},"edit-link":{"label":"EDIT THIS PAGE","base":"https://github.com/zeromicro/zero-doc/tree/main/go-zero.dev"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"anqiansong","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"go-zero document","language":"en","gitbook":"*","description":"Golang 微服务框架 | 集成各种工程实践的 WEB 和 RPC 框架 | 一键生成 Go, iOS, Android, Kotlin, Dart, TypeScript, JavaScript 代码"},"file":{"path":"goctl-completion.md","mtime":"2022-02-07T12:09:50.912Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-02-07T12:10:44.600Z"},"basePath":".","book":{"language":"en"}});
         });
     </script>
 </div>
