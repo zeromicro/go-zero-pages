@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>protoc & protoc-gen-go Installation · go-zero document</title>
+        <title>Distributed Transaction · go-zero document</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -93,10 +93,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="prepare-other.html" />
+    <link rel="next" href="plugin-center.html" />
     
     
-    <link rel="prev" href="goctl-install.html" />
+    <link rel="prev" href="vscode.html" />
     
 
     </head>
@@ -373,7 +373,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.7.1.4" data-path="protoc-install.html">
+        <li class="chapter " data-level="1.7.1.4" data-path="protoc-install.html">
             
                 <a href="protoc-install.html">
             
@@ -1063,7 +1063,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.11.2" data-path="distributed-transaction.html">
+        <li class="chapter active" data-level="1.11.2" data-path="distributed-transaction.html">
             
                 <a href="distributed-transaction.html">
             
@@ -1331,7 +1331,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >protoc & protoc-gen-go Installation</a>
+        <a href="." >Distributed Transaction</a>
     </h1>
 </div>
 
@@ -1346,75 +1346,31 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="protoc--protoc-gen-go-installation">protoc &amp; protoc-gen-go installation</h1>
-<blockquote>
-<p>[!TIP]
-This document is machine-translated by Google. If you find grammatical and semantic errors, and the document description is not clear, please <a href="doc-contibute.html">PR</a></p>
-</blockquote>
-<h2 id="forward">Forward</h2>
-<p>protoc is a tool written in C++, which can translate proto files into codes in the specified language. In the go-zero microservices, we use grpc to communicate between services, and the writing of grpc requires the use of protoc and the plug-in protoc-gen-go that translates into go language rpc stub code.</p>
-<p>Demonstration environment of this document</p>
+                                <h1 id="distributed-transaction">Distributed Transaction</h1>
+<h2 id="application-scenario">Application Scenario</h2>
+<p>In a microservices architecture, when we need to ensure data consistency across services, the local database transactions are overwhelmed and cannot put multiple operations across databases and services into a single transaction. There are many such scenarios and we can list many of them.</p>
 <ul>
-<li>mac OS</li>
+<li>Order systems: need to ensure that order creation and stock deduction either both succeeded or both rolled back.</li>
+<li>Inter-bank transfer scenarios: the data is not in one database, but you need to ensure that the balance deduction and balance increase either both succeeded or both failed.</li>
+<li>Travel booking scenario: several tickets need to be booked in the third-party system, either all succeeded or all cancelled.</li>
 </ul>
-<h2 id="way-1-install-from-goctl">way 1: install from goctl</h2>
-<pre class="language-"><code class="lang-bash">$ goctl <span class="token function">env</span> check -i -f -v                                 
-<span class="token punctuation">[</span>goctl-env<span class="token punctuation">]</span>: preparing to check <span class="token function">env</span>
-
-<span class="token punctuation">[</span>goctl-env<span class="token punctuation">]</span>: looking up <span class="token string">&quot;protoc&quot;</span>
-<span class="token punctuation">[</span>goctl-env<span class="token punctuation">]</span>: <span class="token string">&quot;protoc&quot;</span> is not found <span class="token keyword">in</span> <span class="token environment constant">PATH</span>
-<span class="token punctuation">[</span>goctl-env<span class="token punctuation">]</span>: preparing to <span class="token function">install</span> <span class="token string">&quot;protoc&quot;</span>
-<span class="token string">&quot;protoc&quot;</span> installed from cache
-<span class="token punctuation">[</span>goctl-env<span class="token punctuation">]</span>: <span class="token string">&quot;protoc&quot;</span> is already installed <span class="token keyword">in</span> <span class="token string">&quot;/Users/keson/go/bin/protoc&quot;</span>
-
-<span class="token punctuation">[</span>goctl-env<span class="token punctuation">]</span>: looking up <span class="token string">&quot;protoc-gen-go&quot;</span>
-<span class="token punctuation">[</span>goctl-env<span class="token punctuation">]</span>: <span class="token string">&quot;protoc-gen-go&quot;</span> is not found <span class="token keyword">in</span> <span class="token environment constant">PATH</span>
-<span class="token punctuation">[</span>goctl-env<span class="token punctuation">]</span>: preparing to <span class="token function">install</span> <span class="token string">&quot;protoc-gen-go&quot;</span>
-<span class="token string">&quot;protoc-gen-go&quot;</span> installed from cache
-<span class="token punctuation">[</span>goctl-env<span class="token punctuation">]</span>: <span class="token string">&quot;protoc-gen-go&quot;</span> is already installed <span class="token keyword">in</span> <span class="token string">&quot;/Users/keson/go/bin/protoc-gen-go&quot;</span>
-
-<span class="token punctuation">[</span>goctl-env<span class="token punctuation">]</span>: looking up <span class="token string">&quot;protoc-gen-go-grpc&quot;</span>
-<span class="token punctuation">[</span>goctl-env<span class="token punctuation">]</span>: <span class="token string">&quot;protoc-gen-go-grpc&quot;</span> is not found <span class="token keyword">in</span> <span class="token environment constant">PATH</span>
-<span class="token punctuation">[</span>goctl-env<span class="token punctuation">]</span>: preparing to <span class="token function">install</span> <span class="token string">&quot;protoc-gen-go-grpc&quot;</span>
-<span class="token string">&quot;protoc-gen-go-grpc&quot;</span> installed from cache
-<span class="token punctuation">[</span>goctl-env<span class="token punctuation">]</span>: <span class="token string">&quot;protoc-gen-go-grpc&quot;</span> is already installed <span class="token keyword">in</span> <span class="token string">&quot;/Users/keson/go/bin/protoc-gen-go-grpc&quot;</span>
-
-<span class="token punctuation">[</span>goctl-env<span class="token punctuation">]</span>: congratulations<span class="token operator">!</span> your goctl environment is ready<span class="token operator">!</span>
-</code></pre>
-<h2 id="way2-install-from-web-page">way2: install from web page</h2>
-<h3 id="protoc-installation">protoc installation</h3>
+<p>For these scenarios that cannot be solved by local transactions, we need a distributed transaction solution to ensure consistency of data updates across services and databases.</p>
+<h2 id="solution">Solution</h2>
+<p>go-zero and <a href="https://github.com/dtm-labs/dtm" target="_blank">dtm</a> have cooperated deeply to introduce an elegant solution that seamlessly accesses dtm in go-zero. The solution has the following features.</p>
 <ul>
-<li>Enter the <a href="https://github.com/protocolbuffers/protobuf/releases" target="_blank">protobuf release</a> page and select the compressed package file suitable for your operating system</li>
-<li>Unzip <code>protoc-3.14.0-osx-x86_64.zip</code> and enter <code>protoc-3.14.0-osx-x86_64</code><pre class="language-"><code class="lang-shell">  $ <span class="token builtin class-name">cd</span> protoc-3.14.0-osx-x86_64/bin
-</code></pre>
-</li>
-<li>Move the started <code>protoc</code> binary file to any path added to the environment variable, such as <code>$GOPATH/bin</code>. It is not recommended putting it directly with the next path of the system.<pre class="language-"><code class="lang-shell">  $ <span class="token function">mv</span> protoc <span class="token variable">$GOPATH</span>/bin
-</code></pre>
-<blockquote>
-<p>[!TIP]
-$GOPATH is the actual folder address of your local machine</p>
-</blockquote>
-</li>
-<li>Verify the installation result<pre class="language-"><code class="lang-shell">  $ protoc --version
-</code></pre>
-<pre class="language-"><code class="lang-shell">  libprotoc <span class="token number">3.14</span>.0
-</code></pre>
-<h3 id="protoc-gen--installation">protoc-gen-* installation</h3>
-</li>
+<li>dtm services can be directly registered to go-zero&apos;s registry through configuration</li>
+<li>go-zero is able to access the dtm server with a built-in target format</li>
+<li>dtm can recognise go-zero&apos;s target format and dynamically access services in go-zero</li>
 </ul>
-<blockquote>
-<p>[!TIPS]</p>
-<p>Windows may report an error, <code>A required privilege is not held by the client.</code>, because goctl needs to be run <code>as administrator</code> under Windows.
-The reason is that goctl needs to be run &quot;as administrator&quot; under Windows.</p>
+<p>For detailed access, see the dtm documentation: <a href="https://en.dtm.pub/ref/gozero.html" target="_blank">go-zero support</a></p>
+<h2 id="more-application-scenarios">More application scenarios</h2>
+<p>dtm can address not only the above distributed transaction scenarios, but also many more scenarios related to data consistency, including</p>
 <ul>
-<li>Download and install <code>protoc-gen-go</code><pre class="language-"><code class="lang-shell">  $ go <span class="token function">install</span> google.golang.org/protobuf/cmd/protoc-gen-go@latest
-  $ go <span class="token function">install</span> google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
-</code></pre>
-</li>
+<li>Database and cache consistency: dtm&apos;s two-phase messages can guarantee atomicity for database update operations, and cache update/delete operations</li>
+<li>Flash-sales system: dtm ensures that the number of orders created in a flash-sales scenario is exactly the same as the number of stock deductions, without the need for subsequent manual calibration</li>
+<li>Multiple storage combinations: dtm already supports multiple storage such as database, Redis, Mongo, etc., which can be combined into one global transaction to ensure data consistency</li>
 </ul>
-<p>**[!WARNING]
-protoc-gen-go installation failed, please read <a href="error.html">Error</a></p>
-</blockquote>
+<p>For more information on dtm&apos;s capabilities and presentation, see <a href="https://github.com/dtm-labs/dtm" target="_blank">dtm</a> </p>
 <footer class="page-footer"><span class="copyright">Copyright &#xA9; 2019-2021 go-zero all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last UpdateTime&#xFF1A;
 2022-04-01 08:13:42
 </span></footer>
@@ -1445,12 +1401,12 @@ protoc-gen-go installation failed, please read <a href="error.html">Error</a></p
 
             
                 
-                <a href="goctl-install.html" class="navigation navigation-prev " aria-label="Previous page: Goctl Installation">
+                <a href="vscode.html" class="navigation navigation-prev " aria-label="Previous page: VSCode Plugin">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="prepare-other.html" class="navigation navigation-next " aria-label="Next page: More">
+                <a href="plugin-center.html" class="navigation navigation-next " aria-label="Next page: Plugins">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1461,7 +1417,7 @@ protoc-gen-go installation failed, please read <a href="error.html">Error</a></p
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"protoc & protoc-gen-go Installation","level":"1.7.1.4","depth":3,"next":{"title":"More","level":"1.7.1.5","depth":3,"path":"prepare-other.md","ref":"prepare-other.md","articles":[]},"previous":{"title":"Goctl Installation","level":"1.7.1.3","depth":3,"path":"goctl-install.md","ref":"goctl-install.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","code","-lunr","-search","search-pro","github","splitter","-sharing","sharing-plus","tbfed-pagefooter","flexible-alerts","page-toc-button","pageview-count","popup","hide-element","edit-link","-highlight","prism","theme-comscore"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © 2019-2021 go-zero","modify_label":"Last UpdateTime：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"lang":{"shell":"bash"},"css":["prismjs/themes/prism-tomorrow.css"]},"github":{"url":"https://github.com/zeromicro/go-zero"},"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"qq":false,"all":["douban","facebook","google","linkedin","twitter","weibo","qq","qzone","weibo"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true},"edit-link":{"label":"EDIT THIS PAGE","base":"https://github.com/zeromicro/zero-doc/tree/main/go-zero.dev"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"anqiansong","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"go-zero document","language":"en","gitbook":"*","description":"Golang 微服务框架 | 集成各种工程实践的 WEB 和 RPC 框架 | 一键生成 Go, iOS, Android, Kotlin, Dart, TypeScript, JavaScript 代码"},"file":{"path":"protoc-install.md","mtime":"2022-04-01T08:13:42.790Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-04-01T08:14:44.727Z"},"basePath":".","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"Distributed Transaction","level":"1.11.2","depth":2,"next":{"title":"Plugins","level":"1.11.3","depth":2,"path":"plugin-center.md","ref":"plugin-center.md","articles":[]},"previous":{"title":"VSCode Plugin","level":"1.11.1.2","depth":3,"path":"vscode.md","ref":"vscode.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","code","-lunr","-search","search-pro","github","splitter","-sharing","sharing-plus","tbfed-pagefooter","flexible-alerts","page-toc-button","pageview-count","popup","hide-element","edit-link","-highlight","prism","theme-comscore"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © 2019-2021 go-zero","modify_label":"Last UpdateTime：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"lang":{"shell":"bash"},"css":["prismjs/themes/prism-tomorrow.css"]},"github":{"url":"https://github.com/zeromicro/go-zero"},"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"qq":false,"all":["douban","facebook","google","linkedin","twitter","weibo","qq","qzone","weibo"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true},"edit-link":{"label":"EDIT THIS PAGE","base":"https://github.com/zeromicro/zero-doc/tree/main/go-zero.dev"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"anqiansong","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"go-zero document","language":"en","gitbook":"*","description":"Golang 微服务框架 | 集成各种工程实践的 WEB 和 RPC 框架 | 一键生成 Go, iOS, Android, Kotlin, Dart, TypeScript, JavaScript 代码"},"file":{"path":"distributed-transaction.md","mtime":"2022-04-01T08:13:42.786Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-04-01T08:14:44.727Z"},"basePath":".","book":{"language":"en"}});
         });
     </script>
 </div>
