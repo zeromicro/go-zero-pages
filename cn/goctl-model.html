@@ -1518,203 +1518,191 @@
 </code></pre>
 <p>&#x6267;&#x884C;&#x4E0A;&#x8FF0;&#x547D;&#x4EE4;&#x540E;&#x5373;&#x53EF;&#x5FEB;&#x901F;&#x751F;&#x6210;CURD&#x4EE3;&#x7801;&#x3002;</p>
 <pre class="language-"><code class="lang-text">  model
-  &#x2502;   &#x251C;&#x2500;&#x2500; error.go
-  &#x2502;   &#x2514;&#x2500;&#x2500; usermodel.go
+  &#x251C;&#x2500;&#x2500; usermodel.go
+  &#x251C;&#x2500;&#x2500; usermodel_gen.go
+  &#x2514;&#x2500;&#x2500; vars.go
 </code></pre>
 </li>
 <li><p>&#x901A;&#x8FC7;datasource&#x751F;&#x6210;</p>
 <pre class="language-"><code class="lang-shell">  $ goctl model mysql datasource -url<span class="token operator">=</span><span class="token string">&quot;user:password@tcp(127.0.0.1:3306)/database&quot;</span> -table<span class="token operator">=</span><span class="token string">&quot;*&quot;</span>  -dir<span class="token operator">=</span><span class="token string">&quot;./model&quot;</span>
 </code></pre>
 </li>
-<li><p>&#x751F;&#x6210;&#x4EE3;&#x7801;&#x793A;&#x4F8B;</p>
-<pre class="language-"><code class="lang-go">  <span class="token keyword">package</span> model
-
-  <span class="token keyword">import</span> <span class="token punctuation">(</span>
-      <span class="token string">&quot;database/sql&quot;</span>
-      <span class="token string">&quot;fmt&quot;</span>
-      <span class="token string">&quot;strings&quot;</span>
-      <span class="token string">&quot;time&quot;</span>
-
-      <span class="token string">&quot;github.com/zeromicro/go-zero/core/stores/builder&quot;</span>
-      <span class="token string">&quot;github.com/zeromicro/go-zero/core/stores/cache&quot;</span>
-      <span class="token string">&quot;github.com/zeromicro/go-zero/core/stores/sqlc&quot;</span>
-      <span class="token string">&quot;github.com/zeromicro/go-zero/core/stores/sqlx&quot;</span>
-      <span class="token string">&quot;github.com/zeromicro/go-zero/core/stringx&quot;</span>
-  <span class="token punctuation">)</span>
-
-  <span class="token keyword">var</span> <span class="token punctuation">(</span>
-      userFieldNames          <span class="token operator">=</span> builder<span class="token punctuation">.</span><span class="token function">RawFieldNames</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>User<span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
-      userRows                <span class="token operator">=</span> strings<span class="token punctuation">.</span><span class="token function">Join</span><span class="token punctuation">(</span>userFieldNames<span class="token punctuation">,</span> <span class="token string">&quot;,&quot;</span><span class="token punctuation">)</span>
-      userRowsExpectAutoSet   <span class="token operator">=</span> strings<span class="token punctuation">.</span><span class="token function">Join</span><span class="token punctuation">(</span>stringx<span class="token punctuation">.</span><span class="token function">Remove</span><span class="token punctuation">(</span>userFieldNames<span class="token punctuation">,</span> <span class="token string">&quot;`id`&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;`create_time`&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;`update_time`&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">&quot;,&quot;</span><span class="token punctuation">)</span>
-      userRowsWithPlaceHolder <span class="token operator">=</span> strings<span class="token punctuation">.</span><span class="token function">Join</span><span class="token punctuation">(</span>stringx<span class="token punctuation">.</span><span class="token function">Remove</span><span class="token punctuation">(</span>userFieldNames<span class="token punctuation">,</span> <span class="token string">&quot;`id`&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;`create_time`&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;`update_time`&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">&quot;=?,&quot;</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">&quot;=?&quot;</span>
-
-      cacheUserNamePrefix   <span class="token operator">=</span> <span class="token string">&quot;cache#User#name#&quot;</span>
-      cacheUserMobilePrefix <span class="token operator">=</span> <span class="token string">&quot;cache#User#mobile#&quot;</span>
-      cacheUserIdPrefix     <span class="token operator">=</span> <span class="token string">&quot;cache#User#id#&quot;</span>
-      cacheUserPrefix       <span class="token operator">=</span> <span class="token string">&quot;cache#User#user#&quot;</span>
-  <span class="token punctuation">)</span>
-
-  <span class="token keyword">type</span> <span class="token punctuation">(</span>
-      UserModel <span class="token keyword">interface</span> <span class="token punctuation">{</span>
-          <span class="token function">Insert</span><span class="token punctuation">(</span>data User<span class="token punctuation">)</span> <span class="token punctuation">(</span>sql<span class="token punctuation">.</span>Result<span class="token punctuation">,</span> <span class="token builtin">error</span><span class="token punctuation">)</span>
-          <span class="token function">FindOne</span><span class="token punctuation">(</span>id <span class="token builtin">int64</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token operator">*</span>User<span class="token punctuation">,</span> <span class="token builtin">error</span><span class="token punctuation">)</span>
-          <span class="token function">FindOneByUser</span><span class="token punctuation">(</span>user <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token operator">*</span>User<span class="token punctuation">,</span> <span class="token builtin">error</span><span class="token punctuation">)</span>
-          <span class="token function">FindOneByName</span><span class="token punctuation">(</span>name <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token operator">*</span>User<span class="token punctuation">,</span> <span class="token builtin">error</span><span class="token punctuation">)</span>
-          <span class="token function">FindOneByMobile</span><span class="token punctuation">(</span>mobile <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token operator">*</span>User<span class="token punctuation">,</span> <span class="token builtin">error</span><span class="token punctuation">)</span>
-          <span class="token function">Update</span><span class="token punctuation">(</span>data User<span class="token punctuation">)</span> <span class="token builtin">error</span>
-          <span class="token function">Delete</span><span class="token punctuation">(</span>id <span class="token builtin">int64</span><span class="token punctuation">)</span> <span class="token builtin">error</span>
-      <span class="token punctuation">}</span>
-
-      defaultUserModel <span class="token keyword">struct</span> <span class="token punctuation">{</span>
-          sqlc<span class="token punctuation">.</span>CachedConn
-          table <span class="token builtin">string</span>
-      <span class="token punctuation">}</span>
-
-      User <span class="token keyword">struct</span> <span class="token punctuation">{</span>
-          Id         <span class="token builtin">int64</span>     <span class="token string">`db:&quot;id&quot;`</span>
-          User       <span class="token builtin">string</span>    <span class="token string">`db:&quot;user&quot;`</span>     <span class="token comment">// &#x7528;&#x6237;</span>
-          Name       <span class="token builtin">string</span>    <span class="token string">`db:&quot;name&quot;`</span>     <span class="token comment">// &#x7528;&#x6237;&#x540D;&#x79F0;</span>
-          Password   <span class="token builtin">string</span>    <span class="token string">`db:&quot;password&quot;`</span> <span class="token comment">// &#x7528;&#x6237;&#x5BC6;&#x7801;</span>
-          Mobile     <span class="token builtin">string</span>    <span class="token string">`db:&quot;mobile&quot;`</span>   <span class="token comment">// &#x624B;&#x673A;&#x53F7;</span>
-          Gender     <span class="token builtin">string</span>    <span class="token string">`db:&quot;gender&quot;`</span>   <span class="token comment">// &#x7537;&#xFF5C;&#x5973;&#xFF5C;&#x672A;&#x516C;&#x5F00;</span>
-          Nickname   <span class="token builtin">string</span>    <span class="token string">`db:&quot;nickname&quot;`</span> <span class="token comment">// &#x7528;&#x6237;&#x6635;&#x79F0;</span>
-          CreateTime time<span class="token punctuation">.</span>Time <span class="token string">`db:&quot;create_time&quot;`</span>
-          UpdateTime time<span class="token punctuation">.</span>Time <span class="token string">`db:&quot;update_time&quot;`</span>
-      <span class="token punctuation">}</span>
-  <span class="token punctuation">)</span>
-
-  <span class="token keyword">func</span> <span class="token function">NewUserModel</span><span class="token punctuation">(</span>conn sqlx<span class="token punctuation">.</span>SqlConn<span class="token punctuation">,</span> c cache<span class="token punctuation">.</span>CacheConf<span class="token punctuation">)</span> UserModel <span class="token punctuation">{</span>
-      <span class="token keyword">return</span> <span class="token operator">&amp;</span>defaultUserModel<span class="token punctuation">{</span>
-          CachedConn<span class="token punctuation">:</span> sqlc<span class="token punctuation">.</span><span class="token function">NewConn</span><span class="token punctuation">(</span>conn<span class="token punctuation">,</span> c<span class="token punctuation">)</span><span class="token punctuation">,</span>
-          table<span class="token punctuation">:</span>      <span class="token string">&quot;`user`&quot;</span><span class="token punctuation">,</span>
-      <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token keyword">func</span> <span class="token punctuation">(</span>m <span class="token operator">*</span>defaultUserModel<span class="token punctuation">)</span> <span class="token function">Insert</span><span class="token punctuation">(</span>data User<span class="token punctuation">)</span> <span class="token punctuation">(</span>sql<span class="token punctuation">.</span>Result<span class="token punctuation">,</span> <span class="token builtin">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      userNameKey <span class="token operator">:=</span> fmt<span class="token punctuation">.</span><span class="token function">Sprintf</span><span class="token punctuation">(</span><span class="token string">&quot;%s%v&quot;</span><span class="token punctuation">,</span> cacheUserNamePrefix<span class="token punctuation">,</span> data<span class="token punctuation">.</span>Name<span class="token punctuation">)</span>
-      userMobileKey <span class="token operator">:=</span> fmt<span class="token punctuation">.</span><span class="token function">Sprintf</span><span class="token punctuation">(</span><span class="token string">&quot;%s%v&quot;</span><span class="token punctuation">,</span> cacheUserMobilePrefix<span class="token punctuation">,</span> data<span class="token punctuation">.</span>Mobile<span class="token punctuation">)</span>
-      userKey <span class="token operator">:=</span> fmt<span class="token punctuation">.</span><span class="token function">Sprintf</span><span class="token punctuation">(</span><span class="token string">&quot;%s%v&quot;</span><span class="token punctuation">,</span> cacheUserPrefix<span class="token punctuation">,</span> data<span class="token punctuation">.</span>User<span class="token punctuation">)</span>
-      ret<span class="token punctuation">,</span> err <span class="token operator">:=</span> m<span class="token punctuation">.</span><span class="token function">Exec</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span>conn sqlx<span class="token punctuation">.</span>SqlConn<span class="token punctuation">)</span> <span class="token punctuation">(</span>result sql<span class="token punctuation">.</span>Result<span class="token punctuation">,</span> err <span class="token builtin">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-          query <span class="token operator">:=</span> fmt<span class="token punctuation">.</span><span class="token function">Sprintf</span><span class="token punctuation">(</span><span class="token string">&quot;insert into %s (%s) values (?, ?, ?, ?, ?, ?)&quot;</span><span class="token punctuation">,</span> m<span class="token punctuation">.</span>table<span class="token punctuation">,</span> userRowsExpectAutoSet<span class="token punctuation">)</span>
-          <span class="token keyword">return</span> conn<span class="token punctuation">.</span><span class="token function">Exec</span><span class="token punctuation">(</span>query<span class="token punctuation">,</span> data<span class="token punctuation">.</span>User<span class="token punctuation">,</span> data<span class="token punctuation">.</span>Name<span class="token punctuation">,</span> data<span class="token punctuation">.</span>Password<span class="token punctuation">,</span> data<span class="token punctuation">.</span>Mobile<span class="token punctuation">,</span> data<span class="token punctuation">.</span>Gender<span class="token punctuation">,</span> data<span class="token punctuation">.</span>Nickname<span class="token punctuation">)</span>
-      <span class="token punctuation">}</span><span class="token punctuation">,</span> userNameKey<span class="token punctuation">,</span> userMobileKey<span class="token punctuation">,</span> userKey<span class="token punctuation">)</span>
-      <span class="token keyword">return</span> ret<span class="token punctuation">,</span> err
-  <span class="token punctuation">}</span>
-
-  <span class="token keyword">func</span> <span class="token punctuation">(</span>m <span class="token operator">*</span>defaultUserModel<span class="token punctuation">)</span> <span class="token function">FindOne</span><span class="token punctuation">(</span>id <span class="token builtin">int64</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token operator">*</span>User<span class="token punctuation">,</span> <span class="token builtin">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      userIdKey <span class="token operator">:=</span> fmt<span class="token punctuation">.</span><span class="token function">Sprintf</span><span class="token punctuation">(</span><span class="token string">&quot;%s%v&quot;</span><span class="token punctuation">,</span> cacheUserIdPrefix<span class="token punctuation">,</span> id<span class="token punctuation">)</span>
-      <span class="token keyword">var</span> resp User
-      err <span class="token operator">:=</span> m<span class="token punctuation">.</span><span class="token function">QueryRow</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>resp<span class="token punctuation">,</span> userIdKey<span class="token punctuation">,</span> <span class="token keyword">func</span><span class="token punctuation">(</span>conn sqlx<span class="token punctuation">.</span>SqlConn<span class="token punctuation">,</span> v <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
-          query <span class="token operator">:=</span> fmt<span class="token punctuation">.</span><span class="token function">Sprintf</span><span class="token punctuation">(</span><span class="token string">&quot;select %s from %s where `id` = ? limit 1&quot;</span><span class="token punctuation">,</span> userRows<span class="token punctuation">,</span> m<span class="token punctuation">.</span>table<span class="token punctuation">)</span>
-          <span class="token keyword">return</span> conn<span class="token punctuation">.</span><span class="token function">QueryRow</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span> query<span class="token punctuation">,</span> id<span class="token punctuation">)</span>
-      <span class="token punctuation">}</span><span class="token punctuation">)</span>
-      <span class="token keyword">switch</span> err <span class="token punctuation">{</span>
-      <span class="token keyword">case</span> <span class="token boolean">nil</span><span class="token punctuation">:</span>
-          <span class="token keyword">return</span> <span class="token operator">&amp;</span>resp<span class="token punctuation">,</span> <span class="token boolean">nil</span>
-      <span class="token keyword">case</span> sqlc<span class="token punctuation">.</span>ErrNotFound<span class="token punctuation">:</span>
-          <span class="token keyword">return</span> <span class="token boolean">nil</span><span class="token punctuation">,</span> ErrNotFound
-      <span class="token keyword">default</span><span class="token punctuation">:</span>
-          <span class="token keyword">return</span> <span class="token boolean">nil</span><span class="token punctuation">,</span> err
-      <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token keyword">func</span> <span class="token punctuation">(</span>m <span class="token operator">*</span>defaultUserModel<span class="token punctuation">)</span> <span class="token function">FindOneByUser</span><span class="token punctuation">(</span>user <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token operator">*</span>User<span class="token punctuation">,</span> <span class="token builtin">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      userKey <span class="token operator">:=</span> fmt<span class="token punctuation">.</span><span class="token function">Sprintf</span><span class="token punctuation">(</span><span class="token string">&quot;%s%v&quot;</span><span class="token punctuation">,</span> cacheUserPrefix<span class="token punctuation">,</span> user<span class="token punctuation">)</span>
-      <span class="token keyword">var</span> resp User
-      err <span class="token operator">:=</span> m<span class="token punctuation">.</span><span class="token function">QueryRowIndex</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>resp<span class="token punctuation">,</span> userKey<span class="token punctuation">,</span> m<span class="token punctuation">.</span>formatPrimary<span class="token punctuation">,</span> <span class="token keyword">func</span><span class="token punctuation">(</span>conn sqlx<span class="token punctuation">.</span>SqlConn<span class="token punctuation">,</span> v <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">(</span>i <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> e <span class="token builtin">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-          query <span class="token operator">:=</span> fmt<span class="token punctuation">.</span><span class="token function">Sprintf</span><span class="token punctuation">(</span><span class="token string">&quot;select %s from %s where `user` = ? limit 1&quot;</span><span class="token punctuation">,</span> userRows<span class="token punctuation">,</span> m<span class="token punctuation">.</span>table<span class="token punctuation">)</span>
-          <span class="token keyword">if</span> err <span class="token operator">:=</span> conn<span class="token punctuation">.</span><span class="token function">QueryRow</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>resp<span class="token punctuation">,</span> query<span class="token punctuation">,</span> user<span class="token punctuation">)</span><span class="token punctuation">;</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
-              <span class="token keyword">return</span> <span class="token boolean">nil</span><span class="token punctuation">,</span> err
-          <span class="token punctuation">}</span>
-          <span class="token keyword">return</span> resp<span class="token punctuation">.</span>Id<span class="token punctuation">,</span> <span class="token boolean">nil</span>
-      <span class="token punctuation">}</span><span class="token punctuation">,</span> m<span class="token punctuation">.</span>queryPrimary<span class="token punctuation">)</span>
-      <span class="token keyword">switch</span> err <span class="token punctuation">{</span>
-      <span class="token keyword">case</span> <span class="token boolean">nil</span><span class="token punctuation">:</span>
-          <span class="token keyword">return</span> <span class="token operator">&amp;</span>resp<span class="token punctuation">,</span> <span class="token boolean">nil</span>
-      <span class="token keyword">case</span> sqlc<span class="token punctuation">.</span>ErrNotFound<span class="token punctuation">:</span>
-          <span class="token keyword">return</span> <span class="token boolean">nil</span><span class="token punctuation">,</span> ErrNotFound
-      <span class="token keyword">default</span><span class="token punctuation">:</span>
-          <span class="token keyword">return</span> <span class="token boolean">nil</span><span class="token punctuation">,</span> err
-      <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token keyword">func</span> <span class="token punctuation">(</span>m <span class="token operator">*</span>defaultUserModel<span class="token punctuation">)</span> <span class="token function">FindOneByName</span><span class="token punctuation">(</span>name <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token operator">*</span>User<span class="token punctuation">,</span> <span class="token builtin">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      userNameKey <span class="token operator">:=</span> fmt<span class="token punctuation">.</span><span class="token function">Sprintf</span><span class="token punctuation">(</span><span class="token string">&quot;%s%v&quot;</span><span class="token punctuation">,</span> cacheUserNamePrefix<span class="token punctuation">,</span> name<span class="token punctuation">)</span>
-      <span class="token keyword">var</span> resp User
-      err <span class="token operator">:=</span> m<span class="token punctuation">.</span><span class="token function">QueryRowIndex</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>resp<span class="token punctuation">,</span> userNameKey<span class="token punctuation">,</span> m<span class="token punctuation">.</span>formatPrimary<span class="token punctuation">,</span> <span class="token keyword">func</span><span class="token punctuation">(</span>conn sqlx<span class="token punctuation">.</span>SqlConn<span class="token punctuation">,</span> v <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">(</span>i <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> e <span class="token builtin">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-          query <span class="token operator">:=</span> fmt<span class="token punctuation">.</span><span class="token function">Sprintf</span><span class="token punctuation">(</span><span class="token string">&quot;select %s from %s where `name` = ? limit 1&quot;</span><span class="token punctuation">,</span> userRows<span class="token punctuation">,</span> m<span class="token punctuation">.</span>table<span class="token punctuation">)</span>
-          <span class="token keyword">if</span> err <span class="token operator">:=</span> conn<span class="token punctuation">.</span><span class="token function">QueryRow</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>resp<span class="token punctuation">,</span> query<span class="token punctuation">,</span> name<span class="token punctuation">)</span><span class="token punctuation">;</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
-              <span class="token keyword">return</span> <span class="token boolean">nil</span><span class="token punctuation">,</span> err
-          <span class="token punctuation">}</span>
-          <span class="token keyword">return</span> resp<span class="token punctuation">.</span>Id<span class="token punctuation">,</span> <span class="token boolean">nil</span>
-      <span class="token punctuation">}</span><span class="token punctuation">,</span> m<span class="token punctuation">.</span>queryPrimary<span class="token punctuation">)</span>
-      <span class="token keyword">switch</span> err <span class="token punctuation">{</span>
-      <span class="token keyword">case</span> <span class="token boolean">nil</span><span class="token punctuation">:</span>
-          <span class="token keyword">return</span> <span class="token operator">&amp;</span>resp<span class="token punctuation">,</span> <span class="token boolean">nil</span>
-      <span class="token keyword">case</span> sqlc<span class="token punctuation">.</span>ErrNotFound<span class="token punctuation">:</span>
-          <span class="token keyword">return</span> <span class="token boolean">nil</span><span class="token punctuation">,</span> ErrNotFound
-      <span class="token keyword">default</span><span class="token punctuation">:</span>
-          <span class="token keyword">return</span> <span class="token boolean">nil</span><span class="token punctuation">,</span> err
-      <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token keyword">func</span> <span class="token punctuation">(</span>m <span class="token operator">*</span>defaultUserModel<span class="token punctuation">)</span> <span class="token function">FindOneByMobile</span><span class="token punctuation">(</span>mobile <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token operator">*</span>User<span class="token punctuation">,</span> <span class="token builtin">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      userMobileKey <span class="token operator">:=</span> fmt<span class="token punctuation">.</span><span class="token function">Sprintf</span><span class="token punctuation">(</span><span class="token string">&quot;%s%v&quot;</span><span class="token punctuation">,</span> cacheUserMobilePrefix<span class="token punctuation">,</span> mobile<span class="token punctuation">)</span>
-      <span class="token keyword">var</span> resp User
-      err <span class="token operator">:=</span> m<span class="token punctuation">.</span><span class="token function">QueryRowIndex</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>resp<span class="token punctuation">,</span> userMobileKey<span class="token punctuation">,</span> m<span class="token punctuation">.</span>formatPrimary<span class="token punctuation">,</span> <span class="token keyword">func</span><span class="token punctuation">(</span>conn sqlx<span class="token punctuation">.</span>SqlConn<span class="token punctuation">,</span> v <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">(</span>i <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> e <span class="token builtin">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-          query <span class="token operator">:=</span> fmt<span class="token punctuation">.</span><span class="token function">Sprintf</span><span class="token punctuation">(</span><span class="token string">&quot;select %s from %s where `mobile` = ? limit 1&quot;</span><span class="token punctuation">,</span> userRows<span class="token punctuation">,</span> m<span class="token punctuation">.</span>table<span class="token punctuation">)</span>
-          <span class="token keyword">if</span> err <span class="token operator">:=</span> conn<span class="token punctuation">.</span><span class="token function">QueryRow</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>resp<span class="token punctuation">,</span> query<span class="token punctuation">,</span> mobile<span class="token punctuation">)</span><span class="token punctuation">;</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
-              <span class="token keyword">return</span> <span class="token boolean">nil</span><span class="token punctuation">,</span> err
-          <span class="token punctuation">}</span>
-          <span class="token keyword">return</span> resp<span class="token punctuation">.</span>Id<span class="token punctuation">,</span> <span class="token boolean">nil</span>
-      <span class="token punctuation">}</span><span class="token punctuation">,</span> m<span class="token punctuation">.</span>queryPrimary<span class="token punctuation">)</span>
-      <span class="token keyword">switch</span> err <span class="token punctuation">{</span>
-      <span class="token keyword">case</span> <span class="token boolean">nil</span><span class="token punctuation">:</span>
-          <span class="token keyword">return</span> <span class="token operator">&amp;</span>resp<span class="token punctuation">,</span> <span class="token boolean">nil</span>
-      <span class="token keyword">case</span> sqlc<span class="token punctuation">.</span>ErrNotFound<span class="token punctuation">:</span>
-          <span class="token keyword">return</span> <span class="token boolean">nil</span><span class="token punctuation">,</span> ErrNotFound
-      <span class="token keyword">default</span><span class="token punctuation">:</span>
-          <span class="token keyword">return</span> <span class="token boolean">nil</span><span class="token punctuation">,</span> err
-      <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token keyword">func</span> <span class="token punctuation">(</span>m <span class="token operator">*</span>defaultUserModel<span class="token punctuation">)</span> <span class="token function">Update</span><span class="token punctuation">(</span>data User<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
-      userIdKey <span class="token operator">:=</span> fmt<span class="token punctuation">.</span><span class="token function">Sprintf</span><span class="token punctuation">(</span><span class="token string">&quot;%s%v&quot;</span><span class="token punctuation">,</span> cacheUserIdPrefix<span class="token punctuation">,</span> data<span class="token punctuation">.</span>Id<span class="token punctuation">)</span>
-      <span class="token boolean">_</span><span class="token punctuation">,</span> err <span class="token operator">:=</span> m<span class="token punctuation">.</span><span class="token function">Exec</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span>conn sqlx<span class="token punctuation">.</span>SqlConn<span class="token punctuation">)</span> <span class="token punctuation">(</span>result sql<span class="token punctuation">.</span>Result<span class="token punctuation">,</span> err <span class="token builtin">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-          query <span class="token operator">:=</span> fmt<span class="token punctuation">.</span><span class="token function">Sprintf</span><span class="token punctuation">(</span><span class="token string">&quot;update %s set %s where `id` = ?&quot;</span><span class="token punctuation">,</span> m<span class="token punctuation">.</span>table<span class="token punctuation">,</span> userRowsWithPlaceHolder<span class="token punctuation">)</span>
-          <span class="token keyword">return</span> conn<span class="token punctuation">.</span><span class="token function">Exec</span><span class="token punctuation">(</span>query<span class="token punctuation">,</span> data<span class="token punctuation">.</span>User<span class="token punctuation">,</span> data<span class="token punctuation">.</span>Name<span class="token punctuation">,</span> data<span class="token punctuation">.</span>Password<span class="token punctuation">,</span> data<span class="token punctuation">.</span>Mobile<span class="token punctuation">,</span> data<span class="token punctuation">.</span>Gender<span class="token punctuation">,</span> data<span class="token punctuation">.</span>Nickname<span class="token punctuation">,</span> data<span class="token punctuation">.</span>Id<span class="token punctuation">)</span>
-      <span class="token punctuation">}</span><span class="token punctuation">,</span> userIdKey<span class="token punctuation">)</span>
-      <span class="token keyword">return</span> err
-  <span class="token punctuation">}</span>
-
-  <span class="token keyword">func</span> <span class="token punctuation">(</span>m <span class="token operator">*</span>defaultUserModel<span class="token punctuation">)</span> <span class="token function">Delete</span><span class="token punctuation">(</span>id <span class="token builtin">int64</span><span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
-      data<span class="token punctuation">,</span> err <span class="token operator">:=</span> m<span class="token punctuation">.</span><span class="token function">FindOne</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span>
-      <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
-          <span class="token keyword">return</span> err
-      <span class="token punctuation">}</span>
-
-      userNameKey <span class="token operator">:=</span> fmt<span class="token punctuation">.</span><span class="token function">Sprintf</span><span class="token punctuation">(</span><span class="token string">&quot;%s%v&quot;</span><span class="token punctuation">,</span> cacheUserNamePrefix<span class="token punctuation">,</span> data<span class="token punctuation">.</span>Name<span class="token punctuation">)</span>
-      userMobileKey <span class="token operator">:=</span> fmt<span class="token punctuation">.</span><span class="token function">Sprintf</span><span class="token punctuation">(</span><span class="token string">&quot;%s%v&quot;</span><span class="token punctuation">,</span> cacheUserMobilePrefix<span class="token punctuation">,</span> data<span class="token punctuation">.</span>Mobile<span class="token punctuation">)</span>
-      userIdKey <span class="token operator">:=</span> fmt<span class="token punctuation">.</span><span class="token function">Sprintf</span><span class="token punctuation">(</span><span class="token string">&quot;%s%v&quot;</span><span class="token punctuation">,</span> cacheUserIdPrefix<span class="token punctuation">,</span> id<span class="token punctuation">)</span>
-      userKey <span class="token operator">:=</span> fmt<span class="token punctuation">.</span><span class="token function">Sprintf</span><span class="token punctuation">(</span><span class="token string">&quot;%s%v&quot;</span><span class="token punctuation">,</span> cacheUserPrefix<span class="token punctuation">,</span> data<span class="token punctuation">.</span>User<span class="token punctuation">)</span>
-      <span class="token boolean">_</span><span class="token punctuation">,</span> err <span class="token operator">=</span> m<span class="token punctuation">.</span><span class="token function">Exec</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span>conn sqlx<span class="token punctuation">.</span>SqlConn<span class="token punctuation">)</span> <span class="token punctuation">(</span>result sql<span class="token punctuation">.</span>Result<span class="token punctuation">,</span> err <span class="token builtin">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-          query <span class="token operator">:=</span> fmt<span class="token punctuation">.</span><span class="token function">Sprintf</span><span class="token punctuation">(</span><span class="token string">&quot;delete from %s where `id` = ?&quot;</span><span class="token punctuation">,</span> m<span class="token punctuation">.</span>table<span class="token punctuation">)</span>
-          <span class="token keyword">return</span> conn<span class="token punctuation">.</span><span class="token function">Exec</span><span class="token punctuation">(</span>query<span class="token punctuation">,</span> id<span class="token punctuation">)</span>
-      <span class="token punctuation">}</span><span class="token punctuation">,</span> userNameKey<span class="token punctuation">,</span> userMobileKey<span class="token punctuation">,</span> userIdKey<span class="token punctuation">,</span> userKey<span class="token punctuation">)</span>
-      <span class="token keyword">return</span> err
-  <span class="token punctuation">}</span>
-
-  <span class="token keyword">func</span> <span class="token punctuation">(</span>m <span class="token operator">*</span>defaultUserModel<span class="token punctuation">)</span> <span class="token function">formatPrimary</span><span class="token punctuation">(</span>primary <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token builtin">string</span> <span class="token punctuation">{</span>
-      <span class="token keyword">return</span> fmt<span class="token punctuation">.</span><span class="token function">Sprintf</span><span class="token punctuation">(</span><span class="token string">&quot;%s%v&quot;</span><span class="token punctuation">,</span> cacheUserIdPrefix<span class="token punctuation">,</span> primary<span class="token punctuation">)</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token keyword">func</span> <span class="token punctuation">(</span>m <span class="token operator">*</span>defaultUserModel<span class="token punctuation">)</span> <span class="token function">queryPrimary</span><span class="token punctuation">(</span>conn sqlx<span class="token punctuation">.</span>SqlConn<span class="token punctuation">,</span> v<span class="token punctuation">,</span> primary <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
-      query <span class="token operator">:=</span> fmt<span class="token punctuation">.</span><span class="token function">Sprintf</span><span class="token punctuation">(</span><span class="token string">&quot;select %s from %s where `id` = ? limit 1&quot;</span><span class="token punctuation">,</span> userRows<span class="token punctuation">,</span> m<span class="token punctuation">.</span>table<span class="token punctuation">)</span>
-      <span class="token keyword">return</span> conn<span class="token punctuation">.</span><span class="token function">QueryRow</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span> query<span class="token punctuation">,</span> primary<span class="token punctuation">)</span>
-  <span class="token punctuation">}</span>
-</code></pre>
-</li>
 </ul>
+<p><strong>usermodel_gen.go</strong></p>
+<pre class="language-"><code class="lang-golang">// Code generated by goctl. DO NOT EDIT!
+
+package model
+
+import (
+    &quot;context&quot;
+    &quot;database/sql&quot;
+    &quot;fmt&quot;
+    &quot;strings&quot;
+    &quot;time&quot;
+
+    &quot;github.com/zeromicro/go-zero/core/stores/builder&quot;
+    &quot;github.com/zeromicro/go-zero/core/stores/cache&quot;
+    &quot;github.com/zeromicro/go-zero/core/stores/sqlc&quot;
+    &quot;github.com/zeromicro/go-zero/core/stores/sqlx&quot;
+    &quot;github.com/zeromicro/go-zero/core/stringx&quot;
+)
+
+var (
+    userFieldNames          = builder.RawFieldNames(&amp;User{})
+    userRows                = strings.Join(userFieldNames, &quot;,&quot;)
+    userRowsExpectAutoSet   = strings.Join(stringx.Remove(userFieldNames, &quot;`id`&quot;, &quot;`create_time`&quot;, &quot;`update_time`&quot;), &quot;,&quot;)
+    userRowsWithPlaceHolder = strings.Join(stringx.Remove(userFieldNames, &quot;`id`&quot;, &quot;`create_time`&quot;, &quot;`update_time`&quot;), &quot;=?,&quot;) + &quot;=?&quot;
+
+    cacheUserIdPrefix     = &quot;cache:user:id:&quot;
+    cacheUserNumberPrefix = &quot;cache:user:number:&quot;
+)
+
+type (
+    userModel interface {
+        Insert(ctx context.Context, data *User) (sql.Result, error)
+        FindOne(ctx context.Context, id int64) (*User, error)
+        FindOneByNumber(ctx context.Context, number string) (*User, error)
+        Update(ctx context.Context, data *User) error
+        Delete(ctx context.Context, id int64) error
+    }
+
+    defaultUserModel struct {
+        sqlc.CachedConn
+        table string
+    }
+
+    User struct {
+        Id         int64     `db:&quot;id&quot;`
+        Number     string    `db:&quot;number&quot;`   // &#x5B66;&#x53F7;
+        Name       string    `db:&quot;name&quot;`     // &#x7528;&#x6237;&#x540D;&#x79F0;
+        Password   string    `db:&quot;password&quot;` // &#x7528;&#x6237;&#x5BC6;&#x7801;
+        Gender     string    `db:&quot;gender&quot;`   // &#x7537;&#xFF5C;&#x5973;&#xFF5C;&#x672A;&#x516C;&#x5F00;
+        CreateTime time.Time `db:&quot;create_time&quot;`
+        UpdateTime time.Time `db:&quot;update_time&quot;`
+    }
+)
+
+func newUserModel(conn sqlx.SqlConn, c cache.CacheConf) *defaultUserModel {
+    return &amp;defaultUserModel{
+        CachedConn: sqlc.NewConn(conn, c),
+        table:      &quot;`user`&quot;,
+    }
+}
+
+func (m *defaultUserModel) Insert(ctx context.Context, data *User) (sql.Result, error) {
+    userIdKey := fmt.Sprintf(&quot;%s%v&quot;, cacheUserIdPrefix, data.Id)
+    userNumberKey := fmt.Sprintf(&quot;%s%v&quot;, cacheUserNumberPrefix, data.Number)
+    ret, err := m.ExecCtx(ctx, func(ctx context.Context, conn sqlx.SqlConn) (result sql.Result, err error) {
+        query := fmt.Sprintf(&quot;insert into %s (%s) values (?, ?, ?, ?)&quot;, m.table, userRowsExpectAutoSet)
+        return conn.ExecCtx(ctx, query, data.Number, data.Name, data.Password, data.Gender)
+    }, userIdKey, userNumberKey)
+    return ret, err
+}
+
+func (m *defaultUserModel) FindOne(ctx context.Context, id int64) (*User, error) {
+    userIdKey := fmt.Sprintf(&quot;%s%v&quot;, cacheUserIdPrefix, id)
+    var resp User
+    err := m.QueryRowCtx(ctx, &amp;resp, userIdKey, func(ctx context.Context, conn sqlx.SqlConn, v interface{}) error {
+        query := fmt.Sprintf(&quot;select %s from %s where `id` = ? limit 1&quot;, userRows, m.table)
+        return conn.QueryRowCtx(ctx, v, query, id)
+    })
+    switch err {
+    case nil:
+        return &amp;resp, nil
+    case sqlc.ErrNotFound:
+        return nil, ErrNotFound
+    default:
+        return nil, err
+    }
+}
+
+func (m *defaultUserModel) FindOneByNumber(ctx context.Context, number string) (*User, error) {
+    userNumberKey := fmt.Sprintf(&quot;%s%v&quot;, cacheUserNumberPrefix, number)
+    var resp User
+    err := m.QueryRowIndexCtx(ctx, &amp;resp, userNumberKey, m.formatPrimary, func(ctx context.Context, conn sqlx.SqlConn, v interface{}) (i interface{}, e error) {
+        query := fmt.Sprintf(&quot;select %s from %s where `number` = ? limit 1&quot;, userRows, m.table)
+        if err := conn.QueryRowCtx(ctx, &amp;resp, query, number); err != nil {
+            return nil, err
+        }
+        return resp.Id, nil
+    }, m.queryPrimary)
+    switch err {
+    case nil:
+        return &amp;resp, nil
+    case sqlc.ErrNotFound:
+        return nil, ErrNotFound
+    default:
+        return nil, err
+    }
+}
+
+func (m *defaultUserModel) Update(ctx context.Context, data *User) error {
+    userIdKey := fmt.Sprintf(&quot;%s%v&quot;, cacheUserIdPrefix, data.Id)
+    userNumberKey := fmt.Sprintf(&quot;%s%v&quot;, cacheUserNumberPrefix, data.Number)
+    _, err := m.ExecCtx(ctx, func(ctx context.Context, conn sqlx.SqlConn) (result sql.Result, err error) {
+        query := fmt.Sprintf(&quot;update %s set %s where `id` = ?&quot;, m.table, userRowsWithPlaceHolder)
+        return conn.ExecCtx(ctx, query, data.Number, data.Name, data.Password, data.Gender, data.Id)
+    }, userIdKey, userNumberKey)
+    return err
+}
+
+func (m *defaultUserModel) Delete(ctx context.Context, id int64) error {
+    data, err := m.FindOne(ctx, id)
+    if err != nil {
+        return err
+    }
+
+    userIdKey := fmt.Sprintf(&quot;%s%v&quot;, cacheUserIdPrefix, id)
+    userNumberKey := fmt.Sprintf(&quot;%s%v&quot;, cacheUserNumberPrefix, data.Number)
+    _, err = m.ExecCtx(ctx, func(ctx context.Context, conn sqlx.SqlConn) (result sql.Result, err error) {
+        query := fmt.Sprintf(&quot;delete from %s where `id` = ?&quot;, m.table)
+        return conn.ExecCtx(ctx, query, id)
+    }, userIdKey, userNumberKey)
+    return err
+}
+
+func (m *defaultUserModel) formatPrimary(primary interface{}) string {
+    return fmt.Sprintf(&quot;%s%v&quot;, cacheUserIdPrefix, primary)
+}
+
+func (m *defaultUserModel) queryPrimary(ctx context.Context, conn sqlx.SqlConn, v, primary interface{}) error {
+    query := fmt.Sprintf(&quot;select %s from %s where `id` = ? limit 1&quot;, userRows, m.table)
+    return conn.QueryRowCtx(ctx, v, query, primary)
+}
+
+func (m *defaultUserModel) tableName() string {
+    return m.table
+}
+</code></pre>
+<p><strong>usermodel.go</strong></p>
+<pre class="language-"><code class="lang-golang">package model
+
+import (
+    &quot;github.com/zeromicro/go-zero/core/stores/cache&quot;
+    &quot;github.com/zeromicro/go-zero/core/stores/sqlx&quot;
+)
+
+var _ UserModel = (*customUserModel)(nil)
+
+type (
+    // UserModel is an interface to be customized, add more methods here,
+    // and implement the added methods in customUserModel.
+    UserModel interface {
+        userModel
+    }
+
+    customUserModel struct {
+        *defaultUserModel
+    }
+)
+
+// NewUserModel returns a model for the database table.
+func NewUserModel(conn sqlx.SqlConn, c cache.CacheConf) UserModel {
+    return &amp;customUserModel{
+        defaultUserModel: newUserModel(conn, c),
+    }
+}
+</code></pre>
 <h2 id="&#x7528;&#x6CD5;">&#x7528;&#x6CD5;</h2>
 <pre class="language-"><code class="lang-text">$ goctl model mysql -h
 </code></pre>
@@ -1734,75 +1722,48 @@ OPTIONS:
 <h2 id="&#x751F;&#x6210;&#x89C4;&#x5219;">&#x751F;&#x6210;&#x89C4;&#x5219;</h2>
 <ul>
 <li><p>&#x9ED8;&#x8BA4;&#x89C4;&#x5219;</p>
-<p>&#x6211;&#x4EEC;&#x9ED8;&#x8BA4;&#x7528;&#x6237;&#x5728;&#x5EFA;&#x8868;&#x65F6;&#x4F1A;&#x521B;&#x5EFA;createTime&#x3001;updateTime&#x5B57;&#x6BB5;(&#x5FFD;&#x7565;&#x5927;&#x5C0F;&#x5199;&#x3001;&#x4E0B;&#x5212;&#x7EBF;&#x547D;&#x540D;&#x98CE;&#x683C;)&#x4E14;&#x9ED8;&#x8BA4;&#x503C;&#x5747;&#x4E3A;<code>CURRENT_TIMESTAMP</code>&#xFF0C;&#x800C;updateTime&#x652F;&#x6301;<code>ON UPDATE CURRENT_TIMESTAMP</code>&#xFF0C;&#x5BF9;&#x4E8E;&#x8FD9;&#x4E24;&#x4E2A;&#x5B57;&#x6BB5;&#x751F;&#x6210;<code>insert</code>&#x3001;<code>update</code>&#x65F6;&#x4F1A;&#x88AB;&#x79FB;&#x9664;&#xFF0C;&#x4E0D;&#x5728;&#x8D4B;&#x503C;&#x8303;&#x7574;&#x5185;&#xFF0C;&#x5F53;&#x7136;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x4E0D;&#x9700;&#x8981;&#x8FD9;&#x4E24;&#x4E2A;&#x5B57;&#x6BB5;&#x90A3;&#x4E5F;&#x65E0;&#x5927;&#x788D;&#x3002;</p>
+<p>  &#x6211;&#x4EEC;&#x9ED8;&#x8BA4;&#x7528;&#x6237;&#x5728;&#x5EFA;&#x8868;&#x65F6;&#x4F1A;&#x521B;&#x5EFA;createTime&#x3001;updateTime&#x5B57;&#x6BB5;(&#x5FFD;&#x7565;&#x5927;&#x5C0F;&#x5199;&#x3001;&#x4E0B;&#x5212;&#x7EBF;&#x547D;&#x540D;&#x98CE;&#x683C;)&#x4E14;&#x9ED8;&#x8BA4;&#x503C;&#x5747;&#x4E3A;<code>CURRENT_TIMESTAMP</code>&#xFF0C;&#x800C;updateTime&#x652F;&#x6301;<code>ON UPDATE CURRENT_TIMESTAMP</code>&#xFF0C;&#x5BF9;&#x4E8E;&#x8FD9;&#x4E24;&#x4E2A;&#x5B57;&#x6BB5;&#x751F;&#x6210;<code>insert</code>&#x3001;<code>update</code>&#x65F6;&#x4F1A;&#x88AB;&#x79FB;&#x9664;&#xFF0C;&#x4E0D;&#x5728;&#x8D4B;&#x503C;&#x8303;&#x7574;&#x5185;&#xFF0C;&#x5F53;&#x7136;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x4E0D;&#x9700;&#x8981;&#x8FD9;&#x4E24;&#x4E2A;&#x5B57;&#x6BB5;&#x90A3;&#x4E5F;&#x65E0;&#x5927;&#x788D;&#x3002;</p>
 </li>
-<li><p>&#x5E26;&#x7F13;&#x5B58;&#x6A21;&#x5F0F;</p>
-<ul>
 <li><p>ddl</p>
-<pre class="language-"><code class="lang-shell">$ goctl model mysql ddl -src<span class="token operator">=</span><span class="token punctuation">{</span>patterns<span class="token punctuation">}</span> -dir<span class="token operator">=</span><span class="token punctuation">{</span>dir<span class="token punctuation">}</span> -cache
-</code></pre>
-<p>help</p>
-<pre class="language-"><code>NAME:
+<pre class="language-"><code class="lang-shell">NAME:
    goctl model mysql ddl - generate mysql model from ddl
 
 USAGE:
-   goctl model mysql ddl [command options] [arguments...]
+   goctl model mysql ddl <span class="token punctuation">[</span>command options<span class="token punctuation">]</span> <span class="token punctuation">[</span>arguments<span class="token punctuation">..</span>.<span class="token punctuation">]</span>
 
 OPTIONS:
-   --src value, -s value  the path or path globbing patterns of the ddl
-   --dir value, -d value  the target dir
-   --style value          the file naming format, see [https://github.com/zeromicro/go-zero/tree/master/tools/goctl/config/readme.md]
-   --cache, -c            generate code with cache [optional]
-   --idea                 for idea plugin [optional]
-</code></pre></li>
-<li><p>datasource</p>
-<pre class="language-"><code class="lang-shell">$ goctl model mysql datasource -url<span class="token operator">=</span><span class="token punctuation">{</span>datasource<span class="token punctuation">}</span> -table<span class="token operator">=</span><span class="token punctuation">{</span>patterns<span class="token punctuation">}</span>  -dir<span class="token operator">=</span><span class="token punctuation">{</span>dir<span class="token punctuation">}</span> -cache<span class="token operator">=</span>true
+   --src value, -s value         the path or path globbing patterns of the ddl
+   --dir value, -d value         the target <span class="token function">dir</span>
+   --style value                 the <span class="token function">file</span> naming format, see <span class="token punctuation">[</span>https://github.com/zeromicro/go-zero/tree/master/tools/goctl/config/readme.md<span class="token punctuation">]</span>
+   --cache, -c                   generate code with cache <span class="token punctuation">[</span>optional<span class="token punctuation">]</span>
+   --idea                        <span class="token keyword">for</span> idea plugin <span class="token punctuation">[</span>optional<span class="token punctuation">]</span>
+   --database value, --db value  the name of database <span class="token punctuation">[</span>optional<span class="token punctuation">]</span>
+   --home value                  the goctl home path of the template, --home and --remote cannot be <span class="token builtin class-name">set</span> at the same time, <span class="token keyword">if</span> they are, --remote has higher priority
+   --remote value                the remote <span class="token function">git</span> repo of the template, --home and --remote cannot be <span class="token builtin class-name">set</span> at the same time, <span class="token keyword">if</span> they are, --remote has higher priority
+                                 The <span class="token function">git</span> repo directory must be consistent with the https://github.com/zeromicro/go-zero-template directory structure
+   --branch value                the branch of the remote repo, it does work with --remote
 </code></pre>
-<p>help</p>
-<pre class="language-"><code class="lang-text">NAME:
+</li>
+<li><p>datasource</p>
+<pre class="language-"><code class="lang-shell">$ goctl model mysql datasource -h                       &#xF64F; <span class="token number">13</span>:40:46  &#xFA1E;106ms
+NAME:
    goctl model mysql datasource - generate model from datasource
 
 USAGE:
-   goctl model mysql datasource [command options] [arguments...]
+   goctl model mysql datasource <span class="token punctuation">[</span>command options<span class="token punctuation">]</span> <span class="token punctuation">[</span>arguments<span class="token punctuation">..</span>.<span class="token punctuation">]</span>
 
 OPTIONS:
-   --url value              the data source of database,like &quot;root:password@tcp(127.0.0.1:3306)/database
-   --table value, -t value  the table or table globbing patterns in the database
-   --cache, -c              generate code with cache [optional]
-   --dir value, -d value    the target dir
-   --style value            the file naming format, see [https://github.com/zeromicro/go-zero/tree/master/tools/goctl/config/readme.md]
-   --idea                   for idea plugin [optional]
+   --url value              the data <span class="token builtin class-name">source</span> of database,like <span class="token string">&quot;root:password@tcp(127.0.0.1:3306)/database&quot;</span>
+   --table value, -t value  the table or table globbing patterns <span class="token keyword">in</span> the database
+   --cache, -c              generate code with cache <span class="token punctuation">[</span>optional<span class="token punctuation">]</span>
+   --dir value, -d value    the target <span class="token function">dir</span>
+   --style value            the <span class="token function">file</span> naming format, see <span class="token punctuation">[</span>https://github.com/zeromicro/go-zero/tree/master/tools/goctl/config/readme.md<span class="token punctuation">]</span>
+   --idea                   <span class="token keyword">for</span> idea plugin <span class="token punctuation">[</span>optional<span class="token punctuation">]</span>
+   --home value             the goctl home path of the template, --home and --remote cannot be <span class="token builtin class-name">set</span> at the same time, <span class="token keyword">if</span> they are, --remote has higher priority
+   --remote value           the remote <span class="token function">git</span> repo of the template, --home and --remote cannot be <span class="token builtin class-name">set</span> at the same time, <span class="token keyword">if</span> they are, --remote has higher priority
+                            The <span class="token function">git</span> repo directory must be consistent with the https://github.com/zeromicro/go-zero-template directory structure
+   --branch value           the branch of the remote repo, it does work with --remote
 </code></pre>
-<blockquote>
-<p>[!TIP]
-goctl model mysql ddl/datasource &#x5747;&#x65B0;&#x589E;&#x4E86;&#x4E00;&#x4E2A;<code>--style</code>&#x53C2;&#x6570;&#xFF0C;&#x7528;&#x4E8E;&#x6807;&#x8BB0;&#x6587;&#x4EF6;&#x547D;&#x540D;&#x98CE;&#x683C;&#x3002;</p>
-</blockquote>
-</li>
-</ul>
-<p>&#x76EE;&#x524D;&#x4EC5;&#x652F;&#x6301;redis&#x7F13;&#x5B58;&#xFF0C;&#x5982;&#x679C;&#x9009;&#x62E9;&#x5E26;&#x7F13;&#x5B58;&#x6A21;&#x5F0F;&#xFF0C;&#x5373;&#x751F;&#x6210;&#x7684;<code>FindOne(ByXxx)</code>&amp;<code>Delete</code>&#x4EE3;&#x7801;&#x4F1A;&#x751F;&#x6210;&#x5E26;&#x7F13;&#x5B58;&#x903B;&#x8F91;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x76EE;&#x524D;&#x4EC5;&#x652F;&#x6301;&#x5355;&#x7D22;&#x5F15;&#x5B57;&#x6BB5;&#xFF08;&#x9664;&#x5168;&#x6587;&#x7D22;&#x5F15;&#x5916;&#xFF09;&#xFF0C;&#x5BF9;&#x4E8E;&#x8054;&#x5408;&#x7D22;&#x5F15;&#x6211;&#x4EEC;&#x9ED8;&#x8BA4;&#x8BA4;&#x4E3A;&#x4E0D;&#x9700;&#x8981;&#x5E26;&#x7F13;&#x5B58;&#xFF0C;&#x4E14;&#x4E0D;&#x5C5E;&#x4E8E;&#x901A;&#x7528;&#x578B;&#x4EE3;&#x7801;&#xFF0C;&#x56E0;&#x6B64;&#x6CA1;&#x6709;&#x653E;&#x5728;&#x4EE3;&#x7801;&#x751F;&#x6210;&#x884C;&#x5217;&#xFF0C;&#x5982;example&#x4E2D;user&#x8868;&#x4E2D;&#x7684;<code>id</code>&#x3001;<code>name</code>&#x3001;<code>mobile</code>&#x5B57;&#x6BB5;&#x5747;&#x5C5E;&#x4E8E;&#x5355;&#x5B57;&#x6BB5;&#x7D22;&#x5F15;&#x3002;</p>
-</li>
-<li><p>&#x4E0D;&#x5E26;&#x7F13;&#x5B58;&#x6A21;&#x5F0F;</p>
-<ul>
-<li><p>ddl</p>
-<pre class="language-"><code class="lang-shell">  $  goctl model mysql ddl -src<span class="token operator">=</span><span class="token punctuation">{</span>patterns<span class="token punctuation">}</span> -dir<span class="token operator">=</span><span class="token punctuation">{</span>dir<span class="token punctuation">}</span>
-</code></pre>
-</li>
-<li><p>datasource</p>
-<pre class="language-"><code class="lang-shell">  $  goctl model mysql datasource -url<span class="token operator">=</span><span class="token punctuation">{</span>datasource<span class="token punctuation">}</span> -table<span class="token operator">=</span><span class="token punctuation">{</span>patterns<span class="token punctuation">}</span>  -dir<span class="token operator">=</span><span class="token punctuation">{</span>dir<span class="token punctuation">}</span>
-</code></pre>
-</li>
-</ul>
-<p>or</p>
-<ul>
-<li><p>ddl</p>
-<pre class="language-"><code class="lang-shell">  $  goctl model mysql ddl -src<span class="token operator">=</span><span class="token punctuation">{</span>patterns<span class="token punctuation">}</span> -dir<span class="token operator">=</span><span class="token punctuation">{</span>dir<span class="token punctuation">}</span>
-</code></pre>
-</li>
-<li><p>datasource</p>
-<pre class="language-"><code class="lang-shell">  $  goctl model mysql datasource -url<span class="token operator">=</span><span class="token punctuation">{</span>datasource<span class="token punctuation">}</span> -table<span class="token operator">=</span><span class="token punctuation">{</span>patterns<span class="token punctuation">}</span>  -dir<span class="token operator">=</span><span class="token punctuation">{</span>dir<span class="token punctuation">}</span>
-</code></pre>
-</li>
-</ul>
 </li>
 </ul>
 <p>&#x751F;&#x6210;&#x4EE3;&#x7801;&#x4EC5;&#x57FA;&#x672C;&#x7684;CURD&#x7ED3;&#x6784;&#x3002;</p>
@@ -1970,7 +1931,7 @@ goctl model mysql ddl/datasource &#x5747;&#x65B0;&#x589E;&#x4E86;&#x4E00;&#x4E2A
 </tbody>
 </table>
 <footer class="page-footer"><span class="copyright">Copyright &#xA9; 2019-2021 go-zero all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last UpdateTime&#xFF1A;
-2022-04-14 01:36:33
+2022-04-16 05:45:58
 </span></footer>
 <script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
                                 
@@ -2015,7 +1976,7 @@ goctl model mysql ddl/datasource &#x5747;&#x65B0;&#x589E;&#x4E86;&#x4E00;&#x4E2A
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"model命令","level":"1.9.5","depth":2,"next":{"title":"plugin命令","level":"1.9.6","depth":2,"path":"goctl-plugin.md","ref":"goctl-plugin.md","articles":[]},"previous":{"title":"rpc命令","level":"1.9.4","depth":2,"path":"goctl-rpc.md","ref":"goctl-rpc.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","code","-lunr","-search","search-pro","github","splitter","-sharing","sharing-plus","tbfed-pagefooter","flexible-alerts","page-toc-button","pageview-count","popup","hide-element","edit-link","-highlight","prism","theme-comscore"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © 2019-2021 go-zero","modify_label":"Last UpdateTime：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"lang":{"shell":"bash"},"css":["prismjs/themes/prism-tomorrow.css"]},"github":{"url":"https://github.com/zeromicro/go-zero"},"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"qq":false,"all":["douban","facebook","google","linkedin","twitter","weibo","qq","qzone","weibo"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true},"edit-link":{"label":"EDIT THIS PAGE","base":"https://github.com/zeromicro/zero-doc/tree/main/go-zero.dev"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"anqiansong","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"go-zero document","language":"cn","gitbook":"*","description":"Golang 微服务框架 | 集成各种工程实践的 WEB 和 RPC 框架 | 一键生成 Go, iOS, Android, Kotlin, Dart, TypeScript, JavaScript 代码"},"file":{"path":"goctl-model.md","mtime":"2022-04-14T01:36:33.653Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-04-14T01:37:26.451Z"},"basePath":".","book":{"language":"cn"}});
+            gitbook.page.hasChanged({"page":{"title":"model命令","level":"1.9.5","depth":2,"next":{"title":"plugin命令","level":"1.9.6","depth":2,"path":"goctl-plugin.md","ref":"goctl-plugin.md","articles":[]},"previous":{"title":"rpc命令","level":"1.9.4","depth":2,"path":"goctl-rpc.md","ref":"goctl-rpc.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","code","-lunr","-search","search-pro","github","splitter","-sharing","sharing-plus","tbfed-pagefooter","flexible-alerts","page-toc-button","pageview-count","popup","hide-element","edit-link","-highlight","prism","theme-comscore"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © 2019-2021 go-zero","modify_label":"Last UpdateTime：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{"lang":{"shell":"bash"},"css":["prismjs/themes/prism-tomorrow.css"]},"github":{"url":"https://github.com/zeromicro/go-zero"},"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"qq":false,"all":["douban","facebook","google","linkedin","twitter","weibo","qq","qzone","weibo"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true},"edit-link":{"label":"EDIT THIS PAGE","base":"https://github.com/zeromicro/zero-doc/tree/main/go-zero.dev"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"anqiansong","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"go-zero document","language":"cn","gitbook":"*","description":"Golang 微服务框架 | 集成各种工程实践的 WEB 和 RPC 框架 | 一键生成 Go, iOS, Android, Kotlin, Dart, TypeScript, JavaScript 代码"},"file":{"path":"goctl-model.md","mtime":"2022-04-16T05:45:58.037Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-04-16T05:47:07.410Z"},"basePath":".","book":{"language":"cn"}});
         });
     </script>
 </div>
